@@ -24,7 +24,7 @@ jobs:
           - { os: macos-latest, native: swt.cocoa.macosx.x86_64}
     steps:
     - name: Install requirements
-      run: sudo apt-get install -y gcc cairo-devel gtk3-devel webkit2gtk3-devel mesa-libGLU-devel libXt-devel 
+      run: sudo apt-get install -y libgtk-3-dev
       if: ${{ matrix.config.native == 'gtk.linux.x86_64'}}
     - uses: actions/checkout@v3
     - name: Set up JDK 11
