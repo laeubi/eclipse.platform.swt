@@ -24,7 +24,7 @@ jobs:
           - { os: macos-latest, native: cocoa.macosx.x86_64}
     steps:
     - name: Install requirements
-      run: sudo apt-get install -qq -y webkit2gtk-driver
+      run: sudo apt-get update && sudo apt-get install -qq -y webkit2gtk-driver
       if: ${{ matrix.config.native == 'gtk.linux.x86_64'}}
     - uses: actions/checkout@v3
     - name: Set up JDK 11
