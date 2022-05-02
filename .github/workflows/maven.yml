@@ -19,9 +19,9 @@ jobs:
       fail-fast: false
       matrix:
         config: 
-          - { os: ubuntu-latest, native: gtk.linux.x86_64 }
-          - { os: windows-latest, native: win32.win32.x86_64 }
-          - { os: macos-latest, native: cocoa.macosx.x86_64}
+          - { name: linux, os: ubuntu-latest, native: gtk.linux.x86_64 }
+          - { name: windows, os: windows-latest, native: win32.win32.x86_64 }
+          - { name: macos, os: macos-latest, native: cocoa.macosx.x86_64}
     steps:
     - name: Install requirements
       run: sudo apt-get update -qq && sudo apt-get install -qq -y webkit2gtk-driver
@@ -36,4 +36,11 @@ jobs:
     - name: Build with Maven
       uses: GabrielBB/xvfb-action@v1
       with:
-       run: mvn --batch-mode -Pbuild-individual-bundles -DforceContextQualifier=zzz -Dnative=${{ matrix.config.native }} -DskipJni -DskipRust -Dcompare-version-with-baselines.skip=true -Dmaven.compiler.failOnWarning=true install
+       run: mvn --batch-mode -Pbuild-individual-bundles -DforceContextQualifier=zzz -Dnative=${{ matrix.config.native }} -DskipJni -DskipRust -Dcompare-version-with-baselines.skip=true -Dmaven.compiler.failOnWarning=true -Dmaven.test.failure.ignore=true install
+    - name: Upload Test Results
+      uses: actions/upload-artifact@v3
+      with:
+        name: test-results-${{ matrix.config.name }}
+        if-no-files-found: error
+        path: |
+          ${{ github.workspace }}/**/target/surefire-reports/*.xml
