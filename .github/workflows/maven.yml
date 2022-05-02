@@ -22,6 +22,7 @@ jobs:
           - { name: linux, os: ubuntu-latest, native: gtk.linux.x86_64 }
           - { name: windows, os: windows-latest, native: win32.win32.x86_64 }
           - { name: macos, os: macos-latest, native: cocoa.macosx.x86_64}
+    name: Run on ${{ matrix.config.name }}
     steps:
     - name: Install requirements
       run: sudo apt-get update -qq && sudo apt-get install -qq -y webkit2gtk-driver
