@@ -47,14 +47,8 @@ jobs:
       uses: GabrielBB/xvfb-action@v1
       with:
        run: |
-        cd eclipse.platform.swt.binaries
-        pwd
-        ls -l
-        mvn --batch-mode -Pbuild-individual-bundles -DforceContextQualifier=zzz -Dnative=${{ matrix.config.native }} -DskipJni -DskipRust -Dcompare-version-with-baselines.skip=true -Dmaven.compiler.failOnWarning=true install
-        cd..
-        cd eclipse.platform.swt 
-        mvn --batch-mode -Pbuild-individual-bundles -DforceContextQualifier=zzz -Dnative=${{ matrix.config.native }} -DskipJni -DskipRust -Dcompare-version-with-baselines.skip=true -Dmaven.compiler.failOnWarning=true -Dmaven.test.failure.ignore=true install
-        cd ..
+        cd eclipse.platform.swt.binaries && mvn --batch-mode -Pbuild-individual-bundles -DforceContextQualifier=zzz -DskipJni -Dcompare-version-with-baselines.skip=true -Dmaven.compiler.failOnWarning=true install
+        cd eclipse.platform.swt  && mvn --batch-mode -Pbuild-individual-bundles -DcheckAllWS=true -DforkCount=0 -Dcompare-version-with-baselines.skip=false -Dmaven.compiler.failOnWarning=true clean verify -Dmaven.compiler.failOnWarning=true -Dmaven.test.failure.ignore=true install
     - name: Upload Test Results
       uses: actions/upload-artifact@v3
       with:
