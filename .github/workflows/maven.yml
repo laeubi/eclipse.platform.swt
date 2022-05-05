@@ -27,7 +27,7 @@ jobs:
     - name: checkout swt.binaries
       uses: actions/checkout@v3
       with:
-        repository: 'https://github.com/eclipse-platform/eclipse.platform.swt.binaries.git'
+        repository: 'eclipse-platform/eclipse.platform.swt.binaries'
         path: 'eclipse.platform.swt.binaries'
     - name: checout swt
       uses: actions/checkout@v3
