@@ -21,13 +21,21 @@ jobs:
         config: 
           - { name: linux, os: ubuntu-latest, native: gtk.linux.x86_64 }
           - { name: windows, os: windows-latest, native: win32.win32.x86_64 }
-          - { name: macos, os: macos-latest, native: cocoa.macosx.x86_64}
+          - { name: macos, os: macos-latest, native: cocoa.macosx.x86_64 }
     name: Run on ${{ matrix.config.name }}
     steps:
-    - name: Install requirements
+    - name: checkout swt.binaries
+      uses: actions/checkout@v3
+      with:
+        repository: 'https://github.com/eclipse-platform/eclipse.platform.swt.binaries.git'
+        path: 'eclipse.platform.swt.binaries'
+    - name: checout swt
+      uses: actions/checkout@v3
+      with:
+       path: 'eclipse.platform.swt'
+    - name: Install Linux requirements
       run: sudo apt-get update -qq && sudo apt-get install -qq -y webkit2gtk-driver
       if: ${{ matrix.config.native == 'gtk.linux.x86_64'}}
-    - uses: actions/checkout@v3
     - name: Set up JDK 11
       uses: actions/setup-java@v3
       with:
@@ -37,7 +45,13 @@ jobs:
     - name: Build with Maven
       uses: GabrielBB/xvfb-action@v1
       with:
-       run: mvn --batch-mode -Pbuild-individual-bundles -DforceContextQualifier=zzz -Dnative=${{ matrix.config.native }} -DskipJni -DskipRust -Dcompare-version-with-baselines.skip=true -Dmaven.compiler.failOnWarning=true -Dmaven.test.failure.ignore=true install
+       run: |
+        cd eclipse.platform.swt.binaries
+        mvn --batch-mode -Pbuild-individual-bundles -DforceContextQualifier=zzz -Dnative=${{ matrix.config.native }} -DskipJni -DskipRust -Dcompare-version-with-baselines.skip=true -Dmaven.compiler.failOnWarning=true install
+        cd..
+        cd eclipse.platform.swt 
+        mvn --batch-mode -Pbuild-individual-bundles -DforceContextQualifier=zzz -Dnative=${{ matrix.config.native }} -DskipJni -DskipRust -Dcompare-version-with-baselines.skip=true -Dmaven.compiler.failOnWarning=true -Dmaven.test.failure.ignore=true install
+        cd ..
     - name: Upload Test Results
       uses: actions/upload-artifact@v3
       with:
