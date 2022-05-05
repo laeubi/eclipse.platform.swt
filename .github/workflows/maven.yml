@@ -44,12 +44,12 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Install binaries
-      run: mvn --batch-mode -Pbuild-individual-bundles -DforceContextQualifier=zzz -DskipJni -Dcompare-version-with-baselines.skip=true -Dmaven.compiler.failOnWarning=true install
+      run: mvn --batch-mode -Pbuild-individual-bundles -DforceContextQualifier=zzz -DskipJni install
       working-directory: eclipse.platform.swt.binaries
     - name: Build with Maven
       uses: GabrielBB/xvfb-action@v1
       with:
-       run: mvn --batch-mode -Pbuild-individual-bundles -DcheckAllWS=true -DforkCount=0 -Dcompare-version-with-baselines.skip=true -Dmaven.compiler.failOnWarning=true clean verify -Dmaven.compiler.failOnWarning=true -Dmaven.test.failure.ignore=true install
+       run: mvn --batch-mode -Pbuild-individual-bundles -DcheckAllWS=true -DforkCount=0 -Dcompare-version-with-baselines.skip=true -Dmaven.compiler.failOnWarning=true -Dmaven.compiler.failOnWarning=true -Dmaven.test.failure.ignore=true clean verify
        working-directory: eclipse.platform.swt
     - name: Upload Test Results
       uses: actions/upload-artifact@v3
