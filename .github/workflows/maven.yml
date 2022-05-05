@@ -47,6 +47,7 @@ jobs:
       with:
        run: |
         cd eclipse.platform.swt.binaries
+        pwd
         mvn --batch-mode -Pbuild-individual-bundles -DforceContextQualifier=zzz -Dnative=${{ matrix.config.native }} -DskipJni -DskipRust -Dcompare-version-with-baselines.skip=true -Dmaven.compiler.failOnWarning=true install
         cd..
         cd eclipse.platform.swt 
