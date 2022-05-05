@@ -29,6 +29,7 @@ jobs:
       with:
         repository: 'eclipse-platform/eclipse.platform.swt.binaries'
         path: 'eclipse.platform.swt.binaries'
+        ref: master
     - name: checout swt
       uses: actions/checkout@v3
       with:
@@ -48,6 +49,7 @@ jobs:
        run: |
         cd eclipse.platform.swt.binaries
         pwd
+        ls -l
         mvn --batch-mode -Pbuild-individual-bundles -DforceContextQualifier=zzz -Dnative=${{ matrix.config.native }} -DskipJni -DskipRust -Dcompare-version-with-baselines.skip=true -Dmaven.compiler.failOnWarning=true install
         cd..
         cd eclipse.platform.swt 
