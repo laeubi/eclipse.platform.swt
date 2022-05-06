@@ -13,6 +13,7 @@
  *******************************************************************************/
 package org.eclipse.swt.widgets;
 
+import java.util.*;
 import java.util.concurrent.*;
 
 import org.eclipse.swt.*;
@@ -63,7 +64,12 @@ public Synchronizer (Display display) {
  * @param toReceiveTheEvents the synchronizer that will receive the events
  */
 void moveAllEventsTo (Synchronizer toReceiveTheEvents) {
+	// Drain target queue and add it later again to insert at the beginning of the
+	// queue for backward compatibility:
+	java.util.List<RunnableLock> tail = new ArrayList<>();
+	toReceiveTheEvents.messages.removeIf(tail::add);
 	messages.removeIf(toReceiveTheEvents.messages::add);
+	toReceiveTheEvents.messages.addAll(tail);
 }
 
 
@@ -131,10 +137,8 @@ boolean runAsyncMessages (boolean all) {
 				if (display != null && !display.isDisposed()) {
 					display.sendPostEvent(SWT.None);
 				}
-				if (syncThread!=null) {
-					syncThread = null;
-					lock.notifyAll();
-				}
+				syncThread = null;
+				lock.notifyAll ();
 			}
 		}
 	} while (all);
