@@ -2,14 +2,9 @@
 
 package org.eclipse.swt.opengl.panama;
 
-import java.lang.invoke.MethodHandle;
-import java.lang.invoke.VarHandle;
-import java.nio.ByteOrder;
-import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.ValueLayout.*;
+import jdk.incubator.foreign.ValueLayout.*;
 public class glut_h extends glut_h_6 {
 
-    /* package-private */ glut_h() {}
     public static OfByte C_CHAR = Constants$root.C_CHAR$LAYOUT;
     public static OfShort C_SHORT = Constants$root.C_SHORT$LAYOUT;
     public static OfInt C_INT = Constants$root.C_INT$LAYOUT;

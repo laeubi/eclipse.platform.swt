@@ -2,15 +2,11 @@
 
 package org.eclipse.swt.opengl.panama;
 
-import java.lang.invoke.MethodHandle;
-import java.lang.invoke.VarHandle;
-import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.ValueLayout.*;
 public interface glutDisplayFunc$callback {
 
     void apply();
-    static NativeSymbol allocate(glutDisplayFunc$callback fi, ResourceScope scope) {
+    public static NativeSymbol allocate(glutDisplayFunc$callback fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(glutDisplayFunc$callback.class, fi, constants$942.glutDisplayFunc$callback$FUNC, "()V", scope);
     }
     static glutDisplayFunc$callback ofAddress(MemoryAddress addr, ResourceScope scope) {
