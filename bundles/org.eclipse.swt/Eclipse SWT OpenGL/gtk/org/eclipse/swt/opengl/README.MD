@@ -5,7 +5,7 @@
 1. Install the headers, e.g. `sudo apt-get install libglu1-mesa-dev freeglut3-dev mesa-common-dev`
 2. get a suitable jextract from https://jdk.java.net/panama/ (Java 19) or https://jdk.java.net/panama/17/ (Java 17)
 3. go into folder `<your swt checkout>/org.eclipse.swt/Eclipse SWT OpenGL/gtk`
-4. `jextract -I /usr/include/GL -t org.eclipse.swt.opengl /usr/include/GL/glut.h`
+4. `jextract --source -I /usr/include/GL -t org.eclipse.swt.opengl.panama /usr/include/GL/glut.h`
 
 ## Current Warnings (to be reported to panama project!
 
