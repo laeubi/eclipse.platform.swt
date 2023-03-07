@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLENDCONDITIONALRENDERNVPROC {
 
     void apply();
-    static MemoryAddress allocate(PFNGLENDCONDITIONALRENDERNVPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLENDCONDITIONALRENDERNVPROC.class, fi, constants$735.PFNGLENDCONDITIONALRENDERNVPROC$FUNC, "()V");
-    }
-    static MemoryAddress allocate(PFNGLENDCONDITIONALRENDERNVPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLENDCONDITIONALRENDERNVPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLENDCONDITIONALRENDERNVPROC.class, fi, constants$735.PFNGLENDCONDITIONALRENDERNVPROC$FUNC, "()V", scope);
     }
-    static PFNGLENDCONDITIONALRENDERNVPROC ofAddress(MemoryAddress addr) {
-        return () -> {
+    static PFNGLENDCONDITIONALRENDERNVPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLENDCONDITIONALRENDERNVPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return () -> {
             try {
-                constants$735.PFNGLENDCONDITIONALRENDERNVPROC$MH.invokeExact((Addressable)addr);
+                constants$735.PFNGLENDCONDITIONALRENDERNVPROC$MH.invokeExact(symbol);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

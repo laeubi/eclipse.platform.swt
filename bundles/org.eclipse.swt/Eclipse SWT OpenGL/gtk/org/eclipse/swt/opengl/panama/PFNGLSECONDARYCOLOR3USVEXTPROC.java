@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLSECONDARYCOLOR3USVEXTPROC {
 
     void apply(jdk.incubator.foreign.MemoryAddress x0);
-    static MemoryAddress allocate(PFNGLSECONDARYCOLOR3USVEXTPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLSECONDARYCOLOR3USVEXTPROC.class, fi, constants$660.PFNGLSECONDARYCOLOR3USVEXTPROC$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;)V");
-    }
-    static MemoryAddress allocate(PFNGLSECONDARYCOLOR3USVEXTPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLSECONDARYCOLOR3USVEXTPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLSECONDARYCOLOR3USVEXTPROC.class, fi, constants$660.PFNGLSECONDARYCOLOR3USVEXTPROC$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;)V", scope);
     }
-    static PFNGLSECONDARYCOLOR3USVEXTPROC ofAddress(MemoryAddress addr) {
-        return (jdk.incubator.foreign.MemoryAddress x0) -> {
+    static PFNGLSECONDARYCOLOR3USVEXTPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLSECONDARYCOLOR3USVEXTPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (jdk.incubator.foreign.MemoryAddress x0) -> {
             try {
-                constants$660.PFNGLSECONDARYCOLOR3USVEXTPROC$MH.invokeExact((Addressable)addr, x0);
+                constants$660.PFNGLSECONDARYCOLOR3USVEXTPROC$MH.invokeExact(symbol, (jdk.incubator.foreign.Addressable)x0);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

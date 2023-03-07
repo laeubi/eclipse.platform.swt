@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLGETBOOLEANI_VPROC {
 
     void apply(int x0, int x1, jdk.incubator.foreign.MemoryAddress x2);
-    static MemoryAddress allocate(PFNGLGETBOOLEANI_VPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLGETBOOLEANI_VPROC.class, fi, constants$146.PFNGLGETBOOLEANI_VPROC$FUNC, "(IILjdk/incubator/foreign/MemoryAddress;)V");
-    }
-    static MemoryAddress allocate(PFNGLGETBOOLEANI_VPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLGETBOOLEANI_VPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLGETBOOLEANI_VPROC.class, fi, constants$146.PFNGLGETBOOLEANI_VPROC$FUNC, "(IILjdk/incubator/foreign/MemoryAddress;)V", scope);
     }
-    static PFNGLGETBOOLEANI_VPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, jdk.incubator.foreign.MemoryAddress x2) -> {
+    static PFNGLGETBOOLEANI_VPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLGETBOOLEANI_VPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1, jdk.incubator.foreign.MemoryAddress x2) -> {
             try {
-                constants$146.PFNGLGETBOOLEANI_VPROC$MH.invokeExact((Addressable)addr, x0, x1, x2);
+                constants$146.PFNGLGETBOOLEANI_VPROC$MH.invokeExact(symbol, x0, x1, (jdk.incubator.foreign.Addressable)x2);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLRESUMETRANSFORMFEEDBACKNVPROC {
 
     void apply();
-    static MemoryAddress allocate(PFNGLRESUMETRANSFORMFEEDBACKNVPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLRESUMETRANSFORMFEEDBACKNVPROC.class, fi, constants$825.PFNGLRESUMETRANSFORMFEEDBACKNVPROC$FUNC, "()V");
-    }
-    static MemoryAddress allocate(PFNGLRESUMETRANSFORMFEEDBACKNVPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLRESUMETRANSFORMFEEDBACKNVPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLRESUMETRANSFORMFEEDBACKNVPROC.class, fi, constants$825.PFNGLRESUMETRANSFORMFEEDBACKNVPROC$FUNC, "()V", scope);
     }
-    static PFNGLRESUMETRANSFORMFEEDBACKNVPROC ofAddress(MemoryAddress addr) {
-        return () -> {
+    static PFNGLRESUMETRANSFORMFEEDBACKNVPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLRESUMETRANSFORMFEEDBACKNVPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return () -> {
             try {
-                constants$825.PFNGLRESUMETRANSFORMFEEDBACKNVPROC$MH.invokeExact((Addressable)addr);
+                constants$825.PFNGLRESUMETRANSFORMFEEDBACKNVPROC$MH.invokeExact(symbol);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

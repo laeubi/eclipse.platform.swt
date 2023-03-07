@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLCOVERSTROKEPATHINSTANCEDNVPROC {
 
     void apply(int x0, int x1, jdk.incubator.foreign.MemoryAddress x2, int x3, int x4, int x5, jdk.incubator.foreign.MemoryAddress x6);
-    static MemoryAddress allocate(PFNGLCOVERSTROKEPATHINSTANCEDNVPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLCOVERSTROKEPATHINSTANCEDNVPROC.class, fi, constants$789.PFNGLCOVERSTROKEPATHINSTANCEDNVPROC$FUNC, "(IILjdk/incubator/foreign/MemoryAddress;IIILjdk/incubator/foreign/MemoryAddress;)V");
-    }
-    static MemoryAddress allocate(PFNGLCOVERSTROKEPATHINSTANCEDNVPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLCOVERSTROKEPATHINSTANCEDNVPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLCOVERSTROKEPATHINSTANCEDNVPROC.class, fi, constants$789.PFNGLCOVERSTROKEPATHINSTANCEDNVPROC$FUNC, "(IILjdk/incubator/foreign/MemoryAddress;IIILjdk/incubator/foreign/MemoryAddress;)V", scope);
     }
-    static PFNGLCOVERSTROKEPATHINSTANCEDNVPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, jdk.incubator.foreign.MemoryAddress x2, int x3, int x4, int x5, jdk.incubator.foreign.MemoryAddress x6) -> {
+    static PFNGLCOVERSTROKEPATHINSTANCEDNVPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLCOVERSTROKEPATHINSTANCEDNVPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1, jdk.incubator.foreign.MemoryAddress x2, int x3, int x4, int x5, jdk.incubator.foreign.MemoryAddress x6) -> {
             try {
-                constants$789.PFNGLCOVERSTROKEPATHINSTANCEDNVPROC$MH.invokeExact((Addressable)addr, x0, x1, x2, x3, x4, x5, x6);
+                constants$789.PFNGLCOVERSTROKEPATHINSTANCEDNVPROC$MH.invokeExact(symbol, x0, x1, (jdk.incubator.foreign.Addressable)x2, x3, x4, x5, (jdk.incubator.foreign.Addressable)x6);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

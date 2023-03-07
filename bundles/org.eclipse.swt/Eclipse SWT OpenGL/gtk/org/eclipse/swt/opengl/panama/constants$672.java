@@ -6,30 +6,27 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$672 {
 
     static final FunctionDescriptor PFNGLDELETETEXTURESEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLDELETETEXTURESEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(ILjdk/incubator/foreign/MemoryAddress;)V",
         constants$672.PFNGLDELETETEXTURESEXTPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLGENTEXTURESEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLGENTEXTURESEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(ILjdk/incubator/foreign/MemoryAddress;)V",
         constants$672.PFNGLGENTEXTURESEXTPROC$FUNC, false
     );
-    static final FunctionDescriptor PFNGLISTEXTUREEXTPROC$FUNC = FunctionDescriptor.of(C_CHAR,
-        C_INT
+    static final FunctionDescriptor PFNGLISTEXTUREEXTPROC$FUNC = FunctionDescriptor.of(Constants$root.C_CHAR$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLISTEXTUREEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(I)B",
         constants$672.PFNGLISTEXTUREEXTPROC$FUNC, false
     );
 }

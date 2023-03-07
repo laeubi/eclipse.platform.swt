@@ -6,31 +6,28 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$196 {
 
     static final FunctionDescriptor PFNGLVERTEXP3UIVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLVERTEXP3UIVPROC$MH = RuntimeHelper.downcallHandle(
-        "(ILjdk/incubator/foreign/MemoryAddress;)V",
         constants$196.PFNGLVERTEXP3UIVPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLVERTEXP4UIPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLVERTEXP4UIPROC$MH = RuntimeHelper.downcallHandle(
-        "(II)V",
         constants$196.PFNGLVERTEXP4UIPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLVERTEXP4UIVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLVERTEXP4UIVPROC$MH = RuntimeHelper.downcallHandle(
-        "(ILjdk/incubator/foreign/MemoryAddress;)V",
         constants$196.PFNGLVERTEXP4UIVPROC$FUNC, false
     );
 }

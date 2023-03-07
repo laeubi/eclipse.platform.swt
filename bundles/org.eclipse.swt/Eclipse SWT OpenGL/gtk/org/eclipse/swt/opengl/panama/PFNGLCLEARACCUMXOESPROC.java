@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLCLEARACCUMXOESPROC {
 
     void apply(int x0, int x1, int x2, int x3);
-    static MemoryAddress allocate(PFNGLCLEARACCUMXOESPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLCLEARACCUMXOESPROC.class, fi, constants$427.PFNGLCLEARACCUMXOESPROC$FUNC, "(IIII)V");
-    }
-    static MemoryAddress allocate(PFNGLCLEARACCUMXOESPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLCLEARACCUMXOESPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLCLEARACCUMXOESPROC.class, fi, constants$427.PFNGLCLEARACCUMXOESPROC$FUNC, "(IIII)V", scope);
     }
-    static PFNGLCLEARACCUMXOESPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, int x2, int x3) -> {
+    static PFNGLCLEARACCUMXOESPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLCLEARACCUMXOESPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1, int x2, int x3) -> {
             try {
-                constants$427.PFNGLCLEARACCUMXOESPROC$MH.invokeExact((Addressable)addr, x0, x1, x2, x3);
+                constants$427.PFNGLCLEARACCUMXOESPROC$MH.invokeExact(symbol, x0, x1, x2, x3);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

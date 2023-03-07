@@ -6,35 +6,32 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$733 {
 
-    static final FunctionDescriptor PFNGLISCOMMANDLISTNVPROC$FUNC = FunctionDescriptor.of(C_CHAR,
-        C_INT
+    static final FunctionDescriptor PFNGLISCOMMANDLISTNVPROC$FUNC = FunctionDescriptor.of(Constants$root.C_CHAR$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLISCOMMANDLISTNVPROC$MH = RuntimeHelper.downcallHandle(
-        "(I)B",
         constants$733.PFNGLISCOMMANDLISTNVPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLLISTDRAWCOMMANDSSTATESCLIENTNVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_POINTER,
-        C_POINTER,
-        C_POINTER,
-        C_POINTER,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLLISTDRAWCOMMANDSSTATESCLIENTNVPROC$MH = RuntimeHelper.downcallHandle(
-        "(IILjdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;I)V",
         constants$733.PFNGLLISTDRAWCOMMANDSSTATESCLIENTNVPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLCOMMANDLISTSEGMENTSNVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLCOMMANDLISTSEGMENTSNVPROC$MH = RuntimeHelper.downcallHandle(
-        "(II)V",
         constants$733.PFNGLCOMMANDLISTSEGMENTSNVPROC$FUNC, false
     );
 }

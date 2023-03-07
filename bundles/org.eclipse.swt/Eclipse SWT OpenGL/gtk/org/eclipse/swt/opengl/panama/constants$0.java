@@ -6,62 +6,56 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$0 {
 
     static final FunctionDescriptor glClearIndex$FUNC = FunctionDescriptor.ofVoid(
-        C_FLOAT
+        Constants$root.C_FLOAT$LAYOUT
     );
     static final MethodHandle glClearIndex$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glClearIndex",
-        "(F)V",
+        "glClearIndex",
         constants$0.glClearIndex$FUNC, false
     );
     static final FunctionDescriptor glClearColor$FUNC = FunctionDescriptor.ofVoid(
-        C_FLOAT,
-        C_FLOAT,
-        C_FLOAT,
-        C_FLOAT
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT
     );
     static final MethodHandle glClearColor$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glClearColor",
-        "(FFFF)V",
+        "glClearColor",
         constants$0.glClearColor$FUNC, false
     );
     static final FunctionDescriptor glClear$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle glClear$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glClear",
-        "(I)V",
+        "glClear",
         constants$0.glClear$FUNC, false
     );
     static final FunctionDescriptor glIndexMask$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle glIndexMask$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glIndexMask",
-        "(I)V",
+        "glIndexMask",
         constants$0.glIndexMask$FUNC, false
     );
     static final FunctionDescriptor glColorMask$FUNC = FunctionDescriptor.ofVoid(
-        C_CHAR,
-        C_CHAR,
-        C_CHAR,
-        C_CHAR
+        Constants$root.C_CHAR$LAYOUT,
+        Constants$root.C_CHAR$LAYOUT,
+        Constants$root.C_CHAR$LAYOUT,
+        Constants$root.C_CHAR$LAYOUT
     );
     static final MethodHandle glColorMask$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glColorMask",
-        "(BBBB)V",
+        "glColorMask",
         constants$0.glColorMask$FUNC, false
     );
     static final FunctionDescriptor glAlphaFunc$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_FLOAT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT
     );
     static final MethodHandle glAlphaFunc$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glAlphaFunc",
-        "(IF)V",
+        "glAlphaFunc",
         constants$0.glAlphaFunc$FUNC, false
     );
 }

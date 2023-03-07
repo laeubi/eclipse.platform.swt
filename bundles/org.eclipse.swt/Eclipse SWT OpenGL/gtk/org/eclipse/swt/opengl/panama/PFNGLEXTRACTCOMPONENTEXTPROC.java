@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLEXTRACTCOMPONENTEXTPROC {
 
     void apply(int x0, int x1, int x2);
-    static MemoryAddress allocate(PFNGLEXTRACTCOMPONENTEXTPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLEXTRACTCOMPONENTEXTPROC.class, fi, constants$686.PFNGLEXTRACTCOMPONENTEXTPROC$FUNC, "(III)V");
-    }
-    static MemoryAddress allocate(PFNGLEXTRACTCOMPONENTEXTPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLEXTRACTCOMPONENTEXTPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLEXTRACTCOMPONENTEXTPROC.class, fi, constants$686.PFNGLEXTRACTCOMPONENTEXTPROC$FUNC, "(III)V", scope);
     }
-    static PFNGLEXTRACTCOMPONENTEXTPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, int x2) -> {
+    static PFNGLEXTRACTCOMPONENTEXTPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLEXTRACTCOMPONENTEXTPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1, int x2) -> {
             try {
-                constants$686.PFNGLEXTRACTCOMPONENTEXTPROC$MH.invokeExact((Addressable)addr, x0, x1, x2);
+                constants$686.PFNGLEXTRACTCOMPONENTEXTPROC$MH.invokeExact(symbol, x0, x1, x2);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

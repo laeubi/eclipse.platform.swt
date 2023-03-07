@@ -6,32 +6,29 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$147 {
 
     static final FunctionDescriptor PFNGLGETINTEGERI_VPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLGETINTEGERI_VPROC$MH = RuntimeHelper.downcallHandle(
-        "(IILjdk/incubator/foreign/MemoryAddress;)V",
         constants$147.PFNGLGETINTEGERI_VPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLENABLEIPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLENABLEIPROC$MH = RuntimeHelper.downcallHandle(
-        "(II)V",
         constants$147.PFNGLENABLEIPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLDISABLEIPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLDISABLEIPROC$MH = RuntimeHelper.downcallHandle(
-        "(II)V",
         constants$147.PFNGLDISABLEIPROC$FUNC, false
     );
 }

@@ -6,28 +6,25 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$881 {
 
     static final FunctionDescriptor PFNGLASYNCMARKERSGIXPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLASYNCMARKERSGIXPROC$MH = RuntimeHelper.downcallHandle(
-        "(I)V",
         constants$881.PFNGLASYNCMARKERSGIXPROC$FUNC, false
     );
-    static final FunctionDescriptor PFNGLFINISHASYNCSGIXPROC$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER
+    static final FunctionDescriptor PFNGLFINISHASYNCSGIXPROC$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLFINISHASYNCSGIXPROC$MH = RuntimeHelper.downcallHandle(
-        "(Ljdk/incubator/foreign/MemoryAddress;)I",
         constants$881.PFNGLFINISHASYNCSGIXPROC$FUNC, false
     );
-    static final FunctionDescriptor PFNGLPOLLASYNCSGIXPROC$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER
+    static final FunctionDescriptor PFNGLPOLLASYNCSGIXPROC$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLPOLLASYNCSGIXPROC$MH = RuntimeHelper.downcallHandle(
-        "(Ljdk/incubator/foreign/MemoryAddress;)I",
         constants$881.PFNGLPOLLASYNCSGIXPROC$FUNC, false
     );
 }

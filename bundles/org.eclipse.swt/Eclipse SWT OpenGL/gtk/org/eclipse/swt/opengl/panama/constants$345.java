@@ -6,30 +6,27 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$345 {
 
     static final FunctionDescriptor PFNGLCURRENTPALETTEMATRIXARBPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLCURRENTPALETTEMATRIXARBPROC$MH = RuntimeHelper.downcallHandle(
-        "(I)V",
         constants$345.PFNGLCURRENTPALETTEMATRIXARBPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLMATRIXINDEXUBVARBPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLMATRIXINDEXUBVARBPROC$MH = RuntimeHelper.downcallHandle(
-        "(ILjdk/incubator/foreign/MemoryAddress;)V",
         constants$345.PFNGLMATRIXINDEXUBVARBPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLMATRIXINDEXUSVARBPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLMATRIXINDEXUSVARBPROC$MH = RuntimeHelper.downcallHandle(
-        "(ILjdk/incubator/foreign/MemoryAddress;)V",
         constants$345.PFNGLMATRIXINDEXUSVARBPROC$FUNC, false
     );
 }

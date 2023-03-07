@@ -6,32 +6,29 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$276 {
 
-    static final FunctionDescriptor PFNGLMAPNAMEDBUFFERPROC$FUNC = FunctionDescriptor.of(C_POINTER,
-        C_INT,
-        C_INT
+    static final FunctionDescriptor PFNGLMAPNAMEDBUFFERPROC$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLMAPNAMEDBUFFERPROC$MH = RuntimeHelper.downcallHandle(
-        "(II)Ljdk/incubator/foreign/MemoryAddress;",
         constants$276.PFNGLMAPNAMEDBUFFERPROC$FUNC, false
     );
-    static final FunctionDescriptor PFNGLMAPNAMEDBUFFERRANGEPROC$FUNC = FunctionDescriptor.of(C_POINTER,
-        C_INT,
-        C_LONG,
-        C_LONG,
-        C_INT
+    static final FunctionDescriptor PFNGLMAPNAMEDBUFFERRANGEPROC$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLMAPNAMEDBUFFERRANGEPROC$MH = RuntimeHelper.downcallHandle(
-        "(IJJI)Ljdk/incubator/foreign/MemoryAddress;",
         constants$276.PFNGLMAPNAMEDBUFFERRANGEPROC$FUNC, false
     );
-    static final FunctionDescriptor PFNGLUNMAPNAMEDBUFFERPROC$FUNC = FunctionDescriptor.of(C_CHAR,
-        C_INT
+    static final FunctionDescriptor PFNGLUNMAPNAMEDBUFFERPROC$FUNC = FunctionDescriptor.of(Constants$root.C_CHAR$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLUNMAPNAMEDBUFFERPROC$MH = RuntimeHelper.downcallHandle(
-        "(I)B",
         constants$276.PFNGLUNMAPNAMEDBUFFERPROC$FUNC, false
     );
 }

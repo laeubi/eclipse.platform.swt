@@ -6,32 +6,29 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$516 {
 
     static final FunctionDescriptor PFNGLVERTEXBLENDENVIATIPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLVERTEXBLENDENVIATIPROC$MH = RuntimeHelper.downcallHandle(
-        "(II)V",
         constants$516.PFNGLVERTEXBLENDENVIATIPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLVERTEXBLENDENVFATIPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_FLOAT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT
     );
     static final MethodHandle PFNGLVERTEXBLENDENVFATIPROC$MH = RuntimeHelper.downcallHandle(
-        "(IF)V",
         constants$516.PFNGLVERTEXBLENDENVFATIPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLEGLIMAGETARGETTEXSTORAGEEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_POINTER,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLEGLIMAGETARGETTEXSTORAGEEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(ILjdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)V",
         constants$516.PFNGLEGLIMAGETARGETTEXSTORAGEEXTPROC$FUNC, false
     );
 }

@@ -6,64 +6,58 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$929 {
 
     static final FunctionDescriptor gluTessCallback$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER,
-        C_INT,
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle gluTessCallback$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "gluTessCallback",
-        "(Ljdk/incubator/foreign/MemoryAddress;ILjdk/incubator/foreign/MemoryAddress;)V",
+        "gluTessCallback",
         constants$929.gluTessCallback$FUNC, false
     );
     static final FunctionDescriptor gluTessEndContour$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle gluTessEndContour$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "gluTessEndContour",
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
+        "gluTessEndContour",
         constants$929.gluTessEndContour$FUNC, false
     );
     static final FunctionDescriptor gluTessEndPolygon$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle gluTessEndPolygon$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "gluTessEndPolygon",
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
+        "gluTessEndPolygon",
         constants$929.gluTessEndPolygon$FUNC, false
     );
     static final FunctionDescriptor gluTessNormal$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER,
-        C_DOUBLE,
-        C_DOUBLE,
-        C_DOUBLE
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT
     );
     static final MethodHandle gluTessNormal$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "gluTessNormal",
-        "(Ljdk/incubator/foreign/MemoryAddress;DDD)V",
+        "gluTessNormal",
         constants$929.gluTessNormal$FUNC, false
     );
     static final FunctionDescriptor gluTessProperty$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER,
-        C_INT,
-        C_DOUBLE
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT
     );
     static final MethodHandle gluTessProperty$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "gluTessProperty",
-        "(Ljdk/incubator/foreign/MemoryAddress;ID)V",
+        "gluTessProperty",
         constants$929.gluTessProperty$FUNC, false
     );
     static final FunctionDescriptor gluTessVertex$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER,
-        C_POINTER,
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle gluTessVertex$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "gluTessVertex",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)V",
+        "gluTessVertex",
         constants$929.gluTessVertex$FUNC, false
     );
 }

@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLISASYNCMARKERSGIXPROC {
 
     byte apply(int x0);
-    static MemoryAddress allocate(PFNGLISASYNCMARKERSGIXPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLISASYNCMARKERSGIXPROC.class, fi, constants$882.PFNGLISASYNCMARKERSGIXPROC$FUNC, "(I)B");
-    }
-    static MemoryAddress allocate(PFNGLISASYNCMARKERSGIXPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLISASYNCMARKERSGIXPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLISASYNCMARKERSGIXPROC.class, fi, constants$882.PFNGLISASYNCMARKERSGIXPROC$FUNC, "(I)B", scope);
     }
-    static PFNGLISASYNCMARKERSGIXPROC ofAddress(MemoryAddress addr) {
-        return (int x0) -> {
+    static PFNGLISASYNCMARKERSGIXPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLISASYNCMARKERSGIXPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0) -> {
             try {
-                return (byte)constants$882.PFNGLISASYNCMARKERSGIXPROC$MH.invokeExact((Addressable)addr, x0);
+                return (byte)constants$882.PFNGLISASYNCMARKERSGIXPROC$MH.invokeExact(symbol, x0);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

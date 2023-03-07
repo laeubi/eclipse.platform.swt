@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLPATHSTENCILDEPTHOFFSETNVPROC {
 
     void apply(float x0, float x1);
-    static MemoryAddress allocate(PFNGLPATHSTENCILDEPTHOFFSETNVPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLPATHSTENCILDEPTHOFFSETNVPROC.class, fi, constants$786.PFNGLPATHSTENCILDEPTHOFFSETNVPROC$FUNC, "(FF)V");
-    }
-    static MemoryAddress allocate(PFNGLPATHSTENCILDEPTHOFFSETNVPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLPATHSTENCILDEPTHOFFSETNVPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLPATHSTENCILDEPTHOFFSETNVPROC.class, fi, constants$786.PFNGLPATHSTENCILDEPTHOFFSETNVPROC$FUNC, "(FF)V", scope);
     }
-    static PFNGLPATHSTENCILDEPTHOFFSETNVPROC ofAddress(MemoryAddress addr) {
-        return (float x0, float x1) -> {
+    static PFNGLPATHSTENCILDEPTHOFFSETNVPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLPATHSTENCILDEPTHOFFSETNVPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (float x0, float x1) -> {
             try {
-                constants$786.PFNGLPATHSTENCILDEPTHOFFSETNVPROC$MH.invokeExact((Addressable)addr, x0, x1);
+                constants$786.PFNGLPATHSTENCILDEPTHOFFSETNVPROC$MH.invokeExact(symbol, x0, x1);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

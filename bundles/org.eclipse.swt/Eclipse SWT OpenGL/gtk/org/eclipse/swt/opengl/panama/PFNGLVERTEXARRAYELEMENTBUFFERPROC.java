@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLVERTEXARRAYELEMENTBUFFERPROC {
 
     void apply(int x0, int x1);
-    static MemoryAddress allocate(PFNGLVERTEXARRAYELEMENTBUFFERPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLVERTEXARRAYELEMENTBUFFERPROC.class, fi, constants$298.PFNGLVERTEXARRAYELEMENTBUFFERPROC$FUNC, "(II)V");
-    }
-    static MemoryAddress allocate(PFNGLVERTEXARRAYELEMENTBUFFERPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLVERTEXARRAYELEMENTBUFFERPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLVERTEXARRAYELEMENTBUFFERPROC.class, fi, constants$298.PFNGLVERTEXARRAYELEMENTBUFFERPROC$FUNC, "(II)V", scope);
     }
-    static PFNGLVERTEXARRAYELEMENTBUFFERPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1) -> {
+    static PFNGLVERTEXARRAYELEMENTBUFFERPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLVERTEXARRAYELEMENTBUFFERPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1) -> {
             try {
-                constants$298.PFNGLVERTEXARRAYELEMENTBUFFERPROC$MH.invokeExact((Addressable)addr, x0, x1);
+                constants$298.PFNGLVERTEXARRAYELEMENTBUFFERPROC$MH.invokeExact(symbol, x0, x1);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

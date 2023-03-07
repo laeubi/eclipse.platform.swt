@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLIMPORTSYNCEXTPROC {
 
-    jdk.incubator.foreign.MemoryAddress apply(int x0, long x1, int x2);
-    static MemoryAddress allocate(PFNGLIMPORTSYNCEXTPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLIMPORTSYNCEXTPROC.class, fi, constants$699.PFNGLIMPORTSYNCEXTPROC$FUNC, "(IJI)Ljdk/incubator/foreign/MemoryAddress;");
+    jdk.incubator.foreign.Addressable apply(int x0, long x1, int x2);
+    static NativeSymbol allocate(PFNGLIMPORTSYNCEXTPROC fi, ResourceScope scope) {
+        return RuntimeHelper.upcallStub(PFNGLIMPORTSYNCEXTPROC.class, fi, constants$699.PFNGLIMPORTSYNCEXTPROC$FUNC, "(IJI)Ljdk/incubator/foreign/Addressable;", scope);
     }
-    static MemoryAddress allocate(PFNGLIMPORTSYNCEXTPROC fi, ResourceScope scope) {
-        return RuntimeHelper.upcallStub(PFNGLIMPORTSYNCEXTPROC.class, fi, constants$699.PFNGLIMPORTSYNCEXTPROC$FUNC, "(IJI)Ljdk/incubator/foreign/MemoryAddress;", scope);
-    }
-    static PFNGLIMPORTSYNCEXTPROC ofAddress(MemoryAddress addr) {
-        return (int x0, long x1, int x2) -> {
+    static PFNGLIMPORTSYNCEXTPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLIMPORTSYNCEXTPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, long x1, int x2) -> {
             try {
-                return (jdk.incubator.foreign.MemoryAddress)constants$699.PFNGLIMPORTSYNCEXTPROC$MH.invokeExact((Addressable)addr, x0, x1, x2);
+                return (jdk.incubator.foreign.Addressable)(jdk.incubator.foreign.MemoryAddress)constants$699.PFNGLIMPORTSYNCEXTPROC$MH.invokeExact(symbol, x0, x1, x2);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

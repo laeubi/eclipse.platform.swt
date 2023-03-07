@@ -6,40 +6,37 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$339 {
 
     static final FunctionDescriptor PFNGLPROGRAMUNIFORM2I64ARBPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_LONG,
-        C_LONG
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT
     );
     static final MethodHandle PFNGLPROGRAMUNIFORM2I64ARBPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIJJ)V",
         constants$339.PFNGLPROGRAMUNIFORM2I64ARBPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLPROGRAMUNIFORM3I64ARBPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_LONG,
-        C_LONG,
-        C_LONG
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT
     );
     static final MethodHandle PFNGLPROGRAMUNIFORM3I64ARBPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIJJJ)V",
         constants$339.PFNGLPROGRAMUNIFORM3I64ARBPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLPROGRAMUNIFORM4I64ARBPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_LONG,
-        C_LONG,
-        C_LONG,
-        C_LONG
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT
     );
     static final MethodHandle PFNGLPROGRAMUNIFORM4I64ARBPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIJJJJ)V",
         constants$339.PFNGLPROGRAMUNIFORM4I64ARBPROC$FUNC, false
     );
 }

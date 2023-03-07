@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLMAKEIMAGEHANDLERESIDENTNVPROC {
 
     void apply(long x0, int x1);
-    static MemoryAddress allocate(PFNGLMAKEIMAGEHANDLERESIDENTNVPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLMAKEIMAGEHANDLERESIDENTNVPROC.class, fi, constants$725.PFNGLMAKEIMAGEHANDLERESIDENTNVPROC$FUNC, "(JI)V");
-    }
-    static MemoryAddress allocate(PFNGLMAKEIMAGEHANDLERESIDENTNVPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLMAKEIMAGEHANDLERESIDENTNVPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLMAKEIMAGEHANDLERESIDENTNVPROC.class, fi, constants$725.PFNGLMAKEIMAGEHANDLERESIDENTNVPROC$FUNC, "(JI)V", scope);
     }
-    static PFNGLMAKEIMAGEHANDLERESIDENTNVPROC ofAddress(MemoryAddress addr) {
-        return (long x0, int x1) -> {
+    static PFNGLMAKEIMAGEHANDLERESIDENTNVPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLMAKEIMAGEHANDLERESIDENTNVPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (long x0, int x1) -> {
             try {
-                constants$725.PFNGLMAKEIMAGEHANDLERESIDENTNVPROC$MH.invokeExact((Addressable)addr, x0, x1);
+                constants$725.PFNGLMAKEIMAGEHANDLERESIDENTNVPROC$MH.invokeExact(symbol, x0, x1);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

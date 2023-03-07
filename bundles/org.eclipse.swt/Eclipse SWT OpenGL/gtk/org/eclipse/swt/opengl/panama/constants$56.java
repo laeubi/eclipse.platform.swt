@@ -6,83 +6,78 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$56 {
 
     static final FunctionDescriptor glDrawRangeElements$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle glDrawRangeElements$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glDrawRangeElements",
-        "(IIIIILjdk/incubator/foreign/MemoryAddress;)V",
+        "glDrawRangeElements",
         constants$56.glDrawRangeElements$FUNC, false
     );
     static final FunctionDescriptor glTexImage3D$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle glTexImage3D$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glTexImage3D",
-        "(IIIIIIIIILjdk/incubator/foreign/MemoryAddress;)V",
+        "glTexImage3D",
         constants$56.glTexImage3D$FUNC, false
     );
     static final FunctionDescriptor glTexSubImage3D$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle glTexSubImage3D$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glTexSubImage3D",
-        "(IIIIIIIIIILjdk/incubator/foreign/MemoryAddress;)V",
+        "glTexSubImage3D",
         constants$56.glTexSubImage3D$FUNC, false
     );
     static final FunctionDescriptor glCopyTexSubImage3D$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle glCopyTexSubImage3D$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glCopyTexSubImage3D",
-        "(IIIIIIIII)V",
+        "glCopyTexSubImage3D",
         constants$56.glCopyTexSubImage3D$FUNC, false
     );
     static final FunctionDescriptor PFNGLDRAWRANGEELEMENTSPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLDRAWRANGEELEMENTSPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIIIILjdk/incubator/foreign/MemoryAddress;)V",
         constants$56.PFNGLDRAWRANGEELEMENTSPROC$FUNC, false
     );
 }

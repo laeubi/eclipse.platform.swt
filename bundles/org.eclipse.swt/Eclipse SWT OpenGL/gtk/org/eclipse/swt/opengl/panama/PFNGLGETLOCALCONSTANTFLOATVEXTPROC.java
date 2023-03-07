@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLGETLOCALCONSTANTFLOATVEXTPROC {
 
     void apply(int x0, int x1, jdk.incubator.foreign.MemoryAddress x2);
-    static MemoryAddress allocate(PFNGLGETLOCALCONSTANTFLOATVEXTPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLGETLOCALCONSTANTFLOATVEXTPROC.class, fi, constants$696.PFNGLGETLOCALCONSTANTFLOATVEXTPROC$FUNC, "(IILjdk/incubator/foreign/MemoryAddress;)V");
-    }
-    static MemoryAddress allocate(PFNGLGETLOCALCONSTANTFLOATVEXTPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLGETLOCALCONSTANTFLOATVEXTPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLGETLOCALCONSTANTFLOATVEXTPROC.class, fi, constants$696.PFNGLGETLOCALCONSTANTFLOATVEXTPROC$FUNC, "(IILjdk/incubator/foreign/MemoryAddress;)V", scope);
     }
-    static PFNGLGETLOCALCONSTANTFLOATVEXTPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, jdk.incubator.foreign.MemoryAddress x2) -> {
+    static PFNGLGETLOCALCONSTANTFLOATVEXTPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLGETLOCALCONSTANTFLOATVEXTPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1, jdk.incubator.foreign.MemoryAddress x2) -> {
             try {
-                constants$696.PFNGLGETLOCALCONSTANTFLOATVEXTPROC$MH.invokeExact((Addressable)addr, x0, x1, x2);
+                constants$696.PFNGLGETLOCALCONSTANTFLOATVEXTPROC$MH.invokeExact(symbol, x0, x1, (jdk.incubator.foreign.Addressable)x2);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

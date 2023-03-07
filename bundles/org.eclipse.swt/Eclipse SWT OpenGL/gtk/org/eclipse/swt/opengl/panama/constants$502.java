@@ -6,31 +6,28 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$502 {
 
     static final FunctionDescriptor PFNGLVERTEXSTREAM1SVATIPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLVERTEXSTREAM1SVATIPROC$MH = RuntimeHelper.downcallHandle(
-        "(ILjdk/incubator/foreign/MemoryAddress;)V",
         constants$502.PFNGLVERTEXSTREAM1SVATIPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLVERTEXSTREAM1IATIPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLVERTEXSTREAM1IATIPROC$MH = RuntimeHelper.downcallHandle(
-        "(II)V",
         constants$502.PFNGLVERTEXSTREAM1IATIPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLVERTEXSTREAM1IVATIPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLVERTEXSTREAM1IVATIPROC$MH = RuntimeHelper.downcallHandle(
-        "(ILjdk/incubator/foreign/MemoryAddress;)V",
         constants$502.PFNGLVERTEXSTREAM1IVATIPROC$FUNC, false
     );
 }

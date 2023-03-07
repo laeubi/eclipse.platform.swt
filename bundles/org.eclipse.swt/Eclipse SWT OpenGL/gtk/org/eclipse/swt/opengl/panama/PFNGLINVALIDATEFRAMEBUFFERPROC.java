@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLINVALIDATEFRAMEBUFFERPROC {
 
     void apply(int x0, int x1, jdk.incubator.foreign.MemoryAddress x2);
-    static MemoryAddress allocate(PFNGLINVALIDATEFRAMEBUFFERPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLINVALIDATEFRAMEBUFFERPROC.class, fi, constants$258.PFNGLINVALIDATEFRAMEBUFFERPROC$FUNC, "(IILjdk/incubator/foreign/MemoryAddress;)V");
-    }
-    static MemoryAddress allocate(PFNGLINVALIDATEFRAMEBUFFERPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLINVALIDATEFRAMEBUFFERPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLINVALIDATEFRAMEBUFFERPROC.class, fi, constants$258.PFNGLINVALIDATEFRAMEBUFFERPROC$FUNC, "(IILjdk/incubator/foreign/MemoryAddress;)V", scope);
     }
-    static PFNGLINVALIDATEFRAMEBUFFERPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, jdk.incubator.foreign.MemoryAddress x2) -> {
+    static PFNGLINVALIDATEFRAMEBUFFERPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLINVALIDATEFRAMEBUFFERPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1, jdk.incubator.foreign.MemoryAddress x2) -> {
             try {
-                constants$258.PFNGLINVALIDATEFRAMEBUFFERPROC$MH.invokeExact((Addressable)addr, x0, x1, x2);
+                constants$258.PFNGLINVALIDATEFRAMEBUFFERPROC$MH.invokeExact(symbol, x0, x1, (jdk.incubator.foreign.Addressable)x2);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

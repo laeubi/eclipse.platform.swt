@@ -6,32 +6,29 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$563 {
 
     static final FunctionDescriptor PFNGLGETPOINTERINDEXEDVEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLGETPOINTERINDEXEDVEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(IILjdk/incubator/foreign/MemoryAddress;)V",
         constants$563.PFNGLGETPOINTERINDEXEDVEXTPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLENABLEINDEXEDEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLENABLEINDEXEDEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(II)V",
         constants$563.PFNGLENABLEINDEXEDEXTPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLDISABLEINDEXEDEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLDISABLEINDEXEDEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(II)V",
         constants$563.PFNGLDISABLEINDEXEDEXTPROC$FUNC, false
     );
 }

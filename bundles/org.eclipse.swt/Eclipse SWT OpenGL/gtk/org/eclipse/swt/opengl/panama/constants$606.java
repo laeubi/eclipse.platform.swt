@@ -6,36 +6,33 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$606 {
 
     static final FunctionDescriptor PFNGLVERTEXARRAYVERTEXATTRIBIOFFSETEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_LONG
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT
     );
     static final MethodHandle PFNGLVERTEXARRAYVERTEXATTRIBIOFFSETEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIIIIIJ)V",
         constants$606.PFNGLVERTEXARRAYVERTEXATTRIBIOFFSETEXTPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLENABLEVERTEXARRAYEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLENABLEVERTEXARRAYEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(II)V",
         constants$606.PFNGLENABLEVERTEXARRAYEXTPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLDISABLEVERTEXARRAYEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLDISABLEVERTEXARRAYEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(II)V",
         constants$606.PFNGLDISABLEVERTEXARRAYEXTPROC$FUNC, false
     );
 }

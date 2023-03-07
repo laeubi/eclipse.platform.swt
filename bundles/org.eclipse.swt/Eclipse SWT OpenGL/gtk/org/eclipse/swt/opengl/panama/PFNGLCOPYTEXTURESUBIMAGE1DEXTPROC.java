@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLCOPYTEXTURESUBIMAGE1DEXTPROC {
 
     void apply(int x0, int x1, int x2, int x3, int x4, int x5, int x6);
-    static MemoryAddress allocate(PFNGLCOPYTEXTURESUBIMAGE1DEXTPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLCOPYTEXTURESUBIMAGE1DEXTPROC.class, fi, constants$546.PFNGLCOPYTEXTURESUBIMAGE1DEXTPROC$FUNC, "(IIIIIII)V");
-    }
-    static MemoryAddress allocate(PFNGLCOPYTEXTURESUBIMAGE1DEXTPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLCOPYTEXTURESUBIMAGE1DEXTPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLCOPYTEXTURESUBIMAGE1DEXTPROC.class, fi, constants$546.PFNGLCOPYTEXTURESUBIMAGE1DEXTPROC$FUNC, "(IIIIIII)V", scope);
     }
-    static PFNGLCOPYTEXTURESUBIMAGE1DEXTPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, int x2, int x3, int x4, int x5, int x6) -> {
+    static PFNGLCOPYTEXTURESUBIMAGE1DEXTPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLCOPYTEXTURESUBIMAGE1DEXTPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1, int x2, int x3, int x4, int x5, int x6) -> {
             try {
-                constants$546.PFNGLCOPYTEXTURESUBIMAGE1DEXTPROC$MH.invokeExact((Addressable)addr, x0, x1, x2, x3, x4, x5, x6);
+                constants$546.PFNGLCOPYTEXTURESUBIMAGE1DEXTPROC$MH.invokeExact(symbol, x0, x1, x2, x3, x4, x5, x6);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

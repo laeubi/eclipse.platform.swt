@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLMULTIDRAWELEMENTSINDIRECTCOUNTPROC {
 
     void apply(int x0, int x1, jdk.incubator.foreign.MemoryAddress x2, long x3, int x4, int x5);
-    static MemoryAddress allocate(PFNGLMULTIDRAWELEMENTSINDIRECTCOUNTPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLMULTIDRAWELEMENTSINDIRECTCOUNTPROC.class, fi, constants$312.PFNGLMULTIDRAWELEMENTSINDIRECTCOUNTPROC$FUNC, "(IILjdk/incubator/foreign/MemoryAddress;JII)V");
-    }
-    static MemoryAddress allocate(PFNGLMULTIDRAWELEMENTSINDIRECTCOUNTPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLMULTIDRAWELEMENTSINDIRECTCOUNTPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLMULTIDRAWELEMENTSINDIRECTCOUNTPROC.class, fi, constants$312.PFNGLMULTIDRAWELEMENTSINDIRECTCOUNTPROC$FUNC, "(IILjdk/incubator/foreign/MemoryAddress;JII)V", scope);
     }
-    static PFNGLMULTIDRAWELEMENTSINDIRECTCOUNTPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, jdk.incubator.foreign.MemoryAddress x2, long x3, int x4, int x5) -> {
+    static PFNGLMULTIDRAWELEMENTSINDIRECTCOUNTPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLMULTIDRAWELEMENTSINDIRECTCOUNTPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1, jdk.incubator.foreign.MemoryAddress x2, long x3, int x4, int x5) -> {
             try {
-                constants$312.PFNGLMULTIDRAWELEMENTSINDIRECTCOUNTPROC$MH.invokeExact((Addressable)addr, x0, x1, x2, x3, x4, x5);
+                constants$312.PFNGLMULTIDRAWELEMENTSINDIRECTCOUNTPROC$MH.invokeExact(symbol, x0, x1, (jdk.incubator.foreign.Addressable)x2, x3, x4, x5);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLBINDMATERIALPARAMETEREXTPROC {
 
     int apply(int x0, int x1);
-    static MemoryAddress allocate(PFNGLBINDMATERIALPARAMETEREXTPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLBINDMATERIALPARAMETEREXTPROC.class, fi, constants$692.PFNGLBINDMATERIALPARAMETEREXTPROC$FUNC, "(II)I");
-    }
-    static MemoryAddress allocate(PFNGLBINDMATERIALPARAMETEREXTPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLBINDMATERIALPARAMETEREXTPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLBINDMATERIALPARAMETEREXTPROC.class, fi, constants$692.PFNGLBINDMATERIALPARAMETEREXTPROC$FUNC, "(II)I", scope);
     }
-    static PFNGLBINDMATERIALPARAMETEREXTPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1) -> {
+    static PFNGLBINDMATERIALPARAMETEREXTPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLBINDMATERIALPARAMETEREXTPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1) -> {
             try {
-                return (int)constants$692.PFNGLBINDMATERIALPARAMETEREXTPROC$MH.invokeExact((Addressable)addr, x0, x1);
+                return (int)constants$692.PFNGLBINDMATERIALPARAMETEREXTPROC$MH.invokeExact(symbol, x0, x1);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

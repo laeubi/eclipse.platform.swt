@@ -6,37 +6,34 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$550 {
 
     static final FunctionDescriptor PFNGLMULTITEXENVFEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_FLOAT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT
     );
     static final MethodHandle PFNGLMULTITEXENVFEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIIF)V",
         constants$550.PFNGLMULTITEXENVFEXTPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLMULTITEXENVFVEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLMULTITEXENVFVEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIILjdk/incubator/foreign/MemoryAddress;)V",
         constants$550.PFNGLMULTITEXENVFVEXTPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLMULTITEXENVIEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLMULTITEXENVIEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIII)V",
         constants$550.PFNGLMULTITEXENVIEXTPROC$FUNC, false
     );
 }

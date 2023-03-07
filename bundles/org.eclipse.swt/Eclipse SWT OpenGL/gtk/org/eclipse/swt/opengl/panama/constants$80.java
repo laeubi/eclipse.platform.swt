@@ -6,29 +6,26 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$80 {
 
     static final FunctionDescriptor PFNGLACTIVETEXTUREARBPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLACTIVETEXTUREARBPROC$MH = RuntimeHelper.downcallHandle(
-        "(I)V",
         constants$80.PFNGLACTIVETEXTUREARBPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLCLIENTACTIVETEXTUREARBPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLCLIENTACTIVETEXTUREARBPROC$MH = RuntimeHelper.downcallHandle(
-        "(I)V",
         constants$80.PFNGLCLIENTACTIVETEXTUREARBPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLMULTITEXCOORD1DARBPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_DOUBLE
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT
     );
     static final MethodHandle PFNGLMULTITEXCOORD1DARBPROC$MH = RuntimeHelper.downcallHandle(
-        "(ID)V",
         constants$80.PFNGLMULTITEXCOORD1DARBPROC$FUNC, false
     );
 }

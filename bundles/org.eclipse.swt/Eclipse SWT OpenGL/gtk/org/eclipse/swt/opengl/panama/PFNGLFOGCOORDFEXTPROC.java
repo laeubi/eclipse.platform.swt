@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLFOGCOORDFEXTPROC {
 
     void apply(float x0);
-    static MemoryAddress allocate(PFNGLFOGCOORDFEXTPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLFOGCOORDFEXTPROC.class, fi, constants$624.PFNGLFOGCOORDFEXTPROC$FUNC, "(F)V");
-    }
-    static MemoryAddress allocate(PFNGLFOGCOORDFEXTPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLFOGCOORDFEXTPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLFOGCOORDFEXTPROC.class, fi, constants$624.PFNGLFOGCOORDFEXTPROC$FUNC, "(F)V", scope);
     }
-    static PFNGLFOGCOORDFEXTPROC ofAddress(MemoryAddress addr) {
-        return (float x0) -> {
+    static PFNGLFOGCOORDFEXTPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLFOGCOORDFEXTPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (float x0) -> {
             try {
-                constants$624.PFNGLFOGCOORDFEXTPROC$MH.invokeExact((Addressable)addr, x0);
+                constants$624.PFNGLFOGCOORDFEXTPROC$MH.invokeExact(symbol, x0);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

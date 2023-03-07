@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLGETNAMEDPROGRAMLOCALPARAMETERDVEXTPROC {
 
     void apply(int x0, int x1, int x2, jdk.incubator.foreign.MemoryAddress x3);
-    static MemoryAddress allocate(PFNGLGETNAMEDPROGRAMLOCALPARAMETERDVEXTPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLGETNAMEDPROGRAMLOCALPARAMETERDVEXTPROC.class, fi, constants$594.PFNGLGETNAMEDPROGRAMLOCALPARAMETERDVEXTPROC$FUNC, "(IIILjdk/incubator/foreign/MemoryAddress;)V");
-    }
-    static MemoryAddress allocate(PFNGLGETNAMEDPROGRAMLOCALPARAMETERDVEXTPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLGETNAMEDPROGRAMLOCALPARAMETERDVEXTPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLGETNAMEDPROGRAMLOCALPARAMETERDVEXTPROC.class, fi, constants$594.PFNGLGETNAMEDPROGRAMLOCALPARAMETERDVEXTPROC$FUNC, "(IIILjdk/incubator/foreign/MemoryAddress;)V", scope);
     }
-    static PFNGLGETNAMEDPROGRAMLOCALPARAMETERDVEXTPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, int x2, jdk.incubator.foreign.MemoryAddress x3) -> {
+    static PFNGLGETNAMEDPROGRAMLOCALPARAMETERDVEXTPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLGETNAMEDPROGRAMLOCALPARAMETERDVEXTPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1, int x2, jdk.incubator.foreign.MemoryAddress x3) -> {
             try {
-                constants$594.PFNGLGETNAMEDPROGRAMLOCALPARAMETERDVEXTPROC$MH.invokeExact((Addressable)addr, x0, x1, x2, x3);
+                constants$594.PFNGLGETNAMEDPROGRAMLOCALPARAMETERDVEXTPROC$MH.invokeExact(symbol, x0, x1, x2, (jdk.incubator.foreign.Addressable)x3);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

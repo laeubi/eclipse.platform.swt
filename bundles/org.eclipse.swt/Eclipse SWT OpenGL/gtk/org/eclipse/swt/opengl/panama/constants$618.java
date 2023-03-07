@@ -6,47 +6,44 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$618 {
 
     static final FunctionDescriptor PFNGLTEXTURESTORAGE3DEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLTEXTURESTORAGE3DEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIIIIII)V",
         constants$618.PFNGLTEXTURESTORAGE3DEXTPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLTEXTURESTORAGE2DMULTISAMPLEEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_CHAR
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_CHAR$LAYOUT
     );
     static final MethodHandle PFNGLTEXTURESTORAGE2DMULTISAMPLEEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIIIIIB)V",
         constants$618.PFNGLTEXTURESTORAGE2DMULTISAMPLEEXTPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLTEXTURESTORAGE3DMULTISAMPLEEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_CHAR
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_CHAR$LAYOUT
     );
     static final MethodHandle PFNGLTEXTURESTORAGE3DMULTISAMPLEEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIIIIIIB)V",
         constants$618.PFNGLTEXTURESTORAGE3DMULTISAMPLEEXTPROC$FUNC, false
     );
 }

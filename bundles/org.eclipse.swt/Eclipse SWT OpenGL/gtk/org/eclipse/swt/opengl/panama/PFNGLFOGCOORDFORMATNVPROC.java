@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLFOGCOORDFORMATNVPROC {
 
     void apply(int x0, int x1);
-    static MemoryAddress allocate(PFNGLFOGCOORDFORMATNVPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLFOGCOORDFORMATNVPROC.class, fi, constants$838.PFNGLFOGCOORDFORMATNVPROC$FUNC, "(II)V");
-    }
-    static MemoryAddress allocate(PFNGLFOGCOORDFORMATNVPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLFOGCOORDFORMATNVPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLFOGCOORDFORMATNVPROC.class, fi, constants$838.PFNGLFOGCOORDFORMATNVPROC$FUNC, "(II)V", scope);
     }
-    static PFNGLFOGCOORDFORMATNVPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1) -> {
+    static PFNGLFOGCOORDFORMATNVPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLFOGCOORDFORMATNVPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1) -> {
             try {
-                constants$838.PFNGLFOGCOORDFORMATNVPROC$MH.invokeExact((Addressable)addr, x0, x1);
+                constants$838.PFNGLFOGCOORDFORMATNVPROC$MH.invokeExact(symbol, x0, x1);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

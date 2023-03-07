@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface glutDisplayFunc$callback {
 
     void apply();
-    static MemoryAddress allocate(glutDisplayFunc$callback fi) {
-        return RuntimeHelper.upcallStub(glutDisplayFunc$callback.class, fi, constants$942.glutDisplayFunc$callback$FUNC, "()V");
-    }
-    static MemoryAddress allocate(glutDisplayFunc$callback fi, ResourceScope scope) {
+    static NativeSymbol allocate(glutDisplayFunc$callback fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(glutDisplayFunc$callback.class, fi, constants$942.glutDisplayFunc$callback$FUNC, "()V", scope);
     }
-    static glutDisplayFunc$callback ofAddress(MemoryAddress addr) {
-        return () -> {
+    static glutDisplayFunc$callback ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("glutDisplayFunc$callback::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return () -> {
             try {
-                constants$942.glutDisplayFunc$callback$MH.invokeExact((Addressable)addr);
+                constants$942.glutDisplayFunc$callback$MH.invokeExact(symbol);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

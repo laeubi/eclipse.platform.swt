@@ -6,31 +6,28 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$216 {
 
     static final FunctionDescriptor PFNGLPATCHPARAMETERIPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLPATCHPARAMETERIPROC$MH = RuntimeHelper.downcallHandle(
-        "(II)V",
         constants$216.PFNGLPATCHPARAMETERIPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLPATCHPARAMETERFVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLPATCHPARAMETERFVPROC$MH = RuntimeHelper.downcallHandle(
-        "(ILjdk/incubator/foreign/MemoryAddress;)V",
         constants$216.PFNGLPATCHPARAMETERFVPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLBINDTRANSFORMFEEDBACKPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLBINDTRANSFORMFEEDBACKPROC$MH = RuntimeHelper.downcallHandle(
-        "(II)V",
         constants$216.PFNGLBINDTRANSFORMFEEDBACKPROC$FUNC, false
     );
 }

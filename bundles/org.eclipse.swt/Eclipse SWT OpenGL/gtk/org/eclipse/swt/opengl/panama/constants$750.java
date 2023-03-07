@@ -6,36 +6,33 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$750 {
 
     static final FunctionDescriptor PFNGLPROGRAMVERTEXLIMITNVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLPROGRAMVERTEXLIMITNVPROC$MH = RuntimeHelper.downcallHandle(
-        "(II)V",
         constants$750.PFNGLPROGRAMVERTEXLIMITNVPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLFRAMEBUFFERTEXTUREEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLFRAMEBUFFERTEXTUREEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIII)V",
         constants$750.PFNGLFRAMEBUFFERTEXTUREEXTPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLFRAMEBUFFERTEXTUREFACEEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLFRAMEBUFFERTEXTUREFACEEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIIII)V",
         constants$750.PFNGLFRAMEBUFFERTEXTUREFACEEXTPROC$FUNC, false
     );
 }

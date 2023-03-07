@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLMINSAMPLESHADINGPROC {
 
     void apply(float x0);
-    static MemoryAddress allocate(PFNGLMINSAMPLESHADINGPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLMINSAMPLESHADINGPROC.class, fi, constants$205.PFNGLMINSAMPLESHADINGPROC$FUNC, "(F)V");
-    }
-    static MemoryAddress allocate(PFNGLMINSAMPLESHADINGPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLMINSAMPLESHADINGPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLMINSAMPLESHADINGPROC.class, fi, constants$205.PFNGLMINSAMPLESHADINGPROC$FUNC, "(F)V", scope);
     }
-    static PFNGLMINSAMPLESHADINGPROC ofAddress(MemoryAddress addr) {
-        return (float x0) -> {
+    static PFNGLMINSAMPLESHADINGPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLMINSAMPLESHADINGPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (float x0) -> {
             try {
-                constants$205.PFNGLMINSAMPLESHADINGPROC$MH.invokeExact((Addressable)addr, x0);
+                constants$205.PFNGLMINSAMPLESHADINGPROC$MH.invokeExact(symbol, x0);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

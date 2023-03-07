@@ -6,30 +6,27 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$224 {
 
     static final FunctionDescriptor PFNGLBINDPROGRAMPIPELINEPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLBINDPROGRAMPIPELINEPROC$MH = RuntimeHelper.downcallHandle(
-        "(I)V",
         constants$224.PFNGLBINDPROGRAMPIPELINEPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLDELETEPROGRAMPIPELINESPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLDELETEPROGRAMPIPELINESPROC$MH = RuntimeHelper.downcallHandle(
-        "(ILjdk/incubator/foreign/MemoryAddress;)V",
         constants$224.PFNGLDELETEPROGRAMPIPELINESPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLGENPROGRAMPIPELINESPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLGENPROGRAMPIPELINESPROC$MH = RuntimeHelper.downcallHandle(
-        "(ILjdk/incubator/foreign/MemoryAddress;)V",
         constants$224.PFNGLGENPROGRAMPIPELINESPROC$FUNC, false
     );
 }

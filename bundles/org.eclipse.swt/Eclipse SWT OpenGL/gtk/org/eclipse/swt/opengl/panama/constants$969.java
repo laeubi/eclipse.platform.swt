@@ -6,45 +6,40 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$969 {
 
-    static final FunctionDescriptor valloc$FUNC = FunctionDescriptor.of(C_POINTER,
-        C_LONG
+    static final FunctionDescriptor valloc$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT
     );
     static final MethodHandle valloc$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "valloc",
-        "(J)Ljdk/incubator/foreign/MemoryAddress;",
+        "valloc",
         constants$969.valloc$FUNC, false
     );
-    static final FunctionDescriptor posix_memalign$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_LONG,
-        C_LONG
+    static final FunctionDescriptor posix_memalign$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT
     );
     static final MethodHandle posix_memalign$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "posix_memalign",
-        "(Ljdk/incubator/foreign/MemoryAddress;JJ)I",
+        "posix_memalign",
         constants$969.posix_memalign$FUNC, false
     );
-    static final FunctionDescriptor aligned_alloc$FUNC = FunctionDescriptor.of(C_POINTER,
-        C_LONG,
-        C_LONG
+    static final FunctionDescriptor aligned_alloc$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT
     );
     static final MethodHandle aligned_alloc$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "aligned_alloc",
-        "(JJ)Ljdk/incubator/foreign/MemoryAddress;",
+        "aligned_alloc",
         constants$969.aligned_alloc$FUNC, false
     );
     static final FunctionDescriptor abort$FUNC = FunctionDescriptor.ofVoid();
     static final MethodHandle abort$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "abort",
-        "()V",
+        "abort",
         constants$969.abort$FUNC, false
     );
     static final FunctionDescriptor atexit$__func$FUNC = FunctionDescriptor.ofVoid();
     static final MethodHandle atexit$__func$MH = RuntimeHelper.downcallHandle(
-        "()V",
         constants$969.atexit$__func$FUNC, false
     );
 }

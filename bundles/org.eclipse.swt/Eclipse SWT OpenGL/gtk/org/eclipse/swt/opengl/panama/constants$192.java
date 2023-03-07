@@ -6,35 +6,32 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$192 {
 
     static final FunctionDescriptor PFNGLVERTEXATTRIBDIVISORPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLVERTEXATTRIBDIVISORPROC$MH = RuntimeHelper.downcallHandle(
-        "(II)V",
         constants$192.PFNGLVERTEXATTRIBDIVISORPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLVERTEXATTRIBP1UIPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_CHAR,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_CHAR$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLVERTEXATTRIBP1UIPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIBI)V",
         constants$192.PFNGLVERTEXATTRIBP1UIPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLVERTEXATTRIBP1UIVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_CHAR,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_CHAR$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLVERTEXATTRIBP1UIVPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIBLjdk/incubator/foreign/MemoryAddress;)V",
         constants$192.PFNGLVERTEXATTRIBP1UIVPROC$FUNC, false
     );
 }

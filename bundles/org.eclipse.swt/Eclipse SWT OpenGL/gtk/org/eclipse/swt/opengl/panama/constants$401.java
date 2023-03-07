@@ -6,30 +6,27 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$401 {
 
-    static final FunctionDescriptor PFNGLGETATTRIBLOCATIONARBPROC$FUNC = FunctionDescriptor.of(C_INT,
-        C_INT,
-        C_POINTER
+    static final FunctionDescriptor PFNGLGETATTRIBLOCATIONARBPROC$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLGETATTRIBLOCATIONARBPROC$MH = RuntimeHelper.downcallHandle(
-        "(ILjdk/incubator/foreign/MemoryAddress;)I",
         constants$401.PFNGLGETATTRIBLOCATIONARBPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLWINDOWPOS2DARBPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_DOUBLE,
-        C_DOUBLE
+        Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT
     );
     static final MethodHandle PFNGLWINDOWPOS2DARBPROC$MH = RuntimeHelper.downcallHandle(
-        "(DD)V",
         constants$401.PFNGLWINDOWPOS2DARBPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLWINDOWPOS2DVARBPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLWINDOWPOS2DVARBPROC$MH = RuntimeHelper.downcallHandle(
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
         constants$401.PFNGLWINDOWPOS2DVARBPROC$FUNC, false
     );
 }

@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLDRAWCOMMANDSSTATESNVPROC {
 
     void apply(int x0, jdk.incubator.foreign.MemoryAddress x1, jdk.incubator.foreign.MemoryAddress x2, jdk.incubator.foreign.MemoryAddress x3, jdk.incubator.foreign.MemoryAddress x4, int x5);
-    static MemoryAddress allocate(PFNGLDRAWCOMMANDSSTATESNVPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLDRAWCOMMANDSSTATESNVPROC.class, fi, constants$731.PFNGLDRAWCOMMANDSSTATESNVPROC$FUNC, "(ILjdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;I)V");
-    }
-    static MemoryAddress allocate(PFNGLDRAWCOMMANDSSTATESNVPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLDRAWCOMMANDSSTATESNVPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLDRAWCOMMANDSSTATESNVPROC.class, fi, constants$731.PFNGLDRAWCOMMANDSSTATESNVPROC$FUNC, "(ILjdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;I)V", scope);
     }
-    static PFNGLDRAWCOMMANDSSTATESNVPROC ofAddress(MemoryAddress addr) {
-        return (int x0, jdk.incubator.foreign.MemoryAddress x1, jdk.incubator.foreign.MemoryAddress x2, jdk.incubator.foreign.MemoryAddress x3, jdk.incubator.foreign.MemoryAddress x4, int x5) -> {
+    static PFNGLDRAWCOMMANDSSTATESNVPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLDRAWCOMMANDSSTATESNVPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, jdk.incubator.foreign.MemoryAddress x1, jdk.incubator.foreign.MemoryAddress x2, jdk.incubator.foreign.MemoryAddress x3, jdk.incubator.foreign.MemoryAddress x4, int x5) -> {
             try {
-                constants$731.PFNGLDRAWCOMMANDSSTATESNVPROC$MH.invokeExact((Addressable)addr, x0, x1, x2, x3, x4, x5);
+                constants$731.PFNGLDRAWCOMMANDSSTATESNVPROC$MH.invokeExact(symbol, x0, (jdk.incubator.foreign.Addressable)x1, (jdk.incubator.foreign.Addressable)x2, (jdk.incubator.foreign.Addressable)x3, (jdk.incubator.foreign.Addressable)x4, x5);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

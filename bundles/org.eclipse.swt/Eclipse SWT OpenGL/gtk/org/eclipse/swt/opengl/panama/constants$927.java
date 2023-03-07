@@ -6,75 +6,69 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$927 {
 
     static final FunctionDescriptor gluPickMatrix$FUNC = FunctionDescriptor.ofVoid(
-        C_DOUBLE,
-        C_DOUBLE,
-        C_DOUBLE,
-        C_DOUBLE,
-        C_POINTER
+        Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle gluPickMatrix$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "gluPickMatrix",
-        "(DDDDLjdk/incubator/foreign/MemoryAddress;)V",
+        "gluPickMatrix",
         constants$927.gluPickMatrix$FUNC, false
     );
-    static final FunctionDescriptor gluProject$FUNC = FunctionDescriptor.of(C_INT,
-        C_DOUBLE,
-        C_DOUBLE,
-        C_DOUBLE,
-        C_POINTER,
-        C_POINTER,
-        C_POINTER,
-        C_POINTER,
-        C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor gluProject$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle gluProject$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "gluProject",
-        "(DDDLjdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I",
+        "gluProject",
         constants$927.gluProject$FUNC, false
     );
     static final FunctionDescriptor gluPwlCurve$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER,
-        C_INT,
-        C_POINTER,
-        C_INT,
-        C_INT
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle gluPwlCurve$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "gluPwlCurve",
-        "(Ljdk/incubator/foreign/MemoryAddress;ILjdk/incubator/foreign/MemoryAddress;II)V",
+        "gluPwlCurve",
         constants$927.gluPwlCurve$FUNC, false
     );
     static final FunctionDescriptor gluQuadricCallback$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER,
-        C_INT,
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle gluQuadricCallback$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "gluQuadricCallback",
-        "(Ljdk/incubator/foreign/MemoryAddress;ILjdk/incubator/foreign/MemoryAddress;)V",
+        "gluQuadricCallback",
         constants$927.gluQuadricCallback$FUNC, false
     );
     static final FunctionDescriptor gluQuadricDrawStyle$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER,
-        C_INT
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle gluQuadricDrawStyle$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "gluQuadricDrawStyle",
-        "(Ljdk/incubator/foreign/MemoryAddress;I)V",
+        "gluQuadricDrawStyle",
         constants$927.gluQuadricDrawStyle$FUNC, false
     );
     static final FunctionDescriptor gluQuadricNormals$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER,
-        C_INT
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle gluQuadricNormals$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "gluQuadricNormals",
-        "(Ljdk/incubator/foreign/MemoryAddress;I)V",
+        "gluQuadricNormals",
         constants$927.gluQuadricNormals$FUNC, false
     );
 }

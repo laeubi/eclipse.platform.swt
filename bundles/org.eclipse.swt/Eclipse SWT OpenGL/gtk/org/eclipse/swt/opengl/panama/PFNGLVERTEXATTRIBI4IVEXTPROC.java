@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLVERTEXATTRIBI4IVEXTPROC {
 
     void apply(int x0, jdk.incubator.foreign.MemoryAddress x1);
-    static MemoryAddress allocate(PFNGLVERTEXATTRIBI4IVEXTPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLVERTEXATTRIBI4IVEXTPROC.class, fi, constants$865.PFNGLVERTEXATTRIBI4IVEXTPROC$FUNC, "(ILjdk/incubator/foreign/MemoryAddress;)V");
-    }
-    static MemoryAddress allocate(PFNGLVERTEXATTRIBI4IVEXTPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLVERTEXATTRIBI4IVEXTPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLVERTEXATTRIBI4IVEXTPROC.class, fi, constants$865.PFNGLVERTEXATTRIBI4IVEXTPROC$FUNC, "(ILjdk/incubator/foreign/MemoryAddress;)V", scope);
     }
-    static PFNGLVERTEXATTRIBI4IVEXTPROC ofAddress(MemoryAddress addr) {
-        return (int x0, jdk.incubator.foreign.MemoryAddress x1) -> {
+    static PFNGLVERTEXATTRIBI4IVEXTPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLVERTEXATTRIBI4IVEXTPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, jdk.incubator.foreign.MemoryAddress x1) -> {
             try {
-                constants$865.PFNGLVERTEXATTRIBI4IVEXTPROC$MH.invokeExact((Addressable)addr, x0, x1);
+                constants$865.PFNGLVERTEXATTRIBI4IVEXTPROC$MH.invokeExact(symbol, x0, (jdk.incubator.foreign.Addressable)x1);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

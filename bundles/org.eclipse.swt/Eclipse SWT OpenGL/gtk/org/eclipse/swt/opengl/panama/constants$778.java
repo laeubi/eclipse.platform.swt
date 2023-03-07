@@ -6,30 +6,27 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$778 {
 
     static final FunctionDescriptor PFNGLENDOCCLUSIONQUERYNVPROC$FUNC = FunctionDescriptor.ofVoid();
     static final MethodHandle PFNGLENDOCCLUSIONQUERYNVPROC$MH = RuntimeHelper.downcallHandle(
-        "()V",
         constants$778.PFNGLENDOCCLUSIONQUERYNVPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLGETOCCLUSIONQUERYIVNVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLGETOCCLUSIONQUERYIVNVPROC$MH = RuntimeHelper.downcallHandle(
-        "(IILjdk/incubator/foreign/MemoryAddress;)V",
         constants$778.PFNGLGETOCCLUSIONQUERYIVNVPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLGETOCCLUSIONQUERYUIVNVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLGETOCCLUSIONQUERYUIVNVPROC$MH = RuntimeHelper.downcallHandle(
-        "(IILjdk/incubator/foreign/MemoryAddress;)V",
         constants$778.PFNGLGETOCCLUSIONQUERYUIVNVPROC$FUNC, false
     );
 }

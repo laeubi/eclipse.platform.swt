@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLISNAMEDSTRINGARBPROC {
 
     byte apply(int x0, jdk.incubator.foreign.MemoryAddress x1);
-    static MemoryAddress allocate(PFNGLISNAMEDSTRINGARBPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLISNAMEDSTRINGARBPROC.class, fi, constants$372.PFNGLISNAMEDSTRINGARBPROC$FUNC, "(ILjdk/incubator/foreign/MemoryAddress;)B");
-    }
-    static MemoryAddress allocate(PFNGLISNAMEDSTRINGARBPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLISNAMEDSTRINGARBPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLISNAMEDSTRINGARBPROC.class, fi, constants$372.PFNGLISNAMEDSTRINGARBPROC$FUNC, "(ILjdk/incubator/foreign/MemoryAddress;)B", scope);
     }
-    static PFNGLISNAMEDSTRINGARBPROC ofAddress(MemoryAddress addr) {
-        return (int x0, jdk.incubator.foreign.MemoryAddress x1) -> {
+    static PFNGLISNAMEDSTRINGARBPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLISNAMEDSTRINGARBPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, jdk.incubator.foreign.MemoryAddress x1) -> {
             try {
-                return (byte)constants$372.PFNGLISNAMEDSTRINGARBPROC$MH.invokeExact((Addressable)addr, x0, x1);
+                return (byte)constants$372.PFNGLISNAMEDSTRINGARBPROC$MH.invokeExact(symbol, x0, (jdk.incubator.foreign.Addressable)x1);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

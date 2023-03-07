@@ -6,35 +6,32 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$847 {
 
     static final FunctionDescriptor PFNGLPROGRAMPARAMETERS4FVNVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLPROGRAMPARAMETERS4FVNVPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIILjdk/incubator/foreign/MemoryAddress;)V",
         constants$847.PFNGLPROGRAMPARAMETERS4FVNVPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLREQUESTRESIDENTPROGRAMSNVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLREQUESTRESIDENTPROGRAMSNVPROC$MH = RuntimeHelper.downcallHandle(
-        "(ILjdk/incubator/foreign/MemoryAddress;)V",
         constants$847.PFNGLREQUESTRESIDENTPROGRAMSNVPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLTRACKMATRIXNVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLTRACKMATRIXNVPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIII)V",
         constants$847.PFNGLTRACKMATRIXNVPROC$FUNC, false
     );
 }

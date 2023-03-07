@@ -6,33 +6,30 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$626 {
 
     static final FunctionDescriptor PFNGLRENDERBUFFERSTORAGEMULTISAMPLEEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLRENDERBUFFERSTORAGEMULTISAMPLEEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIIII)V",
         constants$626.PFNGLRENDERBUFFERSTORAGEMULTISAMPLEEXTPROC$FUNC, false
     );
-    static final FunctionDescriptor PFNGLISRENDERBUFFEREXTPROC$FUNC = FunctionDescriptor.of(C_CHAR,
-        C_INT
+    static final FunctionDescriptor PFNGLISRENDERBUFFEREXTPROC$FUNC = FunctionDescriptor.of(Constants$root.C_CHAR$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLISRENDERBUFFEREXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(I)B",
         constants$626.PFNGLISRENDERBUFFEREXTPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLBINDRENDERBUFFEREXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLBINDRENDERBUFFEREXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(II)V",
         constants$626.PFNGLBINDRENDERBUFFEREXTPROC$FUNC, false
     );
 }

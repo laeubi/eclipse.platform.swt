@@ -6,29 +6,26 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$714 {
 
     static final FunctionDescriptor PFNGLWINDOWPOS2IVMESAPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLWINDOWPOS2IVMESAPROC$MH = RuntimeHelper.downcallHandle(
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
         constants$714.PFNGLWINDOWPOS2IVMESAPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLWINDOWPOS2SMESAPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_SHORT,
-        C_SHORT
+        Constants$root.C_SHORT$LAYOUT,
+        Constants$root.C_SHORT$LAYOUT
     );
     static final MethodHandle PFNGLWINDOWPOS2SMESAPROC$MH = RuntimeHelper.downcallHandle(
-        "(SS)V",
         constants$714.PFNGLWINDOWPOS2SMESAPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLWINDOWPOS2SVMESAPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLWINDOWPOS2SVMESAPROC$MH = RuntimeHelper.downcallHandle(
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
         constants$714.PFNGLWINDOWPOS2SVMESAPROC$FUNC, false
     );
 }

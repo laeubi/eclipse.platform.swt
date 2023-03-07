@@ -6,26 +6,23 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$891 {
 
     static final FunctionDescriptor PFNGLREADINSTRUMENTSSGIXPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLREADINSTRUMENTSSGIXPROC$MH = RuntimeHelper.downcallHandle(
-        "(I)V",
         constants$891.PFNGLREADINSTRUMENTSSGIXPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLSTARTINSTRUMENTSSGIXPROC$FUNC = FunctionDescriptor.ofVoid();
     static final MethodHandle PFNGLSTARTINSTRUMENTSSGIXPROC$MH = RuntimeHelper.downcallHandle(
-        "()V",
         constants$891.PFNGLSTARTINSTRUMENTSSGIXPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLSTOPINSTRUMENTSSGIXPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLSTOPINSTRUMENTSSGIXPROC$MH = RuntimeHelper.downcallHandle(
-        "(I)V",
         constants$891.PFNGLSTOPINSTRUMENTSSGIXPROC$FUNC, false
     );
 }

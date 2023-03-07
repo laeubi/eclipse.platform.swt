@@ -6,70 +6,64 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$53 {
 
     static final FunctionDescriptor glMapGrid1f$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_FLOAT,
-        C_FLOAT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT
     );
     static final MethodHandle glMapGrid1f$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glMapGrid1f",
-        "(IFF)V",
+        "glMapGrid1f",
         constants$53.glMapGrid1f$FUNC, false
     );
     static final FunctionDescriptor glMapGrid2d$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_DOUBLE,
-        C_DOUBLE,
-        C_INT,
-        C_DOUBLE,
-        C_DOUBLE
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT
     );
     static final MethodHandle glMapGrid2d$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glMapGrid2d",
-        "(IDDIDD)V",
+        "glMapGrid2d",
         constants$53.glMapGrid2d$FUNC, false
     );
     static final FunctionDescriptor glMapGrid2f$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_FLOAT,
-        C_FLOAT,
-        C_INT,
-        C_FLOAT,
-        C_FLOAT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT
     );
     static final MethodHandle glMapGrid2f$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glMapGrid2f",
-        "(IFFIFF)V",
+        "glMapGrid2f",
         constants$53.glMapGrid2f$FUNC, false
     );
     static final FunctionDescriptor glEvalPoint1$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle glEvalPoint1$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glEvalPoint1",
-        "(I)V",
+        "glEvalPoint1",
         constants$53.glEvalPoint1$FUNC, false
     );
     static final FunctionDescriptor glEvalPoint2$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle glEvalPoint2$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glEvalPoint2",
-        "(II)V",
+        "glEvalPoint2",
         constants$53.glEvalPoint2$FUNC, false
     );
     static final FunctionDescriptor glEvalMesh1$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle glEvalMesh1$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glEvalMesh1",
-        "(III)V",
+        "glEvalMesh1",
         constants$53.glEvalMesh1$FUNC, false
     );
 }

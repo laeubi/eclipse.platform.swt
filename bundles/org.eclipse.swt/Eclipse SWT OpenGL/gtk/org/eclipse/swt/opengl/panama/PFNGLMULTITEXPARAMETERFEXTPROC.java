@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLMULTITEXPARAMETERFEXTPROC {
 
     void apply(int x0, int x1, int x2, float x3);
-    static MemoryAddress allocate(PFNGLMULTITEXPARAMETERFEXTPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLMULTITEXPARAMETERFEXTPROC.class, fi, constants$555.PFNGLMULTITEXPARAMETERFEXTPROC$FUNC, "(IIIF)V");
-    }
-    static MemoryAddress allocate(PFNGLMULTITEXPARAMETERFEXTPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLMULTITEXPARAMETERFEXTPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLMULTITEXPARAMETERFEXTPROC.class, fi, constants$555.PFNGLMULTITEXPARAMETERFEXTPROC$FUNC, "(IIIF)V", scope);
     }
-    static PFNGLMULTITEXPARAMETERFEXTPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, int x2, float x3) -> {
+    static PFNGLMULTITEXPARAMETERFEXTPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLMULTITEXPARAMETERFEXTPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1, int x2, float x3) -> {
             try {
-                constants$555.PFNGLMULTITEXPARAMETERFEXTPROC$MH.invokeExact((Addressable)addr, x0, x1, x2, x3);
+                constants$555.PFNGLMULTITEXPARAMETERFEXTPROC$MH.invokeExact(symbol, x0, x1, x2, x3);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

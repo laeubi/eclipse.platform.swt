@@ -6,32 +6,29 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$801 {
 
     static final FunctionDescriptor PFNGLGETPATHTEXGENFVNVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLGETPATHTEXGENFVNVPROC$MH = RuntimeHelper.downcallHandle(
-        "(IILjdk/incubator/foreign/MemoryAddress;)V",
         constants$801.PFNGLGETPATHTEXGENFVNVPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLPIXELDATARANGENVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLPIXELDATARANGENVPROC$MH = RuntimeHelper.downcallHandle(
-        "(IILjdk/incubator/foreign/MemoryAddress;)V",
         constants$801.PFNGLPIXELDATARANGENVPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLFLUSHPIXELDATARANGENVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLFLUSHPIXELDATARANGENVPROC$MH = RuntimeHelper.downcallHandle(
-        "(I)V",
         constants$801.PFNGLFLUSHPIXELDATARANGENVPROC$FUNC, false
     );
 }

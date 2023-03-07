@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLHISTOGRAMEXTPROC {
 
     void apply(int x0, int x1, int x2, byte x3);
-    static MemoryAddress allocate(PFNGLHISTOGRAMEXTPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLHISTOGRAMEXTPROC.class, fi, constants$638.PFNGLHISTOGRAMEXTPROC$FUNC, "(IIIB)V");
-    }
-    static MemoryAddress allocate(PFNGLHISTOGRAMEXTPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLHISTOGRAMEXTPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLHISTOGRAMEXTPROC.class, fi, constants$638.PFNGLHISTOGRAMEXTPROC$FUNC, "(IIIB)V", scope);
     }
-    static PFNGLHISTOGRAMEXTPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, int x2, byte x3) -> {
+    static PFNGLHISTOGRAMEXTPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLHISTOGRAMEXTPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1, int x2, byte x3) -> {
             try {
-                constants$638.PFNGLHISTOGRAMEXTPROC$MH.invokeExact((Addressable)addr, x0, x1, x2, x3);
+                constants$638.PFNGLHISTOGRAMEXTPROC$MH.invokeExact(symbol, x0, x1, x2, x3);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

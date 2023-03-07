@@ -6,41 +6,38 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$630 {
 
     static final FunctionDescriptor PFNGLFRAMEBUFFERTEXTURE1DEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLFRAMEBUFFERTEXTURE1DEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIIII)V",
         constants$630.PFNGLFRAMEBUFFERTEXTURE1DEXTPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLFRAMEBUFFERTEXTURE2DEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLFRAMEBUFFERTEXTURE2DEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIIII)V",
         constants$630.PFNGLFRAMEBUFFERTEXTURE2DEXTPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLFRAMEBUFFERTEXTURE3DEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLFRAMEBUFFERTEXTURE3DEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIIIII)V",
         constants$630.PFNGLFRAMEBUFFERTEXTURE3DEXTPROC$FUNC, false
     );
 }

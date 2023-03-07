@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLGETCOMPRESSEDTEXIMAGEPROC {
 
     void apply(int x0, int x1, jdk.incubator.foreign.MemoryAddress x2);
-    static MemoryAddress allocate(PFNGLGETCOMPRESSEDTEXIMAGEPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLGETCOMPRESSEDTEXIMAGEPROC.class, fi, constants$74.PFNGLGETCOMPRESSEDTEXIMAGEPROC$FUNC, "(IILjdk/incubator/foreign/MemoryAddress;)V");
-    }
-    static MemoryAddress allocate(PFNGLGETCOMPRESSEDTEXIMAGEPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLGETCOMPRESSEDTEXIMAGEPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLGETCOMPRESSEDTEXIMAGEPROC.class, fi, constants$74.PFNGLGETCOMPRESSEDTEXIMAGEPROC$FUNC, "(IILjdk/incubator/foreign/MemoryAddress;)V", scope);
     }
-    static PFNGLGETCOMPRESSEDTEXIMAGEPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, jdk.incubator.foreign.MemoryAddress x2) -> {
+    static PFNGLGETCOMPRESSEDTEXIMAGEPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLGETCOMPRESSEDTEXIMAGEPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1, jdk.incubator.foreign.MemoryAddress x2) -> {
             try {
-                constants$74.PFNGLGETCOMPRESSEDTEXIMAGEPROC$MH.invokeExact((Addressable)addr, x0, x1, x2);
+                constants$74.PFNGLGETCOMPRESSEDTEXIMAGEPROC$MH.invokeExact(symbol, x0, x1, (jdk.incubator.foreign.Addressable)x2);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

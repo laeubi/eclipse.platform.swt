@@ -6,48 +6,43 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$939 {
 
     static final FunctionDescriptor glutRemoveMenuItem$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle glutRemoveMenuItem$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glutRemoveMenuItem",
-        "(I)V",
+        "glutRemoveMenuItem",
         constants$939.glutRemoveMenuItem$FUNC, false
     );
     static final FunctionDescriptor glutAttachMenu$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle glutAttachMenu$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glutAttachMenu",
-        "(I)V",
+        "glutAttachMenu",
         constants$939.glutAttachMenu$FUNC, false
     );
     static final FunctionDescriptor glutDetachMenu$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle glutDetachMenu$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glutDetachMenu",
-        "(I)V",
+        "glutDetachMenu",
         constants$939.glutDetachMenu$FUNC, false
     );
     static final FunctionDescriptor glutTimerFunc$callback$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle glutTimerFunc$callback$MH = RuntimeHelper.downcallHandle(
-        "(I)V",
         constants$939.glutTimerFunc$callback$FUNC, false
     );
     static final FunctionDescriptor glutTimerFunc$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_POINTER,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle glutTimerFunc$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glutTimerFunc",
-        "(ILjdk/incubator/foreign/MemoryAddress;I)V",
+        "glutTimerFunc",
         constants$939.glutTimerFunc$FUNC, false
     );
 }

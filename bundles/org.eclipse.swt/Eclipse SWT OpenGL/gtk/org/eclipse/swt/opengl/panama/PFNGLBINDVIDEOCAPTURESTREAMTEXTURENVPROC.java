@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLBINDVIDEOCAPTURESTREAMTEXTURENVPROC {
 
     void apply(int x0, int x1, int x2, int x3, int x4);
-    static MemoryAddress allocate(PFNGLBINDVIDEOCAPTURESTREAMTEXTURENVPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLBINDVIDEOCAPTURESTREAMTEXTURENVPROC.class, fi, constants$869.PFNGLBINDVIDEOCAPTURESTREAMTEXTURENVPROC$FUNC, "(IIIII)V");
-    }
-    static MemoryAddress allocate(PFNGLBINDVIDEOCAPTURESTREAMTEXTURENVPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLBINDVIDEOCAPTURESTREAMTEXTURENVPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLBINDVIDEOCAPTURESTREAMTEXTURENVPROC.class, fi, constants$869.PFNGLBINDVIDEOCAPTURESTREAMTEXTURENVPROC$FUNC, "(IIIII)V", scope);
     }
-    static PFNGLBINDVIDEOCAPTURESTREAMTEXTURENVPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, int x2, int x3, int x4) -> {
+    static PFNGLBINDVIDEOCAPTURESTREAMTEXTURENVPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLBINDVIDEOCAPTURESTREAMTEXTURENVPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1, int x2, int x3, int x4) -> {
             try {
-                constants$869.PFNGLBINDVIDEOCAPTURESTREAMTEXTURENVPROC$MH.invokeExact((Addressable)addr, x0, x1, x2, x3, x4);
+                constants$869.PFNGLBINDVIDEOCAPTURESTREAMTEXTURENVPROC$MH.invokeExact(symbol, x0, x1, x2, x3, x4);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

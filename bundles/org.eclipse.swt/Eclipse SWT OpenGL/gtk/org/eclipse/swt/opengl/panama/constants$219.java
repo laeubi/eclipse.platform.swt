@@ -6,33 +6,30 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$219 {
 
     static final FunctionDescriptor PFNGLDRAWTRANSFORMFEEDBACKSTREAMPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLDRAWTRANSFORMFEEDBACKSTREAMPROC$MH = RuntimeHelper.downcallHandle(
-        "(III)V",
         constants$219.PFNGLDRAWTRANSFORMFEEDBACKSTREAMPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLBEGINQUERYINDEXEDPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLBEGINQUERYINDEXEDPROC$MH = RuntimeHelper.downcallHandle(
-        "(III)V",
         constants$219.PFNGLBEGINQUERYINDEXEDPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLENDQUERYINDEXEDPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLENDQUERYINDEXEDPROC$MH = RuntimeHelper.downcallHandle(
-        "(II)V",
         constants$219.PFNGLENDQUERYINDEXEDPROC$FUNC, false
     );
 }

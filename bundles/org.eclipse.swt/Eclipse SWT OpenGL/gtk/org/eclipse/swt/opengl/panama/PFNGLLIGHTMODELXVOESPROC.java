@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLLIGHTMODELXVOESPROC {
 
     void apply(int x0, jdk.incubator.foreign.MemoryAddress x1);
-    static MemoryAddress allocate(PFNGLLIGHTMODELXVOESPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLLIGHTMODELXVOESPROC.class, fi, constants$419.PFNGLLIGHTMODELXVOESPROC$FUNC, "(ILjdk/incubator/foreign/MemoryAddress;)V");
-    }
-    static MemoryAddress allocate(PFNGLLIGHTMODELXVOESPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLLIGHTMODELXVOESPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLLIGHTMODELXVOESPROC.class, fi, constants$419.PFNGLLIGHTMODELXVOESPROC$FUNC, "(ILjdk/incubator/foreign/MemoryAddress;)V", scope);
     }
-    static PFNGLLIGHTMODELXVOESPROC ofAddress(MemoryAddress addr) {
-        return (int x0, jdk.incubator.foreign.MemoryAddress x1) -> {
+    static PFNGLLIGHTMODELXVOESPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLLIGHTMODELXVOESPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, jdk.incubator.foreign.MemoryAddress x1) -> {
             try {
-                constants$419.PFNGLLIGHTMODELXVOESPROC$MH.invokeExact((Addressable)addr, x0, x1);
+                constants$419.PFNGLLIGHTMODELXVOESPROC$MH.invokeExact(symbol, x0, (jdk.incubator.foreign.Addressable)x1);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

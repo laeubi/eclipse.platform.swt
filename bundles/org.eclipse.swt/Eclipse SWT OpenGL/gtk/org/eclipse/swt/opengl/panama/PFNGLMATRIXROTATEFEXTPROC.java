@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLMATRIXROTATEFEXTPROC {
 
     void apply(int x0, float x1, float x2, float x3, float x4);
-    static MemoryAddress allocate(PFNGLMATRIXROTATEFEXTPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLMATRIXROTATEFEXTPROC.class, fi, constants$538.PFNGLMATRIXROTATEFEXTPROC$FUNC, "(IFFFF)V");
-    }
-    static MemoryAddress allocate(PFNGLMATRIXROTATEFEXTPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLMATRIXROTATEFEXTPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLMATRIXROTATEFEXTPROC.class, fi, constants$538.PFNGLMATRIXROTATEFEXTPROC$FUNC, "(IFFFF)V", scope);
     }
-    static PFNGLMATRIXROTATEFEXTPROC ofAddress(MemoryAddress addr) {
-        return (int x0, float x1, float x2, float x3, float x4) -> {
+    static PFNGLMATRIXROTATEFEXTPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLMATRIXROTATEFEXTPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, float x1, float x2, float x3, float x4) -> {
             try {
-                constants$538.PFNGLMATRIXROTATEFEXTPROC$MH.invokeExact((Addressable)addr, x0, x1, x2, x3, x4);
+                constants$538.PFNGLMATRIXROTATEFEXTPROC$MH.invokeExact(symbol, x0, x1, x2, x3, x4);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

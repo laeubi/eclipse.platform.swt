@@ -6,43 +6,40 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$792 {
 
     static final FunctionDescriptor PFNGLGETPATHMETRICRANGENVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLGETPATHMETRICRANGENVPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIIILjdk/incubator/foreign/MemoryAddress;)V",
         constants$792.PFNGLGETPATHMETRICRANGENVPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLGETPATHSPACINGNVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_POINTER,
-        C_INT,
-        C_FLOAT,
-        C_FLOAT,
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLGETPATHSPACINGNVPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIILjdk/incubator/foreign/MemoryAddress;IFFILjdk/incubator/foreign/MemoryAddress;)V",
         constants$792.PFNGLGETPATHSPACINGNVPROC$FUNC, false
     );
-    static final FunctionDescriptor PFNGLISPOINTINFILLPATHNVPROC$FUNC = FunctionDescriptor.of(C_CHAR,
-        C_INT,
-        C_INT,
-        C_FLOAT,
-        C_FLOAT
+    static final FunctionDescriptor PFNGLISPOINTINFILLPATHNVPROC$FUNC = FunctionDescriptor.of(Constants$root.C_CHAR$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT
     );
     static final MethodHandle PFNGLISPOINTINFILLPATHNVPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIFF)B",
         constants$792.PFNGLISPOINTINFILLPATHNVPROC$FUNC, false
     );
 }

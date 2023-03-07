@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLSAMPLEMASKSGISPROC {
 
     void apply(float x0, byte x1);
-    static MemoryAddress allocate(PFNGLSAMPLEMASKSGISPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLSAMPLEMASKSGISPROC.class, fi, constants$875.PFNGLSAMPLEMASKSGISPROC$FUNC, "(FB)V");
-    }
-    static MemoryAddress allocate(PFNGLSAMPLEMASKSGISPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLSAMPLEMASKSGISPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLSAMPLEMASKSGISPROC.class, fi, constants$875.PFNGLSAMPLEMASKSGISPROC$FUNC, "(FB)V", scope);
     }
-    static PFNGLSAMPLEMASKSGISPROC ofAddress(MemoryAddress addr) {
-        return (float x0, byte x1) -> {
+    static PFNGLSAMPLEMASKSGISPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLSAMPLEMASKSGISPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (float x0, byte x1) -> {
             try {
-                constants$875.PFNGLSAMPLEMASKSGISPROC$MH.invokeExact((Addressable)addr, x0, x1);
+                constants$875.PFNGLSAMPLEMASKSGISPROC$MH.invokeExact(symbol, x0, x1);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

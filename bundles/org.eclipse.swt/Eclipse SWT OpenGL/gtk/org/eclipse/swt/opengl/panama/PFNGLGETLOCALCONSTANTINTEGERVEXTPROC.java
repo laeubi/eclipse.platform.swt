@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLGETLOCALCONSTANTINTEGERVEXTPROC {
 
     void apply(int x0, int x1, jdk.incubator.foreign.MemoryAddress x2);
-    static MemoryAddress allocate(PFNGLGETLOCALCONSTANTINTEGERVEXTPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLGETLOCALCONSTANTINTEGERVEXTPROC.class, fi, constants$696.PFNGLGETLOCALCONSTANTINTEGERVEXTPROC$FUNC, "(IILjdk/incubator/foreign/MemoryAddress;)V");
-    }
-    static MemoryAddress allocate(PFNGLGETLOCALCONSTANTINTEGERVEXTPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLGETLOCALCONSTANTINTEGERVEXTPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLGETLOCALCONSTANTINTEGERVEXTPROC.class, fi, constants$696.PFNGLGETLOCALCONSTANTINTEGERVEXTPROC$FUNC, "(IILjdk/incubator/foreign/MemoryAddress;)V", scope);
     }
-    static PFNGLGETLOCALCONSTANTINTEGERVEXTPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, jdk.incubator.foreign.MemoryAddress x2) -> {
+    static PFNGLGETLOCALCONSTANTINTEGERVEXTPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLGETLOCALCONSTANTINTEGERVEXTPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1, jdk.incubator.foreign.MemoryAddress x2) -> {
             try {
-                constants$696.PFNGLGETLOCALCONSTANTINTEGERVEXTPROC$MH.invokeExact((Addressable)addr, x0, x1, x2);
+                constants$696.PFNGLGETLOCALCONSTANTINTEGERVEXTPROC$MH.invokeExact(symbol, x0, x1, (jdk.incubator.foreign.Addressable)x2);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

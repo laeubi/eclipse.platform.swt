@@ -6,33 +6,30 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$725 {
 
-    static final FunctionDescriptor PFNGLGETIMAGEHANDLENVPROC$FUNC = FunctionDescriptor.of(C_LONG,
-        C_INT,
-        C_INT,
-        C_CHAR,
-        C_INT,
-        C_INT
+    static final FunctionDescriptor PFNGLGETIMAGEHANDLENVPROC$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_CHAR$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLGETIMAGEHANDLENVPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIBII)J",
         constants$725.PFNGLGETIMAGEHANDLENVPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLMAKEIMAGEHANDLERESIDENTNVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_LONG,
-        C_INT
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLMAKEIMAGEHANDLERESIDENTNVPROC$MH = RuntimeHelper.downcallHandle(
-        "(JI)V",
         constants$725.PFNGLMAKEIMAGEHANDLERESIDENTNVPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLMAKEIMAGEHANDLENONRESIDENTNVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_LONG
+        Constants$root.C_LONG_LONG$LAYOUT
     );
     static final MethodHandle PFNGLMAKEIMAGEHANDLENONRESIDENTNVPROC$MH = RuntimeHelper.downcallHandle(
-        "(J)V",
         constants$725.PFNGLMAKEIMAGEHANDLENONRESIDENTNVPROC$FUNC, false
     );
 }

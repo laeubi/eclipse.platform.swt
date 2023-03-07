@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLVERTEXARRAYBINDINGDIVISORPROC {
 
     void apply(int x0, int x1, int x2);
-    static MemoryAddress allocate(PFNGLVERTEXARRAYBINDINGDIVISORPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLVERTEXARRAYBINDINGDIVISORPROC.class, fi, constants$300.PFNGLVERTEXARRAYBINDINGDIVISORPROC$FUNC, "(III)V");
-    }
-    static MemoryAddress allocate(PFNGLVERTEXARRAYBINDINGDIVISORPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLVERTEXARRAYBINDINGDIVISORPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLVERTEXARRAYBINDINGDIVISORPROC.class, fi, constants$300.PFNGLVERTEXARRAYBINDINGDIVISORPROC$FUNC, "(III)V", scope);
     }
-    static PFNGLVERTEXARRAYBINDINGDIVISORPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, int x2) -> {
+    static PFNGLVERTEXARRAYBINDINGDIVISORPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLVERTEXARRAYBINDINGDIVISORPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1, int x2) -> {
             try {
-                constants$300.PFNGLVERTEXARRAYBINDINGDIVISORPROC$MH.invokeExact((Addressable)addr, x0, x1, x2);
+                constants$300.PFNGLVERTEXARRAYBINDINGDIVISORPROC$MH.invokeExact(symbol, x0, x1, x2);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

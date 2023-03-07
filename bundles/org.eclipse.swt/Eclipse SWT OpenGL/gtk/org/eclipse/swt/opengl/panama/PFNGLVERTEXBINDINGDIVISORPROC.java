@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLVERTEXBINDINGDIVISORPROC {
 
     void apply(int x0, int x1);
-    static MemoryAddress allocate(PFNGLVERTEXBINDINGDIVISORPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLVERTEXBINDINGDIVISORPROC.class, fi, constants$264.PFNGLVERTEXBINDINGDIVISORPROC$FUNC, "(II)V");
-    }
-    static MemoryAddress allocate(PFNGLVERTEXBINDINGDIVISORPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLVERTEXBINDINGDIVISORPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLVERTEXBINDINGDIVISORPROC.class, fi, constants$264.PFNGLVERTEXBINDINGDIVISORPROC$FUNC, "(II)V", scope);
     }
-    static PFNGLVERTEXBINDINGDIVISORPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1) -> {
+    static PFNGLVERTEXBINDINGDIVISORPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLVERTEXBINDINGDIVISORPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1) -> {
             try {
-                constants$264.PFNGLVERTEXBINDINGDIVISORPROC$MH.invokeExact((Addressable)addr, x0, x1);
+                constants$264.PFNGLVERTEXBINDINGDIVISORPROC$MH.invokeExact(symbol, x0, x1);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

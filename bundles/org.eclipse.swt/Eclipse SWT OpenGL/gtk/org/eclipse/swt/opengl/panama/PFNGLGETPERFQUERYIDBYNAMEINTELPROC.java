@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLGETPERFQUERYIDBYNAMEINTELPROC {
 
     void apply(jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1);
-    static MemoryAddress allocate(PFNGLGETPERFQUERYIDBYNAMEINTELPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLGETPERFQUERYIDBYNAMEINTELPROC.class, fi, constants$711.PFNGLGETPERFQUERYIDBYNAMEINTELPROC$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)V");
-    }
-    static MemoryAddress allocate(PFNGLGETPERFQUERYIDBYNAMEINTELPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLGETPERFQUERYIDBYNAMEINTELPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLGETPERFQUERYIDBYNAMEINTELPROC.class, fi, constants$711.PFNGLGETPERFQUERYIDBYNAMEINTELPROC$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)V", scope);
     }
-    static PFNGLGETPERFQUERYIDBYNAMEINTELPROC ofAddress(MemoryAddress addr) {
-        return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1) -> {
+    static PFNGLGETPERFQUERYIDBYNAMEINTELPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLGETPERFQUERYIDBYNAMEINTELPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1) -> {
             try {
-                constants$711.PFNGLGETPERFQUERYIDBYNAMEINTELPROC$MH.invokeExact((Addressable)addr, x0, x1);
+                constants$711.PFNGLGETPERFQUERYIDBYNAMEINTELPROC$MH.invokeExact(symbol, (jdk.incubator.foreign.Addressable)x0, (jdk.incubator.foreign.Addressable)x1);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

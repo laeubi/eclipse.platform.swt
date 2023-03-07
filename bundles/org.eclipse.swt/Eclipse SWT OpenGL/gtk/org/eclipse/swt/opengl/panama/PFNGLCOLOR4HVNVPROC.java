@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLCOLOR4HVNVPROC {
 
     void apply(jdk.incubator.foreign.MemoryAddress x0);
-    static MemoryAddress allocate(PFNGLCOLOR4HVNVPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLCOLOR4HVNVPROC.class, fi, constants$764.PFNGLCOLOR4HVNVPROC$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;)V");
-    }
-    static MemoryAddress allocate(PFNGLCOLOR4HVNVPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLCOLOR4HVNVPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLCOLOR4HVNVPROC.class, fi, constants$764.PFNGLCOLOR4HVNVPROC$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;)V", scope);
     }
-    static PFNGLCOLOR4HVNVPROC ofAddress(MemoryAddress addr) {
-        return (jdk.incubator.foreign.MemoryAddress x0) -> {
+    static PFNGLCOLOR4HVNVPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLCOLOR4HVNVPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (jdk.incubator.foreign.MemoryAddress x0) -> {
             try {
-                constants$764.PFNGLCOLOR4HVNVPROC$MH.invokeExact((Addressable)addr, x0);
+                constants$764.PFNGLCOLOR4HVNVPROC$MH.invokeExact(symbol, (jdk.incubator.foreign.Addressable)x0);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

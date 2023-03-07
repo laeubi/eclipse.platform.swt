@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLDRAWARRAYSINSTANCEDARBPROC {
 
     void apply(int x0, int x1, int x2, int x3);
-    static MemoryAddress allocate(PFNGLDRAWARRAYSINSTANCEDARBPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLDRAWARRAYSINSTANCEDARBPROC.class, fi, constants$323.PFNGLDRAWARRAYSINSTANCEDARBPROC$FUNC, "(IIII)V");
-    }
-    static MemoryAddress allocate(PFNGLDRAWARRAYSINSTANCEDARBPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLDRAWARRAYSINSTANCEDARBPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLDRAWARRAYSINSTANCEDARBPROC.class, fi, constants$323.PFNGLDRAWARRAYSINSTANCEDARBPROC$FUNC, "(IIII)V", scope);
     }
-    static PFNGLDRAWARRAYSINSTANCEDARBPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, int x2, int x3) -> {
+    static PFNGLDRAWARRAYSINSTANCEDARBPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLDRAWARRAYSINSTANCEDARBPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1, int x2, int x3) -> {
             try {
-                constants$323.PFNGLDRAWARRAYSINSTANCEDARBPROC$MH.invokeExact((Addressable)addr, x0, x1, x2, x3);
+                constants$323.PFNGLDRAWARRAYSINSTANCEDARBPROC$MH.invokeExact(symbol, x0, x1, x2, x3);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

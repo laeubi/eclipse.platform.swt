@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface atexit$__func {
 
     void apply();
-    static MemoryAddress allocate(atexit$__func fi) {
-        return RuntimeHelper.upcallStub(atexit$__func.class, fi, constants$969.atexit$__func$FUNC, "()V");
-    }
-    static MemoryAddress allocate(atexit$__func fi, ResourceScope scope) {
+    static NativeSymbol allocate(atexit$__func fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(atexit$__func.class, fi, constants$969.atexit$__func$FUNC, "()V", scope);
     }
-    static atexit$__func ofAddress(MemoryAddress addr) {
-        return () -> {
+    static atexit$__func ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("atexit$__func::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return () -> {
             try {
-                constants$969.atexit$__func$MH.invokeExact((Addressable)addr);
+                constants$969.atexit$__func$MH.invokeExact(symbol);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

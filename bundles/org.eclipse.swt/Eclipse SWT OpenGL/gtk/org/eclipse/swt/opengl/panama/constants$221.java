@@ -6,32 +6,29 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$221 {
 
     static final FunctionDescriptor PFNGLGETSHADERPRECISIONFORMATPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_POINTER,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLGETSHADERPRECISIONFORMATPROC$MH = RuntimeHelper.downcallHandle(
-        "(IILjdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)V",
         constants$221.PFNGLGETSHADERPRECISIONFORMATPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLDEPTHRANGEFPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_FLOAT,
-        C_FLOAT
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT
     );
     static final MethodHandle PFNGLDEPTHRANGEFPROC$MH = RuntimeHelper.downcallHandle(
-        "(FF)V",
         constants$221.PFNGLDEPTHRANGEFPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLCLEARDEPTHFPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_FLOAT
+        Constants$root.C_FLOAT$LAYOUT
     );
     static final MethodHandle PFNGLCLEARDEPTHFPROC$MH = RuntimeHelper.downcallHandle(
-        "(F)V",
         constants$221.PFNGLCLEARDEPTHFPROC$FUNC, false
     );
 }

@@ -6,55 +6,49 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$18 {
 
     static final FunctionDescriptor glNormal3iv$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle glNormal3iv$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glNormal3iv",
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
+        "glNormal3iv",
         constants$18.glNormal3iv$FUNC, false
     );
     static final FunctionDescriptor glNormal3sv$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle glNormal3sv$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glNormal3sv",
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
+        "glNormal3sv",
         constants$18.glNormal3sv$FUNC, false
     );
     static final FunctionDescriptor glIndexd$FUNC = FunctionDescriptor.ofVoid(
-        C_DOUBLE
+        Constants$root.C_DOUBLE$LAYOUT
     );
     static final MethodHandle glIndexd$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glIndexd",
-        "(D)V",
+        "glIndexd",
         constants$18.glIndexd$FUNC, false
     );
     static final FunctionDescriptor glIndexf$FUNC = FunctionDescriptor.ofVoid(
-        C_FLOAT
+        Constants$root.C_FLOAT$LAYOUT
     );
     static final MethodHandle glIndexf$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glIndexf",
-        "(F)V",
+        "glIndexf",
         constants$18.glIndexf$FUNC, false
     );
     static final FunctionDescriptor glIndexi$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle glIndexi$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glIndexi",
-        "(I)V",
+        "glIndexi",
         constants$18.glIndexi$FUNC, false
     );
     static final FunctionDescriptor glIndexs$FUNC = FunctionDescriptor.ofVoid(
-        C_SHORT
+        Constants$root.C_SHORT$LAYOUT
     );
     static final MethodHandle glIndexs$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glIndexs",
-        "(S)V",
+        "glIndexs",
         constants$18.glIndexs$FUNC, false
     );
 }

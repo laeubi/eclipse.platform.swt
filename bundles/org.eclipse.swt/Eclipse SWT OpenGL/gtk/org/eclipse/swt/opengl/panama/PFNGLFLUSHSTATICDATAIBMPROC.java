@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLFLUSHSTATICDATAIBMPROC {
 
     void apply(int x0);
-    static MemoryAddress allocate(PFNGLFLUSHSTATICDATAIBMPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLFLUSHSTATICDATAIBMPROC.class, fi, constants$702.PFNGLFLUSHSTATICDATAIBMPROC$FUNC, "(I)V");
-    }
-    static MemoryAddress allocate(PFNGLFLUSHSTATICDATAIBMPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLFLUSHSTATICDATAIBMPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLFLUSHSTATICDATAIBMPROC.class, fi, constants$702.PFNGLFLUSHSTATICDATAIBMPROC$FUNC, "(I)V", scope);
     }
-    static PFNGLFLUSHSTATICDATAIBMPROC ofAddress(MemoryAddress addr) {
-        return (int x0) -> {
+    static PFNGLFLUSHSTATICDATAIBMPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLFLUSHSTATICDATAIBMPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0) -> {
             try {
-                constants$702.PFNGLFLUSHSTATICDATAIBMPROC$MH.invokeExact((Addressable)addr, x0);
+                constants$702.PFNGLFLUSHSTATICDATAIBMPROC$MH.invokeExact(symbol, x0);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

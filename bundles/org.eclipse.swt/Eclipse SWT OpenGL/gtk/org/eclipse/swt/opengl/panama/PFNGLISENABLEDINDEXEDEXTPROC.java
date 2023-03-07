@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLISENABLEDINDEXEDEXTPROC {
 
     byte apply(int x0, int x1);
-    static MemoryAddress allocate(PFNGLISENABLEDINDEXEDEXTPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLISENABLEDINDEXEDEXTPROC.class, fi, constants$564.PFNGLISENABLEDINDEXEDEXTPROC$FUNC, "(II)B");
-    }
-    static MemoryAddress allocate(PFNGLISENABLEDINDEXEDEXTPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLISENABLEDINDEXEDEXTPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLISENABLEDINDEXEDEXTPROC.class, fi, constants$564.PFNGLISENABLEDINDEXEDEXTPROC$FUNC, "(II)B", scope);
     }
-    static PFNGLISENABLEDINDEXEDEXTPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1) -> {
+    static PFNGLISENABLEDINDEXEDEXTPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLISENABLEDINDEXEDEXTPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1) -> {
             try {
-                return (byte)constants$564.PFNGLISENABLEDINDEXEDEXTPROC$MH.invokeExact((Addressable)addr, x0, x1);
+                return (byte)constants$564.PFNGLISENABLEDINDEXEDEXTPROC$MH.invokeExact(symbol, x0, x1);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

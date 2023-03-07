@@ -6,26 +6,23 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$900 {
 
     static final FunctionDescriptor PFNGLFINISHTEXTURESUNXPROC$FUNC = FunctionDescriptor.ofVoid();
     static final MethodHandle PFNGLFINISHTEXTURESUNXPROC$MH = RuntimeHelper.downcallHandle(
-        "()V",
         constants$900.PFNGLFINISHTEXTURESUNXPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLGLOBALALPHAFACTORBSUNPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_CHAR
+        Constants$root.C_CHAR$LAYOUT
     );
     static final MethodHandle PFNGLGLOBALALPHAFACTORBSUNPROC$MH = RuntimeHelper.downcallHandle(
-        "(B)V",
         constants$900.PFNGLGLOBALALPHAFACTORBSUNPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLGLOBALALPHAFACTORSSUNPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_SHORT
+        Constants$root.C_SHORT$LAYOUT
     );
     static final MethodHandle PFNGLGLOBALALPHAFACTORSSUNPROC$MH = RuntimeHelper.downcallHandle(
-        "(S)V",
         constants$900.PFNGLGLOBALALPHAFACTORSSUNPROC$FUNC, false
     );
 }

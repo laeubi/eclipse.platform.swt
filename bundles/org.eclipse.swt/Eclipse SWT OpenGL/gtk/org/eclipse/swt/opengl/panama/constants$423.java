@@ -6,30 +6,27 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$423 {
 
     static final FunctionDescriptor PFNGLPOINTPARAMETERXVOESPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLPOINTPARAMETERXVOESPROC$MH = RuntimeHelper.downcallHandle(
-        "(ILjdk/incubator/foreign/MemoryAddress;)V",
         constants$423.PFNGLPOINTPARAMETERXVOESPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLPOINTSIZEXOESPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLPOINTSIZEXOESPROC$MH = RuntimeHelper.downcallHandle(
-        "(I)V",
         constants$423.PFNGLPOINTSIZEXOESPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLPOLYGONOFFSETXOESPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLPOLYGONOFFSETXOESPROC$MH = RuntimeHelper.downcallHandle(
-        "(II)V",
         constants$423.PFNGLPOLYGONOFFSETXOESPROC$FUNC, false
     );
 }

@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLRESOLVEDEPTHVALUESNVPROC {
 
     void apply();
-    static MemoryAddress allocate(PFNGLRESOLVEDEPTHVALUESNVPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLRESOLVEDEPTHVALUESNVPROC.class, fi, constants$812.PFNGLRESOLVEDEPTHVALUESNVPROC$FUNC, "()V");
-    }
-    static MemoryAddress allocate(PFNGLRESOLVEDEPTHVALUESNVPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLRESOLVEDEPTHVALUESNVPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLRESOLVEDEPTHVALUESNVPROC.class, fi, constants$812.PFNGLRESOLVEDEPTHVALUESNVPROC$FUNC, "()V", scope);
     }
-    static PFNGLRESOLVEDEPTHVALUESNVPROC ofAddress(MemoryAddress addr) {
-        return () -> {
+    static PFNGLRESOLVEDEPTHVALUESNVPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLRESOLVEDEPTHVALUESNVPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return () -> {
             try {
-                constants$812.PFNGLRESOLVEDEPTHVALUESNVPROC$MH.invokeExact((Addressable)addr);
+                constants$812.PFNGLRESOLVEDEPTHVALUESNVPROC$MH.invokeExact(symbol);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

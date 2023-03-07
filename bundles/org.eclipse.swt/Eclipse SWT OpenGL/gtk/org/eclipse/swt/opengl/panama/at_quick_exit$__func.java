@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface at_quick_exit$__func {
 
     void apply();
-    static MemoryAddress allocate(at_quick_exit$__func fi) {
-        return RuntimeHelper.upcallStub(at_quick_exit$__func.class, fi, constants$970.at_quick_exit$__func$FUNC, "()V");
-    }
-    static MemoryAddress allocate(at_quick_exit$__func fi, ResourceScope scope) {
+    static NativeSymbol allocate(at_quick_exit$__func fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(at_quick_exit$__func.class, fi, constants$970.at_quick_exit$__func$FUNC, "()V", scope);
     }
-    static at_quick_exit$__func ofAddress(MemoryAddress addr) {
-        return () -> {
+    static at_quick_exit$__func ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("at_quick_exit$__func::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return () -> {
             try {
-                constants$970.at_quick_exit$__func$MH.invokeExact((Addressable)addr);
+                constants$970.at_quick_exit$__func$MH.invokeExact(symbol);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

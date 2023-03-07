@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLTEXTUREIMAGE3DMULTISAMPLECOVERAGENVPROC {
 
     void apply(int x0, int x1, int x2, int x3, int x4, int x5, int x6, int x7, byte x8);
-    static MemoryAddress allocate(PFNGLTEXTUREIMAGE3DMULTISAMPLECOVERAGENVPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLTEXTUREIMAGE3DMULTISAMPLECOVERAGENVPROC.class, fi, constants$819.PFNGLTEXTUREIMAGE3DMULTISAMPLECOVERAGENVPROC$FUNC, "(IIIIIIIIB)V");
-    }
-    static MemoryAddress allocate(PFNGLTEXTUREIMAGE3DMULTISAMPLECOVERAGENVPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLTEXTUREIMAGE3DMULTISAMPLECOVERAGENVPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLTEXTUREIMAGE3DMULTISAMPLECOVERAGENVPROC.class, fi, constants$819.PFNGLTEXTUREIMAGE3DMULTISAMPLECOVERAGENVPROC$FUNC, "(IIIIIIIIB)V", scope);
     }
-    static PFNGLTEXTUREIMAGE3DMULTISAMPLECOVERAGENVPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, int x2, int x3, int x4, int x5, int x6, int x7, byte x8) -> {
+    static PFNGLTEXTUREIMAGE3DMULTISAMPLECOVERAGENVPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLTEXTUREIMAGE3DMULTISAMPLECOVERAGENVPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1, int x2, int x3, int x4, int x5, int x6, int x7, byte x8) -> {
             try {
-                constants$819.PFNGLTEXTUREIMAGE3DMULTISAMPLECOVERAGENVPROC$MH.invokeExact((Addressable)addr, x0, x1, x2, x3, x4, x5, x6, x7, x8);
+                constants$819.PFNGLTEXTUREIMAGE3DMULTISAMPLECOVERAGENVPROC$MH.invokeExact(symbol, x0, x1, x2, x3, x4, x5, x6, x7, x8);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

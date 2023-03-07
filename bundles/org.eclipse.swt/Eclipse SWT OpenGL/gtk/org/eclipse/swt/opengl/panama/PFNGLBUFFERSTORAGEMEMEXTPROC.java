@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLBUFFERSTORAGEMEMEXTPROC {
 
     void apply(int x0, long x1, int x2, long x3);
-    static MemoryAddress allocate(PFNGLBUFFERSTORAGEMEMEXTPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLBUFFERSTORAGEMEMEXTPROC.class, fi, constants$645.PFNGLBUFFERSTORAGEMEMEXTPROC$FUNC, "(IJIJ)V");
-    }
-    static MemoryAddress allocate(PFNGLBUFFERSTORAGEMEMEXTPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLBUFFERSTORAGEMEMEXTPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLBUFFERSTORAGEMEMEXTPROC.class, fi, constants$645.PFNGLBUFFERSTORAGEMEMEXTPROC$FUNC, "(IJIJ)V", scope);
     }
-    static PFNGLBUFFERSTORAGEMEMEXTPROC ofAddress(MemoryAddress addr) {
-        return (int x0, long x1, int x2, long x3) -> {
+    static PFNGLBUFFERSTORAGEMEMEXTPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLBUFFERSTORAGEMEMEXTPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, long x1, int x2, long x3) -> {
             try {
-                constants$645.PFNGLBUFFERSTORAGEMEMEXTPROC$MH.invokeExact((Addressable)addr, x0, x1, x2, x3);
+                constants$645.PFNGLBUFFERSTORAGEMEMEXTPROC$MH.invokeExact(symbol, x0, x1, x2, x3);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

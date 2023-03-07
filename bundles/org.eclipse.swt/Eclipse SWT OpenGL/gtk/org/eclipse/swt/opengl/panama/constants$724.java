@@ -6,29 +6,26 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$724 {
 
-    static final FunctionDescriptor PFNGLGETTEXTURESAMPLERHANDLENVPROC$FUNC = FunctionDescriptor.of(C_LONG,
-        C_INT,
-        C_INT
+    static final FunctionDescriptor PFNGLGETTEXTURESAMPLERHANDLENVPROC$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLGETTEXTURESAMPLERHANDLENVPROC$MH = RuntimeHelper.downcallHandle(
-        "(II)J",
         constants$724.PFNGLGETTEXTURESAMPLERHANDLENVPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLMAKETEXTUREHANDLERESIDENTNVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_LONG
+        Constants$root.C_LONG_LONG$LAYOUT
     );
     static final MethodHandle PFNGLMAKETEXTUREHANDLERESIDENTNVPROC$MH = RuntimeHelper.downcallHandle(
-        "(J)V",
         constants$724.PFNGLMAKETEXTUREHANDLERESIDENTNVPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLMAKETEXTUREHANDLENONRESIDENTNVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_LONG
+        Constants$root.C_LONG_LONG$LAYOUT
     );
     static final MethodHandle PFNGLMAKETEXTUREHANDLENONRESIDENTNVPROC$MH = RuntimeHelper.downcallHandle(
-        "(J)V",
         constants$724.PFNGLMAKETEXTUREHANDLENONRESIDENTNVPROC$FUNC, false
     );
 }

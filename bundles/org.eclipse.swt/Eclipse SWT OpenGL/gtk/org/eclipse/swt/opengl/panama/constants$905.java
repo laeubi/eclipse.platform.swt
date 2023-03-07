@@ -6,35 +6,32 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$905 {
 
     static final FunctionDescriptor PFNGLREPLACEMENTCODEUBVSUNPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLREPLACEMENTCODEUBVSUNPROC$MH = RuntimeHelper.downcallHandle(
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
         constants$905.PFNGLREPLACEMENTCODEUBVSUNPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLREPLACEMENTCODEPOINTERSUNPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLREPLACEMENTCODEPOINTERSUNPROC$MH = RuntimeHelper.downcallHandle(
-        "(IILjdk/incubator/foreign/MemoryAddress;)V",
         constants$905.PFNGLREPLACEMENTCODEPOINTERSUNPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLCOLOR4UBVERTEX2FSUNPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_CHAR,
-        C_CHAR,
-        C_CHAR,
-        C_CHAR,
-        C_FLOAT,
-        C_FLOAT
+        Constants$root.C_CHAR$LAYOUT,
+        Constants$root.C_CHAR$LAYOUT,
+        Constants$root.C_CHAR$LAYOUT,
+        Constants$root.C_CHAR$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT
     );
     static final MethodHandle PFNGLCOLOR4UBVERTEX2FSUNPROC$MH = RuntimeHelper.downcallHandle(
-        "(BBBBFF)V",
         constants$905.PFNGLCOLOR4UBVERTEX2FSUNPROC$FUNC, false
     );
 }

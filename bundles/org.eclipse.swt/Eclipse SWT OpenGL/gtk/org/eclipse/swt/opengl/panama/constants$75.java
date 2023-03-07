@@ -6,61 +6,55 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$75 {
 
     static final FunctionDescriptor glMultiTexCoord1fARB$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_FLOAT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT
     );
     static final MethodHandle glMultiTexCoord1fARB$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glMultiTexCoord1fARB",
-        "(IF)V",
+        "glMultiTexCoord1fARB",
         constants$75.glMultiTexCoord1fARB$FUNC, false
     );
     static final FunctionDescriptor glMultiTexCoord1fvARB$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle glMultiTexCoord1fvARB$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glMultiTexCoord1fvARB",
-        "(ILjdk/incubator/foreign/MemoryAddress;)V",
+        "glMultiTexCoord1fvARB",
         constants$75.glMultiTexCoord1fvARB$FUNC, false
     );
     static final FunctionDescriptor glMultiTexCoord1iARB$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle glMultiTexCoord1iARB$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glMultiTexCoord1iARB",
-        "(II)V",
+        "glMultiTexCoord1iARB",
         constants$75.glMultiTexCoord1iARB$FUNC, false
     );
     static final FunctionDescriptor glMultiTexCoord1ivARB$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle glMultiTexCoord1ivARB$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glMultiTexCoord1ivARB",
-        "(ILjdk/incubator/foreign/MemoryAddress;)V",
+        "glMultiTexCoord1ivARB",
         constants$75.glMultiTexCoord1ivARB$FUNC, false
     );
     static final FunctionDescriptor glMultiTexCoord1sARB$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_SHORT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_SHORT$LAYOUT
     );
     static final MethodHandle glMultiTexCoord1sARB$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glMultiTexCoord1sARB",
-        "(IS)V",
+        "glMultiTexCoord1sARB",
         constants$75.glMultiTexCoord1sARB$FUNC, false
     );
     static final FunctionDescriptor glMultiTexCoord1svARB$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle glMultiTexCoord1svARB$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glMultiTexCoord1svARB",
-        "(ILjdk/incubator/foreign/MemoryAddress;)V",
+        "glMultiTexCoord1svARB",
         constants$75.glMultiTexCoord1svARB$FUNC, false
     );
 }

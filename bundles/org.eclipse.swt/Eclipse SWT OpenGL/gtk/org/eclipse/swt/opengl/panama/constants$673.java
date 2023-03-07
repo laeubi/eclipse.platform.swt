@@ -6,32 +6,29 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$673 {
 
     static final FunctionDescriptor PFNGLPRIORITIZETEXTURESEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_POINTER,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLPRIORITIZETEXTURESEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(ILjdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)V",
         constants$673.PFNGLPRIORITIZETEXTURESEXTPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLTEXTURENORMALEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLTEXTURENORMALEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(I)V",
         constants$673.PFNGLTEXTURENORMALEXTPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLGETQUERYOBJECTI64VEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLGETQUERYOBJECTI64VEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(IILjdk/incubator/foreign/MemoryAddress;)V",
         constants$673.PFNGLGETQUERYOBJECTI64VEXTPROC$FUNC, false
     );
 }

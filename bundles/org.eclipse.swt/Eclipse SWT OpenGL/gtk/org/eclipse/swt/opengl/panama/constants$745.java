@@ -6,30 +6,27 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$745 {
 
-    static final FunctionDescriptor PFNGLTESTFENCENVPROC$FUNC = FunctionDescriptor.of(C_CHAR,
-        C_INT
+    static final FunctionDescriptor PFNGLTESTFENCENVPROC$FUNC = FunctionDescriptor.of(Constants$root.C_CHAR$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLTESTFENCENVPROC$MH = RuntimeHelper.downcallHandle(
-        "(I)B",
         constants$745.PFNGLTESTFENCENVPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLGETFENCEIVNVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLGETFENCEIVNVPROC$MH = RuntimeHelper.downcallHandle(
-        "(IILjdk/incubator/foreign/MemoryAddress;)V",
         constants$745.PFNGLGETFENCEIVNVPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLFINISHFENCENVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLFINISHFENCENVPROC$MH = RuntimeHelper.downcallHandle(
-        "(I)V",
         constants$745.PFNGLFINISHFENCENVPROC$FUNC, false
     );
 }

@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLCREATESYNCFROMCLEVENTARBPROC {
 
-    jdk.incubator.foreign.MemoryAddress apply(jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, int x2);
-    static MemoryAddress allocate(PFNGLCREATESYNCFROMCLEVENTARBPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLCREATESYNCFROMCLEVENTARBPROC.class, fi, constants$319.PFNGLCREATESYNCFROMCLEVENTARBPROC$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;I)Ljdk/incubator/foreign/MemoryAddress;");
+    jdk.incubator.foreign.Addressable apply(jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, int x2);
+    static NativeSymbol allocate(PFNGLCREATESYNCFROMCLEVENTARBPROC fi, ResourceScope scope) {
+        return RuntimeHelper.upcallStub(PFNGLCREATESYNCFROMCLEVENTARBPROC.class, fi, constants$319.PFNGLCREATESYNCFROMCLEVENTARBPROC$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;I)Ljdk/incubator/foreign/Addressable;", scope);
     }
-    static MemoryAddress allocate(PFNGLCREATESYNCFROMCLEVENTARBPROC fi, ResourceScope scope) {
-        return RuntimeHelper.upcallStub(PFNGLCREATESYNCFROMCLEVENTARBPROC.class, fi, constants$319.PFNGLCREATESYNCFROMCLEVENTARBPROC$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;I)Ljdk/incubator/foreign/MemoryAddress;", scope);
-    }
-    static PFNGLCREATESYNCFROMCLEVENTARBPROC ofAddress(MemoryAddress addr) {
-        return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, int x2) -> {
+    static PFNGLCREATESYNCFROMCLEVENTARBPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLCREATESYNCFROMCLEVENTARBPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, int x2) -> {
             try {
-                return (jdk.incubator.foreign.MemoryAddress)constants$319.PFNGLCREATESYNCFROMCLEVENTARBPROC$MH.invokeExact((Addressable)addr, x0, x1, x2);
+                return (jdk.incubator.foreign.Addressable)(jdk.incubator.foreign.MemoryAddress)constants$319.PFNGLCREATESYNCFROMCLEVENTARBPROC$MH.invokeExact(symbol, (jdk.incubator.foreign.Addressable)x0, (jdk.incubator.foreign.Addressable)x1, x2);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

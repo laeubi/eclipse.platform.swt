@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLGETNMINMAXPROC {
 
     void apply(int x0, byte x1, int x2, int x3, int x4, jdk.incubator.foreign.MemoryAddress x5);
-    static MemoryAddress allocate(PFNGLGETNMINMAXPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLGETNMINMAXPROC.class, fi, constants$311.PFNGLGETNMINMAXPROC$FUNC, "(IBIIILjdk/incubator/foreign/MemoryAddress;)V");
-    }
-    static MemoryAddress allocate(PFNGLGETNMINMAXPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLGETNMINMAXPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLGETNMINMAXPROC.class, fi, constants$311.PFNGLGETNMINMAXPROC$FUNC, "(IBIIILjdk/incubator/foreign/MemoryAddress;)V", scope);
     }
-    static PFNGLGETNMINMAXPROC ofAddress(MemoryAddress addr) {
-        return (int x0, byte x1, int x2, int x3, int x4, jdk.incubator.foreign.MemoryAddress x5) -> {
+    static PFNGLGETNMINMAXPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLGETNMINMAXPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, byte x1, int x2, int x3, int x4, jdk.incubator.foreign.MemoryAddress x5) -> {
             try {
-                constants$311.PFNGLGETNMINMAXPROC$MH.invokeExact((Addressable)addr, x0, x1, x2, x3, x4, x5);
+                constants$311.PFNGLGETNMINMAXPROC$MH.invokeExact(symbol, x0, x1, x2, x3, x4, (jdk.incubator.foreign.Addressable)x5);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

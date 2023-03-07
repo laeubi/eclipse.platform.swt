@@ -6,40 +6,37 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$254 {
 
     static final FunctionDescriptor PFNGLCLEARBUFFERDATAPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLCLEARBUFFERDATAPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIIILjdk/incubator/foreign/MemoryAddress;)V",
         constants$254.PFNGLCLEARBUFFERDATAPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLCLEARBUFFERSUBDATAPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_LONG,
-        C_LONG,
-        C_INT,
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLCLEARBUFFERSUBDATAPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIJJIILjdk/incubator/foreign/MemoryAddress;)V",
         constants$254.PFNGLCLEARBUFFERSUBDATAPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLDISPATCHCOMPUTEPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLDISPATCHCOMPUTEPROC$MH = RuntimeHelper.downcallHandle(
-        "(III)V",
         constants$254.PFNGLDISPATCHCOMPUTEPROC$FUNC, false
     );
 }

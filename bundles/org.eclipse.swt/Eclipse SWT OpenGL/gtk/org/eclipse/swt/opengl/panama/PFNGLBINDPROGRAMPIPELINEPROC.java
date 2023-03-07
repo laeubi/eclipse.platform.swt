@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLBINDPROGRAMPIPELINEPROC {
 
     void apply(int x0);
-    static MemoryAddress allocate(PFNGLBINDPROGRAMPIPELINEPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLBINDPROGRAMPIPELINEPROC.class, fi, constants$224.PFNGLBINDPROGRAMPIPELINEPROC$FUNC, "(I)V");
-    }
-    static MemoryAddress allocate(PFNGLBINDPROGRAMPIPELINEPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLBINDPROGRAMPIPELINEPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLBINDPROGRAMPIPELINEPROC.class, fi, constants$224.PFNGLBINDPROGRAMPIPELINEPROC$FUNC, "(I)V", scope);
     }
-    static PFNGLBINDPROGRAMPIPELINEPROC ofAddress(MemoryAddress addr) {
-        return (int x0) -> {
+    static PFNGLBINDPROGRAMPIPELINEPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLBINDPROGRAMPIPELINEPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0) -> {
             try {
-                constants$224.PFNGLBINDPROGRAMPIPELINEPROC$MH.invokeExact((Addressable)addr, x0);
+                constants$224.PFNGLBINDPROGRAMPIPELINEPROC$MH.invokeExact(symbol, x0);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

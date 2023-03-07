@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLPROGRAMBINARYPROC {
 
     void apply(int x0, int x1, jdk.incubator.foreign.MemoryAddress x2, int x3);
-    static MemoryAddress allocate(PFNGLPROGRAMBINARYPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLPROGRAMBINARYPROC.class, fi, constants$222.PFNGLPROGRAMBINARYPROC$FUNC, "(IILjdk/incubator/foreign/MemoryAddress;I)V");
-    }
-    static MemoryAddress allocate(PFNGLPROGRAMBINARYPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLPROGRAMBINARYPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLPROGRAMBINARYPROC.class, fi, constants$222.PFNGLPROGRAMBINARYPROC$FUNC, "(IILjdk/incubator/foreign/MemoryAddress;I)V", scope);
     }
-    static PFNGLPROGRAMBINARYPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, jdk.incubator.foreign.MemoryAddress x2, int x3) -> {
+    static PFNGLPROGRAMBINARYPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLPROGRAMBINARYPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1, jdk.incubator.foreign.MemoryAddress x2, int x3) -> {
             try {
-                constants$222.PFNGLPROGRAMBINARYPROC$MH.invokeExact((Addressable)addr, x0, x1, x2, x3);
+                constants$222.PFNGLPROGRAMBINARYPROC$MH.invokeExact(symbol, x0, x1, (jdk.incubator.foreign.Addressable)x2, x3);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

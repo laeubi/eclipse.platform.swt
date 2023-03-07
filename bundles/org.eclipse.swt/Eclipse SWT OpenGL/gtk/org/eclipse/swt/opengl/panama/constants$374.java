@@ -6,42 +6,39 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$374 {
 
     static final FunctionDescriptor PFNGLNAMEDBUFFERPAGECOMMITMENTEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_LONG,
-        C_LONG,
-        C_CHAR
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_CHAR$LAYOUT
     );
     static final MethodHandle PFNGLNAMEDBUFFERPAGECOMMITMENTEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(IJJB)V",
         constants$374.PFNGLNAMEDBUFFERPAGECOMMITMENTEXTPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLNAMEDBUFFERPAGECOMMITMENTARBPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_LONG,
-        C_LONG,
-        C_CHAR
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_CHAR$LAYOUT
     );
     static final MethodHandle PFNGLNAMEDBUFFERPAGECOMMITMENTARBPROC$MH = RuntimeHelper.downcallHandle(
-        "(IJJB)V",
         constants$374.PFNGLNAMEDBUFFERPAGECOMMITMENTARBPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLTEXPAGECOMMITMENTARBPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_CHAR
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_CHAR$LAYOUT
     );
     static final MethodHandle PFNGLTEXPAGECOMMITMENTARBPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIIIIIIIB)V",
         constants$374.PFNGLTEXPAGECOMMITMENTARBPROC$FUNC, false
     );
 }

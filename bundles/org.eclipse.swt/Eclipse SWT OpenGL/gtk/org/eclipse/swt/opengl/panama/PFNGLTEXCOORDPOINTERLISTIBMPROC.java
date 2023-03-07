@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLTEXCOORDPOINTERLISTIBMPROC {
 
     void apply(int x0, int x1, int x2, jdk.incubator.foreign.MemoryAddress x3, int x4);
-    static MemoryAddress allocate(PFNGLTEXCOORDPOINTERLISTIBMPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLTEXCOORDPOINTERLISTIBMPROC.class, fi, constants$705.PFNGLTEXCOORDPOINTERLISTIBMPROC$FUNC, "(IIILjdk/incubator/foreign/MemoryAddress;I)V");
-    }
-    static MemoryAddress allocate(PFNGLTEXCOORDPOINTERLISTIBMPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLTEXCOORDPOINTERLISTIBMPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLTEXCOORDPOINTERLISTIBMPROC.class, fi, constants$705.PFNGLTEXCOORDPOINTERLISTIBMPROC$FUNC, "(IIILjdk/incubator/foreign/MemoryAddress;I)V", scope);
     }
-    static PFNGLTEXCOORDPOINTERLISTIBMPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, int x2, jdk.incubator.foreign.MemoryAddress x3, int x4) -> {
+    static PFNGLTEXCOORDPOINTERLISTIBMPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLTEXCOORDPOINTERLISTIBMPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1, int x2, jdk.incubator.foreign.MemoryAddress x3, int x4) -> {
             try {
-                constants$705.PFNGLTEXCOORDPOINTERLISTIBMPROC$MH.invokeExact((Addressable)addr, x0, x1, x2, x3, x4);
+                constants$705.PFNGLTEXCOORDPOINTERLISTIBMPROC$MH.invokeExact(symbol, x0, x1, x2, (jdk.incubator.foreign.Addressable)x3, x4);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

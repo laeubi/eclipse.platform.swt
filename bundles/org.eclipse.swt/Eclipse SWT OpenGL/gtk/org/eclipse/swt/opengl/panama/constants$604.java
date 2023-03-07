@@ -6,43 +6,40 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$604 {
 
     static final FunctionDescriptor PFNGLVERTEXARRAYNORMALOFFSETEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_LONG
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT
     );
     static final MethodHandle PFNGLVERTEXARRAYNORMALOFFSETEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIIIJ)V",
         constants$604.PFNGLVERTEXARRAYNORMALOFFSETEXTPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLVERTEXARRAYTEXCOORDOFFSETEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_LONG
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT
     );
     static final MethodHandle PFNGLVERTEXARRAYTEXCOORDOFFSETEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIIIIJ)V",
         constants$604.PFNGLVERTEXARRAYTEXCOORDOFFSETEXTPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLVERTEXARRAYMULTITEXCOORDOFFSETEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_LONG
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT
     );
     static final MethodHandle PFNGLVERTEXARRAYMULTITEXCOORDOFFSETEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIIIIIJ)V",
         constants$604.PFNGLVERTEXARRAYMULTITEXCOORDOFFSETEXTPROC$FUNC, false
     );
 }

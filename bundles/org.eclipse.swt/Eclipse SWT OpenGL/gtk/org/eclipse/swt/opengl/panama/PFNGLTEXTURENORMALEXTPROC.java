@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLTEXTURENORMALEXTPROC {
 
     void apply(int x0);
-    static MemoryAddress allocate(PFNGLTEXTURENORMALEXTPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLTEXTURENORMALEXTPROC.class, fi, constants$673.PFNGLTEXTURENORMALEXTPROC$FUNC, "(I)V");
-    }
-    static MemoryAddress allocate(PFNGLTEXTURENORMALEXTPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLTEXTURENORMALEXTPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLTEXTURENORMALEXTPROC.class, fi, constants$673.PFNGLTEXTURENORMALEXTPROC$FUNC, "(I)V", scope);
     }
-    static PFNGLTEXTURENORMALEXTPROC ofAddress(MemoryAddress addr) {
-        return (int x0) -> {
+    static PFNGLTEXTURENORMALEXTPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLTEXTURENORMALEXTPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0) -> {
             try {
-                constants$673.PFNGLTEXTURENORMALEXTPROC$MH.invokeExact((Addressable)addr, x0);
+                constants$673.PFNGLTEXTURENORMALEXTPROC$MH.invokeExact(symbol, x0);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

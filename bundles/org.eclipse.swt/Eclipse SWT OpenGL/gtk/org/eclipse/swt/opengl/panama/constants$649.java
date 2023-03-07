@@ -6,36 +6,33 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$649 {
 
     static final FunctionDescriptor PFNGLMULTIDRAWARRAYSEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_POINTER,
-        C_POINTER,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLMULTIDRAWARRAYSEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(ILjdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;I)V",
         constants$649.PFNGLMULTIDRAWARRAYSEXTPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLMULTIDRAWELEMENTSEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_POINTER,
-        C_INT,
-        C_POINTER,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLMULTIDRAWELEMENTSEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(ILjdk/incubator/foreign/MemoryAddress;ILjdk/incubator/foreign/MemoryAddress;I)V",
         constants$649.PFNGLMULTIDRAWELEMENTSEXTPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLSAMPLEMASKEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_FLOAT,
-        C_CHAR
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_CHAR$LAYOUT
     );
     static final MethodHandle PFNGLSAMPLEMASKEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(FB)V",
         constants$649.PFNGLSAMPLEMASKEXTPROC$FUNC, false
     );
 }

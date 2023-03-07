@@ -6,39 +6,36 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$737 {
 
     static final FunctionDescriptor PFNGLCLEARDEPTHDNVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_DOUBLE
+        Constants$root.C_DOUBLE$LAYOUT
     );
     static final MethodHandle PFNGLCLEARDEPTHDNVPROC$MH = RuntimeHelper.downcallHandle(
-        "(D)V",
         constants$737.PFNGLCLEARDEPTHDNVPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLDEPTHBOUNDSDNVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_DOUBLE,
-        C_DOUBLE
+        Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT
     );
     static final MethodHandle PFNGLDEPTHBOUNDSDNVPROC$MH = RuntimeHelper.downcallHandle(
-        "(DD)V",
         constants$737.PFNGLDEPTHBOUNDSDNVPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLDRAWTEXTURENVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_FLOAT,
-        C_FLOAT,
-        C_FLOAT,
-        C_FLOAT,
-        C_FLOAT,
-        C_FLOAT,
-        C_FLOAT,
-        C_FLOAT,
-        C_FLOAT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT
     );
     static final MethodHandle PFNGLDRAWTEXTURENVPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIFFFFFFFFF)V",
         constants$737.PFNGLDRAWTEXTURENVPROC$FUNC, false
     );
 }

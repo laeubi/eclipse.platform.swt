@@ -6,33 +6,30 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$488 {
 
     static final FunctionDescriptor PFNGLDRAWELEMENTARRAYATIPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLDRAWELEMENTARRAYATIPROC$MH = RuntimeHelper.downcallHandle(
-        "(II)V",
         constants$488.PFNGLDRAWELEMENTARRAYATIPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLDRAWRANGEELEMENTARRAYATIPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLDRAWRANGEELEMENTARRAYATIPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIII)V",
         constants$488.PFNGLDRAWRANGEELEMENTARRAYATIPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLTEXBUMPPARAMETERIVATIPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLTEXBUMPPARAMETERIVATIPROC$MH = RuntimeHelper.downcallHandle(
-        "(ILjdk/incubator/foreign/MemoryAddress;)V",
         constants$488.PFNGLTEXBUMPPARAMETERIVATIPROC$FUNC, false
     );
 }

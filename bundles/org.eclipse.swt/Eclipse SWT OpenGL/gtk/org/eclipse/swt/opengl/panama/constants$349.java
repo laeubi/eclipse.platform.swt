@@ -6,32 +6,29 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$349 {
 
     static final FunctionDescriptor PFNGLGETQUERYOBJECTIVARBPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLGETQUERYOBJECTIVARBPROC$MH = RuntimeHelper.downcallHandle(
-        "(IILjdk/incubator/foreign/MemoryAddress;)V",
         constants$349.PFNGLGETQUERYOBJECTIVARBPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLGETQUERYOBJECTUIVARBPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLGETQUERYOBJECTUIVARBPROC$MH = RuntimeHelper.downcallHandle(
-        "(IILjdk/incubator/foreign/MemoryAddress;)V",
         constants$349.PFNGLGETQUERYOBJECTUIVARBPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLMAXSHADERCOMPILERTHREADSARBPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLMAXSHADERCOMPILERTHREADSARBPROC$MH = RuntimeHelper.downcallHandle(
-        "(I)V",
         constants$349.PFNGLMAXSHADERCOMPILERTHREADSARBPROC$FUNC, false
     );
 }

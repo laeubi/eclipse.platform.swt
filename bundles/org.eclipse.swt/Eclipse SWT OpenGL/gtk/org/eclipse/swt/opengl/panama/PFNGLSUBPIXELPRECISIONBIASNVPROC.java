@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLSUBPIXELPRECISIONBIASNVPROC {
 
     void apply(int x0, int x1);
-    static MemoryAddress allocate(PFNGLSUBPIXELPRECISIONBIASNVPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLSUBPIXELPRECISIONBIASNVPROC.class, fi, constants$735.PFNGLSUBPIXELPRECISIONBIASNVPROC$FUNC, "(II)V");
-    }
-    static MemoryAddress allocate(PFNGLSUBPIXELPRECISIONBIASNVPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLSUBPIXELPRECISIONBIASNVPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLSUBPIXELPRECISIONBIASNVPROC.class, fi, constants$735.PFNGLSUBPIXELPRECISIONBIASNVPROC$FUNC, "(II)V", scope);
     }
-    static PFNGLSUBPIXELPRECISIONBIASNVPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1) -> {
+    static PFNGLSUBPIXELPRECISIONBIASNVPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLSUBPIXELPRECISIONBIASNVPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1) -> {
             try {
-                constants$735.PFNGLSUBPIXELPRECISIONBIASNVPROC$MH.invokeExact((Addressable)addr, x0, x1);
+                constants$735.PFNGLSUBPIXELPRECISIONBIASNVPROC$MH.invokeExact(symbol, x0, x1);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

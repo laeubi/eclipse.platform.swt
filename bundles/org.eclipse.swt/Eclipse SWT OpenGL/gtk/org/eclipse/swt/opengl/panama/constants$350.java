@@ -6,28 +6,25 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$350 {
 
     static final FunctionDescriptor PFNGLPOINTPARAMETERFARBPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_FLOAT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT
     );
     static final MethodHandle PFNGLPOINTPARAMETERFARBPROC$MH = RuntimeHelper.downcallHandle(
-        "(IF)V",
         constants$350.PFNGLPOINTPARAMETERFARBPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLPOINTPARAMETERFVARBPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLPOINTPARAMETERFVARBPROC$MH = RuntimeHelper.downcallHandle(
-        "(ILjdk/incubator/foreign/MemoryAddress;)V",
         constants$350.PFNGLPOINTPARAMETERFVARBPROC$FUNC, false
     );
-    static final FunctionDescriptor PFNGLGETGRAPHICSRESETSTATUSARBPROC$FUNC = FunctionDescriptor.of(C_INT);
+    static final FunctionDescriptor PFNGLGETGRAPHICSRESETSTATUSARBPROC$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT);
     static final MethodHandle PFNGLGETGRAPHICSRESETSTATUSARBPROC$MH = RuntimeHelper.downcallHandle(
-        "()I",
         constants$350.PFNGLGETGRAPHICSRESETSTATUSARBPROC$FUNC, false
     );
 }

@@ -6,63 +6,57 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$39 {
 
     static final FunctionDescriptor glLightModelf$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_FLOAT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT
     );
     static final MethodHandle glLightModelf$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glLightModelf",
-        "(IF)V",
+        "glLightModelf",
         constants$39.glLightModelf$FUNC, false
     );
     static final FunctionDescriptor glLightModeli$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle glLightModeli$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glLightModeli",
-        "(II)V",
+        "glLightModeli",
         constants$39.glLightModeli$FUNC, false
     );
     static final FunctionDescriptor glLightModelfv$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle glLightModelfv$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glLightModelfv",
-        "(ILjdk/incubator/foreign/MemoryAddress;)V",
+        "glLightModelfv",
         constants$39.glLightModelfv$FUNC, false
     );
     static final FunctionDescriptor glLightModeliv$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle glLightModeliv$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glLightModeliv",
-        "(ILjdk/incubator/foreign/MemoryAddress;)V",
+        "glLightModeliv",
         constants$39.glLightModeliv$FUNC, false
     );
     static final FunctionDescriptor glMaterialf$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_FLOAT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT
     );
     static final MethodHandle glMaterialf$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glMaterialf",
-        "(IIF)V",
+        "glMaterialf",
         constants$39.glMaterialf$FUNC, false
     );
     static final FunctionDescriptor glMateriali$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle glMateriali$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glMateriali",
-        "(III)V",
+        "glMateriali",
         constants$39.glMateriali$FUNC, false
     );
 }

@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLPROGRAMUNIFORM2FPROC {
 
     void apply(int x0, int x1, float x2, float x3);
-    static MemoryAddress allocate(PFNGLPROGRAMUNIFORM2FPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLPROGRAMUNIFORM2FPROC.class, fi, constants$229.PFNGLPROGRAMUNIFORM2FPROC$FUNC, "(IIFF)V");
-    }
-    static MemoryAddress allocate(PFNGLPROGRAMUNIFORM2FPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLPROGRAMUNIFORM2FPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLPROGRAMUNIFORM2FPROC.class, fi, constants$229.PFNGLPROGRAMUNIFORM2FPROC$FUNC, "(IIFF)V", scope);
     }
-    static PFNGLPROGRAMUNIFORM2FPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, float x2, float x3) -> {
+    static PFNGLPROGRAMUNIFORM2FPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLPROGRAMUNIFORM2FPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1, float x2, float x3) -> {
             try {
-                constants$229.PFNGLPROGRAMUNIFORM2FPROC$MH.invokeExact((Addressable)addr, x0, x1, x2, x3);
+                constants$229.PFNGLPROGRAMUNIFORM2FPROC$MH.invokeExact(symbol, x0, x1, x2, x3);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

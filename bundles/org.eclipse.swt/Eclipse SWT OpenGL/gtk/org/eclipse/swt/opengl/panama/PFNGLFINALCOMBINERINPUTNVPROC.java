@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLFINALCOMBINERINPUTNVPROC {
 
     void apply(int x0, int x1, int x2, int x3);
-    static MemoryAddress allocate(PFNGLFINALCOMBINERINPUTNVPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLFINALCOMBINERINPUTNVPROC.class, fi, constants$808.PFNGLFINALCOMBINERINPUTNVPROC$FUNC, "(IIII)V");
-    }
-    static MemoryAddress allocate(PFNGLFINALCOMBINERINPUTNVPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLFINALCOMBINERINPUTNVPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLFINALCOMBINERINPUTNVPROC.class, fi, constants$808.PFNGLFINALCOMBINERINPUTNVPROC$FUNC, "(IIII)V", scope);
     }
-    static PFNGLFINALCOMBINERINPUTNVPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, int x2, int x3) -> {
+    static PFNGLFINALCOMBINERINPUTNVPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLFINALCOMBINERINPUTNVPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1, int x2, int x3) -> {
             try {
-                constants$808.PFNGLFINALCOMBINERINPUTNVPROC$MH.invokeExact((Addressable)addr, x0, x1, x2, x3);
+                constants$808.PFNGLFINALCOMBINERINPUTNVPROC$MH.invokeExact(symbol, x0, x1, x2, x3);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

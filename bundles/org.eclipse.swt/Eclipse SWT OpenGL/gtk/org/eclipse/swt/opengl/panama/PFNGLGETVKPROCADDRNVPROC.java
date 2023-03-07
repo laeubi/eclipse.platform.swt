@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLGETVKPROCADDRNVPROC {
 
-    jdk.incubator.foreign.MemoryAddress apply(jdk.incubator.foreign.MemoryAddress x0);
-    static MemoryAddress allocate(PFNGLGETVKPROCADDRNVPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLGETVKPROCADDRNVPROC.class, fi, constants$738.PFNGLGETVKPROCADDRNVPROC$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;)Ljdk/incubator/foreign/MemoryAddress;");
+    jdk.incubator.foreign.Addressable apply(jdk.incubator.foreign.MemoryAddress x0);
+    static NativeSymbol allocate(PFNGLGETVKPROCADDRNVPROC fi, ResourceScope scope) {
+        return RuntimeHelper.upcallStub(PFNGLGETVKPROCADDRNVPROC.class, fi, constants$738.PFNGLGETVKPROCADDRNVPROC$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;)Ljdk/incubator/foreign/Addressable;", scope);
     }
-    static MemoryAddress allocate(PFNGLGETVKPROCADDRNVPROC fi, ResourceScope scope) {
-        return RuntimeHelper.upcallStub(PFNGLGETVKPROCADDRNVPROC.class, fi, constants$738.PFNGLGETVKPROCADDRNVPROC$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;)Ljdk/incubator/foreign/MemoryAddress;", scope);
-    }
-    static PFNGLGETVKPROCADDRNVPROC ofAddress(MemoryAddress addr) {
-        return (jdk.incubator.foreign.MemoryAddress x0) -> {
+    static PFNGLGETVKPROCADDRNVPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLGETVKPROCADDRNVPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (jdk.incubator.foreign.MemoryAddress x0) -> {
             try {
-                return (jdk.incubator.foreign.MemoryAddress)constants$738.PFNGLGETVKPROCADDRNVPROC$MH.invokeExact((Addressable)addr, x0);
+                return (jdk.incubator.foreign.Addressable)(jdk.incubator.foreign.MemoryAddress)constants$738.PFNGLGETVKPROCADDRNVPROC$MH.invokeExact(symbol, (jdk.incubator.foreign.Addressable)x0);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

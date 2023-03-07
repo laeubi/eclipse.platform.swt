@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLGETPROGRAMNAMEDPARAMETERDVNVPROC {
 
     void apply(int x0, int x1, jdk.incubator.foreign.MemoryAddress x2, jdk.incubator.foreign.MemoryAddress x3);
-    static MemoryAddress allocate(PFNGLGETPROGRAMNAMEDPARAMETERDVNVPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLGETPROGRAMNAMEDPARAMETERDVNVPROC.class, fi, constants$748.PFNGLGETPROGRAMNAMEDPARAMETERDVNVPROC$FUNC, "(IILjdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)V");
-    }
-    static MemoryAddress allocate(PFNGLGETPROGRAMNAMEDPARAMETERDVNVPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLGETPROGRAMNAMEDPARAMETERDVNVPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLGETPROGRAMNAMEDPARAMETERDVNVPROC.class, fi, constants$748.PFNGLGETPROGRAMNAMEDPARAMETERDVNVPROC$FUNC, "(IILjdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)V", scope);
     }
-    static PFNGLGETPROGRAMNAMEDPARAMETERDVNVPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, jdk.incubator.foreign.MemoryAddress x2, jdk.incubator.foreign.MemoryAddress x3) -> {
+    static PFNGLGETPROGRAMNAMEDPARAMETERDVNVPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLGETPROGRAMNAMEDPARAMETERDVNVPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1, jdk.incubator.foreign.MemoryAddress x2, jdk.incubator.foreign.MemoryAddress x3) -> {
             try {
-                constants$748.PFNGLGETPROGRAMNAMEDPARAMETERDVNVPROC$MH.invokeExact((Addressable)addr, x0, x1, x2, x3);
+                constants$748.PFNGLGETPROGRAMNAMEDPARAMETERDVNVPROC$MH.invokeExact(symbol, x0, x1, (jdk.incubator.foreign.Addressable)x2, (jdk.incubator.foreign.Addressable)x3);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

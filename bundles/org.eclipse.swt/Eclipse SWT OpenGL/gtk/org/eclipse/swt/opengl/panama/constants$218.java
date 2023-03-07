@@ -6,25 +6,22 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$218 {
 
     static final FunctionDescriptor PFNGLPAUSETRANSFORMFEEDBACKPROC$FUNC = FunctionDescriptor.ofVoid();
     static final MethodHandle PFNGLPAUSETRANSFORMFEEDBACKPROC$MH = RuntimeHelper.downcallHandle(
-        "()V",
         constants$218.PFNGLPAUSETRANSFORMFEEDBACKPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLRESUMETRANSFORMFEEDBACKPROC$FUNC = FunctionDescriptor.ofVoid();
     static final MethodHandle PFNGLRESUMETRANSFORMFEEDBACKPROC$MH = RuntimeHelper.downcallHandle(
-        "()V",
         constants$218.PFNGLRESUMETRANSFORMFEEDBACKPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLDRAWTRANSFORMFEEDBACKPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLDRAWTRANSFORMFEEDBACKPROC$MH = RuntimeHelper.downcallHandle(
-        "(II)V",
         constants$218.PFNGLDRAWTRANSFORMFEEDBACKPROC$FUNC, false
     );
 }

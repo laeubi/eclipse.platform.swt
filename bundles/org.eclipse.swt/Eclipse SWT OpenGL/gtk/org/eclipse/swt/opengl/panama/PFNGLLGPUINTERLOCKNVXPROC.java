@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLLGPUINTERLOCKNVXPROC {
 
     void apply();
-    static MemoryAddress allocate(PFNGLLGPUINTERLOCKNVXPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLLGPUINTERLOCKNVXPROC.class, fi, constants$721.PFNGLLGPUINTERLOCKNVXPROC$FUNC, "()V");
-    }
-    static MemoryAddress allocate(PFNGLLGPUINTERLOCKNVXPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLLGPUINTERLOCKNVXPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLLGPUINTERLOCKNVXPROC.class, fi, constants$721.PFNGLLGPUINTERLOCKNVXPROC$FUNC, "()V", scope);
     }
-    static PFNGLLGPUINTERLOCKNVXPROC ofAddress(MemoryAddress addr) {
-        return () -> {
+    static PFNGLLGPUINTERLOCKNVXPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLLGPUINTERLOCKNVXPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return () -> {
             try {
-                constants$721.PFNGLLGPUINTERLOCKNVXPROC$MH.invokeExact((Addressable)addr);
+                constants$721.PFNGLLGPUINTERLOCKNVXPROC$MH.invokeExact(symbol);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

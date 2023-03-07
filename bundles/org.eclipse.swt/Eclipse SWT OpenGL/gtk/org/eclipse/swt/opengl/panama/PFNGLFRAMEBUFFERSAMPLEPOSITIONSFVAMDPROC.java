@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLFRAMEBUFFERSAMPLEPOSITIONSFVAMDPROC {
 
     void apply(int x0, int x1, int x2, jdk.incubator.foreign.MemoryAddress x3);
-    static MemoryAddress allocate(PFNGLFRAMEBUFFERSAMPLEPOSITIONSFVAMDPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLFRAMEBUFFERSAMPLEPOSITIONSFVAMDPROC.class, fi, constants$455.PFNGLFRAMEBUFFERSAMPLEPOSITIONSFVAMDPROC$FUNC, "(IIILjdk/incubator/foreign/MemoryAddress;)V");
-    }
-    static MemoryAddress allocate(PFNGLFRAMEBUFFERSAMPLEPOSITIONSFVAMDPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLFRAMEBUFFERSAMPLEPOSITIONSFVAMDPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLFRAMEBUFFERSAMPLEPOSITIONSFVAMDPROC.class, fi, constants$455.PFNGLFRAMEBUFFERSAMPLEPOSITIONSFVAMDPROC$FUNC, "(IIILjdk/incubator/foreign/MemoryAddress;)V", scope);
     }
-    static PFNGLFRAMEBUFFERSAMPLEPOSITIONSFVAMDPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, int x2, jdk.incubator.foreign.MemoryAddress x3) -> {
+    static PFNGLFRAMEBUFFERSAMPLEPOSITIONSFVAMDPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLFRAMEBUFFERSAMPLEPOSITIONSFVAMDPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1, int x2, jdk.incubator.foreign.MemoryAddress x3) -> {
             try {
-                constants$455.PFNGLFRAMEBUFFERSAMPLEPOSITIONSFVAMDPROC$MH.invokeExact((Addressable)addr, x0, x1, x2, x3);
+                constants$455.PFNGLFRAMEBUFFERSAMPLEPOSITIONSFVAMDPROC$MH.invokeExact(symbol, x0, x1, x2, (jdk.incubator.foreign.Addressable)x3);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

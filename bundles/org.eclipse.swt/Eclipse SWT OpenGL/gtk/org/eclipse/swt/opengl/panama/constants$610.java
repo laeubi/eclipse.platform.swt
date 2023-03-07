@@ -6,40 +6,37 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$610 {
 
     static final FunctionDescriptor PFNGLCLEARNAMEDBUFFERDATAEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLCLEARNAMEDBUFFERDATAEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIIILjdk/incubator/foreign/MemoryAddress;)V",
         constants$610.PFNGLCLEARNAMEDBUFFERDATAEXTPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLCLEARNAMEDBUFFERSUBDATAEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_LONG,
-        C_LONG,
-        C_INT,
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLCLEARNAMEDBUFFERSUBDATAEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIJJIILjdk/incubator/foreign/MemoryAddress;)V",
         constants$610.PFNGLCLEARNAMEDBUFFERSUBDATAEXTPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLNAMEDFRAMEBUFFERPARAMETERIEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLNAMEDFRAMEBUFFERPARAMETERIEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(III)V",
         constants$610.PFNGLNAMEDFRAMEBUFFERPARAMETERIEXTPROC$FUNC, false
     );
 }

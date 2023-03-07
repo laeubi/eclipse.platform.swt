@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLVERTEXARRAYVERTEXOFFSETEXTPROC {
 
     void apply(int x0, int x1, int x2, int x3, int x4, long x5);
-    static MemoryAddress allocate(PFNGLVERTEXARRAYVERTEXOFFSETEXTPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLVERTEXARRAYVERTEXOFFSETEXTPROC.class, fi, constants$602.PFNGLVERTEXARRAYVERTEXOFFSETEXTPROC$FUNC, "(IIIIIJ)V");
-    }
-    static MemoryAddress allocate(PFNGLVERTEXARRAYVERTEXOFFSETEXTPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLVERTEXARRAYVERTEXOFFSETEXTPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLVERTEXARRAYVERTEXOFFSETEXTPROC.class, fi, constants$602.PFNGLVERTEXARRAYVERTEXOFFSETEXTPROC$FUNC, "(IIIIIJ)V", scope);
     }
-    static PFNGLVERTEXARRAYVERTEXOFFSETEXTPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, int x2, int x3, int x4, long x5) -> {
+    static PFNGLVERTEXARRAYVERTEXOFFSETEXTPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLVERTEXARRAYVERTEXOFFSETEXTPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1, int x2, int x3, int x4, long x5) -> {
             try {
-                constants$602.PFNGLVERTEXARRAYVERTEXOFFSETEXTPROC$MH.invokeExact((Addressable)addr, x0, x1, x2, x3, x4, x5);
+                constants$602.PFNGLVERTEXARRAYVERTEXOFFSETEXTPROC$MH.invokeExact(symbol, x0, x1, x2, x3, x4, x5);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

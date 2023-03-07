@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLISIMAGEHANDLERESIDENTARBPROC {
 
     byte apply(long x0);
-    static MemoryAddress allocate(PFNGLISIMAGEHANDLERESIDENTARBPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLISIMAGEHANDLERESIDENTARBPROC.class, fi, constants$317.PFNGLISIMAGEHANDLERESIDENTARBPROC$FUNC, "(J)B");
-    }
-    static MemoryAddress allocate(PFNGLISIMAGEHANDLERESIDENTARBPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLISIMAGEHANDLERESIDENTARBPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLISIMAGEHANDLERESIDENTARBPROC.class, fi, constants$317.PFNGLISIMAGEHANDLERESIDENTARBPROC$FUNC, "(J)B", scope);
     }
-    static PFNGLISIMAGEHANDLERESIDENTARBPROC ofAddress(MemoryAddress addr) {
-        return (long x0) -> {
+    static PFNGLISIMAGEHANDLERESIDENTARBPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLISIMAGEHANDLERESIDENTARBPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (long x0) -> {
             try {
-                return (byte)constants$317.PFNGLISIMAGEHANDLERESIDENTARBPROC$MH.invokeExact((Addressable)addr, x0);
+                return (byte)constants$317.PFNGLISIMAGEHANDLERESIDENTARBPROC$MH.invokeExact(symbol, x0);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

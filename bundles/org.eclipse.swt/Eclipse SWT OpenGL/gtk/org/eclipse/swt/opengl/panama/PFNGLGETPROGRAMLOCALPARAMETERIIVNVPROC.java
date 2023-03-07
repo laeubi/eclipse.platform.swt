@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLGETPROGRAMLOCALPARAMETERIIVNVPROC {
 
     void apply(int x0, int x1, jdk.incubator.foreign.MemoryAddress x2);
-    static MemoryAddress allocate(PFNGLGETPROGRAMLOCALPARAMETERIIVNVPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLGETPROGRAMLOCALPARAMETERIIVNVPROC.class, fi, constants$759.PFNGLGETPROGRAMLOCALPARAMETERIIVNVPROC$FUNC, "(IILjdk/incubator/foreign/MemoryAddress;)V");
-    }
-    static MemoryAddress allocate(PFNGLGETPROGRAMLOCALPARAMETERIIVNVPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLGETPROGRAMLOCALPARAMETERIIVNVPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLGETPROGRAMLOCALPARAMETERIIVNVPROC.class, fi, constants$759.PFNGLGETPROGRAMLOCALPARAMETERIIVNVPROC$FUNC, "(IILjdk/incubator/foreign/MemoryAddress;)V", scope);
     }
-    static PFNGLGETPROGRAMLOCALPARAMETERIIVNVPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, jdk.incubator.foreign.MemoryAddress x2) -> {
+    static PFNGLGETPROGRAMLOCALPARAMETERIIVNVPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLGETPROGRAMLOCALPARAMETERIIVNVPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1, jdk.incubator.foreign.MemoryAddress x2) -> {
             try {
-                constants$759.PFNGLGETPROGRAMLOCALPARAMETERIIVNVPROC$MH.invokeExact((Addressable)addr, x0, x1, x2);
+                constants$759.PFNGLGETPROGRAMLOCALPARAMETERIIVNVPROC$MH.invokeExact(symbol, x0, x1, (jdk.incubator.foreign.Addressable)x2);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

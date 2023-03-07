@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLEVALUATEDEPTHVALUESARBPROC {
 
     void apply();
-    static MemoryAddress allocate(PFNGLEVALUATEDEPTHVALUESARBPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLEVALUATEDEPTHVALUESARBPROC.class, fi, constants$358.PFNGLEVALUATEDEPTHVALUESARBPROC$FUNC, "()V");
-    }
-    static MemoryAddress allocate(PFNGLEVALUATEDEPTHVALUESARBPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLEVALUATEDEPTHVALUESARBPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLEVALUATEDEPTHVALUESARBPROC.class, fi, constants$358.PFNGLEVALUATEDEPTHVALUESARBPROC$FUNC, "()V", scope);
     }
-    static PFNGLEVALUATEDEPTHVALUESARBPROC ofAddress(MemoryAddress addr) {
-        return () -> {
+    static PFNGLEVALUATEDEPTHVALUESARBPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLEVALUATEDEPTHVALUESARBPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return () -> {
             try {
-                constants$358.PFNGLEVALUATEDEPTHVALUESARBPROC$MH.invokeExact((Addressable)addr);
+                constants$358.PFNGLEVALUATEDEPTHVALUESARBPROC$MH.invokeExact(symbol);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

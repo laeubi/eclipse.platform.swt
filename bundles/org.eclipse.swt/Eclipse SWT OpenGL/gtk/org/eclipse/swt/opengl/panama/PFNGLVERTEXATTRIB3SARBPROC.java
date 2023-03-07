@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLVERTEXATTRIB3SARBPROC {
 
     void apply(int x0, short x1, short x2, short x3);
-    static MemoryAddress allocate(PFNGLVERTEXATTRIB3SARBPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLVERTEXATTRIB3SARBPROC.class, fi, constants$391.PFNGLVERTEXATTRIB3SARBPROC$FUNC, "(ISSS)V");
-    }
-    static MemoryAddress allocate(PFNGLVERTEXATTRIB3SARBPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLVERTEXATTRIB3SARBPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLVERTEXATTRIB3SARBPROC.class, fi, constants$391.PFNGLVERTEXATTRIB3SARBPROC$FUNC, "(ISSS)V", scope);
     }
-    static PFNGLVERTEXATTRIB3SARBPROC ofAddress(MemoryAddress addr) {
-        return (int x0, short x1, short x2, short x3) -> {
+    static PFNGLVERTEXATTRIB3SARBPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLVERTEXATTRIB3SARBPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, short x1, short x2, short x3) -> {
             try {
-                constants$391.PFNGLVERTEXATTRIB3SARBPROC$MH.invokeExact((Addressable)addr, x0, x1, x2, x3);
+                constants$391.PFNGLVERTEXATTRIB3SARBPROC$MH.invokeExact(symbol, x0, x1, x2, x3);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

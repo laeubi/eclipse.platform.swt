@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLFRAMETERMINATORGREMEDYPROC {
 
     void apply();
-    static MemoryAddress allocate(PFNGLFRAMETERMINATORGREMEDYPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLFRAMETERMINATORGREMEDYPROC.class, fi, constants$699.PFNGLFRAMETERMINATORGREMEDYPROC$FUNC, "()V");
-    }
-    static MemoryAddress allocate(PFNGLFRAMETERMINATORGREMEDYPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLFRAMETERMINATORGREMEDYPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLFRAMETERMINATORGREMEDYPROC.class, fi, constants$699.PFNGLFRAMETERMINATORGREMEDYPROC$FUNC, "()V", scope);
     }
-    static PFNGLFRAMETERMINATORGREMEDYPROC ofAddress(MemoryAddress addr) {
-        return () -> {
+    static PFNGLFRAMETERMINATORGREMEDYPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLFRAMETERMINATORGREMEDYPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return () -> {
             try {
-                constants$699.PFNGLFRAMETERMINATORGREMEDYPROC$MH.invokeExact((Addressable)addr);
+                constants$699.PFNGLFRAMETERMINATORGREMEDYPROC$MH.invokeExact(symbol);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

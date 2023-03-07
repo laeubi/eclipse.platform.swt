@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLMULTICASTBUFFERSUBDATANVPROC {
 
     void apply(int x0, int x1, long x2, long x3, jdk.incubator.foreign.MemoryAddress x4);
-    static MemoryAddress allocate(PFNGLMULTICASTBUFFERSUBDATANVPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLMULTICASTBUFFERSUBDATANVPROC.class, fi, constants$751.PFNGLMULTICASTBUFFERSUBDATANVPROC$FUNC, "(IIJJLjdk/incubator/foreign/MemoryAddress;)V");
-    }
-    static MemoryAddress allocate(PFNGLMULTICASTBUFFERSUBDATANVPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLMULTICASTBUFFERSUBDATANVPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLMULTICASTBUFFERSUBDATANVPROC.class, fi, constants$751.PFNGLMULTICASTBUFFERSUBDATANVPROC$FUNC, "(IIJJLjdk/incubator/foreign/MemoryAddress;)V", scope);
     }
-    static PFNGLMULTICASTBUFFERSUBDATANVPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, long x2, long x3, jdk.incubator.foreign.MemoryAddress x4) -> {
+    static PFNGLMULTICASTBUFFERSUBDATANVPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLMULTICASTBUFFERSUBDATANVPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1, long x2, long x3, jdk.incubator.foreign.MemoryAddress x4) -> {
             try {
-                constants$751.PFNGLMULTICASTBUFFERSUBDATANVPROC$MH.invokeExact((Addressable)addr, x0, x1, x2, x3, x4);
+                constants$751.PFNGLMULTICASTBUFFERSUBDATANVPROC$MH.invokeExact(symbol, x0, x1, x2, x3, (jdk.incubator.foreign.Addressable)x4);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

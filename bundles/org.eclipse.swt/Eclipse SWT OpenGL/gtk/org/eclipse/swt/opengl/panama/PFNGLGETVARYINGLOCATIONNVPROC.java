@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLGETVARYINGLOCATIONNVPROC {
 
     int apply(int x0, jdk.incubator.foreign.MemoryAddress x1);
-    static MemoryAddress allocate(PFNGLGETVARYINGLOCATIONNVPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLGETVARYINGLOCATIONNVPROC.class, fi, constants$822.PFNGLGETVARYINGLOCATIONNVPROC$FUNC, "(ILjdk/incubator/foreign/MemoryAddress;)I");
-    }
-    static MemoryAddress allocate(PFNGLGETVARYINGLOCATIONNVPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLGETVARYINGLOCATIONNVPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLGETVARYINGLOCATIONNVPROC.class, fi, constants$822.PFNGLGETVARYINGLOCATIONNVPROC$FUNC, "(ILjdk/incubator/foreign/MemoryAddress;)I", scope);
     }
-    static PFNGLGETVARYINGLOCATIONNVPROC ofAddress(MemoryAddress addr) {
-        return (int x0, jdk.incubator.foreign.MemoryAddress x1) -> {
+    static PFNGLGETVARYINGLOCATIONNVPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLGETVARYINGLOCATIONNVPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, jdk.incubator.foreign.MemoryAddress x1) -> {
             try {
-                return (int)constants$822.PFNGLGETVARYINGLOCATIONNVPROC$MH.invokeExact((Addressable)addr, x0, x1);
+                return (int)constants$822.PFNGLGETVARYINGLOCATIONNVPROC$MH.invokeExact(symbol, x0, (jdk.incubator.foreign.Addressable)x1);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

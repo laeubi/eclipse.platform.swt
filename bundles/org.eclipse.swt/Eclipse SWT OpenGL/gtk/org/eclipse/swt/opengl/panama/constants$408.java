@@ -6,34 +6,31 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$408 {
 
     static final FunctionDescriptor PFNGLMULTITEXCOORD2BOESPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_CHAR,
-        C_CHAR
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_CHAR$LAYOUT,
+        Constants$root.C_CHAR$LAYOUT
     );
     static final MethodHandle PFNGLMULTITEXCOORD2BOESPROC$MH = RuntimeHelper.downcallHandle(
-        "(IBB)V",
         constants$408.PFNGLMULTITEXCOORD2BOESPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLMULTITEXCOORD2BVOESPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLMULTITEXCOORD2BVOESPROC$MH = RuntimeHelper.downcallHandle(
-        "(ILjdk/incubator/foreign/MemoryAddress;)V",
         constants$408.PFNGLMULTITEXCOORD2BVOESPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLMULTITEXCOORD3BOESPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_CHAR,
-        C_CHAR,
-        C_CHAR
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_CHAR$LAYOUT,
+        Constants$root.C_CHAR$LAYOUT,
+        Constants$root.C_CHAR$LAYOUT
     );
     static final MethodHandle PFNGLMULTITEXCOORD3BOESPROC$MH = RuntimeHelper.downcallHandle(
-        "(IBBB)V",
         constants$408.PFNGLMULTITEXCOORD3BOESPROC$FUNC, false
     );
 }

@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLDELETETRANSFORMFEEDBACKSPROC {
 
     void apply(int x0, jdk.incubator.foreign.MemoryAddress x1);
-    static MemoryAddress allocate(PFNGLDELETETRANSFORMFEEDBACKSPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLDELETETRANSFORMFEEDBACKSPROC.class, fi, constants$217.PFNGLDELETETRANSFORMFEEDBACKSPROC$FUNC, "(ILjdk/incubator/foreign/MemoryAddress;)V");
-    }
-    static MemoryAddress allocate(PFNGLDELETETRANSFORMFEEDBACKSPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLDELETETRANSFORMFEEDBACKSPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLDELETETRANSFORMFEEDBACKSPROC.class, fi, constants$217.PFNGLDELETETRANSFORMFEEDBACKSPROC$FUNC, "(ILjdk/incubator/foreign/MemoryAddress;)V", scope);
     }
-    static PFNGLDELETETRANSFORMFEEDBACKSPROC ofAddress(MemoryAddress addr) {
-        return (int x0, jdk.incubator.foreign.MemoryAddress x1) -> {
+    static PFNGLDELETETRANSFORMFEEDBACKSPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLDELETETRANSFORMFEEDBACKSPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, jdk.incubator.foreign.MemoryAddress x1) -> {
             try {
-                constants$217.PFNGLDELETETRANSFORMFEEDBACKSPROC$MH.invokeExact((Addressable)addr, x0, x1);
+                constants$217.PFNGLDELETETRANSFORMFEEDBACKSPROC$MH.invokeExact(symbol, x0, (jdk.incubator.foreign.Addressable)x1);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

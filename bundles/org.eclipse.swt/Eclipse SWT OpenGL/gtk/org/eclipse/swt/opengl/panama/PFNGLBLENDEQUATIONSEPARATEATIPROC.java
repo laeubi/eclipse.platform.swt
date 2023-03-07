@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLBLENDEQUATIONSEPARATEATIPROC {
 
     void apply(int x0, int x1);
-    static MemoryAddress allocate(PFNGLBLENDEQUATIONSEPARATEATIPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLBLENDEQUATIONSEPARATEATIPROC.class, fi, constants$919.PFNGLBLENDEQUATIONSEPARATEATIPROC$FUNC, "(II)V");
-    }
-    static MemoryAddress allocate(PFNGLBLENDEQUATIONSEPARATEATIPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLBLENDEQUATIONSEPARATEATIPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLBLENDEQUATIONSEPARATEATIPROC.class, fi, constants$919.PFNGLBLENDEQUATIONSEPARATEATIPROC$FUNC, "(II)V", scope);
     }
-    static PFNGLBLENDEQUATIONSEPARATEATIPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1) -> {
+    static PFNGLBLENDEQUATIONSEPARATEATIPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLBLENDEQUATIONSEPARATEATIPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1) -> {
             try {
-                constants$919.PFNGLBLENDEQUATIONSEPARATEATIPROC$MH.invokeExact((Addressable)addr, x0, x1);
+                constants$919.PFNGLBLENDEQUATIONSEPARATEATIPROC$MH.invokeExact(symbol, x0, x1);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

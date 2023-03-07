@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLSAMPLEMASKIPROC {
 
     void apply(int x0, int x1);
-    static MemoryAddress allocate(PFNGLSAMPLEMASKIPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLSAMPLEMASKIPROC.class, fi, constants$185.PFNGLSAMPLEMASKIPROC$FUNC, "(II)V");
-    }
-    static MemoryAddress allocate(PFNGLSAMPLEMASKIPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLSAMPLEMASKIPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLSAMPLEMASKIPROC.class, fi, constants$185.PFNGLSAMPLEMASKIPROC$FUNC, "(II)V", scope);
     }
-    static PFNGLSAMPLEMASKIPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1) -> {
+    static PFNGLSAMPLEMASKIPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLSAMPLEMASKIPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1) -> {
             try {
-                constants$185.PFNGLSAMPLEMASKIPROC$MH.invokeExact((Addressable)addr, x0, x1);
+                constants$185.PFNGLSAMPLEMASKIPROC$MH.invokeExact(symbol, x0, x1);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

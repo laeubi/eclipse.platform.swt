@@ -6,37 +6,34 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$313 {
 
     static final FunctionDescriptor PFNGLPOLYGONOFFSETCLAMPPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_FLOAT,
-        C_FLOAT,
-        C_FLOAT
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT
     );
     static final MethodHandle PFNGLPOLYGONOFFSETCLAMPPROC$MH = RuntimeHelper.downcallHandle(
-        "(FFF)V",
         constants$313.PFNGLPOLYGONOFFSETCLAMPPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLPRIMITIVEBOUNDINGBOXARBPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_FLOAT,
-        C_FLOAT,
-        C_FLOAT,
-        C_FLOAT,
-        C_FLOAT,
-        C_FLOAT,
-        C_FLOAT,
-        C_FLOAT
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT
     );
     static final MethodHandle PFNGLPRIMITIVEBOUNDINGBOXARBPROC$MH = RuntimeHelper.downcallHandle(
-        "(FFFFFFFF)V",
         constants$313.PFNGLPRIMITIVEBOUNDINGBOXARBPROC$FUNC, false
     );
-    static final FunctionDescriptor PFNGLGETTEXTUREHANDLEARBPROC$FUNC = FunctionDescriptor.of(C_LONG,
-        C_INT
+    static final FunctionDescriptor PFNGLGETTEXTUREHANDLEARBPROC$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLGETTEXTUREHANDLEARBPROC$MH = RuntimeHelper.downcallHandle(
-        "(I)J",
         constants$313.PFNGLGETTEXTUREHANDLEARBPROC$FUNC, false
     );
 }

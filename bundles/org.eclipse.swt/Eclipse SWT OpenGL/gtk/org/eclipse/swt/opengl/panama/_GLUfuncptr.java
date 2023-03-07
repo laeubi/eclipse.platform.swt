@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface _GLUfuncptr {
 
     void apply();
-    static MemoryAddress allocate(_GLUfuncptr fi) {
-        return RuntimeHelper.upcallStub(_GLUfuncptr.class, fi, constants$920._GLUfuncptr$FUNC, "()V");
-    }
-    static MemoryAddress allocate(_GLUfuncptr fi, ResourceScope scope) {
+    static NativeSymbol allocate(_GLUfuncptr fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(_GLUfuncptr.class, fi, constants$920._GLUfuncptr$FUNC, "()V", scope);
     }
-    static _GLUfuncptr ofAddress(MemoryAddress addr) {
-        return () -> {
+    static _GLUfuncptr ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("_GLUfuncptr::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return () -> {
             try {
-                constants$920._GLUfuncptr$MH.invokeExact((Addressable)addr);
+                constants$920._GLUfuncptr$MH.invokeExact(symbol);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLAPPLYFRAMEBUFFERATTACHMENTCMAAINTELPROC {
 
     void apply();
-    static MemoryAddress allocate(PFNGLAPPLYFRAMEBUFFERATTACHMENTCMAAINTELPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLAPPLYFRAMEBUFFERATTACHMENTCMAAINTELPROC.class, fi, constants$706.PFNGLAPPLYFRAMEBUFFERATTACHMENTCMAAINTELPROC$FUNC, "()V");
-    }
-    static MemoryAddress allocate(PFNGLAPPLYFRAMEBUFFERATTACHMENTCMAAINTELPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLAPPLYFRAMEBUFFERATTACHMENTCMAAINTELPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLAPPLYFRAMEBUFFERATTACHMENTCMAAINTELPROC.class, fi, constants$706.PFNGLAPPLYFRAMEBUFFERATTACHMENTCMAAINTELPROC$FUNC, "()V", scope);
     }
-    static PFNGLAPPLYFRAMEBUFFERATTACHMENTCMAAINTELPROC ofAddress(MemoryAddress addr) {
-        return () -> {
+    static PFNGLAPPLYFRAMEBUFFERATTACHMENTCMAAINTELPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLAPPLYFRAMEBUFFERATTACHMENTCMAAINTELPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return () -> {
             try {
-                constants$706.PFNGLAPPLYFRAMEBUFFERATTACHMENTCMAAINTELPROC$MH.invokeExact((Addressable)addr);
+                constants$706.PFNGLAPPLYFRAMEBUFFERATTACHMENTCMAAINTELPROC$MH.invokeExact(symbol);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

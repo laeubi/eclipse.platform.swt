@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLMAPTEXTURE2DINTELPROC {
 
-    jdk.incubator.foreign.MemoryAddress apply(int x0, int x1, int x2, jdk.incubator.foreign.MemoryAddress x3, jdk.incubator.foreign.MemoryAddress x4);
-    static MemoryAddress allocate(PFNGLMAPTEXTURE2DINTELPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLMAPTEXTURE2DINTELPROC.class, fi, constants$707.PFNGLMAPTEXTURE2DINTELPROC$FUNC, "(IIILjdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)Ljdk/incubator/foreign/MemoryAddress;");
+    jdk.incubator.foreign.Addressable apply(int x0, int x1, int x2, jdk.incubator.foreign.MemoryAddress x3, jdk.incubator.foreign.MemoryAddress x4);
+    static NativeSymbol allocate(PFNGLMAPTEXTURE2DINTELPROC fi, ResourceScope scope) {
+        return RuntimeHelper.upcallStub(PFNGLMAPTEXTURE2DINTELPROC.class, fi, constants$707.PFNGLMAPTEXTURE2DINTELPROC$FUNC, "(IIILjdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)Ljdk/incubator/foreign/Addressable;", scope);
     }
-    static MemoryAddress allocate(PFNGLMAPTEXTURE2DINTELPROC fi, ResourceScope scope) {
-        return RuntimeHelper.upcallStub(PFNGLMAPTEXTURE2DINTELPROC.class, fi, constants$707.PFNGLMAPTEXTURE2DINTELPROC$FUNC, "(IIILjdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)Ljdk/incubator/foreign/MemoryAddress;", scope);
-    }
-    static PFNGLMAPTEXTURE2DINTELPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, int x2, jdk.incubator.foreign.MemoryAddress x3, jdk.incubator.foreign.MemoryAddress x4) -> {
+    static PFNGLMAPTEXTURE2DINTELPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLMAPTEXTURE2DINTELPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1, int x2, jdk.incubator.foreign.MemoryAddress x3, jdk.incubator.foreign.MemoryAddress x4) -> {
             try {
-                return (jdk.incubator.foreign.MemoryAddress)constants$707.PFNGLMAPTEXTURE2DINTELPROC$MH.invokeExact((Addressable)addr, x0, x1, x2, x3, x4);
+                return (jdk.incubator.foreign.Addressable)(jdk.incubator.foreign.MemoryAddress)constants$707.PFNGLMAPTEXTURE2DINTELPROC$MH.invokeExact(symbol, x0, x1, x2, (jdk.incubator.foreign.Addressable)x3, (jdk.incubator.foreign.Addressable)x4);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

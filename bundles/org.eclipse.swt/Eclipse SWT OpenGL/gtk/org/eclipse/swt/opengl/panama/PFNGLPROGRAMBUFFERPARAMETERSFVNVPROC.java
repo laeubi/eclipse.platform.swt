@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLPROGRAMBUFFERPARAMETERSFVNVPROC {
 
     void apply(int x0, int x1, int x2, int x3, jdk.incubator.foreign.MemoryAddress x4);
-    static MemoryAddress allocate(PFNGLPROGRAMBUFFERPARAMETERSFVNVPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLPROGRAMBUFFERPARAMETERSFVNVPROC.class, fi, constants$779.PFNGLPROGRAMBUFFERPARAMETERSFVNVPROC$FUNC, "(IIIILjdk/incubator/foreign/MemoryAddress;)V");
-    }
-    static MemoryAddress allocate(PFNGLPROGRAMBUFFERPARAMETERSFVNVPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLPROGRAMBUFFERPARAMETERSFVNVPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLPROGRAMBUFFERPARAMETERSFVNVPROC.class, fi, constants$779.PFNGLPROGRAMBUFFERPARAMETERSFVNVPROC$FUNC, "(IIIILjdk/incubator/foreign/MemoryAddress;)V", scope);
     }
-    static PFNGLPROGRAMBUFFERPARAMETERSFVNVPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, int x2, int x3, jdk.incubator.foreign.MemoryAddress x4) -> {
+    static PFNGLPROGRAMBUFFERPARAMETERSFVNVPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLPROGRAMBUFFERPARAMETERSFVNVPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1, int x2, int x3, jdk.incubator.foreign.MemoryAddress x4) -> {
             try {
-                constants$779.PFNGLPROGRAMBUFFERPARAMETERSFVNVPROC$MH.invokeExact((Addressable)addr, x0, x1, x2, x3, x4);
+                constants$779.PFNGLPROGRAMBUFFERPARAMETERSFVNVPROC$MH.invokeExact(symbol, x0, x1, x2, x3, (jdk.incubator.foreign.Addressable)x4);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

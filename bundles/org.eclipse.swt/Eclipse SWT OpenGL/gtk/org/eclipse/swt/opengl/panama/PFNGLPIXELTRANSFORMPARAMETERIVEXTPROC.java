@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLPIXELTRANSFORMPARAMETERIVEXTPROC {
 
     void apply(int x0, int x1, jdk.incubator.foreign.MemoryAddress x2);
-    static MemoryAddress allocate(PFNGLPIXELTRANSFORMPARAMETERIVEXTPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLPIXELTRANSFORMPARAMETERIVEXTPROC.class, fi, constants$652.PFNGLPIXELTRANSFORMPARAMETERIVEXTPROC$FUNC, "(IILjdk/incubator/foreign/MemoryAddress;)V");
-    }
-    static MemoryAddress allocate(PFNGLPIXELTRANSFORMPARAMETERIVEXTPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLPIXELTRANSFORMPARAMETERIVEXTPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLPIXELTRANSFORMPARAMETERIVEXTPROC.class, fi, constants$652.PFNGLPIXELTRANSFORMPARAMETERIVEXTPROC$FUNC, "(IILjdk/incubator/foreign/MemoryAddress;)V", scope);
     }
-    static PFNGLPIXELTRANSFORMPARAMETERIVEXTPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, jdk.incubator.foreign.MemoryAddress x2) -> {
+    static PFNGLPIXELTRANSFORMPARAMETERIVEXTPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLPIXELTRANSFORMPARAMETERIVEXTPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1, jdk.incubator.foreign.MemoryAddress x2) -> {
             try {
-                constants$652.PFNGLPIXELTRANSFORMPARAMETERIVEXTPROC$MH.invokeExact((Addressable)addr, x0, x1, x2);
+                constants$652.PFNGLPIXELTRANSFORMPARAMETERIVEXTPROC$MH.invokeExact(symbol, x0, x1, (jdk.incubator.foreign.Addressable)x2);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

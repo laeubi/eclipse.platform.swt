@@ -6,42 +6,37 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$937 {
 
     static final FunctionDescriptor glutShowOverlay$FUNC = FunctionDescriptor.ofVoid();
     static final MethodHandle glutShowOverlay$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glutShowOverlay",
-        "()V",
+        "glutShowOverlay",
         constants$937.glutShowOverlay$FUNC, false
     );
     static final FunctionDescriptor glutHideOverlay$FUNC = FunctionDescriptor.ofVoid();
     static final MethodHandle glutHideOverlay$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glutHideOverlay",
-        "()V",
+        "glutHideOverlay",
         constants$937.glutHideOverlay$FUNC, false
     );
     static final FunctionDescriptor glutCreateMenu$callback$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle glutCreateMenu$callback$MH = RuntimeHelper.downcallHandle(
-        "(I)V",
         constants$937.glutCreateMenu$callback$FUNC, false
     );
-    static final FunctionDescriptor glutCreateMenu$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER
+    static final FunctionDescriptor glutCreateMenu$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle glutCreateMenu$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glutCreateMenu",
-        "(Ljdk/incubator/foreign/MemoryAddress;)I",
+        "glutCreateMenu",
         constants$937.glutCreateMenu$FUNC, false
     );
     static final FunctionDescriptor glutDestroyMenu$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle glutDestroyMenu$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glutDestroyMenu",
-        "(I)V",
+        "glutDestroyMenu",
         constants$937.glutDestroyMenu$FUNC, false
     );
 }

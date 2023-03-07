@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLGETIMAGETRANSFORMPARAMETERIVHPPROC {
 
     void apply(int x0, int x1, jdk.incubator.foreign.MemoryAddress x2);
-    static MemoryAddress allocate(PFNGLGETIMAGETRANSFORMPARAMETERIVHPPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLGETIMAGETRANSFORMPARAMETERIVHPPROC.class, fi, constants$701.PFNGLGETIMAGETRANSFORMPARAMETERIVHPPROC$FUNC, "(IILjdk/incubator/foreign/MemoryAddress;)V");
-    }
-    static MemoryAddress allocate(PFNGLGETIMAGETRANSFORMPARAMETERIVHPPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLGETIMAGETRANSFORMPARAMETERIVHPPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLGETIMAGETRANSFORMPARAMETERIVHPPROC.class, fi, constants$701.PFNGLGETIMAGETRANSFORMPARAMETERIVHPPROC$FUNC, "(IILjdk/incubator/foreign/MemoryAddress;)V", scope);
     }
-    static PFNGLGETIMAGETRANSFORMPARAMETERIVHPPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, jdk.incubator.foreign.MemoryAddress x2) -> {
+    static PFNGLGETIMAGETRANSFORMPARAMETERIVHPPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLGETIMAGETRANSFORMPARAMETERIVHPPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1, jdk.incubator.foreign.MemoryAddress x2) -> {
             try {
-                constants$701.PFNGLGETIMAGETRANSFORMPARAMETERIVHPPROC$MH.invokeExact((Addressable)addr, x0, x1, x2);
+                constants$701.PFNGLGETIMAGETRANSFORMPARAMETERIVHPPROC$MH.invokeExact(symbol, x0, x1, (jdk.incubator.foreign.Addressable)x2);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

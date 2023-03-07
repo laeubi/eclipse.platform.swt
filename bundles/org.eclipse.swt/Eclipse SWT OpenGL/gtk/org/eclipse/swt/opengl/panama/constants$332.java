@@ -6,34 +6,31 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$332 {
 
     static final FunctionDescriptor PFNGLUNIFORM1I64ARBPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_LONG
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT
     );
     static final MethodHandle PFNGLUNIFORM1I64ARBPROC$MH = RuntimeHelper.downcallHandle(
-        "(IJ)V",
         constants$332.PFNGLUNIFORM1I64ARBPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLUNIFORM2I64ARBPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_LONG,
-        C_LONG
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT
     );
     static final MethodHandle PFNGLUNIFORM2I64ARBPROC$MH = RuntimeHelper.downcallHandle(
-        "(IJJ)V",
         constants$332.PFNGLUNIFORM2I64ARBPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLUNIFORM3I64ARBPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_LONG,
-        C_LONG,
-        C_LONG
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT
     );
     static final MethodHandle PFNGLUNIFORM3I64ARBPROC$MH = RuntimeHelper.downcallHandle(
-        "(IJJJ)V",
         constants$332.PFNGLUNIFORM3I64ARBPROC$FUNC, false
     );
 }

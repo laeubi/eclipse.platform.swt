@@ -6,27 +6,24 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$824 {
 
     static final FunctionDescriptor PFNGLGENTRANSFORMFEEDBACKSNVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLGENTRANSFORMFEEDBACKSNVPROC$MH = RuntimeHelper.downcallHandle(
-        "(ILjdk/incubator/foreign/MemoryAddress;)V",
         constants$824.PFNGLGENTRANSFORMFEEDBACKSNVPROC$FUNC, false
     );
-    static final FunctionDescriptor PFNGLISTRANSFORMFEEDBACKNVPROC$FUNC = FunctionDescriptor.of(C_CHAR,
-        C_INT
+    static final FunctionDescriptor PFNGLISTRANSFORMFEEDBACKNVPROC$FUNC = FunctionDescriptor.of(Constants$root.C_CHAR$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLISTRANSFORMFEEDBACKNVPROC$MH = RuntimeHelper.downcallHandle(
-        "(I)B",
         constants$824.PFNGLISTRANSFORMFEEDBACKNVPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLPAUSETRANSFORMFEEDBACKNVPROC$FUNC = FunctionDescriptor.ofVoid();
     static final MethodHandle PFNGLPAUSETRANSFORMFEEDBACKNVPROC$MH = RuntimeHelper.downcallHandle(
-        "()V",
         constants$824.PFNGLPAUSETRANSFORMFEEDBACKNVPROC$FUNC, false
     );
 }

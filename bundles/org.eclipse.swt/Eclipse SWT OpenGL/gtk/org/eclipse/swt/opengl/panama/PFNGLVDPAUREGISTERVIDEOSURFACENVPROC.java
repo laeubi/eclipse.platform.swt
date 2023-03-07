@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLVDPAUREGISTERVIDEOSURFACENVPROC {
 
     long apply(jdk.incubator.foreign.MemoryAddress x0, int x1, int x2, jdk.incubator.foreign.MemoryAddress x3);
-    static MemoryAddress allocate(PFNGLVDPAUREGISTERVIDEOSURFACENVPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLVDPAUREGISTERVIDEOSURFACENVPROC.class, fi, constants$826.PFNGLVDPAUREGISTERVIDEOSURFACENVPROC$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;IILjdk/incubator/foreign/MemoryAddress;)J");
-    }
-    static MemoryAddress allocate(PFNGLVDPAUREGISTERVIDEOSURFACENVPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLVDPAUREGISTERVIDEOSURFACENVPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLVDPAUREGISTERVIDEOSURFACENVPROC.class, fi, constants$826.PFNGLVDPAUREGISTERVIDEOSURFACENVPROC$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;IILjdk/incubator/foreign/MemoryAddress;)J", scope);
     }
-    static PFNGLVDPAUREGISTERVIDEOSURFACENVPROC ofAddress(MemoryAddress addr) {
-        return (jdk.incubator.foreign.MemoryAddress x0, int x1, int x2, jdk.incubator.foreign.MemoryAddress x3) -> {
+    static PFNGLVDPAUREGISTERVIDEOSURFACENVPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLVDPAUREGISTERVIDEOSURFACENVPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (jdk.incubator.foreign.MemoryAddress x0, int x1, int x2, jdk.incubator.foreign.MemoryAddress x3) -> {
             try {
-                return (long)constants$826.PFNGLVDPAUREGISTERVIDEOSURFACENVPROC$MH.invokeExact((Addressable)addr, x0, x1, x2, x3);
+                return (long)constants$826.PFNGLVDPAUREGISTERVIDEOSURFACENVPROC$MH.invokeExact(symbol, (jdk.incubator.foreign.Addressable)x0, x1, x2, (jdk.incubator.foreign.Addressable)x3);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

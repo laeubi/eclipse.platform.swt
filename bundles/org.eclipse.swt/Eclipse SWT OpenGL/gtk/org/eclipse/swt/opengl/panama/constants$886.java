@@ -6,33 +6,30 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$886 {
 
     static final FunctionDescriptor PFNGLFRAGMENTLIGHTMODELIVSGIXPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLFRAGMENTLIGHTMODELIVSGIXPROC$MH = RuntimeHelper.downcallHandle(
-        "(ILjdk/incubator/foreign/MemoryAddress;)V",
         constants$886.PFNGLFRAGMENTLIGHTMODELIVSGIXPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLFRAGMENTMATERIALFSGIXPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_FLOAT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT
     );
     static final MethodHandle PFNGLFRAGMENTMATERIALFSGIXPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIF)V",
         constants$886.PFNGLFRAGMENTMATERIALFSGIXPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLFRAGMENTMATERIALFVSGIXPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLFRAGMENTMATERIALFVSGIXPROC$MH = RuntimeHelper.downcallHandle(
-        "(IILjdk/incubator/foreign/MemoryAddress;)V",
         constants$886.PFNGLFRAGMENTMATERIALFVSGIXPROC$FUNC, false
     );
 }

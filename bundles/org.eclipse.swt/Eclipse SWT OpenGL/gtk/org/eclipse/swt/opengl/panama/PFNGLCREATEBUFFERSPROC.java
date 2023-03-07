@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLCREATEBUFFERSPROC {
 
     void apply(int x0, jdk.incubator.foreign.MemoryAddress x1);
-    static MemoryAddress allocate(PFNGLCREATEBUFFERSPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLCREATEBUFFERSPROC.class, fi, constants$273.PFNGLCREATEBUFFERSPROC$FUNC, "(ILjdk/incubator/foreign/MemoryAddress;)V");
-    }
-    static MemoryAddress allocate(PFNGLCREATEBUFFERSPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLCREATEBUFFERSPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLCREATEBUFFERSPROC.class, fi, constants$273.PFNGLCREATEBUFFERSPROC$FUNC, "(ILjdk/incubator/foreign/MemoryAddress;)V", scope);
     }
-    static PFNGLCREATEBUFFERSPROC ofAddress(MemoryAddress addr) {
-        return (int x0, jdk.incubator.foreign.MemoryAddress x1) -> {
+    static PFNGLCREATEBUFFERSPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLCREATEBUFFERSPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, jdk.incubator.foreign.MemoryAddress x1) -> {
             try {
-                constants$273.PFNGLCREATEBUFFERSPROC$MH.invokeExact((Addressable)addr, x0, x1);
+                constants$273.PFNGLCREATEBUFFERSPROC$MH.invokeExact(symbol, x0, (jdk.incubator.foreign.Addressable)x1);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLDELETEBUFFERSARBPROC {
 
     void apply(int x0, jdk.incubator.foreign.MemoryAddress x1);
-    static MemoryAddress allocate(PFNGLDELETEBUFFERSARBPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLDELETEBUFFERSARBPROC.class, fi, constants$382.PFNGLDELETEBUFFERSARBPROC$FUNC, "(ILjdk/incubator/foreign/MemoryAddress;)V");
-    }
-    static MemoryAddress allocate(PFNGLDELETEBUFFERSARBPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLDELETEBUFFERSARBPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLDELETEBUFFERSARBPROC.class, fi, constants$382.PFNGLDELETEBUFFERSARBPROC$FUNC, "(ILjdk/incubator/foreign/MemoryAddress;)V", scope);
     }
-    static PFNGLDELETEBUFFERSARBPROC ofAddress(MemoryAddress addr) {
-        return (int x0, jdk.incubator.foreign.MemoryAddress x1) -> {
+    static PFNGLDELETEBUFFERSARBPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLDELETEBUFFERSARBPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, jdk.incubator.foreign.MemoryAddress x1) -> {
             try {
-                constants$382.PFNGLDELETEBUFFERSARBPROC$MH.invokeExact((Addressable)addr, x0, x1);
+                constants$382.PFNGLDELETEBUFFERSARBPROC$MH.invokeExact(symbol, x0, (jdk.incubator.foreign.Addressable)x1);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

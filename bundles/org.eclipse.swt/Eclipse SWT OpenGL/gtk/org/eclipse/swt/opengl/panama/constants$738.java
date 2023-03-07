@@ -6,36 +6,33 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$738 {
 
     static final FunctionDescriptor GLVULKANPROCNV$FUNC = FunctionDescriptor.ofVoid();
     static final MethodHandle GLVULKANPROCNV$MH = RuntimeHelper.downcallHandle(
-        "()V",
         constants$738.GLVULKANPROCNV$FUNC, false
     );
     static final FunctionDescriptor PFNGLDRAWVKIMAGENVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_LONG,
-        C_INT,
-        C_FLOAT,
-        C_FLOAT,
-        C_FLOAT,
-        C_FLOAT,
-        C_FLOAT,
-        C_FLOAT,
-        C_FLOAT,
-        C_FLOAT,
-        C_FLOAT
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT
     );
     static final MethodHandle PFNGLDRAWVKIMAGENVPROC$MH = RuntimeHelper.downcallHandle(
-        "(JIFFFFFFFFF)V",
         constants$738.PFNGLDRAWVKIMAGENVPROC$FUNC, false
     );
-    static final FunctionDescriptor PFNGLGETVKPROCADDRNVPROC$FUNC = FunctionDescriptor.of(C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor PFNGLGETVKPROCADDRNVPROC$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLGETVKPROCADDRNVPROC$MH = RuntimeHelper.downcallHandle(
-        "(Ljdk/incubator/foreign/MemoryAddress;)Ljdk/incubator/foreign/MemoryAddress;",
         constants$738.PFNGLGETVKPROCADDRNVPROC$FUNC, false
     );
 }

@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLFRAMEBUFFERFETCHBARRIEREXTPROC {
 
     void apply();
-    static MemoryAddress allocate(PFNGLFRAMEBUFFERFETCHBARRIEREXTPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLFRAMEBUFFERFETCHBARRIEREXTPROC.class, fi, constants$665.PFNGLFRAMEBUFFERFETCHBARRIEREXTPROC$FUNC, "()V");
-    }
-    static MemoryAddress allocate(PFNGLFRAMEBUFFERFETCHBARRIEREXTPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLFRAMEBUFFERFETCHBARRIEREXTPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLFRAMEBUFFERFETCHBARRIEREXTPROC.class, fi, constants$665.PFNGLFRAMEBUFFERFETCHBARRIEREXTPROC$FUNC, "()V", scope);
     }
-    static PFNGLFRAMEBUFFERFETCHBARRIEREXTPROC ofAddress(MemoryAddress addr) {
-        return () -> {
+    static PFNGLFRAMEBUFFERFETCHBARRIEREXTPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLFRAMEBUFFERFETCHBARRIEREXTPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return () -> {
             try {
-                constants$665.PFNGLFRAMEBUFFERFETCHBARRIEREXTPROC$MH.invokeExact((Addressable)addr);
+                constants$665.PFNGLFRAMEBUFFERFETCHBARRIEREXTPROC$MH.invokeExact(symbol);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

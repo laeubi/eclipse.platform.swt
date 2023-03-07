@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLGETQUERYINDEXEDIVPROC {
 
     void apply(int x0, int x1, int x2, jdk.incubator.foreign.MemoryAddress x3);
-    static MemoryAddress allocate(PFNGLGETQUERYINDEXEDIVPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLGETQUERYINDEXEDIVPROC.class, fi, constants$220.PFNGLGETQUERYINDEXEDIVPROC$FUNC, "(IIILjdk/incubator/foreign/MemoryAddress;)V");
-    }
-    static MemoryAddress allocate(PFNGLGETQUERYINDEXEDIVPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLGETQUERYINDEXEDIVPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLGETQUERYINDEXEDIVPROC.class, fi, constants$220.PFNGLGETQUERYINDEXEDIVPROC$FUNC, "(IIILjdk/incubator/foreign/MemoryAddress;)V", scope);
     }
-    static PFNGLGETQUERYINDEXEDIVPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, int x2, jdk.incubator.foreign.MemoryAddress x3) -> {
+    static PFNGLGETQUERYINDEXEDIVPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLGETQUERYINDEXEDIVPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1, int x2, jdk.incubator.foreign.MemoryAddress x3) -> {
             try {
-                constants$220.PFNGLGETQUERYINDEXEDIVPROC$MH.invokeExact((Addressable)addr, x0, x1, x2, x3);
+                constants$220.PFNGLGETQUERYINDEXEDIVPROC$MH.invokeExact(symbol, x0, x1, x2, (jdk.incubator.foreign.Addressable)x3);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

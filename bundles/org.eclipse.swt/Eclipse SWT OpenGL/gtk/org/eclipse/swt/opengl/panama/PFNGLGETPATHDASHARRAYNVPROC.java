@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLGETPATHDASHARRAYNVPROC {
 
     void apply(int x0, jdk.incubator.foreign.MemoryAddress x1);
-    static MemoryAddress allocate(PFNGLGETPATHDASHARRAYNVPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLGETPATHDASHARRAYNVPROC.class, fi, constants$791.PFNGLGETPATHDASHARRAYNVPROC$FUNC, "(ILjdk/incubator/foreign/MemoryAddress;)V");
-    }
-    static MemoryAddress allocate(PFNGLGETPATHDASHARRAYNVPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLGETPATHDASHARRAYNVPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLGETPATHDASHARRAYNVPROC.class, fi, constants$791.PFNGLGETPATHDASHARRAYNVPROC$FUNC, "(ILjdk/incubator/foreign/MemoryAddress;)V", scope);
     }
-    static PFNGLGETPATHDASHARRAYNVPROC ofAddress(MemoryAddress addr) {
-        return (int x0, jdk.incubator.foreign.MemoryAddress x1) -> {
+    static PFNGLGETPATHDASHARRAYNVPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLGETPATHDASHARRAYNVPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, jdk.incubator.foreign.MemoryAddress x1) -> {
             try {
-                constants$791.PFNGLGETPATHDASHARRAYNVPROC$MH.invokeExact((Addressable)addr, x0, x1);
+                constants$791.PFNGLGETPATHDASHARRAYNVPROC$MH.invokeExact(symbol, x0, (jdk.incubator.foreign.Addressable)x1);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

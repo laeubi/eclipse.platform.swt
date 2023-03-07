@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLPROGRAMUNIFORM3FEXTPROC {
 
     void apply(int x0, int x1, float x2, float x3, float x4);
-    static MemoryAddress allocate(PFNGLPROGRAMUNIFORM3FEXTPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLPROGRAMUNIFORM3FEXTPROC.class, fi, constants$574.PFNGLPROGRAMUNIFORM3FEXTPROC$FUNC, "(IIFFF)V");
-    }
-    static MemoryAddress allocate(PFNGLPROGRAMUNIFORM3FEXTPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLPROGRAMUNIFORM3FEXTPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLPROGRAMUNIFORM3FEXTPROC.class, fi, constants$574.PFNGLPROGRAMUNIFORM3FEXTPROC$FUNC, "(IIFFF)V", scope);
     }
-    static PFNGLPROGRAMUNIFORM3FEXTPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, float x2, float x3, float x4) -> {
+    static PFNGLPROGRAMUNIFORM3FEXTPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLPROGRAMUNIFORM3FEXTPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1, float x2, float x3, float x4) -> {
             try {
-                constants$574.PFNGLPROGRAMUNIFORM3FEXTPROC$MH.invokeExact((Addressable)addr, x0, x1, x2, x3, x4);
+                constants$574.PFNGLPROGRAMUNIFORM3FEXTPROC$MH.invokeExact(symbol, x0, x1, x2, x3, x4);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

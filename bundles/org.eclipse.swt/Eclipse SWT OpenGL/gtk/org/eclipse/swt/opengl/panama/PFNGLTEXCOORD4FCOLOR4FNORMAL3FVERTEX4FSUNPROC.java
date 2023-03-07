@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLTEXCOORD4FCOLOR4FNORMAL3FVERTEX4FSUNPROC {
 
     void apply(float x0, float x1, float x2, float x3, float x4, float x5, float x6, float x7, float x8, float x9, float x10, float x11, float x12, float x13, float x14);
-    static MemoryAddress allocate(PFNGLTEXCOORD4FCOLOR4FNORMAL3FVERTEX4FSUNPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLTEXCOORD4FCOLOR4FNORMAL3FVERTEX4FSUNPROC.class, fi, constants$913.PFNGLTEXCOORD4FCOLOR4FNORMAL3FVERTEX4FSUNPROC$FUNC, "(FFFFFFFFFFFFFFF)V");
-    }
-    static MemoryAddress allocate(PFNGLTEXCOORD4FCOLOR4FNORMAL3FVERTEX4FSUNPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLTEXCOORD4FCOLOR4FNORMAL3FVERTEX4FSUNPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLTEXCOORD4FCOLOR4FNORMAL3FVERTEX4FSUNPROC.class, fi, constants$913.PFNGLTEXCOORD4FCOLOR4FNORMAL3FVERTEX4FSUNPROC$FUNC, "(FFFFFFFFFFFFFFF)V", scope);
     }
-    static PFNGLTEXCOORD4FCOLOR4FNORMAL3FVERTEX4FSUNPROC ofAddress(MemoryAddress addr) {
-        return (float x0, float x1, float x2, float x3, float x4, float x5, float x6, float x7, float x8, float x9, float x10, float x11, float x12, float x13, float x14) -> {
+    static PFNGLTEXCOORD4FCOLOR4FNORMAL3FVERTEX4FSUNPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLTEXCOORD4FCOLOR4FNORMAL3FVERTEX4FSUNPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (float x0, float x1, float x2, float x3, float x4, float x5, float x6, float x7, float x8, float x9, float x10, float x11, float x12, float x13, float x14) -> {
             try {
-                constants$913.PFNGLTEXCOORD4FCOLOR4FNORMAL3FVERTEX4FSUNPROC$MH.invokeExact((Addressable)addr, x0, x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11, x12, x13, x14);
+                constants$913.PFNGLTEXCOORD4FCOLOR4FNORMAL3FVERTEX4FSUNPROC$MH.invokeExact(symbol, x0, x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11, x12, x13, x14);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

@@ -6,67 +6,61 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$20 {
 
     static final FunctionDescriptor glColor3b$FUNC = FunctionDescriptor.ofVoid(
-        C_CHAR,
-        C_CHAR,
-        C_CHAR
+        Constants$root.C_CHAR$LAYOUT,
+        Constants$root.C_CHAR$LAYOUT,
+        Constants$root.C_CHAR$LAYOUT
     );
     static final MethodHandle glColor3b$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glColor3b",
-        "(BBB)V",
+        "glColor3b",
         constants$20.glColor3b$FUNC, false
     );
     static final FunctionDescriptor glColor3d$FUNC = FunctionDescriptor.ofVoid(
-        C_DOUBLE,
-        C_DOUBLE,
-        C_DOUBLE
+        Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT
     );
     static final MethodHandle glColor3d$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glColor3d",
-        "(DDD)V",
+        "glColor3d",
         constants$20.glColor3d$FUNC, false
     );
     static final FunctionDescriptor glColor3f$FUNC = FunctionDescriptor.ofVoid(
-        C_FLOAT,
-        C_FLOAT,
-        C_FLOAT
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT
     );
     static final MethodHandle glColor3f$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glColor3f",
-        "(FFF)V",
+        "glColor3f",
         constants$20.glColor3f$FUNC, false
     );
     static final FunctionDescriptor glColor3i$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle glColor3i$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glColor3i",
-        "(III)V",
+        "glColor3i",
         constants$20.glColor3i$FUNC, false
     );
     static final FunctionDescriptor glColor3s$FUNC = FunctionDescriptor.ofVoid(
-        C_SHORT,
-        C_SHORT,
-        C_SHORT
+        Constants$root.C_SHORT$LAYOUT,
+        Constants$root.C_SHORT$LAYOUT,
+        Constants$root.C_SHORT$LAYOUT
     );
     static final MethodHandle glColor3s$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glColor3s",
-        "(SSS)V",
+        "glColor3s",
         constants$20.glColor3s$FUNC, false
     );
     static final FunctionDescriptor glColor3ub$FUNC = FunctionDescriptor.ofVoid(
-        C_CHAR,
-        C_CHAR,
-        C_CHAR
+        Constants$root.C_CHAR$LAYOUT,
+        Constants$root.C_CHAR$LAYOUT,
+        Constants$root.C_CHAR$LAYOUT
     );
     static final MethodHandle glColor3ub$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glColor3ub",
-        "(BBB)V",
+        "glColor3ub",
         constants$20.glColor3ub$FUNC, false
     );
 }

@@ -6,31 +6,28 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$297 {
 
     static final FunctionDescriptor PFNGLCREATEVERTEXARRAYSPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLCREATEVERTEXARRAYSPROC$MH = RuntimeHelper.downcallHandle(
-        "(ILjdk/incubator/foreign/MemoryAddress;)V",
         constants$297.PFNGLCREATEVERTEXARRAYSPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLDISABLEVERTEXARRAYATTRIBPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLDISABLEVERTEXARRAYATTRIBPROC$MH = RuntimeHelper.downcallHandle(
-        "(II)V",
         constants$297.PFNGLDISABLEVERTEXARRAYATTRIBPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLENABLEVERTEXARRAYATTRIBPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLENABLEVERTEXARRAYATTRIBPROC$MH = RuntimeHelper.downcallHandle(
-        "(II)V",
         constants$297.PFNGLENABLEVERTEXARRAYATTRIBPROC$FUNC, false
     );
 }

@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLMAPBUFFERARBPROC {
 
-    jdk.incubator.foreign.MemoryAddress apply(int x0, int x1);
-    static MemoryAddress allocate(PFNGLMAPBUFFERARBPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLMAPBUFFERARBPROC.class, fi, constants$384.PFNGLMAPBUFFERARBPROC$FUNC, "(II)Ljdk/incubator/foreign/MemoryAddress;");
+    jdk.incubator.foreign.Addressable apply(int x0, int x1);
+    static NativeSymbol allocate(PFNGLMAPBUFFERARBPROC fi, ResourceScope scope) {
+        return RuntimeHelper.upcallStub(PFNGLMAPBUFFERARBPROC.class, fi, constants$384.PFNGLMAPBUFFERARBPROC$FUNC, "(II)Ljdk/incubator/foreign/Addressable;", scope);
     }
-    static MemoryAddress allocate(PFNGLMAPBUFFERARBPROC fi, ResourceScope scope) {
-        return RuntimeHelper.upcallStub(PFNGLMAPBUFFERARBPROC.class, fi, constants$384.PFNGLMAPBUFFERARBPROC$FUNC, "(II)Ljdk/incubator/foreign/MemoryAddress;", scope);
-    }
-    static PFNGLMAPBUFFERARBPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1) -> {
+    static PFNGLMAPBUFFERARBPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLMAPBUFFERARBPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1) -> {
             try {
-                return (jdk.incubator.foreign.MemoryAddress)constants$384.PFNGLMAPBUFFERARBPROC$MH.invokeExact((Addressable)addr, x0, x1);
+                return (jdk.incubator.foreign.Addressable)(jdk.incubator.foreign.MemoryAddress)constants$384.PFNGLMAPBUFFERARBPROC$MH.invokeExact(symbol, x0, x1);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

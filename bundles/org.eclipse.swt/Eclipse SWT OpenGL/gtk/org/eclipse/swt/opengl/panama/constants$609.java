@@ -6,36 +6,33 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$609 {
 
-    static final FunctionDescriptor PFNGLMAPNAMEDBUFFERRANGEEXTPROC$FUNC = FunctionDescriptor.of(C_POINTER,
-        C_INT,
-        C_LONG,
-        C_LONG,
-        C_INT
+    static final FunctionDescriptor PFNGLMAPNAMEDBUFFERRANGEEXTPROC$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLMAPNAMEDBUFFERRANGEEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(IJJI)Ljdk/incubator/foreign/MemoryAddress;",
         constants$609.PFNGLMAPNAMEDBUFFERRANGEEXTPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLFLUSHMAPPEDNAMEDBUFFERRANGEEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_LONG,
-        C_LONG
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT
     );
     static final MethodHandle PFNGLFLUSHMAPPEDNAMEDBUFFERRANGEEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(IJJ)V",
         constants$609.PFNGLFLUSHMAPPEDNAMEDBUFFERRANGEEXTPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLNAMEDBUFFERSTORAGEEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_LONG,
-        C_POINTER,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLNAMEDBUFFERSTORAGEEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(IJLjdk/incubator/foreign/MemoryAddress;I)V",
         constants$609.PFNGLNAMEDBUFFERSTORAGEEXTPROC$FUNC, false
     );
 }

@@ -6,28 +6,25 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$735 {
 
     static final FunctionDescriptor PFNGLENDCONDITIONALRENDERNVPROC$FUNC = FunctionDescriptor.ofVoid();
     static final MethodHandle PFNGLENDCONDITIONALRENDERNVPROC$MH = RuntimeHelper.downcallHandle(
-        "()V",
         constants$735.PFNGLENDCONDITIONALRENDERNVPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLSUBPIXELPRECISIONBIASNVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLSUBPIXELPRECISIONBIASNVPROC$MH = RuntimeHelper.downcallHandle(
-        "(II)V",
         constants$735.PFNGLSUBPIXELPRECISIONBIASNVPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLCONSERVATIVERASTERPARAMETERFNVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_FLOAT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT
     );
     static final MethodHandle PFNGLCONSERVATIVERASTERPARAMETERFNVPROC$MH = RuntimeHelper.downcallHandle(
-        "(IF)V",
         constants$735.PFNGLCONSERVATIVERASTERPARAMETERFNVPROC$FUNC, false
     );
 }

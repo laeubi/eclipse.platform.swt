@@ -6,31 +6,28 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$485 {
 
     static final FunctionDescriptor PFNGLENABLEVERTEXATTRIBAPPLEPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLENABLEVERTEXATTRIBAPPLEPROC$MH = RuntimeHelper.downcallHandle(
-        "(II)V",
         constants$485.PFNGLENABLEVERTEXATTRIBAPPLEPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLDISABLEVERTEXATTRIBAPPLEPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLDISABLEVERTEXATTRIBAPPLEPROC$MH = RuntimeHelper.downcallHandle(
-        "(II)V",
         constants$485.PFNGLDISABLEVERTEXATTRIBAPPLEPROC$FUNC, false
     );
-    static final FunctionDescriptor PFNGLISVERTEXATTRIBENABLEDAPPLEPROC$FUNC = FunctionDescriptor.of(C_CHAR,
-        C_INT,
-        C_INT
+    static final FunctionDescriptor PFNGLISVERTEXATTRIBENABLEDAPPLEPROC$FUNC = FunctionDescriptor.of(Constants$root.C_CHAR$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLISVERTEXATTRIBENABLEDAPPLEPROC$MH = RuntimeHelper.downcallHandle(
-        "(II)B",
         constants$485.PFNGLISVERTEXATTRIBENABLEDAPPLEPROC$FUNC, false
     );
 }

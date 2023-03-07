@@ -6,55 +6,49 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$28 {
 
     static final FunctionDescriptor glTexCoord1dv$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle glTexCoord1dv$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glTexCoord1dv",
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
+        "glTexCoord1dv",
         constants$28.glTexCoord1dv$FUNC, false
     );
     static final FunctionDescriptor glTexCoord1fv$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle glTexCoord1fv$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glTexCoord1fv",
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
+        "glTexCoord1fv",
         constants$28.glTexCoord1fv$FUNC, false
     );
     static final FunctionDescriptor glTexCoord1iv$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle glTexCoord1iv$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glTexCoord1iv",
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
+        "glTexCoord1iv",
         constants$28.glTexCoord1iv$FUNC, false
     );
     static final FunctionDescriptor glTexCoord1sv$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle glTexCoord1sv$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glTexCoord1sv",
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
+        "glTexCoord1sv",
         constants$28.glTexCoord1sv$FUNC, false
     );
     static final FunctionDescriptor glTexCoord2dv$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle glTexCoord2dv$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glTexCoord2dv",
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
+        "glTexCoord2dv",
         constants$28.glTexCoord2dv$FUNC, false
     );
     static final FunctionDescriptor glTexCoord2fv$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle glTexCoord2fv$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glTexCoord2fv",
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
+        "glTexCoord2fv",
         constants$28.glTexCoord2fv$FUNC, false
     );
 }

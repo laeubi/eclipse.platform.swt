@@ -6,34 +6,31 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$243 {
 
     static final FunctionDescriptor PFNGLVERTEXATTRIBL1DPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_DOUBLE
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT
     );
     static final MethodHandle PFNGLVERTEXATTRIBL1DPROC$MH = RuntimeHelper.downcallHandle(
-        "(ID)V",
         constants$243.PFNGLVERTEXATTRIBL1DPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLVERTEXATTRIBL2DPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_DOUBLE,
-        C_DOUBLE
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT
     );
     static final MethodHandle PFNGLVERTEXATTRIBL2DPROC$MH = RuntimeHelper.downcallHandle(
-        "(IDD)V",
         constants$243.PFNGLVERTEXATTRIBL2DPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLVERTEXATTRIBL3DPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_DOUBLE,
-        C_DOUBLE,
-        C_DOUBLE
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT
     );
     static final MethodHandle PFNGLVERTEXATTRIBL3DPROC$MH = RuntimeHelper.downcallHandle(
-        "(IDDD)V",
         constants$243.PFNGLVERTEXATTRIBL3DPROC$FUNC, false
     );
 }

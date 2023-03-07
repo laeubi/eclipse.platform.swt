@@ -6,13 +6,13 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1003 {
 
-    static final MemorySegment SCNuPTR$SEGMENT = CLinker.toCString("lu", ResourceScope.newImplicitScope());
-    static final MemorySegment SCNxPTR$SEGMENT = CLinker.toCString("lx", ResourceScope.newImplicitScope());
+    static final MemorySegment SCNuPTR$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lu");
+    static final MemorySegment SCNxPTR$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lx");
     static final MemoryAddress NULL$ADDR = MemoryAddress.ofLong(0L);
-    static final MemorySegment __FD_ZERO_STOS$SEGMENT = CLinker.toCString("stosq", ResourceScope.newImplicitScope());
+    static final MemorySegment __FD_ZERO_STOS$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("stosq");
 }
 
 

@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLFRAGMENTLIGHTFSGIXPROC {
 
     void apply(int x0, int x1, float x2);
-    static MemoryAddress allocate(PFNGLFRAGMENTLIGHTFSGIXPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLFRAGMENTLIGHTFSGIXPROC.class, fi, constants$883.PFNGLFRAGMENTLIGHTFSGIXPROC$FUNC, "(IIF)V");
-    }
-    static MemoryAddress allocate(PFNGLFRAGMENTLIGHTFSGIXPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLFRAGMENTLIGHTFSGIXPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLFRAGMENTLIGHTFSGIXPROC.class, fi, constants$883.PFNGLFRAGMENTLIGHTFSGIXPROC$FUNC, "(IIF)V", scope);
     }
-    static PFNGLFRAGMENTLIGHTFSGIXPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, float x2) -> {
+    static PFNGLFRAGMENTLIGHTFSGIXPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLFRAGMENTLIGHTFSGIXPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1, float x2) -> {
             try {
-                constants$883.PFNGLFRAGMENTLIGHTFSGIXPROC$MH.invokeExact((Addressable)addr, x0, x1, x2);
+                constants$883.PFNGLFRAGMENTLIGHTFSGIXPROC$MH.invokeExact(symbol, x0, x1, x2);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

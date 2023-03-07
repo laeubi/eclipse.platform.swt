@@ -6,35 +6,32 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$598 {
 
     static final FunctionDescriptor PFNGLNAMEDFRAMEBUFFERRENDERBUFFEREXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLNAMEDFRAMEBUFFERRENDERBUFFEREXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIII)V",
         constants$598.PFNGLNAMEDFRAMEBUFFERRENDERBUFFEREXTPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLGETNAMEDFRAMEBUFFERATTACHMENTPARAMETERIVEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLGETNAMEDFRAMEBUFFERATTACHMENTPARAMETERIVEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIILjdk/incubator/foreign/MemoryAddress;)V",
         constants$598.PFNGLGETNAMEDFRAMEBUFFERATTACHMENTPARAMETERIVEXTPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLGENERATETEXTUREMIPMAPEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLGENERATETEXTUREMIPMAPEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(II)V",
         constants$598.PFNGLGENERATETEXTUREMIPMAPEXTPROC$FUNC, false
     );
 }

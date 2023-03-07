@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLVDPAUISSURFACENVPROC {
 
     byte apply(long x0);
-    static MemoryAddress allocate(PFNGLVDPAUISSURFACENVPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLVDPAUISSURFACENVPROC.class, fi, constants$827.PFNGLVDPAUISSURFACENVPROC$FUNC, "(J)B");
-    }
-    static MemoryAddress allocate(PFNGLVDPAUISSURFACENVPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLVDPAUISSURFACENVPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLVDPAUISSURFACENVPROC.class, fi, constants$827.PFNGLVDPAUISSURFACENVPROC$FUNC, "(J)B", scope);
     }
-    static PFNGLVDPAUISSURFACENVPROC ofAddress(MemoryAddress addr) {
-        return (long x0) -> {
+    static PFNGLVDPAUISSURFACENVPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLVDPAUISSURFACENVPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (long x0) -> {
             try {
-                return (byte)constants$827.PFNGLVDPAUISSURFACENVPROC$MH.invokeExact((Addressable)addr, x0);
+                return (byte)constants$827.PFNGLVDPAUISSURFACENVPROC$MH.invokeExact(symbol, x0);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

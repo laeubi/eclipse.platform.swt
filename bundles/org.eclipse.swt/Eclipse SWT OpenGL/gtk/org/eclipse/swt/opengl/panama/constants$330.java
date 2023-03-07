@@ -6,33 +6,30 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$330 {
 
-    static final FunctionDescriptor PFNGLISPROGRAMARBPROC$FUNC = FunctionDescriptor.of(C_CHAR,
-        C_INT
+    static final FunctionDescriptor PFNGLISPROGRAMARBPROC$FUNC = FunctionDescriptor.of(Constants$root.C_CHAR$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLISPROGRAMARBPROC$MH = RuntimeHelper.downcallHandle(
-        "(I)B",
         constants$330.PFNGLISPROGRAMARBPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLPROGRAMPARAMETERIARBPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLPROGRAMPARAMETERIARBPROC$MH = RuntimeHelper.downcallHandle(
-        "(III)V",
         constants$330.PFNGLPROGRAMPARAMETERIARBPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLFRAMEBUFFERTEXTUREARBPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLFRAMEBUFFERTEXTUREARBPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIII)V",
         constants$330.PFNGLFRAMEBUFFERTEXTUREARBPROC$FUNC, false
     );
 }

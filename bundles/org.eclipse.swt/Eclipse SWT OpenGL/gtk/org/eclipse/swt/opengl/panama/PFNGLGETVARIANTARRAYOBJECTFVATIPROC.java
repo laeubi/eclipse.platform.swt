@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLGETVARIANTARRAYOBJECTFVATIPROC {
 
     void apply(int x0, int x1, jdk.incubator.foreign.MemoryAddress x2);
-    static MemoryAddress allocate(PFNGLGETVARIANTARRAYOBJECTFVATIPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLGETVARIANTARRAYOBJECTFVATIPROC.class, fi, constants$500.PFNGLGETVARIANTARRAYOBJECTFVATIPROC$FUNC, "(IILjdk/incubator/foreign/MemoryAddress;)V");
-    }
-    static MemoryAddress allocate(PFNGLGETVARIANTARRAYOBJECTFVATIPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLGETVARIANTARRAYOBJECTFVATIPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLGETVARIANTARRAYOBJECTFVATIPROC.class, fi, constants$500.PFNGLGETVARIANTARRAYOBJECTFVATIPROC$FUNC, "(IILjdk/incubator/foreign/MemoryAddress;)V", scope);
     }
-    static PFNGLGETVARIANTARRAYOBJECTFVATIPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, jdk.incubator.foreign.MemoryAddress x2) -> {
+    static PFNGLGETVARIANTARRAYOBJECTFVATIPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLGETVARIANTARRAYOBJECTFVATIPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1, jdk.incubator.foreign.MemoryAddress x2) -> {
             try {
-                constants$500.PFNGLGETVARIANTARRAYOBJECTFVATIPROC$MH.invokeExact((Addressable)addr, x0, x1, x2);
+                constants$500.PFNGLGETVARIANTARRAYOBJECTFVATIPROC$MH.invokeExact(symbol, x0, x1, (jdk.incubator.foreign.Addressable)x2);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

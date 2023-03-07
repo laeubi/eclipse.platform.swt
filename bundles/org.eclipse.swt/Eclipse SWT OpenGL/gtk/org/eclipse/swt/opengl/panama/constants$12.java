@@ -6,57 +6,51 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$12 {
 
     static final FunctionDescriptor glCallLists$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle glCallLists$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glCallLists",
-        "(IILjdk/incubator/foreign/MemoryAddress;)V",
+        "glCallLists",
         constants$12.glCallLists$FUNC, false
     );
     static final FunctionDescriptor glListBase$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle glListBase$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glListBase",
-        "(I)V",
+        "glListBase",
         constants$12.glListBase$FUNC, false
     );
     static final FunctionDescriptor glBegin$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle glBegin$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glBegin",
-        "(I)V",
+        "glBegin",
         constants$12.glBegin$FUNC, false
     );
     static final FunctionDescriptor glEnd$FUNC = FunctionDescriptor.ofVoid();
     static final MethodHandle glEnd$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glEnd",
-        "()V",
+        "glEnd",
         constants$12.glEnd$FUNC, false
     );
     static final FunctionDescriptor glVertex2d$FUNC = FunctionDescriptor.ofVoid(
-        C_DOUBLE,
-        C_DOUBLE
+        Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT
     );
     static final MethodHandle glVertex2d$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glVertex2d",
-        "(DD)V",
+        "glVertex2d",
         constants$12.glVertex2d$FUNC, false
     );
     static final FunctionDescriptor glVertex2f$FUNC = FunctionDescriptor.ofVoid(
-        C_FLOAT,
-        C_FLOAT
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT
     );
     static final MethodHandle glVertex2f$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glVertex2f",
-        "(FF)V",
+        "glVertex2f",
         constants$12.glVertex2f$FUNC, false
     );
 }

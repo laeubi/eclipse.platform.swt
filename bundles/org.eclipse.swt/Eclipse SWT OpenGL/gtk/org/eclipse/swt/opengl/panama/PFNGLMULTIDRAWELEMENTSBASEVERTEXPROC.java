@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLMULTIDRAWELEMENTSBASEVERTEXPROC {
 
     void apply(int x0, jdk.incubator.foreign.MemoryAddress x1, int x2, jdk.incubator.foreign.MemoryAddress x3, int x4, jdk.incubator.foreign.MemoryAddress x5);
-    static MemoryAddress allocate(PFNGLMULTIDRAWELEMENTSBASEVERTEXPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLMULTIDRAWELEMENTSBASEVERTEXPROC.class, fi, constants$180.PFNGLMULTIDRAWELEMENTSBASEVERTEXPROC$FUNC, "(ILjdk/incubator/foreign/MemoryAddress;ILjdk/incubator/foreign/MemoryAddress;ILjdk/incubator/foreign/MemoryAddress;)V");
-    }
-    static MemoryAddress allocate(PFNGLMULTIDRAWELEMENTSBASEVERTEXPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLMULTIDRAWELEMENTSBASEVERTEXPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLMULTIDRAWELEMENTSBASEVERTEXPROC.class, fi, constants$180.PFNGLMULTIDRAWELEMENTSBASEVERTEXPROC$FUNC, "(ILjdk/incubator/foreign/MemoryAddress;ILjdk/incubator/foreign/MemoryAddress;ILjdk/incubator/foreign/MemoryAddress;)V", scope);
     }
-    static PFNGLMULTIDRAWELEMENTSBASEVERTEXPROC ofAddress(MemoryAddress addr) {
-        return (int x0, jdk.incubator.foreign.MemoryAddress x1, int x2, jdk.incubator.foreign.MemoryAddress x3, int x4, jdk.incubator.foreign.MemoryAddress x5) -> {
+    static PFNGLMULTIDRAWELEMENTSBASEVERTEXPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLMULTIDRAWELEMENTSBASEVERTEXPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, jdk.incubator.foreign.MemoryAddress x1, int x2, jdk.incubator.foreign.MemoryAddress x3, int x4, jdk.incubator.foreign.MemoryAddress x5) -> {
             try {
-                constants$180.PFNGLMULTIDRAWELEMENTSBASEVERTEXPROC$MH.invokeExact((Addressable)addr, x0, x1, x2, x3, x4, x5);
+                constants$180.PFNGLMULTIDRAWELEMENTSBASEVERTEXPROC$MH.invokeExact(symbol, x0, (jdk.incubator.foreign.Addressable)x1, x2, (jdk.incubator.foreign.Addressable)x3, x4, (jdk.incubator.foreign.Addressable)x5);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

@@ -6,40 +6,37 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$239 {
 
     static final FunctionDescriptor PFNGLPROGRAMUNIFORMMATRIX2X4FVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_CHAR,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_CHAR$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLPROGRAMUNIFORMMATRIX2X4FVPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIIBLjdk/incubator/foreign/MemoryAddress;)V",
         constants$239.PFNGLPROGRAMUNIFORMMATRIX2X4FVPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLPROGRAMUNIFORMMATRIX4X2FVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_CHAR,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_CHAR$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLPROGRAMUNIFORMMATRIX4X2FVPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIIBLjdk/incubator/foreign/MemoryAddress;)V",
         constants$239.PFNGLPROGRAMUNIFORMMATRIX4X2FVPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLPROGRAMUNIFORMMATRIX3X4FVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_CHAR,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_CHAR$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLPROGRAMUNIFORMMATRIX3X4FVPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIIBLjdk/incubator/foreign/MemoryAddress;)V",
         constants$239.PFNGLPROGRAMUNIFORMMATRIX3X4FVPROC$FUNC, false
     );
 }

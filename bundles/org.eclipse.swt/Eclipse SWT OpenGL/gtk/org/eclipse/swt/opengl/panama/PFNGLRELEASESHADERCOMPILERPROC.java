@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLRELEASESHADERCOMPILERPROC {
 
     void apply();
-    static MemoryAddress allocate(PFNGLRELEASESHADERCOMPILERPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLRELEASESHADERCOMPILERPROC.class, fi, constants$220.PFNGLRELEASESHADERCOMPILERPROC$FUNC, "()V");
-    }
-    static MemoryAddress allocate(PFNGLRELEASESHADERCOMPILERPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLRELEASESHADERCOMPILERPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLRELEASESHADERCOMPILERPROC.class, fi, constants$220.PFNGLRELEASESHADERCOMPILERPROC$FUNC, "()V", scope);
     }
-    static PFNGLRELEASESHADERCOMPILERPROC ofAddress(MemoryAddress addr) {
-        return () -> {
+    static PFNGLRELEASESHADERCOMPILERPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLRELEASESHADERCOMPILERPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return () -> {
             try {
-                constants$220.PFNGLRELEASESHADERCOMPILERPROC$MH.invokeExact((Addressable)addr);
+                constants$220.PFNGLRELEASESHADERCOMPILERPROC$MH.invokeExact(symbol);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

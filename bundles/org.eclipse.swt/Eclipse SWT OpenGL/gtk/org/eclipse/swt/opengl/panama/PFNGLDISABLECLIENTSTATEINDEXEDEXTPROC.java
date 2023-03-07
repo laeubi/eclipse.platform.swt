@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLDISABLECLIENTSTATEINDEXEDEXTPROC {
 
     void apply(int x0, int x1);
-    static MemoryAddress allocate(PFNGLDISABLECLIENTSTATEINDEXEDEXTPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLDISABLECLIENTSTATEINDEXEDEXTPROC.class, fi, constants$562.PFNGLDISABLECLIENTSTATEINDEXEDEXTPROC$FUNC, "(II)V");
-    }
-    static MemoryAddress allocate(PFNGLDISABLECLIENTSTATEINDEXEDEXTPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLDISABLECLIENTSTATEINDEXEDEXTPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLDISABLECLIENTSTATEINDEXEDEXTPROC.class, fi, constants$562.PFNGLDISABLECLIENTSTATEINDEXEDEXTPROC$FUNC, "(II)V", scope);
     }
-    static PFNGLDISABLECLIENTSTATEINDEXEDEXTPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1) -> {
+    static PFNGLDISABLECLIENTSTATEINDEXEDEXTPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLDISABLECLIENTSTATEINDEXEDEXTPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1) -> {
             try {
-                constants$562.PFNGLDISABLECLIENTSTATEINDEXEDEXTPROC$MH.invokeExact((Addressable)addr, x0, x1);
+                constants$562.PFNGLDISABLECLIENTSTATEINDEXEDEXTPROC$MH.invokeExact(symbol, x0, x1);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

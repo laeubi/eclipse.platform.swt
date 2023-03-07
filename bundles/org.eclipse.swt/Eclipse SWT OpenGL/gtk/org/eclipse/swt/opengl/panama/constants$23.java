@@ -6,55 +6,49 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$23 {
 
     static final FunctionDescriptor glColor3fv$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle glColor3fv$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glColor3fv",
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
+        "glColor3fv",
         constants$23.glColor3fv$FUNC, false
     );
     static final FunctionDescriptor glColor3iv$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle glColor3iv$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glColor3iv",
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
+        "glColor3iv",
         constants$23.glColor3iv$FUNC, false
     );
     static final FunctionDescriptor glColor3sv$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle glColor3sv$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glColor3sv",
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
+        "glColor3sv",
         constants$23.glColor3sv$FUNC, false
     );
     static final FunctionDescriptor glColor3ubv$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle glColor3ubv$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glColor3ubv",
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
+        "glColor3ubv",
         constants$23.glColor3ubv$FUNC, false
     );
     static final FunctionDescriptor glColor3uiv$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle glColor3uiv$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glColor3uiv",
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
+        "glColor3uiv",
         constants$23.glColor3uiv$FUNC, false
     );
     static final FunctionDescriptor glColor3usv$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle glColor3usv$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glColor3usv",
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
+        "glColor3usv",
         constants$23.glColor3usv$FUNC, false
     );
 }

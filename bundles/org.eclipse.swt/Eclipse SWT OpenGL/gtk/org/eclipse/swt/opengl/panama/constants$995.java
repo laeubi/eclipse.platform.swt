@@ -6,15 +6,15 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$995 {
 
-    static final MemorySegment SCNiFAST8$SEGMENT = CLinker.toCString("hhi", ResourceScope.newImplicitScope());
-    static final MemorySegment SCNiFAST16$SEGMENT = CLinker.toCString("li", ResourceScope.newImplicitScope());
-    static final MemorySegment SCNiFAST32$SEGMENT = CLinker.toCString("li", ResourceScope.newImplicitScope());
-    static final MemorySegment SCNiFAST64$SEGMENT = CLinker.toCString("li", ResourceScope.newImplicitScope());
-    static final MemorySegment SCNu8$SEGMENT = CLinker.toCString("hhu", ResourceScope.newImplicitScope());
-    static final MemorySegment SCNu16$SEGMENT = CLinker.toCString("hu", ResourceScope.newImplicitScope());
+    static final MemorySegment SCNiFAST8$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("hhi");
+    static final MemorySegment SCNiFAST16$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("li");
+    static final MemorySegment SCNiFAST32$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("li");
+    static final MemorySegment SCNiFAST64$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("li");
+    static final MemorySegment SCNu8$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("hhu");
+    static final MemorySegment SCNu16$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("hu");
 }
 
 

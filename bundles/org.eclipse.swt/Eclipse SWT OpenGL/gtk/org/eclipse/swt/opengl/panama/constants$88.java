@@ -6,36 +6,33 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$88 {
 
     static final FunctionDescriptor PFNGLMULTITEXCOORD3SARBPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_SHORT,
-        C_SHORT,
-        C_SHORT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_SHORT$LAYOUT,
+        Constants$root.C_SHORT$LAYOUT,
+        Constants$root.C_SHORT$LAYOUT
     );
     static final MethodHandle PFNGLMULTITEXCOORD3SARBPROC$MH = RuntimeHelper.downcallHandle(
-        "(ISSS)V",
         constants$88.PFNGLMULTITEXCOORD3SARBPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLMULTITEXCOORD3SVARBPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLMULTITEXCOORD3SVARBPROC$MH = RuntimeHelper.downcallHandle(
-        "(ILjdk/incubator/foreign/MemoryAddress;)V",
         constants$88.PFNGLMULTITEXCOORD3SVARBPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLMULTITEXCOORD4DARBPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_DOUBLE,
-        C_DOUBLE,
-        C_DOUBLE,
-        C_DOUBLE
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT
     );
     static final MethodHandle PFNGLMULTITEXCOORD4DARBPROC$MH = RuntimeHelper.downcallHandle(
-        "(IDDDD)V",
         constants$88.PFNGLMULTITEXCOORD4DARBPROC$FUNC, false
     );
 }

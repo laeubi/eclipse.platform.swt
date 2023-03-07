@@ -6,33 +6,30 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$564 {
 
-    static final FunctionDescriptor PFNGLISENABLEDINDEXEDEXTPROC$FUNC = FunctionDescriptor.of(C_CHAR,
-        C_INT,
-        C_INT
+    static final FunctionDescriptor PFNGLISENABLEDINDEXEDEXTPROC$FUNC = FunctionDescriptor.of(Constants$root.C_CHAR$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLISENABLEDINDEXEDEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(II)B",
         constants$564.PFNGLISENABLEDINDEXEDEXTPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLGETINTEGERINDEXEDVEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLGETINTEGERINDEXEDVEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(IILjdk/incubator/foreign/MemoryAddress;)V",
         constants$564.PFNGLGETINTEGERINDEXEDVEXTPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLGETBOOLEANINDEXEDVEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLGETBOOLEANINDEXEDVEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(IILjdk/incubator/foreign/MemoryAddress;)V",
         constants$564.PFNGLGETBOOLEANINDEXEDVEXTPROC$FUNC, false
     );
 }

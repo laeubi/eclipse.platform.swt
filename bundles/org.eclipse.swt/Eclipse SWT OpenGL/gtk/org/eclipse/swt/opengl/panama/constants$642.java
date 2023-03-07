@@ -6,31 +6,28 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$642 {
 
     static final FunctionDescriptor PFNGLGETUNSIGNEDBYTEI_VEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLGETUNSIGNEDBYTEI_VEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(IILjdk/incubator/foreign/MemoryAddress;)V",
         constants$642.PFNGLGETUNSIGNEDBYTEI_VEXTPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLDELETEMEMORYOBJECTSEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLDELETEMEMORYOBJECTSEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(ILjdk/incubator/foreign/MemoryAddress;)V",
         constants$642.PFNGLDELETEMEMORYOBJECTSEXTPROC$FUNC, false
     );
-    static final FunctionDescriptor PFNGLISMEMORYOBJECTEXTPROC$FUNC = FunctionDescriptor.of(C_CHAR,
-        C_INT
+    static final FunctionDescriptor PFNGLISMEMORYOBJECTEXTPROC$FUNC = FunctionDescriptor.of(Constants$root.C_CHAR$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLISMEMORYOBJECTEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(I)B",
         constants$642.PFNGLISMEMORYOBJECTEXTPROC$FUNC, false
     );
 }

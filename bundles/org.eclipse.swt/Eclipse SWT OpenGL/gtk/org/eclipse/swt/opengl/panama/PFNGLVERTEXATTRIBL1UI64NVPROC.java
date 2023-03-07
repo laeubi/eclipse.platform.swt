@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLVERTEXATTRIBL1UI64NVPROC {
 
     void apply(int x0, long x1);
-    static MemoryAddress allocate(PFNGLVERTEXATTRIBL1UI64NVPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLVERTEXATTRIBL1UI64NVPROC.class, fi, constants$832.PFNGLVERTEXATTRIBL1UI64NVPROC$FUNC, "(IJ)V");
-    }
-    static MemoryAddress allocate(PFNGLVERTEXATTRIBL1UI64NVPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLVERTEXATTRIBL1UI64NVPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLVERTEXATTRIBL1UI64NVPROC.class, fi, constants$832.PFNGLVERTEXATTRIBL1UI64NVPROC$FUNC, "(IJ)V", scope);
     }
-    static PFNGLVERTEXATTRIBL1UI64NVPROC ofAddress(MemoryAddress addr) {
-        return (int x0, long x1) -> {
+    static PFNGLVERTEXATTRIBL1UI64NVPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLVERTEXATTRIBL1UI64NVPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, long x1) -> {
             try {
-                constants$832.PFNGLVERTEXATTRIBL1UI64NVPROC$MH.invokeExact((Addressable)addr, x0, x1);
+                constants$832.PFNGLVERTEXATTRIBL1UI64NVPROC$MH.invokeExact(symbol, x0, x1);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

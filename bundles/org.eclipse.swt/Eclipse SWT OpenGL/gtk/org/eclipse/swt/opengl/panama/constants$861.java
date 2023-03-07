@@ -6,33 +6,30 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$861 {
 
     static final FunctionDescriptor PFNGLVERTEXATTRIBS4UBVNVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLVERTEXATTRIBS4UBVNVPROC$MH = RuntimeHelper.downcallHandle(
-        "(IILjdk/incubator/foreign/MemoryAddress;)V",
         constants$861.PFNGLVERTEXATTRIBS4UBVNVPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLVERTEXATTRIBI1IEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLVERTEXATTRIBI1IEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(II)V",
         constants$861.PFNGLVERTEXATTRIBI1IEXTPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLVERTEXATTRIBI2IEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLVERTEXATTRIBI2IEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(III)V",
         constants$861.PFNGLVERTEXATTRIBI2IEXTPROC$FUNC, false
     );
 }

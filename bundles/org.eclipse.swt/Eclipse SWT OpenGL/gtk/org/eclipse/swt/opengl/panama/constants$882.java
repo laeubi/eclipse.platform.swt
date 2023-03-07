@@ -6,29 +6,26 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$882 {
 
-    static final FunctionDescriptor PFNGLGENASYNCMARKERSSGIXPROC$FUNC = FunctionDescriptor.of(C_INT,
-        C_INT
+    static final FunctionDescriptor PFNGLGENASYNCMARKERSSGIXPROC$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLGENASYNCMARKERSSGIXPROC$MH = RuntimeHelper.downcallHandle(
-        "(I)I",
         constants$882.PFNGLGENASYNCMARKERSSGIXPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLDELETEASYNCMARKERSSGIXPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLDELETEASYNCMARKERSSGIXPROC$MH = RuntimeHelper.downcallHandle(
-        "(II)V",
         constants$882.PFNGLDELETEASYNCMARKERSSGIXPROC$FUNC, false
     );
-    static final FunctionDescriptor PFNGLISASYNCMARKERSGIXPROC$FUNC = FunctionDescriptor.of(C_CHAR,
-        C_INT
+    static final FunctionDescriptor PFNGLISASYNCMARKERSGIXPROC$FUNC = FunctionDescriptor.of(Constants$root.C_CHAR$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLISASYNCMARKERSGIXPROC$MH = RuntimeHelper.downcallHandle(
-        "(I)B",
         constants$882.PFNGLISASYNCMARKERSGIXPROC$FUNC, false
     );
 }

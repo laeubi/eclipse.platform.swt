@@ -6,44 +6,39 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$920 {
 
     static final FunctionDescriptor PFNGLEGLIMAGETARGETRENDERBUFFERSTORAGEOESPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLEGLIMAGETARGETRENDERBUFFERSTORAGEOESPROC$MH = RuntimeHelper.downcallHandle(
-        "(ILjdk/incubator/foreign/MemoryAddress;)V",
         constants$920.PFNGLEGLIMAGETARGETRENDERBUFFERSTORAGEOESPROC$FUNC, false
     );
     static final FunctionDescriptor _GLUfuncptr$FUNC = FunctionDescriptor.ofVoid();
     static final MethodHandle _GLUfuncptr$MH = RuntimeHelper.downcallHandle(
-        "()V",
         constants$920._GLUfuncptr$FUNC, false
     );
     static final FunctionDescriptor gluBeginCurve$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle gluBeginCurve$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "gluBeginCurve",
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
+        "gluBeginCurve",
         constants$920.gluBeginCurve$FUNC, false
     );
     static final FunctionDescriptor gluBeginPolygon$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle gluBeginPolygon$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "gluBeginPolygon",
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
+        "gluBeginPolygon",
         constants$920.gluBeginPolygon$FUNC, false
     );
     static final FunctionDescriptor gluBeginSurface$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle gluBeginSurface$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "gluBeginSurface",
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
+        "gluBeginSurface",
         constants$920.gluBeginSurface$FUNC, false
     );
 }

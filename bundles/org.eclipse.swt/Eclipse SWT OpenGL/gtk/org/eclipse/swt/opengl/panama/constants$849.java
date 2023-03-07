@@ -6,31 +6,28 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$849 {
 
     static final FunctionDescriptor PFNGLVERTEXATTRIB1FNVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_FLOAT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT
     );
     static final MethodHandle PFNGLVERTEXATTRIB1FNVPROC$MH = RuntimeHelper.downcallHandle(
-        "(IF)V",
         constants$849.PFNGLVERTEXATTRIB1FNVPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLVERTEXATTRIB1FVNVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLVERTEXATTRIB1FVNVPROC$MH = RuntimeHelper.downcallHandle(
-        "(ILjdk/incubator/foreign/MemoryAddress;)V",
         constants$849.PFNGLVERTEXATTRIB1FVNVPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLVERTEXATTRIB1SNVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_SHORT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_SHORT$LAYOUT
     );
     static final MethodHandle PFNGLVERTEXATTRIB1SNVPROC$MH = RuntimeHelper.downcallHandle(
-        "(IS)V",
         constants$849.PFNGLVERTEXATTRIB1SNVPROC$FUNC, false
     );
 }

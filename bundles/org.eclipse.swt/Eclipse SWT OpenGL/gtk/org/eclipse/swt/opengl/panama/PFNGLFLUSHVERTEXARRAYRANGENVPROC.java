@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLFLUSHVERTEXARRAYRANGENVPROC {
 
     void apply();
-    static MemoryAddress allocate(PFNGLFLUSHVERTEXARRAYRANGENVPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLFLUSHVERTEXARRAYRANGENVPROC.class, fi, constants$829.PFNGLFLUSHVERTEXARRAYRANGENVPROC$FUNC, "()V");
-    }
-    static MemoryAddress allocate(PFNGLFLUSHVERTEXARRAYRANGENVPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLFLUSHVERTEXARRAYRANGENVPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLFLUSHVERTEXARRAYRANGENVPROC.class, fi, constants$829.PFNGLFLUSHVERTEXARRAYRANGENVPROC$FUNC, "()V", scope);
     }
-    static PFNGLFLUSHVERTEXARRAYRANGENVPROC ofAddress(MemoryAddress addr) {
-        return () -> {
+    static PFNGLFLUSHVERTEXARRAYRANGENVPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLFLUSHVERTEXARRAYRANGENVPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return () -> {
             try {
-                constants$829.PFNGLFLUSHVERTEXARRAYRANGENVPROC$MH.invokeExact((Addressable)addr);
+                constants$829.PFNGLFLUSHVERTEXARRAYRANGENVPROC$MH.invokeExact(symbol);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

@@ -6,30 +6,27 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$629 {
 
     static final FunctionDescriptor PFNGLDELETEFRAMEBUFFERSEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLDELETEFRAMEBUFFERSEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(ILjdk/incubator/foreign/MemoryAddress;)V",
         constants$629.PFNGLDELETEFRAMEBUFFERSEXTPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLGENFRAMEBUFFERSEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLGENFRAMEBUFFERSEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(ILjdk/incubator/foreign/MemoryAddress;)V",
         constants$629.PFNGLGENFRAMEBUFFERSEXTPROC$FUNC, false
     );
-    static final FunctionDescriptor PFNGLCHECKFRAMEBUFFERSTATUSEXTPROC$FUNC = FunctionDescriptor.of(C_INT,
-        C_INT
+    static final FunctionDescriptor PFNGLCHECKFRAMEBUFFERSTATUSEXTPROC$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLCHECKFRAMEBUFFERSTATUSEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(I)I",
         constants$629.PFNGLCHECKFRAMEBUFFERSTATUSEXTPROC$FUNC, false
     );
 }

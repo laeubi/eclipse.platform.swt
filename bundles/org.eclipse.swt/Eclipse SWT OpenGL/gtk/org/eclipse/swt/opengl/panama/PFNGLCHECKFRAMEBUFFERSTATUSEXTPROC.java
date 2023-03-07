@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLCHECKFRAMEBUFFERSTATUSEXTPROC {
 
     int apply(int x0);
-    static MemoryAddress allocate(PFNGLCHECKFRAMEBUFFERSTATUSEXTPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLCHECKFRAMEBUFFERSTATUSEXTPROC.class, fi, constants$629.PFNGLCHECKFRAMEBUFFERSTATUSEXTPROC$FUNC, "(I)I");
-    }
-    static MemoryAddress allocate(PFNGLCHECKFRAMEBUFFERSTATUSEXTPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLCHECKFRAMEBUFFERSTATUSEXTPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLCHECKFRAMEBUFFERSTATUSEXTPROC.class, fi, constants$629.PFNGLCHECKFRAMEBUFFERSTATUSEXTPROC$FUNC, "(I)I", scope);
     }
-    static PFNGLCHECKFRAMEBUFFERSTATUSEXTPROC ofAddress(MemoryAddress addr) {
-        return (int x0) -> {
+    static PFNGLCHECKFRAMEBUFFERSTATUSEXTPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLCHECKFRAMEBUFFERSTATUSEXTPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0) -> {
             try {
-                return (int)constants$629.PFNGLCHECKFRAMEBUFFERSTATUSEXTPROC$MH.invokeExact((Addressable)addr, x0);
+                return (int)constants$629.PFNGLCHECKFRAMEBUFFERSTATUSEXTPROC$MH.invokeExact(symbol, x0);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLSAMPLEPATTERNSGISPROC {
 
     void apply(int x0);
-    static MemoryAddress allocate(PFNGLSAMPLEPATTERNSGISPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLSAMPLEPATTERNSGISPROC.class, fi, constants$875.PFNGLSAMPLEPATTERNSGISPROC$FUNC, "(I)V");
-    }
-    static MemoryAddress allocate(PFNGLSAMPLEPATTERNSGISPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLSAMPLEPATTERNSGISPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLSAMPLEPATTERNSGISPROC.class, fi, constants$875.PFNGLSAMPLEPATTERNSGISPROC$FUNC, "(I)V", scope);
     }
-    static PFNGLSAMPLEPATTERNSGISPROC ofAddress(MemoryAddress addr) {
-        return (int x0) -> {
+    static PFNGLSAMPLEPATTERNSGISPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLSAMPLEPATTERNSGISPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0) -> {
             try {
-                constants$875.PFNGLSAMPLEPATTERNSGISPROC$MH.invokeExact((Addressable)addr, x0);
+                constants$875.PFNGLSAMPLEPATTERNSGISPROC$MH.invokeExact(symbol, x0);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

@@ -6,32 +6,29 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$607 {
 
     static final FunctionDescriptor PFNGLENABLEVERTEXARRAYATTRIBEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLENABLEVERTEXARRAYATTRIBEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(II)V",
         constants$607.PFNGLENABLEVERTEXARRAYATTRIBEXTPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLDISABLEVERTEXARRAYATTRIBEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLDISABLEVERTEXARRAYATTRIBEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(II)V",
         constants$607.PFNGLDISABLEVERTEXARRAYATTRIBEXTPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLGETVERTEXARRAYINTEGERVEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLGETVERTEXARRAYINTEGERVEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(IILjdk/incubator/foreign/MemoryAddress;)V",
         constants$607.PFNGLGETVERTEXARRAYINTEGERVEXTPROC$FUNC, false
     );
 }

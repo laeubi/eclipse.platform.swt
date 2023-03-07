@@ -6,48 +6,42 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$935 {
 
     static final FunctionDescriptor glutPopWindow$FUNC = FunctionDescriptor.ofVoid();
     static final MethodHandle glutPopWindow$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glutPopWindow",
-        "()V",
+        "glutPopWindow",
         constants$935.glutPopWindow$FUNC, false
     );
     static final FunctionDescriptor glutFullScreen$FUNC = FunctionDescriptor.ofVoid();
     static final MethodHandle glutFullScreen$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glutFullScreen",
-        "()V",
+        "glutFullScreen",
         constants$935.glutFullScreen$FUNC, false
     );
     static final FunctionDescriptor glutPostWindowRedisplay$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle glutPostWindowRedisplay$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glutPostWindowRedisplay",
-        "(I)V",
+        "glutPostWindowRedisplay",
         constants$935.glutPostWindowRedisplay$FUNC, false
     );
     static final FunctionDescriptor glutPostRedisplay$FUNC = FunctionDescriptor.ofVoid();
     static final MethodHandle glutPostRedisplay$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glutPostRedisplay",
-        "()V",
+        "glutPostRedisplay",
         constants$935.glutPostRedisplay$FUNC, false
     );
     static final FunctionDescriptor glutSwapBuffers$FUNC = FunctionDescriptor.ofVoid();
     static final MethodHandle glutSwapBuffers$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glutSwapBuffers",
-        "()V",
+        "glutSwapBuffers",
         constants$935.glutSwapBuffers$FUNC, false
     );
     static final FunctionDescriptor glutWarpPointer$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle glutWarpPointer$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glutWarpPointer",
-        "(II)V",
+        "glutWarpPointer",
         constants$935.glutWarpPointer$FUNC, false
     );
 }

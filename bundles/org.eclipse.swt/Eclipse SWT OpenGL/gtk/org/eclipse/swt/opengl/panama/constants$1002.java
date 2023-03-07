@@ -6,15 +6,15 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1002 {
 
-    static final MemorySegment SCNoMAX$SEGMENT = CLinker.toCString("lo", ResourceScope.newImplicitScope());
-    static final MemorySegment SCNuMAX$SEGMENT = CLinker.toCString("lu", ResourceScope.newImplicitScope());
-    static final MemorySegment SCNxMAX$SEGMENT = CLinker.toCString("lx", ResourceScope.newImplicitScope());
-    static final MemorySegment SCNdPTR$SEGMENT = CLinker.toCString("ld", ResourceScope.newImplicitScope());
-    static final MemorySegment SCNiPTR$SEGMENT = CLinker.toCString("li", ResourceScope.newImplicitScope());
-    static final MemorySegment SCNoPTR$SEGMENT = CLinker.toCString("lo", ResourceScope.newImplicitScope());
+    static final MemorySegment SCNoMAX$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lo");
+    static final MemorySegment SCNuMAX$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lu");
+    static final MemorySegment SCNxMAX$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lx");
+    static final MemorySegment SCNdPTR$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ld");
+    static final MemorySegment SCNiPTR$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("li");
+    static final MemorySegment SCNoPTR$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lo");
 }
 
 

@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLGETSTAGEINDEXNVPROC {
 
     short apply(int x0);
-    static MemoryAddress allocate(PFNGLGETSTAGEINDEXNVPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLGETSTAGEINDEXNVPROC.class, fi, constants$730.PFNGLGETSTAGEINDEXNVPROC$FUNC, "(I)S");
-    }
-    static MemoryAddress allocate(PFNGLGETSTAGEINDEXNVPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLGETSTAGEINDEXNVPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLGETSTAGEINDEXNVPROC.class, fi, constants$730.PFNGLGETSTAGEINDEXNVPROC$FUNC, "(I)S", scope);
     }
-    static PFNGLGETSTAGEINDEXNVPROC ofAddress(MemoryAddress addr) {
-        return (int x0) -> {
+    static PFNGLGETSTAGEINDEXNVPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLGETSTAGEINDEXNVPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0) -> {
             try {
-                return (short)constants$730.PFNGLGETSTAGEINDEXNVPROC$MH.invokeExact((Addressable)addr, x0);
+                return (short)constants$730.PFNGLGETSTAGEINDEXNVPROC$MH.invokeExact(symbol, x0);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

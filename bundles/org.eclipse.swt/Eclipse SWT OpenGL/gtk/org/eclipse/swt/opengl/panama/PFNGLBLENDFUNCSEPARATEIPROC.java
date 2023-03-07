@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLBLENDFUNCSEPARATEIPROC {
 
     void apply(int x0, int x1, int x2, int x3, int x4);
-    static MemoryAddress allocate(PFNGLBLENDFUNCSEPARATEIPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLBLENDFUNCSEPARATEIPROC.class, fi, constants$206.PFNGLBLENDFUNCSEPARATEIPROC$FUNC, "(IIIII)V");
-    }
-    static MemoryAddress allocate(PFNGLBLENDFUNCSEPARATEIPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLBLENDFUNCSEPARATEIPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLBLENDFUNCSEPARATEIPROC.class, fi, constants$206.PFNGLBLENDFUNCSEPARATEIPROC$FUNC, "(IIIII)V", scope);
     }
-    static PFNGLBLENDFUNCSEPARATEIPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, int x2, int x3, int x4) -> {
+    static PFNGLBLENDFUNCSEPARATEIPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLBLENDFUNCSEPARATEIPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1, int x2, int x3, int x4) -> {
             try {
-                constants$206.PFNGLBLENDFUNCSEPARATEIPROC$MH.invokeExact((Addressable)addr, x0, x1, x2, x3, x4);
+                constants$206.PFNGLBLENDFUNCSEPARATEIPROC$MH.invokeExact(symbol, x0, x1, x2, x3, x4);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

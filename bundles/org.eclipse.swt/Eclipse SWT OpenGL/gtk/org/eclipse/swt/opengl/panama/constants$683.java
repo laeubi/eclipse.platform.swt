@@ -6,24 +6,21 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$683 {
 
     static final FunctionDescriptor PFNGLBEGINVERTEXSHADEREXTPROC$FUNC = FunctionDescriptor.ofVoid();
     static final MethodHandle PFNGLBEGINVERTEXSHADEREXTPROC$MH = RuntimeHelper.downcallHandle(
-        "()V",
         constants$683.PFNGLBEGINVERTEXSHADEREXTPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLENDVERTEXSHADEREXTPROC$FUNC = FunctionDescriptor.ofVoid();
     static final MethodHandle PFNGLENDVERTEXSHADEREXTPROC$MH = RuntimeHelper.downcallHandle(
-        "()V",
         constants$683.PFNGLENDVERTEXSHADEREXTPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLBINDVERTEXSHADEREXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLBINDVERTEXSHADEREXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(I)V",
         constants$683.PFNGLBINDVERTEXSHADEREXTPROC$FUNC, false
     );
 }

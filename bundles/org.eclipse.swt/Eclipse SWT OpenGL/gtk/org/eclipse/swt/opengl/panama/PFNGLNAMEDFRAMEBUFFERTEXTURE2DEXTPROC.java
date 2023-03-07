@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLNAMEDFRAMEBUFFERTEXTURE2DEXTPROC {
 
     void apply(int x0, int x1, int x2, int x3, int x4);
-    static MemoryAddress allocate(PFNGLNAMEDFRAMEBUFFERTEXTURE2DEXTPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLNAMEDFRAMEBUFFERTEXTURE2DEXTPROC.class, fi, constants$597.PFNGLNAMEDFRAMEBUFFERTEXTURE2DEXTPROC$FUNC, "(IIIII)V");
-    }
-    static MemoryAddress allocate(PFNGLNAMEDFRAMEBUFFERTEXTURE2DEXTPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLNAMEDFRAMEBUFFERTEXTURE2DEXTPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLNAMEDFRAMEBUFFERTEXTURE2DEXTPROC.class, fi, constants$597.PFNGLNAMEDFRAMEBUFFERTEXTURE2DEXTPROC$FUNC, "(IIIII)V", scope);
     }
-    static PFNGLNAMEDFRAMEBUFFERTEXTURE2DEXTPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, int x2, int x3, int x4) -> {
+    static PFNGLNAMEDFRAMEBUFFERTEXTURE2DEXTPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLNAMEDFRAMEBUFFERTEXTURE2DEXTPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1, int x2, int x3, int x4) -> {
             try {
-                constants$597.PFNGLNAMEDFRAMEBUFFERTEXTURE2DEXTPROC$MH.invokeExact((Addressable)addr, x0, x1, x2, x3, x4);
+                constants$597.PFNGLNAMEDFRAMEBUFFERTEXTURE2DEXTPROC$MH.invokeExact(symbol, x0, x1, x2, x3, x4);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

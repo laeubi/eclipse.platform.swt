@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLNAMEDBUFFERPAGECOMMITMENTEXTPROC {
 
     void apply(int x0, long x1, long x2, byte x3);
-    static MemoryAddress allocate(PFNGLNAMEDBUFFERPAGECOMMITMENTEXTPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLNAMEDBUFFERPAGECOMMITMENTEXTPROC.class, fi, constants$374.PFNGLNAMEDBUFFERPAGECOMMITMENTEXTPROC$FUNC, "(IJJB)V");
-    }
-    static MemoryAddress allocate(PFNGLNAMEDBUFFERPAGECOMMITMENTEXTPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLNAMEDBUFFERPAGECOMMITMENTEXTPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLNAMEDBUFFERPAGECOMMITMENTEXTPROC.class, fi, constants$374.PFNGLNAMEDBUFFERPAGECOMMITMENTEXTPROC$FUNC, "(IJJB)V", scope);
     }
-    static PFNGLNAMEDBUFFERPAGECOMMITMENTEXTPROC ofAddress(MemoryAddress addr) {
-        return (int x0, long x1, long x2, byte x3) -> {
+    static PFNGLNAMEDBUFFERPAGECOMMITMENTEXTPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLNAMEDBUFFERPAGECOMMITMENTEXTPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, long x1, long x2, byte x3) -> {
             try {
-                constants$374.PFNGLNAMEDBUFFERPAGECOMMITMENTEXTPROC$MH.invokeExact((Addressable)addr, x0, x1, x2, x3);
+                constants$374.PFNGLNAMEDBUFFERPAGECOMMITMENTEXTPROC$MH.invokeExact(symbol, x0, x1, x2, x3);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

@@ -6,39 +6,36 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$817 {
 
     static final FunctionDescriptor PFNGLTEXTUREBARRIERNVPROC$FUNC = FunctionDescriptor.ofVoid();
     static final MethodHandle PFNGLTEXTUREBARRIERNVPROC$MH = RuntimeHelper.downcallHandle(
-        "()V",
         constants$817.PFNGLTEXTUREBARRIERNVPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLTEXIMAGE2DMULTISAMPLECOVERAGENVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_CHAR
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_CHAR$LAYOUT
     );
     static final MethodHandle PFNGLTEXIMAGE2DMULTISAMPLECOVERAGENVPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIIIIIB)V",
         constants$817.PFNGLTEXIMAGE2DMULTISAMPLECOVERAGENVPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLTEXIMAGE3DMULTISAMPLECOVERAGENVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_CHAR
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_CHAR$LAYOUT
     );
     static final MethodHandle PFNGLTEXIMAGE3DMULTISAMPLECOVERAGENVPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIIIIIIB)V",
         constants$817.PFNGLTEXIMAGE3DMULTISAMPLECOVERAGENVPROC$FUNC, false
     );
 }

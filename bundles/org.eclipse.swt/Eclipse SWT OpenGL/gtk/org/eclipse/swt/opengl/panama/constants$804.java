@@ -6,30 +6,27 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$804 {
 
     static final FunctionDescriptor PFNGLGETVIDEOI64VNVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLGETVIDEOI64VNVPROC$MH = RuntimeHelper.downcallHandle(
-        "(IILjdk/incubator/foreign/MemoryAddress;)V",
         constants$804.PFNGLGETVIDEOI64VNVPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLGETVIDEOUI64VNVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLGETVIDEOUI64VNVPROC$MH = RuntimeHelper.downcallHandle(
-        "(IILjdk/incubator/foreign/MemoryAddress;)V",
         constants$804.PFNGLGETVIDEOUI64VNVPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLPRIMITIVERESTARTNVPROC$FUNC = FunctionDescriptor.ofVoid();
     static final MethodHandle PFNGLPRIMITIVERESTARTNVPROC$MH = RuntimeHelper.downcallHandle(
-        "()V",
         constants$804.PFNGLPRIMITIVERESTARTNVPROC$FUNC, false
     );
 }

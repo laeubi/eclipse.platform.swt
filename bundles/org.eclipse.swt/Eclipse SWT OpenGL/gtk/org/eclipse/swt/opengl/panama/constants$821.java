@@ -6,34 +6,31 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$821 {
 
     static final FunctionDescriptor PFNGLBINDBUFFERBASENVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLBINDBUFFERBASENVPROC$MH = RuntimeHelper.downcallHandle(
-        "(III)V",
         constants$821.PFNGLBINDBUFFERBASENVPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLTRANSFORMFEEDBACKVARYINGSNVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_POINTER,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLTRANSFORMFEEDBACKVARYINGSNVPROC$MH = RuntimeHelper.downcallHandle(
-        "(IILjdk/incubator/foreign/MemoryAddress;I)V",
         constants$821.PFNGLTRANSFORMFEEDBACKVARYINGSNVPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLACTIVEVARYINGNVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLACTIVEVARYINGNVPROC$MH = RuntimeHelper.downcallHandle(
-        "(ILjdk/incubator/foreign/MemoryAddress;)V",
         constants$821.PFNGLACTIVEVARYINGNVPROC$FUNC, false
     );
 }

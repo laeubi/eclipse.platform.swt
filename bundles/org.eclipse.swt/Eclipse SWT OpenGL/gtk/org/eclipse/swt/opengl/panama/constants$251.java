@@ -6,37 +6,34 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$251 {
 
     static final FunctionDescriptor PFNGLGETACTIVEATOMICCOUNTERBUFFERIVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLGETACTIVEATOMICCOUNTERBUFFERIVPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIILjdk/incubator/foreign/MemoryAddress;)V",
         constants$251.PFNGLGETACTIVEATOMICCOUNTERBUFFERIVPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLBINDIMAGETEXTUREPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_CHAR,
-        C_INT,
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_CHAR$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLBINDIMAGETEXTUREPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIIBIII)V",
         constants$251.PFNGLBINDIMAGETEXTUREPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLMEMORYBARRIERPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLMEMORYBARRIERPROC$MH = RuntimeHelper.downcallHandle(
-        "(I)V",
         constants$251.PFNGLMEMORYBARRIERPROC$FUNC, false
     );
 }

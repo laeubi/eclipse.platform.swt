@@ -6,31 +6,28 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$807 {
 
     static final FunctionDescriptor PFNGLCOMBINERPARAMETERFNVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_FLOAT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT
     );
     static final MethodHandle PFNGLCOMBINERPARAMETERFNVPROC$MH = RuntimeHelper.downcallHandle(
-        "(IF)V",
         constants$807.PFNGLCOMBINERPARAMETERFNVPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLCOMBINERPARAMETERIVNVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLCOMBINERPARAMETERIVNVPROC$MH = RuntimeHelper.downcallHandle(
-        "(ILjdk/incubator/foreign/MemoryAddress;)V",
         constants$807.PFNGLCOMBINERPARAMETERIVNVPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLCOMBINERPARAMETERINVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLCOMBINERPARAMETERINVPROC$MH = RuntimeHelper.downcallHandle(
-        "(II)V",
         constants$807.PFNGLCOMBINERPARAMETERINVPROC$FUNC, false
     );
 }

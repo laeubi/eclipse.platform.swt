@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLMULTITEXGENDEXTPROC {
 
     void apply(int x0, int x1, int x2, double x3);
-    static MemoryAddress allocate(PFNGLMULTITEXGENDEXTPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLMULTITEXGENDEXTPROC.class, fi, constants$551.PFNGLMULTITEXGENDEXTPROC$FUNC, "(IIID)V");
-    }
-    static MemoryAddress allocate(PFNGLMULTITEXGENDEXTPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLMULTITEXGENDEXTPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLMULTITEXGENDEXTPROC.class, fi, constants$551.PFNGLMULTITEXGENDEXTPROC$FUNC, "(IIID)V", scope);
     }
-    static PFNGLMULTITEXGENDEXTPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, int x2, double x3) -> {
+    static PFNGLMULTITEXGENDEXTPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLMULTITEXGENDEXTPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1, int x2, double x3) -> {
             try {
-                constants$551.PFNGLMULTITEXGENDEXTPROC$MH.invokeExact((Addressable)addr, x0, x1, x2, x3);
+                constants$551.PFNGLMULTITEXGENDEXTPROC$MH.invokeExact(symbol, x0, x1, x2, x3);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

@@ -6,39 +6,35 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$950 {
 
     static final FunctionDescriptor glutButtonBoxFunc$callback$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle glutButtonBoxFunc$callback$MH = RuntimeHelper.downcallHandle(
-        "(II)V",
         constants$950.glutButtonBoxFunc$callback$FUNC, false
     );
     static final FunctionDescriptor glutButtonBoxFunc$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle glutButtonBoxFunc$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glutButtonBoxFunc",
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
+        "glutButtonBoxFunc",
         constants$950.glutButtonBoxFunc$FUNC, false
     );
     static final FunctionDescriptor glutDialsFunc$callback$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle glutDialsFunc$callback$MH = RuntimeHelper.downcallHandle(
-        "(II)V",
         constants$950.glutDialsFunc$callback$FUNC, false
     );
     static final FunctionDescriptor glutDialsFunc$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle glutDialsFunc$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glutDialsFunc",
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
+        "glutDialsFunc",
         constants$950.glutDialsFunc$FUNC, false
     );
 }

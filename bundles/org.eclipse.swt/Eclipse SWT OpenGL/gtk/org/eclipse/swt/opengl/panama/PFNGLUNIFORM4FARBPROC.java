@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLUNIFORM4FARBPROC {
 
     void apply(int x0, float x1, float x2, float x3, float x4);
-    static MemoryAddress allocate(PFNGLUNIFORM4FARBPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLUNIFORM4FARBPROC.class, fi, constants$363.PFNGLUNIFORM4FARBPROC$FUNC, "(IFFFF)V");
-    }
-    static MemoryAddress allocate(PFNGLUNIFORM4FARBPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLUNIFORM4FARBPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLUNIFORM4FARBPROC.class, fi, constants$363.PFNGLUNIFORM4FARBPROC$FUNC, "(IFFFF)V", scope);
     }
-    static PFNGLUNIFORM4FARBPROC ofAddress(MemoryAddress addr) {
-        return (int x0, float x1, float x2, float x3, float x4) -> {
+    static PFNGLUNIFORM4FARBPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLUNIFORM4FARBPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, float x1, float x2, float x3, float x4) -> {
             try {
-                constants$363.PFNGLUNIFORM4FARBPROC$MH.invokeExact((Addressable)addr, x0, x1, x2, x3, x4);
+                constants$363.PFNGLUNIFORM4FARBPROC$MH.invokeExact(symbol, x0, x1, x2, x3, x4);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

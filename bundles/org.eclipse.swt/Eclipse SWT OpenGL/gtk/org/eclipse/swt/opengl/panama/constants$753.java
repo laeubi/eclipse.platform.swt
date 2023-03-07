@@ -6,30 +6,27 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$753 {
 
     static final FunctionDescriptor PFNGLMULTICASTBARRIERNVPROC$FUNC = FunctionDescriptor.ofVoid();
     static final MethodHandle PFNGLMULTICASTBARRIERNVPROC$MH = RuntimeHelper.downcallHandle(
-        "()V",
         constants$753.PFNGLMULTICASTBARRIERNVPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLMULTICASTWAITSYNCNVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLMULTICASTWAITSYNCNVPROC$MH = RuntimeHelper.downcallHandle(
-        "(II)V",
         constants$753.PFNGLMULTICASTWAITSYNCNVPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLMULTICASTGETQUERYOBJECTIVNVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLMULTICASTGETQUERYOBJECTIVNVPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIILjdk/incubator/foreign/MemoryAddress;)V",
         constants$753.PFNGLMULTICASTGETQUERYOBJECTIVNVPROC$FUNC, false
     );
 }

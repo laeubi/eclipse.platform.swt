@@ -6,17 +6,17 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public class __pthread_internal_list {
 
-    static final MemoryLayout $struct$LAYOUT = MemoryLayout.structLayout(
-        C_POINTER.withName("__prev"),
-        C_POINTER.withName("__next")
+    static final  GroupLayout $struct$LAYOUT = MemoryLayout.structLayout(
+        Constants$root.C_POINTER$LAYOUT.withName("__prev"),
+        Constants$root.C_POINTER$LAYOUT.withName("__next")
     ).withName("__pthread_internal_list");
     public static MemoryLayout $LAYOUT() {
         return __pthread_internal_list.$struct$LAYOUT;
     }
-    static final VarHandle __prev$VH = MemoryHandles.asAddressVarHandle($struct$LAYOUT.varHandle(long.class, MemoryLayout.PathElement.groupElement("__prev")));
+    static final VarHandle __prev$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("__prev"));
     public static VarHandle __prev$VH() {
         return __pthread_internal_list.__prev$VH;
     }
@@ -32,7 +32,7 @@ public class __pthread_internal_list {
     public static void __prev$set(MemorySegment seg, long index, MemoryAddress x) {
         __pthread_internal_list.__prev$VH.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle __next$VH = MemoryHandles.asAddressVarHandle($struct$LAYOUT.varHandle(long.class, MemoryLayout.PathElement.groupElement("__next")));
+    static final VarHandle __next$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("__next"));
     public static VarHandle __next$VH() {
         return __pthread_internal_list.__next$VH;
     }
@@ -50,12 +50,12 @@ public class __pthread_internal_list {
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }
-    public static MemorySegment allocate(ResourceScope scope) { return allocate(SegmentAllocator.ofScope(scope)); }
     public static MemorySegment allocateArray(int len, SegmentAllocator allocator) {
         return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
     }
+    public static MemorySegment allocate(ResourceScope scope) { return allocate(SegmentAllocator.nativeAllocator(scope)); }
     public static MemorySegment allocateArray(int len, ResourceScope scope) {
-        return allocateArray(len, SegmentAllocator.ofScope(scope));
+        return allocateArray(len, SegmentAllocator.nativeAllocator(scope));
     }
     public static MemorySegment ofAddress(MemoryAddress addr, ResourceScope scope) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, scope); }
 }

@@ -6,64 +6,58 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$963 {
 
-    static final FunctionDescriptor select$FUNC = FunctionDescriptor.of(C_INT,
-        C_INT,
-        C_POINTER,
-        C_POINTER,
-        C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor select$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle select$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "select",
-        "(ILjdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I",
+        "select",
         constants$963.select$FUNC, false
     );
-    static final FunctionDescriptor pselect$FUNC = FunctionDescriptor.of(C_INT,
-        C_INT,
-        C_POINTER,
-        C_POINTER,
-        C_POINTER,
-        C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor pselect$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle pselect$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "pselect",
-        "(ILjdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I",
+        "pselect",
         constants$963.pselect$FUNC, false
     );
-    static final FunctionDescriptor random$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor random$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle random$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "random",
-        "()J",
+        "random",
         constants$963.random$FUNC, false
     );
     static final FunctionDescriptor srandom$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle srandom$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "srandom",
-        "(I)V",
+        "srandom",
         constants$963.srandom$FUNC, false
     );
-    static final FunctionDescriptor initstate$FUNC = FunctionDescriptor.of(C_POINTER,
-        C_INT,
-        C_POINTER,
-        C_LONG
+    static final FunctionDescriptor initstate$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT
     );
     static final MethodHandle initstate$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "initstate",
-        "(ILjdk/incubator/foreign/MemoryAddress;J)Ljdk/incubator/foreign/MemoryAddress;",
+        "initstate",
         constants$963.initstate$FUNC, false
     );
-    static final FunctionDescriptor setstate$FUNC = FunctionDescriptor.of(C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor setstate$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle setstate$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "setstate",
-        "(Ljdk/incubator/foreign/MemoryAddress;)Ljdk/incubator/foreign/MemoryAddress;",
+        "setstate",
         constants$963.setstate$FUNC, false
     );
 }

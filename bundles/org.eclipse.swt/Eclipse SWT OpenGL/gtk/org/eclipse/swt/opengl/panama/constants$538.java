@@ -6,33 +6,30 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$538 {
 
     static final FunctionDescriptor PFNGLMATRIXMULTDEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLMATRIXMULTDEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(ILjdk/incubator/foreign/MemoryAddress;)V",
         constants$538.PFNGLMATRIXMULTDEXTPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLMATRIXLOADIDENTITYEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLMATRIXLOADIDENTITYEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(I)V",
         constants$538.PFNGLMATRIXLOADIDENTITYEXTPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLMATRIXROTATEFEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_FLOAT,
-        C_FLOAT,
-        C_FLOAT,
-        C_FLOAT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT
     );
     static final MethodHandle PFNGLMATRIXROTATEFEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(IFFFF)V",
         constants$538.PFNGLMATRIXROTATEFEXTPROC$FUNC, false
     );
 }

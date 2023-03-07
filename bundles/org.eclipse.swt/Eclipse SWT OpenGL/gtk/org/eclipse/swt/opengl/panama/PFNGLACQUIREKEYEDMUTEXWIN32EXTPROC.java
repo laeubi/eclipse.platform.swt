@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLACQUIREKEYEDMUTEXWIN32EXTPROC {
 
     byte apply(int x0, long x1, int x2);
-    static MemoryAddress allocate(PFNGLACQUIREKEYEDMUTEXWIN32EXTPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLACQUIREKEYEDMUTEXWIN32EXTPROC.class, fi, constants$698.PFNGLACQUIREKEYEDMUTEXWIN32EXTPROC$FUNC, "(IJI)B");
-    }
-    static MemoryAddress allocate(PFNGLACQUIREKEYEDMUTEXWIN32EXTPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLACQUIREKEYEDMUTEXWIN32EXTPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLACQUIREKEYEDMUTEXWIN32EXTPROC.class, fi, constants$698.PFNGLACQUIREKEYEDMUTEXWIN32EXTPROC$FUNC, "(IJI)B", scope);
     }
-    static PFNGLACQUIREKEYEDMUTEXWIN32EXTPROC ofAddress(MemoryAddress addr) {
-        return (int x0, long x1, int x2) -> {
+    static PFNGLACQUIREKEYEDMUTEXWIN32EXTPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLACQUIREKEYEDMUTEXWIN32EXTPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, long x1, int x2) -> {
             try {
-                return (byte)constants$698.PFNGLACQUIREKEYEDMUTEXWIN32EXTPROC$MH.invokeExact((Addressable)addr, x0, x1, x2);
+                return (byte)constants$698.PFNGLACQUIREKEYEDMUTEXWIN32EXTPROC$MH.invokeExact(symbol, x0, x1, x2);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

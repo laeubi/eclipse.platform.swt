@@ -6,31 +6,28 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$106 {
 
     static final FunctionDescriptor PFNGLWINDOWPOS3SVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLWINDOWPOS3SVPROC$MH = RuntimeHelper.downcallHandle(
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
         constants$106.PFNGLWINDOWPOS3SVPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLBLENDCOLORPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_FLOAT,
-        C_FLOAT,
-        C_FLOAT,
-        C_FLOAT
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT
     );
     static final MethodHandle PFNGLBLENDCOLORPROC$MH = RuntimeHelper.downcallHandle(
-        "(FFFF)V",
         constants$106.PFNGLBLENDCOLORPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLBLENDEQUATIONPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLBLENDEQUATIONPROC$MH = RuntimeHelper.downcallHandle(
-        "(I)V",
         constants$106.PFNGLBLENDEQUATIONPROC$FUNC, false
     );
 }

@@ -6,36 +6,33 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$300 {
 
     static final FunctionDescriptor PFNGLVERTEXARRAYATTRIBLFORMATPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLVERTEXARRAYATTRIBLFORMATPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIIII)V",
         constants$300.PFNGLVERTEXARRAYATTRIBLFORMATPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLVERTEXARRAYBINDINGDIVISORPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLVERTEXARRAYBINDINGDIVISORPROC$MH = RuntimeHelper.downcallHandle(
-        "(III)V",
         constants$300.PFNGLVERTEXARRAYBINDINGDIVISORPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLGETVERTEXARRAYIVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLGETVERTEXARRAYIVPROC$MH = RuntimeHelper.downcallHandle(
-        "(IILjdk/incubator/foreign/MemoryAddress;)V",
         constants$300.PFNGLGETVERTEXARRAYIVPROC$FUNC, false
     );
 }

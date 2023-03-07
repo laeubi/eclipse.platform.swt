@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLBEGINFRAGMENTSHADERATIPROC {
 
     void apply();
-    static MemoryAddress allocate(PFNGLBEGINFRAGMENTSHADERATIPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLBEGINFRAGMENTSHADERATIPROC.class, fi, constants$491.PFNGLBEGINFRAGMENTSHADERATIPROC$FUNC, "()V");
-    }
-    static MemoryAddress allocate(PFNGLBEGINFRAGMENTSHADERATIPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLBEGINFRAGMENTSHADERATIPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLBEGINFRAGMENTSHADERATIPROC.class, fi, constants$491.PFNGLBEGINFRAGMENTSHADERATIPROC$FUNC, "()V", scope);
     }
-    static PFNGLBEGINFRAGMENTSHADERATIPROC ofAddress(MemoryAddress addr) {
-        return () -> {
+    static PFNGLBEGINFRAGMENTSHADERATIPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLBEGINFRAGMENTSHADERATIPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return () -> {
             try {
-                constants$491.PFNGLBEGINFRAGMENTSHADERATIPROC$MH.invokeExact((Addressable)addr);
+                constants$491.PFNGLBEGINFRAGMENTSHADERATIPROC$MH.invokeExact(symbol);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

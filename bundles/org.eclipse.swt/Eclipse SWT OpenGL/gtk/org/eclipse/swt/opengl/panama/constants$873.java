@@ -6,38 +6,35 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$873 {
 
     static final FunctionDescriptor PFNGLVIEWPORTSWIZZLENVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLVIEWPORTSWIZZLENVPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIIII)V",
         constants$873.PFNGLVIEWPORTSWIZZLENVPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLFRAMEBUFFERTEXTUREMULTIVIEWOVRPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLFRAMEBUFFERTEXTUREMULTIVIEWOVRPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIIIII)V",
         constants$873.PFNGLFRAMEBUFFERTEXTUREMULTIVIEWOVRPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLHINTPGIPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLHINTPGIPROC$MH = RuntimeHelper.downcallHandle(
-        "(II)V",
         constants$873.PFNGLHINTPGIPROC$FUNC, false
     );
 }

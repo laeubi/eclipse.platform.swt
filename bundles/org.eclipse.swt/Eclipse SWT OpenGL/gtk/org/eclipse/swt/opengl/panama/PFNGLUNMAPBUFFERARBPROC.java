@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLUNMAPBUFFERARBPROC {
 
     byte apply(int x0);
-    static MemoryAddress allocate(PFNGLUNMAPBUFFERARBPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLUNMAPBUFFERARBPROC.class, fi, constants$385.PFNGLUNMAPBUFFERARBPROC$FUNC, "(I)B");
-    }
-    static MemoryAddress allocate(PFNGLUNMAPBUFFERARBPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLUNMAPBUFFERARBPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLUNMAPBUFFERARBPROC.class, fi, constants$385.PFNGLUNMAPBUFFERARBPROC$FUNC, "(I)B", scope);
     }
-    static PFNGLUNMAPBUFFERARBPROC ofAddress(MemoryAddress addr) {
-        return (int x0) -> {
+    static PFNGLUNMAPBUFFERARBPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLUNMAPBUFFERARBPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0) -> {
             try {
-                return (byte)constants$385.PFNGLUNMAPBUFFERARBPROC$MH.invokeExact((Addressable)addr, x0);
+                return (byte)constants$385.PFNGLUNMAPBUFFERARBPROC$MH.invokeExact(symbol, x0);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

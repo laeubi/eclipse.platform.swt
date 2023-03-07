@@ -6,31 +6,28 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$903 {
 
     static final FunctionDescriptor PFNGLDRAWMESHARRAYSSUNPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLDRAWMESHARRAYSSUNPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIII)V",
         constants$903.PFNGLDRAWMESHARRAYSSUNPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLREPLACEMENTCODEUISUNPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLREPLACEMENTCODEUISUNPROC$MH = RuntimeHelper.downcallHandle(
-        "(I)V",
         constants$903.PFNGLREPLACEMENTCODEUISUNPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLREPLACEMENTCODEUSSUNPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_SHORT
+        Constants$root.C_SHORT$LAYOUT
     );
     static final MethodHandle PFNGLREPLACEMENTCODEUSSUNPROC$MH = RuntimeHelper.downcallHandle(
-        "(S)V",
         constants$903.PFNGLREPLACEMENTCODEUSSUNPROC$FUNC, false
     );
 }

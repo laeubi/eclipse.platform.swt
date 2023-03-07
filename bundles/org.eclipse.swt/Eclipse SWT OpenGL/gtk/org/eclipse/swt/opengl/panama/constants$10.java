@@ -6,69 +6,63 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$10 {
 
     static final FunctionDescriptor glRotated$FUNC = FunctionDescriptor.ofVoid(
-        C_DOUBLE,
-        C_DOUBLE,
-        C_DOUBLE,
-        C_DOUBLE
+        Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT
     );
     static final MethodHandle glRotated$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glRotated",
-        "(DDDD)V",
+        "glRotated",
         constants$10.glRotated$FUNC, false
     );
     static final FunctionDescriptor glRotatef$FUNC = FunctionDescriptor.ofVoid(
-        C_FLOAT,
-        C_FLOAT,
-        C_FLOAT,
-        C_FLOAT
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT
     );
     static final MethodHandle glRotatef$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glRotatef",
-        "(FFFF)V",
+        "glRotatef",
         constants$10.glRotatef$FUNC, false
     );
     static final FunctionDescriptor glScaled$FUNC = FunctionDescriptor.ofVoid(
-        C_DOUBLE,
-        C_DOUBLE,
-        C_DOUBLE
+        Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT
     );
     static final MethodHandle glScaled$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glScaled",
-        "(DDD)V",
+        "glScaled",
         constants$10.glScaled$FUNC, false
     );
     static final FunctionDescriptor glScalef$FUNC = FunctionDescriptor.ofVoid(
-        C_FLOAT,
-        C_FLOAT,
-        C_FLOAT
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT
     );
     static final MethodHandle glScalef$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glScalef",
-        "(FFF)V",
+        "glScalef",
         constants$10.glScalef$FUNC, false
     );
     static final FunctionDescriptor glTranslated$FUNC = FunctionDescriptor.ofVoid(
-        C_DOUBLE,
-        C_DOUBLE,
-        C_DOUBLE
+        Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT
     );
     static final MethodHandle glTranslated$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glTranslated",
-        "(DDD)V",
+        "glTranslated",
         constants$10.glTranslated$FUNC, false
     );
     static final FunctionDescriptor glTranslatef$FUNC = FunctionDescriptor.ofVoid(
-        C_FLOAT,
-        C_FLOAT,
-        C_FLOAT
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT
     );
     static final MethodHandle glTranslatef$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glTranslatef",
-        "(FFF)V",
+        "glTranslatef",
         constants$10.glTranslatef$FUNC, false
     );
 }

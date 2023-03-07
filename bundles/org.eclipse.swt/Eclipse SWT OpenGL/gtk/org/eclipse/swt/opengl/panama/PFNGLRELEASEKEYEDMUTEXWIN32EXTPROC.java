@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLRELEASEKEYEDMUTEXWIN32EXTPROC {
 
     byte apply(int x0, long x1);
-    static MemoryAddress allocate(PFNGLRELEASEKEYEDMUTEXWIN32EXTPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLRELEASEKEYEDMUTEXWIN32EXTPROC.class, fi, constants$698.PFNGLRELEASEKEYEDMUTEXWIN32EXTPROC$FUNC, "(IJ)B");
-    }
-    static MemoryAddress allocate(PFNGLRELEASEKEYEDMUTEXWIN32EXTPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLRELEASEKEYEDMUTEXWIN32EXTPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLRELEASEKEYEDMUTEXWIN32EXTPROC.class, fi, constants$698.PFNGLRELEASEKEYEDMUTEXWIN32EXTPROC$FUNC, "(IJ)B", scope);
     }
-    static PFNGLRELEASEKEYEDMUTEXWIN32EXTPROC ofAddress(MemoryAddress addr) {
-        return (int x0, long x1) -> {
+    static PFNGLRELEASEKEYEDMUTEXWIN32EXTPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLRELEASEKEYEDMUTEXWIN32EXTPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, long x1) -> {
             try {
-                return (byte)constants$698.PFNGLRELEASEKEYEDMUTEXWIN32EXTPROC$MH.invokeExact((Addressable)addr, x0, x1);
+                return (byte)constants$698.PFNGLRELEASEKEYEDMUTEXWIN32EXTPROC$MH.invokeExact(symbol, x0, x1);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

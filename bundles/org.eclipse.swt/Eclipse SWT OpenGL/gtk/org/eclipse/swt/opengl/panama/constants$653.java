@@ -6,33 +6,30 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$653 {
 
     static final FunctionDescriptor PFNGLGETPIXELTRANSFORMPARAMETERIVEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLGETPIXELTRANSFORMPARAMETERIVEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(IILjdk/incubator/foreign/MemoryAddress;)V",
         constants$653.PFNGLGETPIXELTRANSFORMPARAMETERIVEXTPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLGETPIXELTRANSFORMPARAMETERFVEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLGETPIXELTRANSFORMPARAMETERFVEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(IILjdk/incubator/foreign/MemoryAddress;)V",
         constants$653.PFNGLGETPIXELTRANSFORMPARAMETERFVEXTPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLPOINTPARAMETERFEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_FLOAT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT
     );
     static final MethodHandle PFNGLPOINTPARAMETERFEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(IF)V",
         constants$653.PFNGLPOINTPARAMETERFEXTPROC$FUNC, false
     );
 }

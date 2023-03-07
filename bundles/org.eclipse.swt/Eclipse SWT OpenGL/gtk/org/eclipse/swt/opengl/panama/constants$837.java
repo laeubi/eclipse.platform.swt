@@ -6,33 +6,30 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$837 {
 
     static final FunctionDescriptor PFNGLCOLORFORMATNVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLCOLORFORMATNVPROC$MH = RuntimeHelper.downcallHandle(
-        "(III)V",
         constants$837.PFNGLCOLORFORMATNVPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLINDEXFORMATNVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLINDEXFORMATNVPROC$MH = RuntimeHelper.downcallHandle(
-        "(II)V",
         constants$837.PFNGLINDEXFORMATNVPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLTEXCOORDFORMATNVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLTEXCOORDFORMATNVPROC$MH = RuntimeHelper.downcallHandle(
-        "(III)V",
         constants$837.PFNGLTEXCOORDFORMATNVPROC$FUNC, false
     );
 }

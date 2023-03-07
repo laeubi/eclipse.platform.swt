@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLCOVERAGEMODULATIONNVPROC {
 
     void apply(int x0);
-    static MemoryAddress allocate(PFNGLCOVERAGEMODULATIONNVPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLCOVERAGEMODULATIONNVPROC.class, fi, constants$749.PFNGLCOVERAGEMODULATIONNVPROC$FUNC, "(I)V");
-    }
-    static MemoryAddress allocate(PFNGLCOVERAGEMODULATIONNVPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLCOVERAGEMODULATIONNVPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLCOVERAGEMODULATIONNVPROC.class, fi, constants$749.PFNGLCOVERAGEMODULATIONNVPROC$FUNC, "(I)V", scope);
     }
-    static PFNGLCOVERAGEMODULATIONNVPROC ofAddress(MemoryAddress addr) {
-        return (int x0) -> {
+    static PFNGLCOVERAGEMODULATIONNVPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLCOVERAGEMODULATIONNVPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0) -> {
             try {
-                constants$749.PFNGLCOVERAGEMODULATIONNVPROC$MH.invokeExact((Addressable)addr, x0);
+                constants$749.PFNGLCOVERAGEMODULATIONNVPROC$MH.invokeExact(symbol, x0);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

@@ -6,37 +6,34 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$722 {
 
     static final FunctionDescriptor PFNGLALPHATOCOVERAGEDITHERCONTROLNVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLALPHATOCOVERAGEDITHERCONTROLNVPROC$MH = RuntimeHelper.downcallHandle(
-        "(I)V",
         constants$722.PFNGLALPHATOCOVERAGEDITHERCONTROLNVPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLMULTIDRAWARRAYSINDIRECTBINDLESSNVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_POINTER,
-        C_INT,
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLMULTIDRAWARRAYSINDIRECTBINDLESSNVPROC$MH = RuntimeHelper.downcallHandle(
-        "(ILjdk/incubator/foreign/MemoryAddress;III)V",
         constants$722.PFNGLMULTIDRAWARRAYSINDIRECTBINDLESSNVPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLMULTIDRAWELEMENTSINDIRECTBINDLESSNVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_POINTER,
-        C_INT,
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLMULTIDRAWELEMENTSINDIRECTBINDLESSNVPROC$MH = RuntimeHelper.downcallHandle(
-        "(IILjdk/incubator/foreign/MemoryAddress;III)V",
         constants$722.PFNGLMULTIDRAWELEMENTSINDIRECTBINDLESSNVPROC$FUNC, false
     );
 }

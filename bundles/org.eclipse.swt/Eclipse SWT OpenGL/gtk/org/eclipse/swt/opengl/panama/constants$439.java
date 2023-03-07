@@ -6,31 +6,28 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$439 {
 
     static final FunctionDescriptor PFNGLPASSTHROUGHXOESPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLPASSTHROUGHXOESPROC$MH = RuntimeHelper.downcallHandle(
-        "(I)V",
         constants$439.PFNGLPASSTHROUGHXOESPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLPIXELMAPXPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLPIXELMAPXPROC$MH = RuntimeHelper.downcallHandle(
-        "(IILjdk/incubator/foreign/MemoryAddress;)V",
         constants$439.PFNGLPIXELMAPXPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLPIXELSTOREXPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLPIXELSTOREXPROC$MH = RuntimeHelper.downcallHandle(
-        "(II)V",
         constants$439.PFNGLPIXELSTOREXPROC$FUNC, false
     );
 }

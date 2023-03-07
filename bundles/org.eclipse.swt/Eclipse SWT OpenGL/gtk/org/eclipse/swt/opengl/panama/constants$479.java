@@ -6,29 +6,26 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$479 {
 
-    static final FunctionDescriptor PFNGLTESTFENCEAPPLEPROC$FUNC = FunctionDescriptor.of(C_CHAR,
-        C_INT
+    static final FunctionDescriptor PFNGLTESTFENCEAPPLEPROC$FUNC = FunctionDescriptor.of(Constants$root.C_CHAR$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLTESTFENCEAPPLEPROC$MH = RuntimeHelper.downcallHandle(
-        "(I)B",
         constants$479.PFNGLTESTFENCEAPPLEPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLFINISHFENCEAPPLEPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLFINISHFENCEAPPLEPROC$MH = RuntimeHelper.downcallHandle(
-        "(I)V",
         constants$479.PFNGLFINISHFENCEAPPLEPROC$FUNC, false
     );
-    static final FunctionDescriptor PFNGLTESTOBJECTAPPLEPROC$FUNC = FunctionDescriptor.of(C_CHAR,
-        C_INT,
-        C_INT
+    static final FunctionDescriptor PFNGLTESTOBJECTAPPLEPROC$FUNC = FunctionDescriptor.of(Constants$root.C_CHAR$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLTESTOBJECTAPPLEPROC$MH = RuntimeHelper.downcallHandle(
-        "(II)B",
         constants$479.PFNGLTESTOBJECTAPPLEPROC$FUNC, false
     );
 }

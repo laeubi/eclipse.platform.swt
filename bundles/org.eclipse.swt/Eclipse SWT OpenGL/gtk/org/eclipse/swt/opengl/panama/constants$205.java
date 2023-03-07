@@ -6,31 +6,28 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$205 {
 
     static final FunctionDescriptor PFNGLMINSAMPLESHADINGPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_FLOAT
+        Constants$root.C_FLOAT$LAYOUT
     );
     static final MethodHandle PFNGLMINSAMPLESHADINGPROC$MH = RuntimeHelper.downcallHandle(
-        "(F)V",
         constants$205.PFNGLMINSAMPLESHADINGPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLBLENDEQUATIONIPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLBLENDEQUATIONIPROC$MH = RuntimeHelper.downcallHandle(
-        "(II)V",
         constants$205.PFNGLBLENDEQUATIONIPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLBLENDEQUATIONSEPARATEIPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLBLENDEQUATIONSEPARATEIPROC$MH = RuntimeHelper.downcallHandle(
-        "(III)V",
         constants$205.PFNGLBLENDEQUATIONSEPARATEIPROC$FUNC, false
     );
 }

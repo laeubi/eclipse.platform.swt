@@ -6,37 +6,34 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$281 {
 
     static final FunctionDescriptor PFNGLNAMEDFRAMEBUFFERREADBUFFERPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLNAMEDFRAMEBUFFERREADBUFFERPROC$MH = RuntimeHelper.downcallHandle(
-        "(II)V",
         constants$281.PFNGLNAMEDFRAMEBUFFERREADBUFFERPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLINVALIDATENAMEDFRAMEBUFFERDATAPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLINVALIDATENAMEDFRAMEBUFFERDATAPROC$MH = RuntimeHelper.downcallHandle(
-        "(IILjdk/incubator/foreign/MemoryAddress;)V",
         constants$281.PFNGLINVALIDATENAMEDFRAMEBUFFERDATAPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLINVALIDATENAMEDFRAMEBUFFERSUBDATAPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_POINTER,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLINVALIDATENAMEDFRAMEBUFFERSUBDATAPROC$MH = RuntimeHelper.downcallHandle(
-        "(IILjdk/incubator/foreign/MemoryAddress;IIII)V",
         constants$281.PFNGLINVALIDATENAMEDFRAMEBUFFERSUBDATAPROC$FUNC, false
     );
 }

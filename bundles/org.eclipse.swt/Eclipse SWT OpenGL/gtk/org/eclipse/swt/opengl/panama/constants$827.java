@@ -6,32 +6,29 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$827 {
 
-    static final FunctionDescriptor PFNGLVDPAUISSURFACENVPROC$FUNC = FunctionDescriptor.of(C_CHAR,
-        C_LONG
+    static final FunctionDescriptor PFNGLVDPAUISSURFACENVPROC$FUNC = FunctionDescriptor.of(Constants$root.C_CHAR$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT
     );
     static final MethodHandle PFNGLVDPAUISSURFACENVPROC$MH = RuntimeHelper.downcallHandle(
-        "(J)B",
         constants$827.PFNGLVDPAUISSURFACENVPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLVDPAUUNREGISTERSURFACENVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_LONG
+        Constants$root.C_LONG_LONG$LAYOUT
     );
     static final MethodHandle PFNGLVDPAUUNREGISTERSURFACENVPROC$MH = RuntimeHelper.downcallHandle(
-        "(J)V",
         constants$827.PFNGLVDPAUUNREGISTERSURFACENVPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLVDPAUGETSURFACEIVNVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_LONG,
-        C_INT,
-        C_INT,
-        C_POINTER,
-        C_POINTER
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLVDPAUGETSURFACEIVNVPROC$MH = RuntimeHelper.downcallHandle(
-        "(JIILjdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)V",
         constants$827.PFNGLVDPAUGETSURFACEIVNVPROC$FUNC, false
     );
 }

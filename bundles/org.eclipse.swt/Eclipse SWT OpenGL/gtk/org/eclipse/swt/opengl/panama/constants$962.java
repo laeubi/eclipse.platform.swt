@@ -6,55 +6,49 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$962 {
 
-    static final FunctionDescriptor __bswap_16$FUNC = FunctionDescriptor.of(C_SHORT,
-        C_SHORT
+    static final FunctionDescriptor __bswap_16$FUNC = FunctionDescriptor.of(Constants$root.C_SHORT$LAYOUT,
+        Constants$root.C_SHORT$LAYOUT
     );
     static final MethodHandle __bswap_16$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "__bswap_16",
-        "(S)S",
+        "__bswap_16",
         constants$962.__bswap_16$FUNC, false
     );
-    static final FunctionDescriptor __bswap_32$FUNC = FunctionDescriptor.of(C_INT,
-        C_INT
+    static final FunctionDescriptor __bswap_32$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle __bswap_32$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "__bswap_32",
-        "(I)I",
+        "__bswap_32",
         constants$962.__bswap_32$FUNC, false
     );
-    static final FunctionDescriptor __bswap_64$FUNC = FunctionDescriptor.of(C_LONG,
-        C_LONG
+    static final FunctionDescriptor __bswap_64$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT
     );
     static final MethodHandle __bswap_64$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "__bswap_64",
-        "(J)J",
+        "__bswap_64",
         constants$962.__bswap_64$FUNC, false
     );
-    static final FunctionDescriptor __uint16_identity$FUNC = FunctionDescriptor.of(C_SHORT,
-        C_SHORT
+    static final FunctionDescriptor __uint16_identity$FUNC = FunctionDescriptor.of(Constants$root.C_SHORT$LAYOUT,
+        Constants$root.C_SHORT$LAYOUT
     );
     static final MethodHandle __uint16_identity$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "__uint16_identity",
-        "(S)S",
+        "__uint16_identity",
         constants$962.__uint16_identity$FUNC, false
     );
-    static final FunctionDescriptor __uint32_identity$FUNC = FunctionDescriptor.of(C_INT,
-        C_INT
+    static final FunctionDescriptor __uint32_identity$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle __uint32_identity$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "__uint32_identity",
-        "(I)I",
+        "__uint32_identity",
         constants$962.__uint32_identity$FUNC, false
     );
-    static final FunctionDescriptor __uint64_identity$FUNC = FunctionDescriptor.of(C_LONG,
-        C_LONG
+    static final FunctionDescriptor __uint64_identity$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT
     );
     static final MethodHandle __uint64_identity$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "__uint64_identity",
-        "(J)J",
+        "__uint64_identity",
         constants$962.__uint64_identity$FUNC, false
     );
 }

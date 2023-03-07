@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLLOADIDENTITYDEFORMATIONMAPSGIXPROC {
 
     void apply(int x0);
-    static MemoryAddress allocate(PFNGLLOADIDENTITYDEFORMATIONMAPSGIXPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLLOADIDENTITYDEFORMATIONMAPSGIXPROC.class, fi, constants$895.PFNGLLOADIDENTITYDEFORMATIONMAPSGIXPROC$FUNC, "(I)V");
-    }
-    static MemoryAddress allocate(PFNGLLOADIDENTITYDEFORMATIONMAPSGIXPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLLOADIDENTITYDEFORMATIONMAPSGIXPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLLOADIDENTITYDEFORMATIONMAPSGIXPROC.class, fi, constants$895.PFNGLLOADIDENTITYDEFORMATIONMAPSGIXPROC$FUNC, "(I)V", scope);
     }
-    static PFNGLLOADIDENTITYDEFORMATIONMAPSGIXPROC ofAddress(MemoryAddress addr) {
-        return (int x0) -> {
+    static PFNGLLOADIDENTITYDEFORMATIONMAPSGIXPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLLOADIDENTITYDEFORMATIONMAPSGIXPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0) -> {
             try {
-                constants$895.PFNGLLOADIDENTITYDEFORMATIONMAPSGIXPROC$MH.invokeExact((Addressable)addr, x0);
+                constants$895.PFNGLLOADIDENTITYDEFORMATIONMAPSGIXPROC$MH.invokeExact(symbol, x0);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

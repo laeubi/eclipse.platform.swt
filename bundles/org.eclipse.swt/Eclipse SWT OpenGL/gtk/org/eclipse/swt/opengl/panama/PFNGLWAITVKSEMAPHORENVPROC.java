@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLWAITVKSEMAPHORENVPROC {
 
     void apply(long x0);
-    static MemoryAddress allocate(PFNGLWAITVKSEMAPHORENVPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLWAITVKSEMAPHORENVPROC.class, fi, constants$739.PFNGLWAITVKSEMAPHORENVPROC$FUNC, "(J)V");
-    }
-    static MemoryAddress allocate(PFNGLWAITVKSEMAPHORENVPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLWAITVKSEMAPHORENVPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLWAITVKSEMAPHORENVPROC.class, fi, constants$739.PFNGLWAITVKSEMAPHORENVPROC$FUNC, "(J)V", scope);
     }
-    static PFNGLWAITVKSEMAPHORENVPROC ofAddress(MemoryAddress addr) {
-        return (long x0) -> {
+    static PFNGLWAITVKSEMAPHORENVPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLWAITVKSEMAPHORENVPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (long x0) -> {
             try {
-                constants$739.PFNGLWAITVKSEMAPHORENVPROC$MH.invokeExact((Addressable)addr, x0);
+                constants$739.PFNGLWAITVKSEMAPHORENVPROC$MH.invokeExact(symbol, x0);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLBINDVERTEXBUFFERPROC {
 
     void apply(int x0, int x1, long x2, int x3);
-    static MemoryAddress allocate(PFNGLBINDVERTEXBUFFERPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLBINDVERTEXBUFFERPROC.class, fi, constants$263.PFNGLBINDVERTEXBUFFERPROC$FUNC, "(IIJI)V");
-    }
-    static MemoryAddress allocate(PFNGLBINDVERTEXBUFFERPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLBINDVERTEXBUFFERPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLBINDVERTEXBUFFERPROC.class, fi, constants$263.PFNGLBINDVERTEXBUFFERPROC$FUNC, "(IIJI)V", scope);
     }
-    static PFNGLBINDVERTEXBUFFERPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, long x2, int x3) -> {
+    static PFNGLBINDVERTEXBUFFERPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLBINDVERTEXBUFFERPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1, long x2, int x3) -> {
             try {
-                constants$263.PFNGLBINDVERTEXBUFFERPROC$MH.invokeExact((Addressable)addr, x0, x1, x2, x3);
+                constants$263.PFNGLBINDVERTEXBUFFERPROC$MH.invokeExact(symbol, x0, x1, x2, x3);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

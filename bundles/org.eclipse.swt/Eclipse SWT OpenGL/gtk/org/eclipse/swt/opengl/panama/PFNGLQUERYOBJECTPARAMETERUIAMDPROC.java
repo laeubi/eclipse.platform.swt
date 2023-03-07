@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLQUERYOBJECTPARAMETERUIAMDPROC {
 
     void apply(int x0, int x1, int x2, int x3);
-    static MemoryAddress allocate(PFNGLQUERYOBJECTPARAMETERUIAMDPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLQUERYOBJECTPARAMETERUIAMDPROC.class, fi, constants$470.PFNGLQUERYOBJECTPARAMETERUIAMDPROC$FUNC, "(IIII)V");
-    }
-    static MemoryAddress allocate(PFNGLQUERYOBJECTPARAMETERUIAMDPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLQUERYOBJECTPARAMETERUIAMDPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLQUERYOBJECTPARAMETERUIAMDPROC.class, fi, constants$470.PFNGLQUERYOBJECTPARAMETERUIAMDPROC$FUNC, "(IIII)V", scope);
     }
-    static PFNGLQUERYOBJECTPARAMETERUIAMDPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, int x2, int x3) -> {
+    static PFNGLQUERYOBJECTPARAMETERUIAMDPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLQUERYOBJECTPARAMETERUIAMDPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1, int x2, int x3) -> {
             try {
-                constants$470.PFNGLQUERYOBJECTPARAMETERUIAMDPROC$MH.invokeExact((Addressable)addr, x0, x1, x2, x3);
+                constants$470.PFNGLQUERYOBJECTPARAMETERUIAMDPROC$MH.invokeExact(symbol, x0, x1, x2, x3);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

@@ -6,31 +6,30 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$931 {
 
-    static final MemoryLayout glutBitmapTimesRoman10$LAYOUT = C_POINTER;
-    static final VarHandle glutBitmapTimesRoman10$VH = MemoryHandles.asAddressVarHandle(constants$931.glutBitmapTimesRoman10$LAYOUT.varHandle(long.class));
-    static final MemorySegment glutBitmapTimesRoman10$SEGMENT = RuntimeHelper.lookupGlobalVariable(glut_h.LIBRARIES, "glutBitmapTimesRoman10", constants$931.glutBitmapTimesRoman10$LAYOUT);
-    static final MemoryLayout glutBitmapTimesRoman24$LAYOUT = C_POINTER;
-    static final VarHandle glutBitmapTimesRoman24$VH = MemoryHandles.asAddressVarHandle(constants$931.glutBitmapTimesRoman24$LAYOUT.varHandle(long.class));
-    static final MemorySegment glutBitmapTimesRoman24$SEGMENT = RuntimeHelper.lookupGlobalVariable(glut_h.LIBRARIES, "glutBitmapTimesRoman24", constants$931.glutBitmapTimesRoman24$LAYOUT);
-    static final MemoryLayout glutBitmapHelvetica10$LAYOUT = C_POINTER;
-    static final VarHandle glutBitmapHelvetica10$VH = MemoryHandles.asAddressVarHandle(constants$931.glutBitmapHelvetica10$LAYOUT.varHandle(long.class));
-    static final MemorySegment glutBitmapHelvetica10$SEGMENT = RuntimeHelper.lookupGlobalVariable(glut_h.LIBRARIES, "glutBitmapHelvetica10", constants$931.glutBitmapHelvetica10$LAYOUT);
-    static final MemoryLayout glutBitmapHelvetica12$LAYOUT = C_POINTER;
-    static final VarHandle glutBitmapHelvetica12$VH = MemoryHandles.asAddressVarHandle(constants$931.glutBitmapHelvetica12$LAYOUT.varHandle(long.class));
-    static final MemorySegment glutBitmapHelvetica12$SEGMENT = RuntimeHelper.lookupGlobalVariable(glut_h.LIBRARIES, "glutBitmapHelvetica12", constants$931.glutBitmapHelvetica12$LAYOUT);
-    static final MemoryLayout glutBitmapHelvetica18$LAYOUT = C_POINTER;
-    static final VarHandle glutBitmapHelvetica18$VH = MemoryHandles.asAddressVarHandle(constants$931.glutBitmapHelvetica18$LAYOUT.varHandle(long.class));
-    static final MemorySegment glutBitmapHelvetica18$SEGMENT = RuntimeHelper.lookupGlobalVariable(glut_h.LIBRARIES, "glutBitmapHelvetica18", constants$931.glutBitmapHelvetica18$LAYOUT);
+    static final  OfAddress glutBitmapTimesRoman10$LAYOUT = Constants$root.C_POINTER$LAYOUT;
+    static final VarHandle glutBitmapTimesRoman10$VH = constants$931.glutBitmapTimesRoman10$LAYOUT.varHandle();
+    static final MemorySegment glutBitmapTimesRoman10$SEGMENT = RuntimeHelper.lookupGlobalVariable("glutBitmapTimesRoman10", constants$931.glutBitmapTimesRoman10$LAYOUT);
+    static final  OfAddress glutBitmapTimesRoman24$LAYOUT = Constants$root.C_POINTER$LAYOUT;
+    static final VarHandle glutBitmapTimesRoman24$VH = constants$931.glutBitmapTimesRoman24$LAYOUT.varHandle();
+    static final MemorySegment glutBitmapTimesRoman24$SEGMENT = RuntimeHelper.lookupGlobalVariable("glutBitmapTimesRoman24", constants$931.glutBitmapTimesRoman24$LAYOUT);
+    static final  OfAddress glutBitmapHelvetica10$LAYOUT = Constants$root.C_POINTER$LAYOUT;
+    static final VarHandle glutBitmapHelvetica10$VH = constants$931.glutBitmapHelvetica10$LAYOUT.varHandle();
+    static final MemorySegment glutBitmapHelvetica10$SEGMENT = RuntimeHelper.lookupGlobalVariable("glutBitmapHelvetica10", constants$931.glutBitmapHelvetica10$LAYOUT);
+    static final  OfAddress glutBitmapHelvetica12$LAYOUT = Constants$root.C_POINTER$LAYOUT;
+    static final VarHandle glutBitmapHelvetica12$VH = constants$931.glutBitmapHelvetica12$LAYOUT.varHandle();
+    static final MemorySegment glutBitmapHelvetica12$SEGMENT = RuntimeHelper.lookupGlobalVariable("glutBitmapHelvetica12", constants$931.glutBitmapHelvetica12$LAYOUT);
+    static final  OfAddress glutBitmapHelvetica18$LAYOUT = Constants$root.C_POINTER$LAYOUT;
+    static final VarHandle glutBitmapHelvetica18$VH = constants$931.glutBitmapHelvetica18$LAYOUT.varHandle();
+    static final MemorySegment glutBitmapHelvetica18$SEGMENT = RuntimeHelper.lookupGlobalVariable("glutBitmapHelvetica18", constants$931.glutBitmapHelvetica18$LAYOUT);
     static final FunctionDescriptor glutInit$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER,
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle glutInit$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glutInit",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)V",
+        "glutInit",
         constants$931.glutInit$FUNC, false
     );
 }

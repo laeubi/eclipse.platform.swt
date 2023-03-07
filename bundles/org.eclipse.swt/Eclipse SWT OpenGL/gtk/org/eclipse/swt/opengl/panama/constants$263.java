@@ -6,38 +6,35 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$263 {
 
     static final FunctionDescriptor PFNGLBINDVERTEXBUFFERPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_LONG,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLBINDVERTEXBUFFERPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIJI)V",
         constants$263.PFNGLBINDVERTEXBUFFERPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLVERTEXATTRIBFORMATPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_CHAR,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_CHAR$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLVERTEXATTRIBFORMATPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIIBI)V",
         constants$263.PFNGLVERTEXATTRIBFORMATPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLVERTEXATTRIBIFORMATPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLVERTEXATTRIBIFORMATPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIII)V",
         constants$263.PFNGLVERTEXATTRIBIFORMATPROC$FUNC, false
     );
 }

@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLGETINTEGERINDEXEDVEXTPROC {
 
     void apply(int x0, int x1, jdk.incubator.foreign.MemoryAddress x2);
-    static MemoryAddress allocate(PFNGLGETINTEGERINDEXEDVEXTPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLGETINTEGERINDEXEDVEXTPROC.class, fi, constants$564.PFNGLGETINTEGERINDEXEDVEXTPROC$FUNC, "(IILjdk/incubator/foreign/MemoryAddress;)V");
-    }
-    static MemoryAddress allocate(PFNGLGETINTEGERINDEXEDVEXTPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLGETINTEGERINDEXEDVEXTPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLGETINTEGERINDEXEDVEXTPROC.class, fi, constants$564.PFNGLGETINTEGERINDEXEDVEXTPROC$FUNC, "(IILjdk/incubator/foreign/MemoryAddress;)V", scope);
     }
-    static PFNGLGETINTEGERINDEXEDVEXTPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, jdk.incubator.foreign.MemoryAddress x2) -> {
+    static PFNGLGETINTEGERINDEXEDVEXTPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLGETINTEGERINDEXEDVEXTPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1, jdk.incubator.foreign.MemoryAddress x2) -> {
             try {
-                constants$564.PFNGLGETINTEGERINDEXEDVEXTPROC$MH.invokeExact((Addressable)addr, x0, x1, x2);
+                constants$564.PFNGLGETINTEGERINDEXEDVEXTPROC$MH.invokeExact(symbol, x0, x1, (jdk.incubator.foreign.Addressable)x2);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

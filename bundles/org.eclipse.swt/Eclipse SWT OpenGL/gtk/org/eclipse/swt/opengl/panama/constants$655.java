@@ -6,31 +6,28 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$655 {
 
     static final FunctionDescriptor PFNGLPROVOKINGVERTEXEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLPROVOKINGVERTEXEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(I)V",
         constants$655.PFNGLPROVOKINGVERTEXEXTPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLRASTERSAMPLESEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_CHAR
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_CHAR$LAYOUT
     );
     static final MethodHandle PFNGLRASTERSAMPLESEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(IB)V",
         constants$655.PFNGLRASTERSAMPLESEXTPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLSECONDARYCOLOR3BEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_CHAR,
-        C_CHAR,
-        C_CHAR
+        Constants$root.C_CHAR$LAYOUT,
+        Constants$root.C_CHAR$LAYOUT,
+        Constants$root.C_CHAR$LAYOUT
     );
     static final MethodHandle PFNGLSECONDARYCOLOR3BEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(BBB)V",
         constants$655.PFNGLSECONDARYCOLOR3BEXTPROC$FUNC, false
     );
 }

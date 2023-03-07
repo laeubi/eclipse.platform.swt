@@ -6,40 +6,37 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$603 {
 
     static final FunctionDescriptor PFNGLVERTEXARRAYCOLOROFFSETEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_LONG
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT
     );
     static final MethodHandle PFNGLVERTEXARRAYCOLOROFFSETEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIIIIJ)V",
         constants$603.PFNGLVERTEXARRAYCOLOROFFSETEXTPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLVERTEXARRAYEDGEFLAGOFFSETEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_LONG
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT
     );
     static final MethodHandle PFNGLVERTEXARRAYEDGEFLAGOFFSETEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIIJ)V",
         constants$603.PFNGLVERTEXARRAYEDGEFLAGOFFSETEXTPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLVERTEXARRAYINDEXOFFSETEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_LONG
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT
     );
     static final MethodHandle PFNGLVERTEXARRAYINDEXOFFSETEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIIIJ)V",
         constants$603.PFNGLVERTEXARRAYINDEXOFFSETEXTPROC$FUNC, false
     );
 }

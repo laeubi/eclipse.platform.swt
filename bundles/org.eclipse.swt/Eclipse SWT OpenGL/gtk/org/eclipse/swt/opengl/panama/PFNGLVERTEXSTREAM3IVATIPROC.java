@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLVERTEXSTREAM3IVATIPROC {
 
     void apply(int x0, jdk.incubator.foreign.MemoryAddress x1);
-    static MemoryAddress allocate(PFNGLVERTEXSTREAM3IVATIPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLVERTEXSTREAM3IVATIPROC.class, fi, constants$508.PFNGLVERTEXSTREAM3IVATIPROC$FUNC, "(ILjdk/incubator/foreign/MemoryAddress;)V");
-    }
-    static MemoryAddress allocate(PFNGLVERTEXSTREAM3IVATIPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLVERTEXSTREAM3IVATIPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLVERTEXSTREAM3IVATIPROC.class, fi, constants$508.PFNGLVERTEXSTREAM3IVATIPROC$FUNC, "(ILjdk/incubator/foreign/MemoryAddress;)V", scope);
     }
-    static PFNGLVERTEXSTREAM3IVATIPROC ofAddress(MemoryAddress addr) {
-        return (int x0, jdk.incubator.foreign.MemoryAddress x1) -> {
+    static PFNGLVERTEXSTREAM3IVATIPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLVERTEXSTREAM3IVATIPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, jdk.incubator.foreign.MemoryAddress x1) -> {
             try {
-                constants$508.PFNGLVERTEXSTREAM3IVATIPROC$MH.invokeExact((Addressable)addr, x0, x1);
+                constants$508.PFNGLVERTEXSTREAM3IVATIPROC$MH.invokeExact(symbol, x0, (jdk.incubator.foreign.Addressable)x1);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

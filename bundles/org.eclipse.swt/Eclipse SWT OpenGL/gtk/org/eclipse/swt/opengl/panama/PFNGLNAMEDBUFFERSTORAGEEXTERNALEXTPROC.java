@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLNAMEDBUFFERSTORAGEEXTERNALEXTPROC {
 
     void apply(int x0, long x1, long x2, jdk.incubator.foreign.MemoryAddress x3, int x4);
-    static MemoryAddress allocate(PFNGLNAMEDBUFFERSTORAGEEXTERNALEXTPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLNAMEDBUFFERSTORAGEEXTERNALEXTPROC.class, fi, constants$623.PFNGLNAMEDBUFFERSTORAGEEXTERNALEXTPROC$FUNC, "(IJJLjdk/incubator/foreign/MemoryAddress;I)V");
-    }
-    static MemoryAddress allocate(PFNGLNAMEDBUFFERSTORAGEEXTERNALEXTPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLNAMEDBUFFERSTORAGEEXTERNALEXTPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLNAMEDBUFFERSTORAGEEXTERNALEXTPROC.class, fi, constants$623.PFNGLNAMEDBUFFERSTORAGEEXTERNALEXTPROC$FUNC, "(IJJLjdk/incubator/foreign/MemoryAddress;I)V", scope);
     }
-    static PFNGLNAMEDBUFFERSTORAGEEXTERNALEXTPROC ofAddress(MemoryAddress addr) {
-        return (int x0, long x1, long x2, jdk.incubator.foreign.MemoryAddress x3, int x4) -> {
+    static PFNGLNAMEDBUFFERSTORAGEEXTERNALEXTPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLNAMEDBUFFERSTORAGEEXTERNALEXTPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, long x1, long x2, jdk.incubator.foreign.MemoryAddress x3, int x4) -> {
             try {
-                constants$623.PFNGLNAMEDBUFFERSTORAGEEXTERNALEXTPROC$MH.invokeExact((Addressable)addr, x0, x1, x2, x3, x4);
+                constants$623.PFNGLNAMEDBUFFERSTORAGEEXTERNALEXTPROC$MH.invokeExact(symbol, x0, x1, x2, (jdk.incubator.foreign.Addressable)x3, x4);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

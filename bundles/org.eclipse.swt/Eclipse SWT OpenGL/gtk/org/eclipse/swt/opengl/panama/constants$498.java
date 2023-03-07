@@ -6,35 +6,32 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$498 {
 
     static final FunctionDescriptor PFNGLGETOBJECTBUFFERIVATIPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLGETOBJECTBUFFERIVATIPROC$MH = RuntimeHelper.downcallHandle(
-        "(IILjdk/incubator/foreign/MemoryAddress;)V",
         constants$498.PFNGLGETOBJECTBUFFERIVATIPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLFREEOBJECTBUFFERATIPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLFREEOBJECTBUFFERATIPROC$MH = RuntimeHelper.downcallHandle(
-        "(I)V",
         constants$498.PFNGLFREEOBJECTBUFFERATIPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLARRAYOBJECTATIPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLARRAYOBJECTATIPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIIIII)V",
         constants$498.PFNGLARRAYOBJECTATIPROC$FUNC, false
     );
 }

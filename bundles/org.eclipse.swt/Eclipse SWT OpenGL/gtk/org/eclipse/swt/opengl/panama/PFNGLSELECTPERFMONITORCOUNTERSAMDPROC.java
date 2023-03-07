@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLSELECTPERFMONITORCOUNTERSAMDPROC {
 
     void apply(int x0, byte x1, int x2, int x3, jdk.incubator.foreign.MemoryAddress x4);
-    static MemoryAddress allocate(PFNGLSELECTPERFMONITORCOUNTERSAMDPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLSELECTPERFMONITORCOUNTERSAMDPROC.class, fi, constants$472.PFNGLSELECTPERFMONITORCOUNTERSAMDPROC$FUNC, "(IBIILjdk/incubator/foreign/MemoryAddress;)V");
-    }
-    static MemoryAddress allocate(PFNGLSELECTPERFMONITORCOUNTERSAMDPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLSELECTPERFMONITORCOUNTERSAMDPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLSELECTPERFMONITORCOUNTERSAMDPROC.class, fi, constants$472.PFNGLSELECTPERFMONITORCOUNTERSAMDPROC$FUNC, "(IBIILjdk/incubator/foreign/MemoryAddress;)V", scope);
     }
-    static PFNGLSELECTPERFMONITORCOUNTERSAMDPROC ofAddress(MemoryAddress addr) {
-        return (int x0, byte x1, int x2, int x3, jdk.incubator.foreign.MemoryAddress x4) -> {
+    static PFNGLSELECTPERFMONITORCOUNTERSAMDPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLSELECTPERFMONITORCOUNTERSAMDPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, byte x1, int x2, int x3, jdk.incubator.foreign.MemoryAddress x4) -> {
             try {
-                constants$472.PFNGLSELECTPERFMONITORCOUNTERSAMDPROC$MH.invokeExact((Addressable)addr, x0, x1, x2, x3, x4);
+                constants$472.PFNGLSELECTPERFMONITORCOUNTERSAMDPROC$MH.invokeExact(symbol, x0, x1, x2, x3, (jdk.incubator.foreign.Addressable)x4);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

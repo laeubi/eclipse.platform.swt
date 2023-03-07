@@ -6,46 +6,43 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$262 {
 
     static final FunctionDescriptor PFNGLTEXSTORAGE2DMULTISAMPLEPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_CHAR
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_CHAR$LAYOUT
     );
     static final MethodHandle PFNGLTEXSTORAGE2DMULTISAMPLEPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIIIIB)V",
         constants$262.PFNGLTEXSTORAGE2DMULTISAMPLEPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLTEXSTORAGE3DMULTISAMPLEPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_CHAR
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_CHAR$LAYOUT
     );
     static final MethodHandle PFNGLTEXSTORAGE3DMULTISAMPLEPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIIIIIB)V",
         constants$262.PFNGLTEXSTORAGE3DMULTISAMPLEPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLTEXTUREVIEWPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLTEXTUREVIEWPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIIIIIII)V",
         constants$262.PFNGLTEXTUREVIEWPROC$FUNC, false
     );
 }

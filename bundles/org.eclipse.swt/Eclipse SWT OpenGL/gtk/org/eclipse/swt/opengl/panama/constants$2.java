@@ -6,58 +6,52 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$2 {
 
     static final FunctionDescriptor glLineStipple$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_SHORT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_SHORT$LAYOUT
     );
     static final MethodHandle glLineStipple$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glLineStipple",
-        "(IS)V",
+        "glLineStipple",
         constants$2.glLineStipple$FUNC, false
     );
     static final FunctionDescriptor glPolygonMode$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle glPolygonMode$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glPolygonMode",
-        "(II)V",
+        "glPolygonMode",
         constants$2.glPolygonMode$FUNC, false
     );
     static final FunctionDescriptor glPolygonOffset$FUNC = FunctionDescriptor.ofVoid(
-        C_FLOAT,
-        C_FLOAT
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT
     );
     static final MethodHandle glPolygonOffset$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glPolygonOffset",
-        "(FF)V",
+        "glPolygonOffset",
         constants$2.glPolygonOffset$FUNC, false
     );
     static final FunctionDescriptor glPolygonStipple$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle glPolygonStipple$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glPolygonStipple",
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
+        "glPolygonStipple",
         constants$2.glPolygonStipple$FUNC, false
     );
     static final FunctionDescriptor glGetPolygonStipple$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle glGetPolygonStipple$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glGetPolygonStipple",
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
+        "glGetPolygonStipple",
         constants$2.glGetPolygonStipple$FUNC, false
     );
     static final FunctionDescriptor glEdgeFlag$FUNC = FunctionDescriptor.ofVoid(
-        C_CHAR
+        Constants$root.C_CHAR$LAYOUT
     );
     static final MethodHandle glEdgeFlag$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glEdgeFlag",
-        "(B)V",
+        "glEdgeFlag",
         constants$2.glEdgeFlag$FUNC, false
     );
 }

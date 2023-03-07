@@ -6,31 +6,28 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$484 {
 
     static final FunctionDescriptor PFNGLVERTEXARRAYRANGEAPPLEPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLVERTEXARRAYRANGEAPPLEPROC$MH = RuntimeHelper.downcallHandle(
-        "(ILjdk/incubator/foreign/MemoryAddress;)V",
         constants$484.PFNGLVERTEXARRAYRANGEAPPLEPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLFLUSHVERTEXARRAYRANGEAPPLEPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLFLUSHVERTEXARRAYRANGEAPPLEPROC$MH = RuntimeHelper.downcallHandle(
-        "(ILjdk/incubator/foreign/MemoryAddress;)V",
         constants$484.PFNGLFLUSHVERTEXARRAYRANGEAPPLEPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLVERTEXARRAYPARAMETERIAPPLEPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLVERTEXARRAYPARAMETERIAPPLEPROC$MH = RuntimeHelper.downcallHandle(
-        "(II)V",
         constants$484.PFNGLVERTEXARRAYPARAMETERIAPPLEPROC$FUNC, false
     );
 }

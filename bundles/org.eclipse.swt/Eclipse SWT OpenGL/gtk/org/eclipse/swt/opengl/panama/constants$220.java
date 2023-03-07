@@ -6,33 +6,30 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$220 {
 
     static final FunctionDescriptor PFNGLGETQUERYINDEXEDIVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLGETQUERYINDEXEDIVPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIILjdk/incubator/foreign/MemoryAddress;)V",
         constants$220.PFNGLGETQUERYINDEXEDIVPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLRELEASESHADERCOMPILERPROC$FUNC = FunctionDescriptor.ofVoid();
     static final MethodHandle PFNGLRELEASESHADERCOMPILERPROC$MH = RuntimeHelper.downcallHandle(
-        "()V",
         constants$220.PFNGLRELEASESHADERCOMPILERPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLSHADERBINARYPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_POINTER,
-        C_INT,
-        C_POINTER,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLSHADERBINARYPROC$MH = RuntimeHelper.downcallHandle(
-        "(ILjdk/incubator/foreign/MemoryAddress;ILjdk/incubator/foreign/MemoryAddress;I)V",
         constants$220.PFNGLSHADERBINARYPROC$FUNC, false
     );
 }

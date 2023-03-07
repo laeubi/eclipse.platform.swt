@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLSAMPLECOVERAGEARBPROC {
 
     void apply(float x0, byte x1);
-    static MemoryAddress allocate(PFNGLSAMPLECOVERAGEARBPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLSAMPLECOVERAGEARBPROC.class, fi, constants$346.PFNGLSAMPLECOVERAGEARBPROC$FUNC, "(FB)V");
-    }
-    static MemoryAddress allocate(PFNGLSAMPLECOVERAGEARBPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLSAMPLECOVERAGEARBPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLSAMPLECOVERAGEARBPROC.class, fi, constants$346.PFNGLSAMPLECOVERAGEARBPROC$FUNC, "(FB)V", scope);
     }
-    static PFNGLSAMPLECOVERAGEARBPROC ofAddress(MemoryAddress addr) {
-        return (float x0, byte x1) -> {
+    static PFNGLSAMPLECOVERAGEARBPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLSAMPLECOVERAGEARBPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (float x0, byte x1) -> {
             try {
-                constants$346.PFNGLSAMPLECOVERAGEARBPROC$MH.invokeExact((Addressable)addr, x0, x1);
+                constants$346.PFNGLSAMPLECOVERAGEARBPROC$MH.invokeExact(symbol, x0, x1);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

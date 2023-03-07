@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLPRIORITIZETEXTURESEXTPROC {
 
     void apply(int x0, jdk.incubator.foreign.MemoryAddress x1, jdk.incubator.foreign.MemoryAddress x2);
-    static MemoryAddress allocate(PFNGLPRIORITIZETEXTURESEXTPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLPRIORITIZETEXTURESEXTPROC.class, fi, constants$673.PFNGLPRIORITIZETEXTURESEXTPROC$FUNC, "(ILjdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)V");
-    }
-    static MemoryAddress allocate(PFNGLPRIORITIZETEXTURESEXTPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLPRIORITIZETEXTURESEXTPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLPRIORITIZETEXTURESEXTPROC.class, fi, constants$673.PFNGLPRIORITIZETEXTURESEXTPROC$FUNC, "(ILjdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)V", scope);
     }
-    static PFNGLPRIORITIZETEXTURESEXTPROC ofAddress(MemoryAddress addr) {
-        return (int x0, jdk.incubator.foreign.MemoryAddress x1, jdk.incubator.foreign.MemoryAddress x2) -> {
+    static PFNGLPRIORITIZETEXTURESEXTPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLPRIORITIZETEXTURESEXTPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, jdk.incubator.foreign.MemoryAddress x1, jdk.incubator.foreign.MemoryAddress x2) -> {
             try {
-                constants$673.PFNGLPRIORITIZETEXTURESEXTPROC$MH.invokeExact((Addressable)addr, x0, x1, x2);
+                constants$673.PFNGLPRIORITIZETEXTURESEXTPROC$MH.invokeExact(symbol, x0, (jdk.incubator.foreign.Addressable)x1, (jdk.incubator.foreign.Addressable)x2);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

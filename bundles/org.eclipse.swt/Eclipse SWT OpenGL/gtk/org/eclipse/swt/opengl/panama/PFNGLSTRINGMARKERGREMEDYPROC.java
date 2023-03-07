@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLSTRINGMARKERGREMEDYPROC {
 
     void apply(int x0, jdk.incubator.foreign.MemoryAddress x1);
-    static MemoryAddress allocate(PFNGLSTRINGMARKERGREMEDYPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLSTRINGMARKERGREMEDYPROC.class, fi, constants$699.PFNGLSTRINGMARKERGREMEDYPROC$FUNC, "(ILjdk/incubator/foreign/MemoryAddress;)V");
-    }
-    static MemoryAddress allocate(PFNGLSTRINGMARKERGREMEDYPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLSTRINGMARKERGREMEDYPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLSTRINGMARKERGREMEDYPROC.class, fi, constants$699.PFNGLSTRINGMARKERGREMEDYPROC$FUNC, "(ILjdk/incubator/foreign/MemoryAddress;)V", scope);
     }
-    static PFNGLSTRINGMARKERGREMEDYPROC ofAddress(MemoryAddress addr) {
-        return (int x0, jdk.incubator.foreign.MemoryAddress x1) -> {
+    static PFNGLSTRINGMARKERGREMEDYPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLSTRINGMARKERGREMEDYPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, jdk.incubator.foreign.MemoryAddress x1) -> {
             try {
-                constants$699.PFNGLSTRINGMARKERGREMEDYPROC$MH.invokeExact((Addressable)addr, x0, x1);
+                constants$699.PFNGLSTRINGMARKERGREMEDYPROC$MH.invokeExact(symbol, x0, (jdk.incubator.foreign.Addressable)x1);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

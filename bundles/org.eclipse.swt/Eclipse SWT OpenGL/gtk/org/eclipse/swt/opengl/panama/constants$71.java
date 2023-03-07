@@ -6,39 +6,35 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$71 {
 
     static final FunctionDescriptor glMultTransposeMatrixf$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle glMultTransposeMatrixf$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glMultTransposeMatrixf",
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
+        "glMultTransposeMatrixf",
         constants$71.glMultTransposeMatrixf$FUNC, false
     );
     static final FunctionDescriptor glSampleCoverage$FUNC = FunctionDescriptor.ofVoid(
-        C_FLOAT,
-        C_CHAR
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_CHAR$LAYOUT
     );
     static final MethodHandle glSampleCoverage$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glSampleCoverage",
-        "(FB)V",
+        "glSampleCoverage",
         constants$71.glSampleCoverage$FUNC, false
     );
     static final FunctionDescriptor PFNGLACTIVETEXTUREPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLACTIVETEXTUREPROC$MH = RuntimeHelper.downcallHandle(
-        "(I)V",
         constants$71.PFNGLACTIVETEXTUREPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLSAMPLECOVERAGEPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_FLOAT,
-        C_CHAR
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_CHAR$LAYOUT
     );
     static final MethodHandle PFNGLSAMPLECOVERAGEPROC$MH = RuntimeHelper.downcallHandle(
-        "(FB)V",
         constants$71.PFNGLSAMPLECOVERAGEPROC$FUNC, false
     );
 }

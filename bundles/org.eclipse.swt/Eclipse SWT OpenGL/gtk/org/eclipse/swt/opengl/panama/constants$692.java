@@ -6,32 +6,29 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$692 {
 
-    static final FunctionDescriptor PFNGLBINDMATERIALPARAMETEREXTPROC$FUNC = FunctionDescriptor.of(C_INT,
-        C_INT,
-        C_INT
+    static final FunctionDescriptor PFNGLBINDMATERIALPARAMETEREXTPROC$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLBINDMATERIALPARAMETEREXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(II)I",
         constants$692.PFNGLBINDMATERIALPARAMETEREXTPROC$FUNC, false
     );
-    static final FunctionDescriptor PFNGLBINDTEXGENPARAMETEREXTPROC$FUNC = FunctionDescriptor.of(C_INT,
-        C_INT,
-        C_INT,
-        C_INT
+    static final FunctionDescriptor PFNGLBINDTEXGENPARAMETEREXTPROC$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLBINDTEXGENPARAMETEREXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(III)I",
         constants$692.PFNGLBINDTEXGENPARAMETEREXTPROC$FUNC, false
     );
-    static final FunctionDescriptor PFNGLBINDTEXTUREUNITPARAMETEREXTPROC$FUNC = FunctionDescriptor.of(C_INT,
-        C_INT,
-        C_INT
+    static final FunctionDescriptor PFNGLBINDTEXTUREUNITPARAMETEREXTPROC$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLBINDTEXTUREUNITPARAMETEREXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(II)I",
         constants$692.PFNGLBINDTEXTUREUNITPARAMETEREXTPROC$FUNC, false
     );
 }

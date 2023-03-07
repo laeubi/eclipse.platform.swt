@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLVERTEXWEIGHTPOINTEREXTPROC {
 
     void apply(int x0, int x1, int x2, jdk.incubator.foreign.MemoryAddress x3);
-    static MemoryAddress allocate(PFNGLVERTEXWEIGHTPOINTEREXTPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLVERTEXWEIGHTPOINTEREXTPROC.class, fi, constants$697.PFNGLVERTEXWEIGHTPOINTEREXTPROC$FUNC, "(IIILjdk/incubator/foreign/MemoryAddress;)V");
-    }
-    static MemoryAddress allocate(PFNGLVERTEXWEIGHTPOINTEREXTPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLVERTEXWEIGHTPOINTEREXTPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLVERTEXWEIGHTPOINTEREXTPROC.class, fi, constants$697.PFNGLVERTEXWEIGHTPOINTEREXTPROC$FUNC, "(IIILjdk/incubator/foreign/MemoryAddress;)V", scope);
     }
-    static PFNGLVERTEXWEIGHTPOINTEREXTPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, int x2, jdk.incubator.foreign.MemoryAddress x3) -> {
+    static PFNGLVERTEXWEIGHTPOINTEREXTPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLVERTEXWEIGHTPOINTEREXTPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1, int x2, jdk.incubator.foreign.MemoryAddress x3) -> {
             try {
-                constants$697.PFNGLVERTEXWEIGHTPOINTEREXTPROC$MH.invokeExact((Addressable)addr, x0, x1, x2, x3);
+                constants$697.PFNGLVERTEXWEIGHTPOINTEREXTPROC$MH.invokeExact(symbol, x0, x1, x2, (jdk.incubator.foreign.Addressable)x3);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

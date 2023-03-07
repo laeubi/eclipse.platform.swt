@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLGLOBALALPHAFACTORISUNPROC {
 
     void apply(int x0);
-    static MemoryAddress allocate(PFNGLGLOBALALPHAFACTORISUNPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLGLOBALALPHAFACTORISUNPROC.class, fi, constants$901.PFNGLGLOBALALPHAFACTORISUNPROC$FUNC, "(I)V");
-    }
-    static MemoryAddress allocate(PFNGLGLOBALALPHAFACTORISUNPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLGLOBALALPHAFACTORISUNPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLGLOBALALPHAFACTORISUNPROC.class, fi, constants$901.PFNGLGLOBALALPHAFACTORISUNPROC$FUNC, "(I)V", scope);
     }
-    static PFNGLGLOBALALPHAFACTORISUNPROC ofAddress(MemoryAddress addr) {
-        return (int x0) -> {
+    static PFNGLGLOBALALPHAFACTORISUNPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLGLOBALALPHAFACTORISUNPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0) -> {
             try {
-                constants$901.PFNGLGLOBALALPHAFACTORISUNPROC$MH.invokeExact((Addressable)addr, x0);
+                constants$901.PFNGLGLOBALALPHAFACTORISUNPROC$MH.invokeExact(symbol, x0);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLPOPGROUPMARKEREXTPROC {
 
     void apply();
-    static MemoryAddress allocate(PFNGLPOPGROUPMARKEREXTPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLPOPGROUPMARKEREXTPROC.class, fi, constants$536.PFNGLPOPGROUPMARKEREXTPROC$FUNC, "()V");
-    }
-    static MemoryAddress allocate(PFNGLPOPGROUPMARKEREXTPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLPOPGROUPMARKEREXTPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLPOPGROUPMARKEREXTPROC.class, fi, constants$536.PFNGLPOPGROUPMARKEREXTPROC$FUNC, "()V", scope);
     }
-    static PFNGLPOPGROUPMARKEREXTPROC ofAddress(MemoryAddress addr) {
-        return () -> {
+    static PFNGLPOPGROUPMARKEREXTPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLPOPGROUPMARKEREXTPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return () -> {
             try {
-                constants$536.PFNGLPOPGROUPMARKEREXTPROC$MH.invokeExact((Addressable)addr);
+                constants$536.PFNGLPOPGROUPMARKEREXTPROC$MH.invokeExact(symbol);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

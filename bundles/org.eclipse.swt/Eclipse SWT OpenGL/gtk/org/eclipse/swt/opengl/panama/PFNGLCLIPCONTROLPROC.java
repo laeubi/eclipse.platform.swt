@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLCLIPCONTROLPROC {
 
     void apply(int x0, int x1);
-    static MemoryAddress allocate(PFNGLCLIPCONTROLPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLCLIPCONTROLPROC.class, fi, constants$271.PFNGLCLIPCONTROLPROC$FUNC, "(II)V");
-    }
-    static MemoryAddress allocate(PFNGLCLIPCONTROLPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLCLIPCONTROLPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLCLIPCONTROLPROC.class, fi, constants$271.PFNGLCLIPCONTROLPROC$FUNC, "(II)V", scope);
     }
-    static PFNGLCLIPCONTROLPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1) -> {
+    static PFNGLCLIPCONTROLPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLCLIPCONTROLPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1) -> {
             try {
-                constants$271.PFNGLCLIPCONTROLPROC$MH.invokeExact((Addressable)addr, x0, x1);
+                constants$271.PFNGLCLIPCONTROLPROC$MH.invokeExact(symbol, x0, x1);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

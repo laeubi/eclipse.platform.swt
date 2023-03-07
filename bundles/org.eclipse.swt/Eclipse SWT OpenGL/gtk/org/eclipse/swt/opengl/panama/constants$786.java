@@ -6,33 +6,30 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$786 {
 
     static final FunctionDescriptor PFNGLPATHDASHARRAYNVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLPATHDASHARRAYNVPROC$MH = RuntimeHelper.downcallHandle(
-        "(IILjdk/incubator/foreign/MemoryAddress;)V",
         constants$786.PFNGLPATHDASHARRAYNVPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLPATHSTENCILFUNCNVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLPATHSTENCILFUNCNVPROC$MH = RuntimeHelper.downcallHandle(
-        "(III)V",
         constants$786.PFNGLPATHSTENCILFUNCNVPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLPATHSTENCILDEPTHOFFSETNVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_FLOAT,
-        C_FLOAT
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT
     );
     static final MethodHandle PFNGLPATHSTENCILDEPTHOFFSETNVPROC$MH = RuntimeHelper.downcallHandle(
-        "(FF)V",
         constants$786.PFNGLPATHSTENCILDEPTHOFFSETNVPROC$FUNC, false
     );
 }

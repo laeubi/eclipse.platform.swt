@@ -6,57 +6,55 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$930 {
 
-    static final FunctionDescriptor gluUnProject$FUNC = FunctionDescriptor.of(C_INT,
-        C_DOUBLE,
-        C_DOUBLE,
-        C_DOUBLE,
-        C_POINTER,
-        C_POINTER,
-        C_POINTER,
-        C_POINTER,
-        C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor gluUnProject$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle gluUnProject$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "gluUnProject",
-        "(DDDLjdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I",
+        "gluUnProject",
         constants$930.gluUnProject$FUNC, false
     );
-    static final FunctionDescriptor gluUnProject4$FUNC = FunctionDescriptor.of(C_INT,
-        C_DOUBLE,
-        C_DOUBLE,
-        C_DOUBLE,
-        C_DOUBLE,
-        C_POINTER,
-        C_POINTER,
-        C_POINTER,
-        C_DOUBLE,
-        C_DOUBLE,
-        C_POINTER,
-        C_POINTER,
-        C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor gluUnProject4$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle gluUnProject4$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "gluUnProject4",
-        "(DDDDLjdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;DDLjdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I",
+        "gluUnProject4",
         constants$930.gluUnProject4$FUNC, false
     );
-    static final MemoryLayout glutStrokeRoman$LAYOUT = C_POINTER;
-    static final VarHandle glutStrokeRoman$VH = MemoryHandles.asAddressVarHandle(constants$930.glutStrokeRoman$LAYOUT.varHandle(long.class));
-    static final MemorySegment glutStrokeRoman$SEGMENT = RuntimeHelper.lookupGlobalVariable(glut_h.LIBRARIES, "glutStrokeRoman", constants$930.glutStrokeRoman$LAYOUT);
-    static final MemoryLayout glutStrokeMonoRoman$LAYOUT = C_POINTER;
-    static final VarHandle glutStrokeMonoRoman$VH = MemoryHandles.asAddressVarHandle(constants$930.glutStrokeMonoRoman$LAYOUT.varHandle(long.class));
-    static final MemorySegment glutStrokeMonoRoman$SEGMENT = RuntimeHelper.lookupGlobalVariable(glut_h.LIBRARIES, "glutStrokeMonoRoman", constants$930.glutStrokeMonoRoman$LAYOUT);
-    static final MemoryLayout glutBitmap9By15$LAYOUT = C_POINTER;
-    static final VarHandle glutBitmap9By15$VH = MemoryHandles.asAddressVarHandle(constants$930.glutBitmap9By15$LAYOUT.varHandle(long.class));
-    static final MemorySegment glutBitmap9By15$SEGMENT = RuntimeHelper.lookupGlobalVariable(glut_h.LIBRARIES, "glutBitmap9By15", constants$930.glutBitmap9By15$LAYOUT);
-    static final MemoryLayout glutBitmap8By13$LAYOUT = C_POINTER;
-    static final VarHandle glutBitmap8By13$VH = MemoryHandles.asAddressVarHandle(constants$930.glutBitmap8By13$LAYOUT.varHandle(long.class));
-    static final MemorySegment glutBitmap8By13$SEGMENT = RuntimeHelper.lookupGlobalVariable(glut_h.LIBRARIES, "glutBitmap8By13", constants$930.glutBitmap8By13$LAYOUT);
+    static final  OfAddress glutStrokeRoman$LAYOUT = Constants$root.C_POINTER$LAYOUT;
+    static final VarHandle glutStrokeRoman$VH = constants$930.glutStrokeRoman$LAYOUT.varHandle();
+    static final MemorySegment glutStrokeRoman$SEGMENT = RuntimeHelper.lookupGlobalVariable("glutStrokeRoman", constants$930.glutStrokeRoman$LAYOUT);
+    static final  OfAddress glutStrokeMonoRoman$LAYOUT = Constants$root.C_POINTER$LAYOUT;
+    static final VarHandle glutStrokeMonoRoman$VH = constants$930.glutStrokeMonoRoman$LAYOUT.varHandle();
+    static final MemorySegment glutStrokeMonoRoman$SEGMENT = RuntimeHelper.lookupGlobalVariable("glutStrokeMonoRoman", constants$930.glutStrokeMonoRoman$LAYOUT);
+    static final  OfAddress glutBitmap9By15$LAYOUT = Constants$root.C_POINTER$LAYOUT;
+    static final VarHandle glutBitmap9By15$VH = constants$930.glutBitmap9By15$LAYOUT.varHandle();
+    static final MemorySegment glutBitmap9By15$SEGMENT = RuntimeHelper.lookupGlobalVariable("glutBitmap9By15", constants$930.glutBitmap9By15$LAYOUT);
+    static final  OfAddress glutBitmap8By13$LAYOUT = Constants$root.C_POINTER$LAYOUT;
+    static final VarHandle glutBitmap8By13$VH = constants$930.glutBitmap8By13$LAYOUT.varHandle();
+    static final MemorySegment glutBitmap8By13$SEGMENT = RuntimeHelper.lookupGlobalVariable("glutBitmap8By13", constants$930.glutBitmap8By13$LAYOUT);
 }
 
 

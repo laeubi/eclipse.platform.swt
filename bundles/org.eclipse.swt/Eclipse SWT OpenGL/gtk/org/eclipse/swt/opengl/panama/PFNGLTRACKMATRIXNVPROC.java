@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLTRACKMATRIXNVPROC {
 
     void apply(int x0, int x1, int x2, int x3);
-    static MemoryAddress allocate(PFNGLTRACKMATRIXNVPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLTRACKMATRIXNVPROC.class, fi, constants$847.PFNGLTRACKMATRIXNVPROC$FUNC, "(IIII)V");
-    }
-    static MemoryAddress allocate(PFNGLTRACKMATRIXNVPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLTRACKMATRIXNVPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLTRACKMATRIXNVPROC.class, fi, constants$847.PFNGLTRACKMATRIXNVPROC$FUNC, "(IIII)V", scope);
     }
-    static PFNGLTRACKMATRIXNVPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, int x2, int x3) -> {
+    static PFNGLTRACKMATRIXNVPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLTRACKMATRIXNVPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1, int x2, int x3) -> {
             try {
-                constants$847.PFNGLTRACKMATRIXNVPROC$MH.invokeExact((Addressable)addr, x0, x1, x2, x3);
+                constants$847.PFNGLTRACKMATRIXNVPROC$MH.invokeExact(symbol, x0, x1, x2, x3);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

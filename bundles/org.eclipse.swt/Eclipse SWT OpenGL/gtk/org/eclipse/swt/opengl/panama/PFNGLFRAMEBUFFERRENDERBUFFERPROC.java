@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLFRAMEBUFFERRENDERBUFFERPROC {
 
     void apply(int x0, int x1, int x2, int x3);
-    static MemoryAddress allocate(PFNGLFRAMEBUFFERRENDERBUFFERPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLFRAMEBUFFERRENDERBUFFERPROC.class, fi, constants$170.PFNGLFRAMEBUFFERRENDERBUFFERPROC$FUNC, "(IIII)V");
-    }
-    static MemoryAddress allocate(PFNGLFRAMEBUFFERRENDERBUFFERPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLFRAMEBUFFERRENDERBUFFERPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLFRAMEBUFFERRENDERBUFFERPROC.class, fi, constants$170.PFNGLFRAMEBUFFERRENDERBUFFERPROC$FUNC, "(IIII)V", scope);
     }
-    static PFNGLFRAMEBUFFERRENDERBUFFERPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, int x2, int x3) -> {
+    static PFNGLFRAMEBUFFERRENDERBUFFERPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLFRAMEBUFFERRENDERBUFFERPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1, int x2, int x3) -> {
             try {
-                constants$170.PFNGLFRAMEBUFFERRENDERBUFFERPROC$MH.invokeExact((Addressable)addr, x0, x1, x2, x3);
+                constants$170.PFNGLFRAMEBUFFERRENDERBUFFERPROC$MH.invokeExact(symbol, x0, x1, x2, x3);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

@@ -6,63 +6,57 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$37 {
 
     static final FunctionDescriptor glGetPointerv$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle glGetPointerv$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glGetPointerv",
-        "(ILjdk/incubator/foreign/MemoryAddress;)V",
+        "glGetPointerv",
         constants$37.glGetPointerv$FUNC, false
     );
     static final FunctionDescriptor glArrayElement$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle glArrayElement$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glArrayElement",
-        "(I)V",
+        "glArrayElement",
         constants$37.glArrayElement$FUNC, false
     );
     static final FunctionDescriptor glDrawArrays$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle glDrawArrays$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glDrawArrays",
-        "(III)V",
+        "glDrawArrays",
         constants$37.glDrawArrays$FUNC, false
     );
     static final FunctionDescriptor glDrawElements$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle glDrawElements$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glDrawElements",
-        "(IIILjdk/incubator/foreign/MemoryAddress;)V",
+        "glDrawElements",
         constants$37.glDrawElements$FUNC, false
     );
     static final FunctionDescriptor glInterleavedArrays$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle glInterleavedArrays$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glInterleavedArrays",
-        "(IILjdk/incubator/foreign/MemoryAddress;)V",
+        "glInterleavedArrays",
         constants$37.glInterleavedArrays$FUNC, false
     );
     static final FunctionDescriptor glShadeModel$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle glShadeModel$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glShadeModel",
-        "(I)V",
+        "glShadeModel",
         constants$37.glShadeModel$FUNC, false
     );
 }

@@ -6,27 +6,24 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$665 {
 
     static final FunctionDescriptor PFNGLACTIVEPROGRAMEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLACTIVEPROGRAMEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(I)V",
         constants$665.PFNGLACTIVEPROGRAMEXTPROC$FUNC, false
     );
-    static final FunctionDescriptor PFNGLCREATESHADERPROGRAMEXTPROC$FUNC = FunctionDescriptor.of(C_INT,
-        C_INT,
-        C_POINTER
+    static final FunctionDescriptor PFNGLCREATESHADERPROGRAMEXTPROC$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLCREATESHADERPROGRAMEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(ILjdk/incubator/foreign/MemoryAddress;)I",
         constants$665.PFNGLCREATESHADERPROGRAMEXTPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLFRAMEBUFFERFETCHBARRIEREXTPROC$FUNC = FunctionDescriptor.ofVoid();
     static final MethodHandle PFNGLFRAMEBUFFERFETCHBARRIEREXTPROC$MH = RuntimeHelper.downcallHandle(
-        "()V",
         constants$665.PFNGLFRAMEBUFFERFETCHBARRIEREXTPROC$FUNC, false
     );
 }

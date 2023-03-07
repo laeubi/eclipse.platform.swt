@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLDEPTHBOUNDSEXTPROC {
 
     void apply(double x0, double x1);
-    static MemoryAddress allocate(PFNGLDEPTHBOUNDSEXTPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLDEPTHBOUNDSEXTPROC.class, fi, constants$536.PFNGLDEPTHBOUNDSEXTPROC$FUNC, "(DD)V");
-    }
-    static MemoryAddress allocate(PFNGLDEPTHBOUNDSEXTPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLDEPTHBOUNDSEXTPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLDEPTHBOUNDSEXTPROC.class, fi, constants$536.PFNGLDEPTHBOUNDSEXTPROC$FUNC, "(DD)V", scope);
     }
-    static PFNGLDEPTHBOUNDSEXTPROC ofAddress(MemoryAddress addr) {
-        return (double x0, double x1) -> {
+    static PFNGLDEPTHBOUNDSEXTPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLDEPTHBOUNDSEXTPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (double x0, double x1) -> {
             try {
-                constants$536.PFNGLDEPTHBOUNDSEXTPROC$MH.invokeExact((Addressable)addr, x0, x1);
+                constants$536.PFNGLDEPTHBOUNDSEXTPROC$MH.invokeExact(symbol, x0, x1);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

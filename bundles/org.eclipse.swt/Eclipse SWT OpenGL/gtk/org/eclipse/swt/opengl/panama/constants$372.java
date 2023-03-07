@@ -6,33 +6,30 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$372 {
 
     static final FunctionDescriptor PFNGLDELETENAMEDSTRINGARBPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLDELETENAMEDSTRINGARBPROC$MH = RuntimeHelper.downcallHandle(
-        "(ILjdk/incubator/foreign/MemoryAddress;)V",
         constants$372.PFNGLDELETENAMEDSTRINGARBPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLCOMPILESHADERINCLUDEARBPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_POINTER,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLCOMPILESHADERINCLUDEARBPROC$MH = RuntimeHelper.downcallHandle(
-        "(IILjdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)V",
         constants$372.PFNGLCOMPILESHADERINCLUDEARBPROC$FUNC, false
     );
-    static final FunctionDescriptor PFNGLISNAMEDSTRINGARBPROC$FUNC = FunctionDescriptor.of(C_CHAR,
-        C_INT,
-        C_POINTER
+    static final FunctionDescriptor PFNGLISNAMEDSTRINGARBPROC$FUNC = FunctionDescriptor.of(Constants$root.C_CHAR$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLISNAMEDSTRINGARBPROC$MH = RuntimeHelper.downcallHandle(
-        "(ILjdk/incubator/foreign/MemoryAddress;)B",
         constants$372.PFNGLISNAMEDSTRINGARBPROC$FUNC, false
     );
 }

@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLBINDRENDERBUFFEREXTPROC {
 
     void apply(int x0, int x1);
-    static MemoryAddress allocate(PFNGLBINDRENDERBUFFEREXTPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLBINDRENDERBUFFEREXTPROC.class, fi, constants$626.PFNGLBINDRENDERBUFFEREXTPROC$FUNC, "(II)V");
-    }
-    static MemoryAddress allocate(PFNGLBINDRENDERBUFFEREXTPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLBINDRENDERBUFFEREXTPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLBINDRENDERBUFFEREXTPROC.class, fi, constants$626.PFNGLBINDRENDERBUFFEREXTPROC$FUNC, "(II)V", scope);
     }
-    static PFNGLBINDRENDERBUFFEREXTPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1) -> {
+    static PFNGLBINDRENDERBUFFEREXTPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLBINDRENDERBUFFEREXTPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1) -> {
             try {
-                constants$626.PFNGLBINDRENDERBUFFEREXTPROC$MH.invokeExact((Addressable)addr, x0, x1);
+                constants$626.PFNGLBINDRENDERBUFFEREXTPROC$MH.invokeExact(symbol, x0, x1);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

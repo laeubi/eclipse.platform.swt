@@ -6,57 +6,51 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$30 {
 
     static final FunctionDescriptor glTexCoord4dv$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle glTexCoord4dv$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glTexCoord4dv",
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
+        "glTexCoord4dv",
         constants$30.glTexCoord4dv$FUNC, false
     );
     static final FunctionDescriptor glTexCoord4fv$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle glTexCoord4fv$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glTexCoord4fv",
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
+        "glTexCoord4fv",
         constants$30.glTexCoord4fv$FUNC, false
     );
     static final FunctionDescriptor glTexCoord4iv$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle glTexCoord4iv$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glTexCoord4iv",
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
+        "glTexCoord4iv",
         constants$30.glTexCoord4iv$FUNC, false
     );
     static final FunctionDescriptor glTexCoord4sv$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle glTexCoord4sv$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glTexCoord4sv",
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
+        "glTexCoord4sv",
         constants$30.glTexCoord4sv$FUNC, false
     );
     static final FunctionDescriptor glRasterPos2d$FUNC = FunctionDescriptor.ofVoid(
-        C_DOUBLE,
-        C_DOUBLE
+        Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT
     );
     static final MethodHandle glRasterPos2d$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glRasterPos2d",
-        "(DD)V",
+        "glRasterPos2d",
         constants$30.glRasterPos2d$FUNC, false
     );
     static final FunctionDescriptor glRasterPos2f$FUNC = FunctionDescriptor.ofVoid(
-        C_FLOAT,
-        C_FLOAT
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT
     );
     static final MethodHandle glRasterPos2f$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glRasterPos2f",
-        "(FF)V",
+        "glRasterPos2f",
         constants$30.glRasterPos2f$FUNC, false
     );
 }

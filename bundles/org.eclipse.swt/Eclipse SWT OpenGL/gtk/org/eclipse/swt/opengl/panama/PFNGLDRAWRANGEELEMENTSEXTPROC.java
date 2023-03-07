@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLDRAWRANGEELEMENTSEXTPROC {
 
     void apply(int x0, int x1, int x2, int x3, int x4, jdk.incubator.foreign.MemoryAddress x5);
-    static MemoryAddress allocate(PFNGLDRAWRANGEELEMENTSEXTPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLDRAWRANGEELEMENTSEXTPROC.class, fi, constants$623.PFNGLDRAWRANGEELEMENTSEXTPROC$FUNC, "(IIIIILjdk/incubator/foreign/MemoryAddress;)V");
-    }
-    static MemoryAddress allocate(PFNGLDRAWRANGEELEMENTSEXTPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLDRAWRANGEELEMENTSEXTPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLDRAWRANGEELEMENTSEXTPROC.class, fi, constants$623.PFNGLDRAWRANGEELEMENTSEXTPROC$FUNC, "(IIIIILjdk/incubator/foreign/MemoryAddress;)V", scope);
     }
-    static PFNGLDRAWRANGEELEMENTSEXTPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, int x2, int x3, int x4, jdk.incubator.foreign.MemoryAddress x5) -> {
+    static PFNGLDRAWRANGEELEMENTSEXTPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLDRAWRANGEELEMENTSEXTPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1, int x2, int x3, int x4, jdk.incubator.foreign.MemoryAddress x5) -> {
             try {
-                constants$623.PFNGLDRAWRANGEELEMENTSEXTPROC$MH.invokeExact((Addressable)addr, x0, x1, x2, x3, x4, x5);
+                constants$623.PFNGLDRAWRANGEELEMENTSEXTPROC$MH.invokeExact(symbol, x0, x1, x2, x3, x4, (jdk.incubator.foreign.Addressable)x5);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

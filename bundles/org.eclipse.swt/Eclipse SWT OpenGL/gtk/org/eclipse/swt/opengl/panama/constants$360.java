@@ -6,29 +6,26 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$360 {
 
     static final FunctionDescriptor PFNGLSHADERSOURCEARBPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_POINTER,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLSHADERSOURCEARBPROC$MH = RuntimeHelper.downcallHandle(
-        "(IILjdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)V",
         constants$360.PFNGLSHADERSOURCEARBPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLCOMPILESHADERARBPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLCOMPILESHADERARBPROC$MH = RuntimeHelper.downcallHandle(
-        "(I)V",
         constants$360.PFNGLCOMPILESHADERARBPROC$FUNC, false
     );
-    static final FunctionDescriptor PFNGLCREATEPROGRAMOBJECTARBPROC$FUNC = FunctionDescriptor.of(C_INT);
+    static final FunctionDescriptor PFNGLCREATEPROGRAMOBJECTARBPROC$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT);
     static final MethodHandle PFNGLCREATEPROGRAMOBJECTARBPROC$MH = RuntimeHelper.downcallHandle(
-        "()I",
         constants$360.PFNGLCREATEPROGRAMOBJECTARBPROC$FUNC, false
     );
 }

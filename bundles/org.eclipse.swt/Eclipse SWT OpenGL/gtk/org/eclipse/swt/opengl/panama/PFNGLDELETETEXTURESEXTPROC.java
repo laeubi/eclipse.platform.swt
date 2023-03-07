@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLDELETETEXTURESEXTPROC {
 
     void apply(int x0, jdk.incubator.foreign.MemoryAddress x1);
-    static MemoryAddress allocate(PFNGLDELETETEXTURESEXTPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLDELETETEXTURESEXTPROC.class, fi, constants$672.PFNGLDELETETEXTURESEXTPROC$FUNC, "(ILjdk/incubator/foreign/MemoryAddress;)V");
-    }
-    static MemoryAddress allocate(PFNGLDELETETEXTURESEXTPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLDELETETEXTURESEXTPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLDELETETEXTURESEXTPROC.class, fi, constants$672.PFNGLDELETETEXTURESEXTPROC$FUNC, "(ILjdk/incubator/foreign/MemoryAddress;)V", scope);
     }
-    static PFNGLDELETETEXTURESEXTPROC ofAddress(MemoryAddress addr) {
-        return (int x0, jdk.incubator.foreign.MemoryAddress x1) -> {
+    static PFNGLDELETETEXTURESEXTPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLDELETETEXTURESEXTPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, jdk.incubator.foreign.MemoryAddress x1) -> {
             try {
-                constants$672.PFNGLDELETETEXTURESEXTPROC$MH.invokeExact((Addressable)addr, x0, x1);
+                constants$672.PFNGLDELETETEXTURESEXTPROC$MH.invokeExact(symbol, x0, (jdk.incubator.foreign.Addressable)x1);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

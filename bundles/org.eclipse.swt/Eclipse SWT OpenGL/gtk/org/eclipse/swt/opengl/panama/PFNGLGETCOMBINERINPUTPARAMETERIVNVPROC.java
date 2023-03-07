@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLGETCOMBINERINPUTPARAMETERIVNVPROC {
 
     void apply(int x0, int x1, int x2, int x3, jdk.incubator.foreign.MemoryAddress x4);
-    static MemoryAddress allocate(PFNGLGETCOMBINERINPUTPARAMETERIVNVPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLGETCOMBINERINPUTPARAMETERIVNVPROC.class, fi, constants$809.PFNGLGETCOMBINERINPUTPARAMETERIVNVPROC$FUNC, "(IIIILjdk/incubator/foreign/MemoryAddress;)V");
-    }
-    static MemoryAddress allocate(PFNGLGETCOMBINERINPUTPARAMETERIVNVPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLGETCOMBINERINPUTPARAMETERIVNVPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLGETCOMBINERINPUTPARAMETERIVNVPROC.class, fi, constants$809.PFNGLGETCOMBINERINPUTPARAMETERIVNVPROC$FUNC, "(IIIILjdk/incubator/foreign/MemoryAddress;)V", scope);
     }
-    static PFNGLGETCOMBINERINPUTPARAMETERIVNVPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, int x2, int x3, jdk.incubator.foreign.MemoryAddress x4) -> {
+    static PFNGLGETCOMBINERINPUTPARAMETERIVNVPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLGETCOMBINERINPUTPARAMETERIVNVPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1, int x2, int x3, jdk.incubator.foreign.MemoryAddress x4) -> {
             try {
-                constants$809.PFNGLGETCOMBINERINPUTPARAMETERIVNVPROC$MH.invokeExact((Addressable)addr, x0, x1, x2, x3, x4);
+                constants$809.PFNGLGETCOMBINERINPUTPARAMETERIVNVPROC$MH.invokeExact(symbol, x0, x1, x2, x3, (jdk.incubator.foreign.Addressable)x4);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

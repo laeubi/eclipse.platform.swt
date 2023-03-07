@@ -6,15 +6,15 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$986 {
 
-    static final MemorySegment PRIx32$SEGMENT = CLinker.toCString("x", ResourceScope.newImplicitScope());
-    static final MemorySegment PRIx64$SEGMENT = CLinker.toCString("lx", ResourceScope.newImplicitScope());
-    static final MemorySegment PRIxLEAST8$SEGMENT = CLinker.toCString("x", ResourceScope.newImplicitScope());
-    static final MemorySegment PRIxLEAST16$SEGMENT = CLinker.toCString("x", ResourceScope.newImplicitScope());
-    static final MemorySegment PRIxLEAST32$SEGMENT = CLinker.toCString("x", ResourceScope.newImplicitScope());
-    static final MemorySegment PRIxLEAST64$SEGMENT = CLinker.toCString("lx", ResourceScope.newImplicitScope());
+    static final MemorySegment PRIx32$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("x");
+    static final MemorySegment PRIx64$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lx");
+    static final MemorySegment PRIxLEAST8$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("x");
+    static final MemorySegment PRIxLEAST16$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("x");
+    static final MemorySegment PRIxLEAST32$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("x");
+    static final MemorySegment PRIxLEAST64$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lx");
 }
 
 

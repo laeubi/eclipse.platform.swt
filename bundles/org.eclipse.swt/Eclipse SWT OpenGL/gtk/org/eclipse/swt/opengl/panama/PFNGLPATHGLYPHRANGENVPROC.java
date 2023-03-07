@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLPATHGLYPHRANGENVPROC {
 
     void apply(int x0, int x1, jdk.incubator.foreign.MemoryAddress x2, int x3, int x4, int x5, int x6, int x7, float x8);
-    static MemoryAddress allocate(PFNGLPATHGLYPHRANGENVPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLPATHGLYPHRANGENVPROC.class, fi, constants$783.PFNGLPATHGLYPHRANGENVPROC$FUNC, "(IILjdk/incubator/foreign/MemoryAddress;IIIIIF)V");
-    }
-    static MemoryAddress allocate(PFNGLPATHGLYPHRANGENVPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLPATHGLYPHRANGENVPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLPATHGLYPHRANGENVPROC.class, fi, constants$783.PFNGLPATHGLYPHRANGENVPROC$FUNC, "(IILjdk/incubator/foreign/MemoryAddress;IIIIIF)V", scope);
     }
-    static PFNGLPATHGLYPHRANGENVPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, jdk.incubator.foreign.MemoryAddress x2, int x3, int x4, int x5, int x6, int x7, float x8) -> {
+    static PFNGLPATHGLYPHRANGENVPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLPATHGLYPHRANGENVPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1, jdk.incubator.foreign.MemoryAddress x2, int x3, int x4, int x5, int x6, int x7, float x8) -> {
             try {
-                constants$783.PFNGLPATHGLYPHRANGENVPROC$MH.invokeExact((Addressable)addr, x0, x1, x2, x3, x4, x5, x6, x7, x8);
+                constants$783.PFNGLPATHGLYPHRANGENVPROC$MH.invokeExact(symbol, x0, x1, (jdk.incubator.foreign.Addressable)x2, x3, x4, x5, x6, x7, x8);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

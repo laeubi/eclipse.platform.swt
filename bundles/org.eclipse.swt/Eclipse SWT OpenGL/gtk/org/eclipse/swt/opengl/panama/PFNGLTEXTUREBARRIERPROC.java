@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLTEXTUREBARRIERPROC {
 
     void apply();
-    static MemoryAddress allocate(PFNGLTEXTUREBARRIERPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLTEXTUREBARRIERPROC.class, fi, constants$311.PFNGLTEXTUREBARRIERPROC$FUNC, "()V");
-    }
-    static MemoryAddress allocate(PFNGLTEXTUREBARRIERPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLTEXTUREBARRIERPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLTEXTUREBARRIERPROC.class, fi, constants$311.PFNGLTEXTUREBARRIERPROC$FUNC, "()V", scope);
     }
-    static PFNGLTEXTUREBARRIERPROC ofAddress(MemoryAddress addr) {
-        return () -> {
+    static PFNGLTEXTUREBARRIERPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLTEXTUREBARRIERPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return () -> {
             try {
-                constants$311.PFNGLTEXTUREBARRIERPROC$MH.invokeExact((Addressable)addr);
+                constants$311.PFNGLTEXTUREBARRIERPROC$MH.invokeExact(symbol);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

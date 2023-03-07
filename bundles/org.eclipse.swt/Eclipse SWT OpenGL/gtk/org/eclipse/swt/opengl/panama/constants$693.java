@@ -6,31 +6,28 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$693 {
 
-    static final FunctionDescriptor PFNGLBINDPARAMETEREXTPROC$FUNC = FunctionDescriptor.of(C_INT,
-        C_INT
+    static final FunctionDescriptor PFNGLBINDPARAMETEREXTPROC$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLBINDPARAMETEREXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(I)I",
         constants$693.PFNGLBINDPARAMETEREXTPROC$FUNC, false
     );
-    static final FunctionDescriptor PFNGLISVARIANTENABLEDEXTPROC$FUNC = FunctionDescriptor.of(C_CHAR,
-        C_INT,
-        C_INT
+    static final FunctionDescriptor PFNGLISVARIANTENABLEDEXTPROC$FUNC = FunctionDescriptor.of(Constants$root.C_CHAR$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLISVARIANTENABLEDEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(II)B",
         constants$693.PFNGLISVARIANTENABLEDEXTPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLGETVARIANTBOOLEANVEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLGETVARIANTBOOLEANVEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(IILjdk/incubator/foreign/MemoryAddress;)V",
         constants$693.PFNGLGETVARIANTBOOLEANVEXTPROC$FUNC, false
     );
 }

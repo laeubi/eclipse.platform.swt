@@ -6,36 +6,33 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$788 {
 
     static final FunctionDescriptor PFNGLSTENCILSTROKEPATHINSTANCEDNVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_POINTER,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLSTENCILSTROKEPATHINSTANCEDNVPROC$MH = RuntimeHelper.downcallHandle(
-        "(IILjdk/incubator/foreign/MemoryAddress;IIIILjdk/incubator/foreign/MemoryAddress;)V",
         constants$788.PFNGLSTENCILSTROKEPATHINSTANCEDNVPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLPATHCOVERDEPTHFUNCNVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLPATHCOVERDEPTHFUNCNVPROC$MH = RuntimeHelper.downcallHandle(
-        "(I)V",
         constants$788.PFNGLPATHCOVERDEPTHFUNCNVPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLCOVERFILLPATHNVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLCOVERFILLPATHNVPROC$MH = RuntimeHelper.downcallHandle(
-        "(II)V",
         constants$788.PFNGLCOVERFILLPATHNVPROC$FUNC, false
     );
 }

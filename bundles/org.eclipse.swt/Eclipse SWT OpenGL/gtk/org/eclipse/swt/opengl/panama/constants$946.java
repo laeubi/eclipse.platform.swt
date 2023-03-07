@@ -6,41 +6,37 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$946 {
 
     static final FunctionDescriptor glutJoystickFunc$callback$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle glutJoystickFunc$callback$MH = RuntimeHelper.downcallHandle(
-        "(IIII)V",
         constants$946.glutJoystickFunc$callback$FUNC, false
     );
     static final FunctionDescriptor glutJoystickFunc$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER,
-        C_INT
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle glutJoystickFunc$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glutJoystickFunc",
-        "(Ljdk/incubator/foreign/MemoryAddress;I)V",
+        "glutJoystickFunc",
         constants$946.glutJoystickFunc$FUNC, false
     );
     static final FunctionDescriptor glutMenuStateFunc$callback$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle glutMenuStateFunc$callback$MH = RuntimeHelper.downcallHandle(
-        "(I)V",
         constants$946.glutMenuStateFunc$callback$FUNC, false
     );
     static final FunctionDescriptor glutMenuStateFunc$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle glutMenuStateFunc$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glutMenuStateFunc",
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
+        "glutMenuStateFunc",
         constants$946.glutMenuStateFunc$FUNC, false
     );
 }

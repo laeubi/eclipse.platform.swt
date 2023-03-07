@@ -6,45 +6,42 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$808 {
 
     static final FunctionDescriptor PFNGLCOMBINERINPUTNVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLCOMBINERINPUTNVPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIIIII)V",
         constants$808.PFNGLCOMBINERINPUTNVPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLCOMBINEROUTPUTNVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_CHAR,
-        C_CHAR,
-        C_CHAR
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_CHAR$LAYOUT,
+        Constants$root.C_CHAR$LAYOUT,
+        Constants$root.C_CHAR$LAYOUT
     );
     static final MethodHandle PFNGLCOMBINEROUTPUTNVPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIIIIIIBBB)V",
         constants$808.PFNGLCOMBINEROUTPUTNVPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLFINALCOMBINERINPUTNVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLFINALCOMBINERINPUTNVPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIII)V",
         constants$808.PFNGLFINALCOMBINERINPUTNVPROC$FUNC, false
     );
 }

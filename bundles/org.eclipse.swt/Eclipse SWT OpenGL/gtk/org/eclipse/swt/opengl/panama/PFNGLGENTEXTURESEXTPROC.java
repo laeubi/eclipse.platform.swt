@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLGENTEXTURESEXTPROC {
 
     void apply(int x0, jdk.incubator.foreign.MemoryAddress x1);
-    static MemoryAddress allocate(PFNGLGENTEXTURESEXTPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLGENTEXTURESEXTPROC.class, fi, constants$672.PFNGLGENTEXTURESEXTPROC$FUNC, "(ILjdk/incubator/foreign/MemoryAddress;)V");
-    }
-    static MemoryAddress allocate(PFNGLGENTEXTURESEXTPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLGENTEXTURESEXTPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLGENTEXTURESEXTPROC.class, fi, constants$672.PFNGLGENTEXTURESEXTPROC$FUNC, "(ILjdk/incubator/foreign/MemoryAddress;)V", scope);
     }
-    static PFNGLGENTEXTURESEXTPROC ofAddress(MemoryAddress addr) {
-        return (int x0, jdk.incubator.foreign.MemoryAddress x1) -> {
+    static PFNGLGENTEXTURESEXTPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLGENTEXTURESEXTPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, jdk.incubator.foreign.MemoryAddress x1) -> {
             try {
-                constants$672.PFNGLGENTEXTURESEXTPROC$MH.invokeExact((Addressable)addr, x0, x1);
+                constants$672.PFNGLGENTEXTURESEXTPROC$MH.invokeExact(symbol, x0, (jdk.incubator.foreign.Addressable)x1);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLMULTIDRAWARRAYSPROC {
 
     void apply(int x0, jdk.incubator.foreign.MemoryAddress x1, jdk.incubator.foreign.MemoryAddress x2, int x3);
-    static MemoryAddress allocate(PFNGLMULTIDRAWARRAYSPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLMULTIDRAWARRAYSPROC.class, fi, constants$91.PFNGLMULTIDRAWARRAYSPROC$FUNC, "(ILjdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;I)V");
-    }
-    static MemoryAddress allocate(PFNGLMULTIDRAWARRAYSPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLMULTIDRAWARRAYSPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLMULTIDRAWARRAYSPROC.class, fi, constants$91.PFNGLMULTIDRAWARRAYSPROC$FUNC, "(ILjdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;I)V", scope);
     }
-    static PFNGLMULTIDRAWARRAYSPROC ofAddress(MemoryAddress addr) {
-        return (int x0, jdk.incubator.foreign.MemoryAddress x1, jdk.incubator.foreign.MemoryAddress x2, int x3) -> {
+    static PFNGLMULTIDRAWARRAYSPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLMULTIDRAWARRAYSPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, jdk.incubator.foreign.MemoryAddress x1, jdk.incubator.foreign.MemoryAddress x2, int x3) -> {
             try {
-                constants$91.PFNGLMULTIDRAWARRAYSPROC$MH.invokeExact((Addressable)addr, x0, x1, x2, x3);
+                constants$91.PFNGLMULTIDRAWARRAYSPROC$MH.invokeExact(symbol, x0, (jdk.incubator.foreign.Addressable)x1, (jdk.incubator.foreign.Addressable)x2, x3);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface glutKeyboardUpFunc$callback {
 
     void apply(byte x0, int x1, int x2);
-    static MemoryAddress allocate(glutKeyboardUpFunc$callback fi) {
-        return RuntimeHelper.upcallStub(glutKeyboardUpFunc$callback.class, fi, constants$945.glutKeyboardUpFunc$callback$FUNC, "(BII)V");
-    }
-    static MemoryAddress allocate(glutKeyboardUpFunc$callback fi, ResourceScope scope) {
+    static NativeSymbol allocate(glutKeyboardUpFunc$callback fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(glutKeyboardUpFunc$callback.class, fi, constants$945.glutKeyboardUpFunc$callback$FUNC, "(BII)V", scope);
     }
-    static glutKeyboardUpFunc$callback ofAddress(MemoryAddress addr) {
-        return (byte x0, int x1, int x2) -> {
+    static glutKeyboardUpFunc$callback ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("glutKeyboardUpFunc$callback::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (byte x0, int x1, int x2) -> {
             try {
-                constants$945.glutKeyboardUpFunc$callback$MH.invokeExact((Addressable)addr, x0, x1, x2);
+                constants$945.glutKeyboardUpFunc$callback$MH.invokeExact(symbol, x0, x1, x2);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

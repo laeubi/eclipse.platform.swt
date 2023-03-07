@@ -6,31 +6,28 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$697 {
 
     static final FunctionDescriptor PFNGLVERTEXWEIGHTFEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_FLOAT
+        Constants$root.C_FLOAT$LAYOUT
     );
     static final MethodHandle PFNGLVERTEXWEIGHTFEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(F)V",
         constants$697.PFNGLVERTEXWEIGHTFEXTPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLVERTEXWEIGHTFVEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLVERTEXWEIGHTFVEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
         constants$697.PFNGLVERTEXWEIGHTFVEXTPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLVERTEXWEIGHTPOINTEREXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLVERTEXWEIGHTPOINTEREXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIILjdk/incubator/foreign/MemoryAddress;)V",
         constants$697.PFNGLVERTEXWEIGHTPOINTEREXTPROC$FUNC, false
     );
 }

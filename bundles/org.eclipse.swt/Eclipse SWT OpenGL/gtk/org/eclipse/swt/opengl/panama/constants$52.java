@@ -6,59 +6,53 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$52 {
 
     static final FunctionDescriptor glEvalCoord1fv$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle glEvalCoord1fv$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glEvalCoord1fv",
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
+        "glEvalCoord1fv",
         constants$52.glEvalCoord1fv$FUNC, false
     );
     static final FunctionDescriptor glEvalCoord2d$FUNC = FunctionDescriptor.ofVoid(
-        C_DOUBLE,
-        C_DOUBLE
+        Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT
     );
     static final MethodHandle glEvalCoord2d$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glEvalCoord2d",
-        "(DD)V",
+        "glEvalCoord2d",
         constants$52.glEvalCoord2d$FUNC, false
     );
     static final FunctionDescriptor glEvalCoord2f$FUNC = FunctionDescriptor.ofVoid(
-        C_FLOAT,
-        C_FLOAT
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT
     );
     static final MethodHandle glEvalCoord2f$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glEvalCoord2f",
-        "(FF)V",
+        "glEvalCoord2f",
         constants$52.glEvalCoord2f$FUNC, false
     );
     static final FunctionDescriptor glEvalCoord2dv$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle glEvalCoord2dv$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glEvalCoord2dv",
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
+        "glEvalCoord2dv",
         constants$52.glEvalCoord2dv$FUNC, false
     );
     static final FunctionDescriptor glEvalCoord2fv$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle glEvalCoord2fv$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glEvalCoord2fv",
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
+        "glEvalCoord2fv",
         constants$52.glEvalCoord2fv$FUNC, false
     );
     static final FunctionDescriptor glMapGrid1d$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_DOUBLE,
-        C_DOUBLE
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT
     );
     static final MethodHandle glMapGrid1d$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glMapGrid1d",
-        "(IDD)V",
+        "glMapGrid1d",
         constants$52.glMapGrid1d$FUNC, false
     );
 }

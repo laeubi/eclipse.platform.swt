@@ -6,29 +6,26 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$478 {
 
     static final FunctionDescriptor PFNGLDELETEFENCESAPPLEPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLDELETEFENCESAPPLEPROC$MH = RuntimeHelper.downcallHandle(
-        "(ILjdk/incubator/foreign/MemoryAddress;)V",
         constants$478.PFNGLDELETEFENCESAPPLEPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLSETFENCEAPPLEPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLSETFENCEAPPLEPROC$MH = RuntimeHelper.downcallHandle(
-        "(I)V",
         constants$478.PFNGLSETFENCEAPPLEPROC$FUNC, false
     );
-    static final FunctionDescriptor PFNGLISFENCEAPPLEPROC$FUNC = FunctionDescriptor.of(C_CHAR,
-        C_INT
+    static final FunctionDescriptor PFNGLISFENCEAPPLEPROC$FUNC = FunctionDescriptor.of(Constants$root.C_CHAR$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLISFENCEAPPLEPROC$MH = RuntimeHelper.downcallHandle(
-        "(I)B",
         constants$478.PFNGLISFENCEAPPLEPROC$FUNC, false
     );
 }

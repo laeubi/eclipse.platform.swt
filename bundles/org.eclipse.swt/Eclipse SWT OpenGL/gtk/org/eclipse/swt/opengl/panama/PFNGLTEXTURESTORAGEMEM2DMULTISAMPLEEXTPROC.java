@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLTEXTURESTORAGEMEM2DMULTISAMPLEEXTPROC {
 
     void apply(int x0, int x1, int x2, int x3, int x4, byte x5, int x6, long x7);
-    static MemoryAddress allocate(PFNGLTEXTURESTORAGEMEM2DMULTISAMPLEEXTPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLTEXTURESTORAGEMEM2DMULTISAMPLEEXTPROC.class, fi, constants$646.PFNGLTEXTURESTORAGEMEM2DMULTISAMPLEEXTPROC$FUNC, "(IIIIIBIJ)V");
-    }
-    static MemoryAddress allocate(PFNGLTEXTURESTORAGEMEM2DMULTISAMPLEEXTPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLTEXTURESTORAGEMEM2DMULTISAMPLEEXTPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLTEXTURESTORAGEMEM2DMULTISAMPLEEXTPROC.class, fi, constants$646.PFNGLTEXTURESTORAGEMEM2DMULTISAMPLEEXTPROC$FUNC, "(IIIIIBIJ)V", scope);
     }
-    static PFNGLTEXTURESTORAGEMEM2DMULTISAMPLEEXTPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, int x2, int x3, int x4, byte x5, int x6, long x7) -> {
+    static PFNGLTEXTURESTORAGEMEM2DMULTISAMPLEEXTPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLTEXTURESTORAGEMEM2DMULTISAMPLEEXTPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1, int x2, int x3, int x4, byte x5, int x6, long x7) -> {
             try {
-                constants$646.PFNGLTEXTURESTORAGEMEM2DMULTISAMPLEEXTPROC$MH.invokeExact((Addressable)addr, x0, x1, x2, x3, x4, x5, x6, x7);
+                constants$646.PFNGLTEXTURESTORAGEMEM2DMULTISAMPLEEXTPROC$MH.invokeExact(symbol, x0, x1, x2, x3, x4, x5, x6, x7);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

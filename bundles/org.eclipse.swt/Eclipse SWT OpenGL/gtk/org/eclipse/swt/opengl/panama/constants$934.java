@@ -6,49 +6,43 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$934 {
 
     static final FunctionDescriptor glutReshapeWindow$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle glutReshapeWindow$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glutReshapeWindow",
-        "(II)V",
+        "glutReshapeWindow",
         constants$934.glutReshapeWindow$FUNC, false
     );
     static final FunctionDescriptor glutPositionWindow$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle glutPositionWindow$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glutPositionWindow",
-        "(II)V",
+        "glutPositionWindow",
         constants$934.glutPositionWindow$FUNC, false
     );
     static final FunctionDescriptor glutShowWindow$FUNC = FunctionDescriptor.ofVoid();
     static final MethodHandle glutShowWindow$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glutShowWindow",
-        "()V",
+        "glutShowWindow",
         constants$934.glutShowWindow$FUNC, false
     );
     static final FunctionDescriptor glutHideWindow$FUNC = FunctionDescriptor.ofVoid();
     static final MethodHandle glutHideWindow$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glutHideWindow",
-        "()V",
+        "glutHideWindow",
         constants$934.glutHideWindow$FUNC, false
     );
     static final FunctionDescriptor glutIconifyWindow$FUNC = FunctionDescriptor.ofVoid();
     static final MethodHandle glutIconifyWindow$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glutIconifyWindow",
-        "()V",
+        "glutIconifyWindow",
         constants$934.glutIconifyWindow$FUNC, false
     );
     static final FunctionDescriptor glutPushWindow$FUNC = FunctionDescriptor.ofVoid();
     static final MethodHandle glutPushWindow$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glutPushWindow",
-        "()V",
+        "glutPushWindow",
         constants$934.glutPushWindow$FUNC, false
     );
 }

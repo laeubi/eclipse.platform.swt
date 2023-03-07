@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLGETQUERYOBJECTIVPROC {
 
     void apply(int x0, int x1, jdk.incubator.foreign.MemoryAddress x2);
-    static MemoryAddress allocate(PFNGLGETQUERYOBJECTIVPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLGETQUERYOBJECTIVPROC.class, fi, constants$109.PFNGLGETQUERYOBJECTIVPROC$FUNC, "(IILjdk/incubator/foreign/MemoryAddress;)V");
-    }
-    static MemoryAddress allocate(PFNGLGETQUERYOBJECTIVPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLGETQUERYOBJECTIVPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLGETQUERYOBJECTIVPROC.class, fi, constants$109.PFNGLGETQUERYOBJECTIVPROC$FUNC, "(IILjdk/incubator/foreign/MemoryAddress;)V", scope);
     }
-    static PFNGLGETQUERYOBJECTIVPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, jdk.incubator.foreign.MemoryAddress x2) -> {
+    static PFNGLGETQUERYOBJECTIVPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLGETQUERYOBJECTIVPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1, jdk.incubator.foreign.MemoryAddress x2) -> {
             try {
-                constants$109.PFNGLGETQUERYOBJECTIVPROC$MH.invokeExact((Addressable)addr, x0, x1, x2);
+                constants$109.PFNGLGETQUERYOBJECTIVPROC$MH.invokeExact(symbol, x0, x1, (jdk.incubator.foreign.Addressable)x2);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

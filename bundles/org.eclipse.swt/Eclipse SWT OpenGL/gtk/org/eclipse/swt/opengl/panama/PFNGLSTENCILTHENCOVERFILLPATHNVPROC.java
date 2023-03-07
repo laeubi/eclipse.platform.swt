@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLSTENCILTHENCOVERFILLPATHNVPROC {
 
     void apply(int x0, int x1, int x2, int x3);
-    static MemoryAddress allocate(PFNGLSTENCILTHENCOVERFILLPATHNVPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLSTENCILTHENCOVERFILLPATHNVPROC.class, fi, constants$796.PFNGLSTENCILTHENCOVERFILLPATHNVPROC$FUNC, "(IIII)V");
-    }
-    static MemoryAddress allocate(PFNGLSTENCILTHENCOVERFILLPATHNVPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLSTENCILTHENCOVERFILLPATHNVPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLSTENCILTHENCOVERFILLPATHNVPROC.class, fi, constants$796.PFNGLSTENCILTHENCOVERFILLPATHNVPROC$FUNC, "(IIII)V", scope);
     }
-    static PFNGLSTENCILTHENCOVERFILLPATHNVPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, int x2, int x3) -> {
+    static PFNGLSTENCILTHENCOVERFILLPATHNVPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLSTENCILTHENCOVERFILLPATHNVPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1, int x2, int x3) -> {
             try {
-                constants$796.PFNGLSTENCILTHENCOVERFILLPATHNVPROC$MH.invokeExact((Addressable)addr, x0, x1, x2, x3);
+                constants$796.PFNGLSTENCILTHENCOVERFILLPATHNVPROC$MH.invokeExact(symbol, x0, x1, x2, x3);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

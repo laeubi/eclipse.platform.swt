@@ -6,30 +6,27 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$639 {
 
     static final FunctionDescriptor PFNGLMINMAXEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_CHAR
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_CHAR$LAYOUT
     );
     static final MethodHandle PFNGLMINMAXEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIB)V",
         constants$639.PFNGLMINMAXEXTPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLRESETHISTOGRAMEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLRESETHISTOGRAMEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(I)V",
         constants$639.PFNGLRESETHISTOGRAMEXTPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLRESETMINMAXEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLRESETMINMAXEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(I)V",
         constants$639.PFNGLRESETMINMAXEXTPROC$FUNC, false
     );
 }

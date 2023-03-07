@@ -6,31 +6,28 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$761 {
 
     static final FunctionDescriptor PFNGLVERTEX2HNVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_SHORT,
-        C_SHORT
+        Constants$root.C_SHORT$LAYOUT,
+        Constants$root.C_SHORT$LAYOUT
     );
     static final MethodHandle PFNGLVERTEX2HNVPROC$MH = RuntimeHelper.downcallHandle(
-        "(SS)V",
         constants$761.PFNGLVERTEX2HNVPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLVERTEX2HVNVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLVERTEX2HVNVPROC$MH = RuntimeHelper.downcallHandle(
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
         constants$761.PFNGLVERTEX2HVNVPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLVERTEX3HNVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_SHORT,
-        C_SHORT,
-        C_SHORT
+        Constants$root.C_SHORT$LAYOUT,
+        Constants$root.C_SHORT$LAYOUT,
+        Constants$root.C_SHORT$LAYOUT
     );
     static final MethodHandle PFNGLVERTEX3HNVPROC$MH = RuntimeHelper.downcallHandle(
-        "(SSS)V",
         constants$761.PFNGLVERTEX3HNVPROC$FUNC, false
     );
 }

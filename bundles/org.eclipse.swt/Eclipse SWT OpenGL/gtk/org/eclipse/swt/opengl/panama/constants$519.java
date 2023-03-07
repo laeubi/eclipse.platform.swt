@@ -6,36 +6,33 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$519 {
 
     static final FunctionDescriptor PFNGLBLENDFUNCSEPARATEEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLBLENDFUNCSEPARATEEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIII)V",
         constants$519.PFNGLBLENDFUNCSEPARATEEXTPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLBLENDEQUATIONEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLBLENDEQUATIONEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(I)V",
         constants$519.PFNGLBLENDEQUATIONEXTPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLCOLORSUBTABLEEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLCOLORSUBTABLEEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIIIILjdk/incubator/foreign/MemoryAddress;)V",
         constants$519.PFNGLCOLORSUBTABLEEXTPROC$FUNC, false
     );
 }

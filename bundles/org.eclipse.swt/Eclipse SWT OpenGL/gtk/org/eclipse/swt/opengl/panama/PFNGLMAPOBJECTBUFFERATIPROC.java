@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLMAPOBJECTBUFFERATIPROC {
 
-    jdk.incubator.foreign.MemoryAddress apply(int x0);
-    static MemoryAddress allocate(PFNGLMAPOBJECTBUFFERATIPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLMAPOBJECTBUFFERATIPROC.class, fi, constants$494.PFNGLMAPOBJECTBUFFERATIPROC$FUNC, "(I)Ljdk/incubator/foreign/MemoryAddress;");
+    jdk.incubator.foreign.Addressable apply(int x0);
+    static NativeSymbol allocate(PFNGLMAPOBJECTBUFFERATIPROC fi, ResourceScope scope) {
+        return RuntimeHelper.upcallStub(PFNGLMAPOBJECTBUFFERATIPROC.class, fi, constants$494.PFNGLMAPOBJECTBUFFERATIPROC$FUNC, "(I)Ljdk/incubator/foreign/Addressable;", scope);
     }
-    static MemoryAddress allocate(PFNGLMAPOBJECTBUFFERATIPROC fi, ResourceScope scope) {
-        return RuntimeHelper.upcallStub(PFNGLMAPOBJECTBUFFERATIPROC.class, fi, constants$494.PFNGLMAPOBJECTBUFFERATIPROC$FUNC, "(I)Ljdk/incubator/foreign/MemoryAddress;", scope);
-    }
-    static PFNGLMAPOBJECTBUFFERATIPROC ofAddress(MemoryAddress addr) {
-        return (int x0) -> {
+    static PFNGLMAPOBJECTBUFFERATIPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLMAPOBJECTBUFFERATIPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0) -> {
             try {
-                return (jdk.incubator.foreign.MemoryAddress)constants$494.PFNGLMAPOBJECTBUFFERATIPROC$MH.invokeExact((Addressable)addr, x0);
+                return (jdk.incubator.foreign.Addressable)(jdk.incubator.foreign.MemoryAddress)constants$494.PFNGLMAPOBJECTBUFFERATIPROC$MH.invokeExact(symbol, x0);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

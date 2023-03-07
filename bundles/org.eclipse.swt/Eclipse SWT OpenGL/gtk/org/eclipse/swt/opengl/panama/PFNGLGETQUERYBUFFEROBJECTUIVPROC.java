@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLGETQUERYBUFFEROBJECTUIVPROC {
 
     void apply(int x0, int x1, int x2, long x3);
-    static MemoryAddress allocate(PFNGLGETQUERYBUFFEROBJECTUIVPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLGETQUERYBUFFEROBJECTUIVPROC.class, fi, constants$303.PFNGLGETQUERYBUFFEROBJECTUIVPROC$FUNC, "(IIIJ)V");
-    }
-    static MemoryAddress allocate(PFNGLGETQUERYBUFFEROBJECTUIVPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLGETQUERYBUFFEROBJECTUIVPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLGETQUERYBUFFEROBJECTUIVPROC.class, fi, constants$303.PFNGLGETQUERYBUFFEROBJECTUIVPROC$FUNC, "(IIIJ)V", scope);
     }
-    static PFNGLGETQUERYBUFFEROBJECTUIVPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, int x2, long x3) -> {
+    static PFNGLGETQUERYBUFFEROBJECTUIVPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLGETQUERYBUFFEROBJECTUIVPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1, int x2, long x3) -> {
             try {
-                constants$303.PFNGLGETQUERYBUFFEROBJECTUIVPROC$MH.invokeExact((Addressable)addr, x0, x1, x2, x3);
+                constants$303.PFNGLGETQUERYBUFFEROBJECTUIVPROC$MH.invokeExact(symbol, x0, x1, x2, x3);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLCOLORPOINTERLISTIBMPROC {
 
     void apply(int x0, int x1, int x2, jdk.incubator.foreign.MemoryAddress x3, int x4);
-    static MemoryAddress allocate(PFNGLCOLORPOINTERLISTIBMPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLCOLORPOINTERLISTIBMPROC.class, fi, constants$703.PFNGLCOLORPOINTERLISTIBMPROC$FUNC, "(IIILjdk/incubator/foreign/MemoryAddress;I)V");
-    }
-    static MemoryAddress allocate(PFNGLCOLORPOINTERLISTIBMPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLCOLORPOINTERLISTIBMPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLCOLORPOINTERLISTIBMPROC.class, fi, constants$703.PFNGLCOLORPOINTERLISTIBMPROC$FUNC, "(IIILjdk/incubator/foreign/MemoryAddress;I)V", scope);
     }
-    static PFNGLCOLORPOINTERLISTIBMPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, int x2, jdk.incubator.foreign.MemoryAddress x3, int x4) -> {
+    static PFNGLCOLORPOINTERLISTIBMPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLCOLORPOINTERLISTIBMPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1, int x2, jdk.incubator.foreign.MemoryAddress x3, int x4) -> {
             try {
-                constants$703.PFNGLCOLORPOINTERLISTIBMPROC$MH.invokeExact((Addressable)addr, x0, x1, x2, x3, x4);
+                constants$703.PFNGLCOLORPOINTERLISTIBMPROC$MH.invokeExact(symbol, x0, x1, x2, (jdk.incubator.foreign.Addressable)x3, x4);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

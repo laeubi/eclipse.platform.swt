@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLBLENDEQUATIONINDEXEDAMDPROC {
 
     void apply(int x0, int x1);
-    static MemoryAddress allocate(PFNGLBLENDEQUATIONINDEXEDAMDPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLBLENDEQUATIONINDEXEDAMDPROC.class, fi, constants$454.PFNGLBLENDEQUATIONINDEXEDAMDPROC$FUNC, "(II)V");
-    }
-    static MemoryAddress allocate(PFNGLBLENDEQUATIONINDEXEDAMDPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLBLENDEQUATIONINDEXEDAMDPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLBLENDEQUATIONINDEXEDAMDPROC.class, fi, constants$454.PFNGLBLENDEQUATIONINDEXEDAMDPROC$FUNC, "(II)V", scope);
     }
-    static PFNGLBLENDEQUATIONINDEXEDAMDPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1) -> {
+    static PFNGLBLENDEQUATIONINDEXEDAMDPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLBLENDEQUATIONINDEXEDAMDPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1) -> {
             try {
-                constants$454.PFNGLBLENDEQUATIONINDEXEDAMDPROC$MH.invokeExact((Addressable)addr, x0, x1);
+                constants$454.PFNGLBLENDEQUATIONINDEXEDAMDPROC$MH.invokeExact(symbol, x0, x1);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

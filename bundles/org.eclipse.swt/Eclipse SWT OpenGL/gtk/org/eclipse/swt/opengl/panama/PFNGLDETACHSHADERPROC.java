@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLDETACHSHADERPROC {
 
     void apply(int x0, int x1);
-    static MemoryAddress allocate(PFNGLDETACHSHADERPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLDETACHSHADERPROC.class, fi, constants$117.PFNGLDETACHSHADERPROC$FUNC, "(II)V");
-    }
-    static MemoryAddress allocate(PFNGLDETACHSHADERPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLDETACHSHADERPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLDETACHSHADERPROC.class, fi, constants$117.PFNGLDETACHSHADERPROC$FUNC, "(II)V", scope);
     }
-    static PFNGLDETACHSHADERPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1) -> {
+    static PFNGLDETACHSHADERPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLDETACHSHADERPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1) -> {
             try {
-                constants$117.PFNGLDETACHSHADERPROC$MH.invokeExact((Addressable)addr, x0, x1);
+                constants$117.PFNGLDETACHSHADERPROC$MH.invokeExact(symbol, x0, x1);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

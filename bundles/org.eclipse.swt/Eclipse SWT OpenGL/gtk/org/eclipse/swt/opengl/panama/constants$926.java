@@ -6,85 +6,79 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$926 {
 
     static final FunctionDescriptor gluNurbsCurve$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER,
-        C_INT,
-        C_POINTER,
-        C_INT,
-        C_POINTER,
-        C_INT,
-        C_INT
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle gluNurbsCurve$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "gluNurbsCurve",
-        "(Ljdk/incubator/foreign/MemoryAddress;ILjdk/incubator/foreign/MemoryAddress;ILjdk/incubator/foreign/MemoryAddress;II)V",
+        "gluNurbsCurve",
         constants$926.gluNurbsCurve$FUNC, false
     );
     static final FunctionDescriptor gluNurbsProperty$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER,
-        C_INT,
-        C_FLOAT
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT
     );
     static final MethodHandle gluNurbsProperty$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "gluNurbsProperty",
-        "(Ljdk/incubator/foreign/MemoryAddress;IF)V",
+        "gluNurbsProperty",
         constants$926.gluNurbsProperty$FUNC, false
     );
     static final FunctionDescriptor gluNurbsSurface$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER,
-        C_INT,
-        C_POINTER,
-        C_INT,
-        C_POINTER,
-        C_INT,
-        C_INT,
-        C_POINTER,
-        C_INT,
-        C_INT,
-        C_INT
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle gluNurbsSurface$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "gluNurbsSurface",
-        "(Ljdk/incubator/foreign/MemoryAddress;ILjdk/incubator/foreign/MemoryAddress;ILjdk/incubator/foreign/MemoryAddress;IILjdk/incubator/foreign/MemoryAddress;III)V",
+        "gluNurbsSurface",
         constants$926.gluNurbsSurface$FUNC, false
     );
     static final FunctionDescriptor gluOrtho2D$FUNC = FunctionDescriptor.ofVoid(
-        C_DOUBLE,
-        C_DOUBLE,
-        C_DOUBLE,
-        C_DOUBLE
+        Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT
     );
     static final MethodHandle gluOrtho2D$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "gluOrtho2D",
-        "(DDDD)V",
+        "gluOrtho2D",
         constants$926.gluOrtho2D$FUNC, false
     );
     static final FunctionDescriptor gluPartialDisk$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER,
-        C_DOUBLE,
-        C_DOUBLE,
-        C_INT,
-        C_INT,
-        C_DOUBLE,
-        C_DOUBLE
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT
     );
     static final MethodHandle gluPartialDisk$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "gluPartialDisk",
-        "(Ljdk/incubator/foreign/MemoryAddress;DDIIDD)V",
+        "gluPartialDisk",
         constants$926.gluPartialDisk$FUNC, false
     );
     static final FunctionDescriptor gluPerspective$FUNC = FunctionDescriptor.ofVoid(
-        C_DOUBLE,
-        C_DOUBLE,
-        C_DOUBLE,
-        C_DOUBLE
+        Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT
     );
     static final MethodHandle gluPerspective$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "gluPerspective",
-        "(DDDD)V",
+        "gluPerspective",
         constants$926.gluPerspective$FUNC, false
     );
 }

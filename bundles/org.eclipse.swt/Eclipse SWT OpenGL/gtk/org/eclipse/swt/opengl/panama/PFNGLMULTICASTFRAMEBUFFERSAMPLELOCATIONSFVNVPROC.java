@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLMULTICASTFRAMEBUFFERSAMPLELOCATIONSFVNVPROC {
 
     void apply(int x0, int x1, int x2, int x3, jdk.incubator.foreign.MemoryAddress x4);
-    static MemoryAddress allocate(PFNGLMULTICASTFRAMEBUFFERSAMPLELOCATIONSFVNVPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLMULTICASTFRAMEBUFFERSAMPLELOCATIONSFVNVPROC.class, fi, constants$752.PFNGLMULTICASTFRAMEBUFFERSAMPLELOCATIONSFVNVPROC$FUNC, "(IIIILjdk/incubator/foreign/MemoryAddress;)V");
-    }
-    static MemoryAddress allocate(PFNGLMULTICASTFRAMEBUFFERSAMPLELOCATIONSFVNVPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLMULTICASTFRAMEBUFFERSAMPLELOCATIONSFVNVPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLMULTICASTFRAMEBUFFERSAMPLELOCATIONSFVNVPROC.class, fi, constants$752.PFNGLMULTICASTFRAMEBUFFERSAMPLELOCATIONSFVNVPROC$FUNC, "(IIIILjdk/incubator/foreign/MemoryAddress;)V", scope);
     }
-    static PFNGLMULTICASTFRAMEBUFFERSAMPLELOCATIONSFVNVPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, int x2, int x3, jdk.incubator.foreign.MemoryAddress x4) -> {
+    static PFNGLMULTICASTFRAMEBUFFERSAMPLELOCATIONSFVNVPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLMULTICASTFRAMEBUFFERSAMPLELOCATIONSFVNVPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1, int x2, int x3, jdk.incubator.foreign.MemoryAddress x4) -> {
             try {
-                constants$752.PFNGLMULTICASTFRAMEBUFFERSAMPLELOCATIONSFVNVPROC$MH.invokeExact((Addressable)addr, x0, x1, x2, x3, x4);
+                constants$752.PFNGLMULTICASTFRAMEBUFFERSAMPLELOCATIONSFVNVPROC$MH.invokeExact(symbol, x0, x1, x2, x3, (jdk.incubator.foreign.Addressable)x4);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

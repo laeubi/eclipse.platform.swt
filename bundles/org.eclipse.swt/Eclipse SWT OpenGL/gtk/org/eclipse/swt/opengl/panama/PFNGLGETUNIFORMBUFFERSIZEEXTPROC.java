@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLGETUNIFORMBUFFERSIZEEXTPROC {
 
     int apply(int x0, int x1);
-    static MemoryAddress allocate(PFNGLGETUNIFORMBUFFERSIZEEXTPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLGETUNIFORMBUFFERSIZEEXTPROC.class, fi, constants$517.PFNGLGETUNIFORMBUFFERSIZEEXTPROC$FUNC, "(II)I");
-    }
-    static MemoryAddress allocate(PFNGLGETUNIFORMBUFFERSIZEEXTPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLGETUNIFORMBUFFERSIZEEXTPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLGETUNIFORMBUFFERSIZEEXTPROC.class, fi, constants$517.PFNGLGETUNIFORMBUFFERSIZEEXTPROC$FUNC, "(II)I", scope);
     }
-    static PFNGLGETUNIFORMBUFFERSIZEEXTPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1) -> {
+    static PFNGLGETUNIFORMBUFFERSIZEEXTPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLGETUNIFORMBUFFERSIZEEXTPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1) -> {
             try {
-                return (int)constants$517.PFNGLGETUNIFORMBUFFERSIZEEXTPROC$MH.invokeExact((Addressable)addr, x0, x1);
+                return (int)constants$517.PFNGLGETUNIFORMBUFFERSIZEEXTPROC$MH.invokeExact(symbol, x0, x1);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

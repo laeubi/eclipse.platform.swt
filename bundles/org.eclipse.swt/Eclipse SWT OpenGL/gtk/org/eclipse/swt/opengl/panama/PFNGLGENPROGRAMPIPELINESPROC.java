@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLGENPROGRAMPIPELINESPROC {
 
     void apply(int x0, jdk.incubator.foreign.MemoryAddress x1);
-    static MemoryAddress allocate(PFNGLGENPROGRAMPIPELINESPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLGENPROGRAMPIPELINESPROC.class, fi, constants$224.PFNGLGENPROGRAMPIPELINESPROC$FUNC, "(ILjdk/incubator/foreign/MemoryAddress;)V");
-    }
-    static MemoryAddress allocate(PFNGLGENPROGRAMPIPELINESPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLGENPROGRAMPIPELINESPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLGENPROGRAMPIPELINESPROC.class, fi, constants$224.PFNGLGENPROGRAMPIPELINESPROC$FUNC, "(ILjdk/incubator/foreign/MemoryAddress;)V", scope);
     }
-    static PFNGLGENPROGRAMPIPELINESPROC ofAddress(MemoryAddress addr) {
-        return (int x0, jdk.incubator.foreign.MemoryAddress x1) -> {
+    static PFNGLGENPROGRAMPIPELINESPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLGENPROGRAMPIPELINESPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, jdk.incubator.foreign.MemoryAddress x1) -> {
             try {
-                constants$224.PFNGLGENPROGRAMPIPELINESPROC$MH.invokeExact((Addressable)addr, x0, x1);
+                constants$224.PFNGLGENPROGRAMPIPELINESPROC$MH.invokeExact(symbol, x0, (jdk.incubator.foreign.Addressable)x1);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

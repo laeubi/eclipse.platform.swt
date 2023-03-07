@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLPATCHPARAMETERIPROC {
 
     void apply(int x0, int x1);
-    static MemoryAddress allocate(PFNGLPATCHPARAMETERIPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLPATCHPARAMETERIPROC.class, fi, constants$216.PFNGLPATCHPARAMETERIPROC$FUNC, "(II)V");
-    }
-    static MemoryAddress allocate(PFNGLPATCHPARAMETERIPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLPATCHPARAMETERIPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLPATCHPARAMETERIPROC.class, fi, constants$216.PFNGLPATCHPARAMETERIPROC$FUNC, "(II)V", scope);
     }
-    static PFNGLPATCHPARAMETERIPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1) -> {
+    static PFNGLPATCHPARAMETERIPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLPATCHPARAMETERIPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1) -> {
             try {
-                constants$216.PFNGLPATCHPARAMETERIPROC$MH.invokeExact((Addressable)addr, x0, x1);
+                constants$216.PFNGLPATCHPARAMETERIPROC$MH.invokeExact(symbol, x0, x1);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

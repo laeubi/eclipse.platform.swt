@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLIMAGETRANSFORMPARAMETERFHPPROC {
 
     void apply(int x0, int x1, float x2);
-    static MemoryAddress allocate(PFNGLIMAGETRANSFORMPARAMETERFHPPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLIMAGETRANSFORMPARAMETERFHPPROC.class, fi, constants$700.PFNGLIMAGETRANSFORMPARAMETERFHPPROC$FUNC, "(IIF)V");
-    }
-    static MemoryAddress allocate(PFNGLIMAGETRANSFORMPARAMETERFHPPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLIMAGETRANSFORMPARAMETERFHPPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLIMAGETRANSFORMPARAMETERFHPPROC.class, fi, constants$700.PFNGLIMAGETRANSFORMPARAMETERFHPPROC$FUNC, "(IIF)V", scope);
     }
-    static PFNGLIMAGETRANSFORMPARAMETERFHPPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, float x2) -> {
+    static PFNGLIMAGETRANSFORMPARAMETERFHPPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLIMAGETRANSFORMPARAMETERFHPPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1, float x2) -> {
             try {
-                constants$700.PFNGLIMAGETRANSFORMPARAMETERFHPPROC$MH.invokeExact((Addressable)addr, x0, x1, x2);
+                constants$700.PFNGLIMAGETRANSFORMPARAMETERFHPPROC$MH.invokeExact(symbol, x0, x1, x2);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

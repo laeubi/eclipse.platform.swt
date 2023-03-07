@@ -6,28 +6,25 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$674 {
 
     static final FunctionDescriptor PFNGLGETQUERYOBJECTUI64VEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLGETQUERYOBJECTUI64VEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(IILjdk/incubator/foreign/MemoryAddress;)V",
         constants$674.PFNGLGETQUERYOBJECTUI64VEXTPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLBEGINTRANSFORMFEEDBACKEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLBEGINTRANSFORMFEEDBACKEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(I)V",
         constants$674.PFNGLBEGINTRANSFORMFEEDBACKEXTPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLENDTRANSFORMFEEDBACKEXTPROC$FUNC = FunctionDescriptor.ofVoid();
     static final MethodHandle PFNGLENDTRANSFORMFEEDBACKEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "()V",
         constants$674.PFNGLENDTRANSFORMFEEDBACKEXTPROC$FUNC, false
     );
 }

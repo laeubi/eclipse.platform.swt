@@ -6,34 +6,31 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$472 {
 
     static final FunctionDescriptor PFNGLGENPERFMONITORSAMDPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLGENPERFMONITORSAMDPROC$MH = RuntimeHelper.downcallHandle(
-        "(ILjdk/incubator/foreign/MemoryAddress;)V",
         constants$472.PFNGLGENPERFMONITORSAMDPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLDELETEPERFMONITORSAMDPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLDELETEPERFMONITORSAMDPROC$MH = RuntimeHelper.downcallHandle(
-        "(ILjdk/incubator/foreign/MemoryAddress;)V",
         constants$472.PFNGLDELETEPERFMONITORSAMDPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLSELECTPERFMONITORCOUNTERSAMDPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_CHAR,
-        C_INT,
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_CHAR$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLSELECTPERFMONITORCOUNTERSAMDPROC$MH = RuntimeHelper.downcallHandle(
-        "(IBIILjdk/incubator/foreign/MemoryAddress;)V",
         constants$472.PFNGLSELECTPERFMONITORCOUNTERSAMDPROC$FUNC, false
     );
 }

@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLTEXTURELIGHTEXTPROC {
 
     void apply(int x0);
-    static MemoryAddress allocate(PFNGLTEXTURELIGHTEXTPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLTEXTURELIGHTEXTPROC.class, fi, constants$641.PFNGLTEXTURELIGHTEXTPROC$FUNC, "(I)V");
-    }
-    static MemoryAddress allocate(PFNGLTEXTURELIGHTEXTPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLTEXTURELIGHTEXTPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLTEXTURELIGHTEXTPROC.class, fi, constants$641.PFNGLTEXTURELIGHTEXTPROC$FUNC, "(I)V", scope);
     }
-    static PFNGLTEXTURELIGHTEXTPROC ofAddress(MemoryAddress addr) {
-        return (int x0) -> {
+    static PFNGLTEXTURELIGHTEXTPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLTEXTURELIGHTEXTPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0) -> {
             try {
-                constants$641.PFNGLTEXTURELIGHTEXTPROC$MH.invokeExact((Addressable)addr, x0);
+                constants$641.PFNGLTEXTURELIGHTEXTPROC$MH.invokeExact(symbol, x0);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLGETCOMPRESSEDTEXTURESUBIMAGEPROC {
 
     void apply(int x0, int x1, int x2, int x3, int x4, int x5, int x6, int x7, int x8, jdk.incubator.foreign.MemoryAddress x9);
-    static MemoryAddress allocate(PFNGLGETCOMPRESSEDTEXTURESUBIMAGEPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLGETCOMPRESSEDTEXTURESUBIMAGEPROC.class, fi, constants$304.PFNGLGETCOMPRESSEDTEXTURESUBIMAGEPROC$FUNC, "(IIIIIIIIILjdk/incubator/foreign/MemoryAddress;)V");
-    }
-    static MemoryAddress allocate(PFNGLGETCOMPRESSEDTEXTURESUBIMAGEPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLGETCOMPRESSEDTEXTURESUBIMAGEPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLGETCOMPRESSEDTEXTURESUBIMAGEPROC.class, fi, constants$304.PFNGLGETCOMPRESSEDTEXTURESUBIMAGEPROC$FUNC, "(IIIIIIIIILjdk/incubator/foreign/MemoryAddress;)V", scope);
     }
-    static PFNGLGETCOMPRESSEDTEXTURESUBIMAGEPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, int x2, int x3, int x4, int x5, int x6, int x7, int x8, jdk.incubator.foreign.MemoryAddress x9) -> {
+    static PFNGLGETCOMPRESSEDTEXTURESUBIMAGEPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLGETCOMPRESSEDTEXTURESUBIMAGEPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1, int x2, int x3, int x4, int x5, int x6, int x7, int x8, jdk.incubator.foreign.MemoryAddress x9) -> {
             try {
-                constants$304.PFNGLGETCOMPRESSEDTEXTURESUBIMAGEPROC$MH.invokeExact((Addressable)addr, x0, x1, x2, x3, x4, x5, x6, x7, x8, x9);
+                constants$304.PFNGLGETCOMPRESSEDTEXTURESUBIMAGEPROC$MH.invokeExact(symbol, x0, x1, x2, x3, x4, x5, x6, x7, x8, (jdk.incubator.foreign.Addressable)x9);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

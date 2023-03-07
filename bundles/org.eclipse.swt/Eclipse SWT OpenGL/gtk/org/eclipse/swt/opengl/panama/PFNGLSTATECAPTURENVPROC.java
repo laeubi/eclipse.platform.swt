@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLSTATECAPTURENVPROC {
 
     void apply(int x0, int x1);
-    static MemoryAddress allocate(PFNGLSTATECAPTURENVPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLSTATECAPTURENVPROC.class, fi, constants$730.PFNGLSTATECAPTURENVPROC$FUNC, "(II)V");
-    }
-    static MemoryAddress allocate(PFNGLSTATECAPTURENVPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLSTATECAPTURENVPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLSTATECAPTURENVPROC.class, fi, constants$730.PFNGLSTATECAPTURENVPROC$FUNC, "(II)V", scope);
     }
-    static PFNGLSTATECAPTURENVPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1) -> {
+    static PFNGLSTATECAPTURENVPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLSTATECAPTURENVPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1) -> {
             try {
-                constants$730.PFNGLSTATECAPTURENVPROC$MH.invokeExact((Addressable)addr, x0, x1);
+                constants$730.PFNGLSTATECAPTURENVPROC$MH.invokeExact(symbol, x0, x1);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

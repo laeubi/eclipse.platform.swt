@@ -6,32 +6,29 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$165 {
 
     static final FunctionDescriptor PFNGLCLEARBUFFERFIPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_FLOAT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLCLEARBUFFERFIPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIFI)V",
         constants$165.PFNGLCLEARBUFFERFIPROC$FUNC, false
     );
-    static final FunctionDescriptor PFNGLGETSTRINGIPROC$FUNC = FunctionDescriptor.of(C_POINTER,
-        C_INT,
-        C_INT
+    static final FunctionDescriptor PFNGLGETSTRINGIPROC$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLGETSTRINGIPROC$MH = RuntimeHelper.downcallHandle(
-        "(II)Ljdk/incubator/foreign/MemoryAddress;",
         constants$165.PFNGLGETSTRINGIPROC$FUNC, false
     );
-    static final FunctionDescriptor PFNGLISRENDERBUFFERPROC$FUNC = FunctionDescriptor.of(C_CHAR,
-        C_INT
+    static final FunctionDescriptor PFNGLISRENDERBUFFERPROC$FUNC = FunctionDescriptor.of(Constants$root.C_CHAR$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLISRENDERBUFFERPROC$MH = RuntimeHelper.downcallHandle(
-        "(I)B",
         constants$165.PFNGLISRENDERBUFFERPROC$FUNC, false
     );
 }

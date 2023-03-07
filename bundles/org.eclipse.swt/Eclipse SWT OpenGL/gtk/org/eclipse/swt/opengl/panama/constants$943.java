@@ -6,41 +6,37 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$943 {
 
     static final FunctionDescriptor glutMouseFunc$callback$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle glutMouseFunc$callback$MH = RuntimeHelper.downcallHandle(
-        "(IIII)V",
         constants$943.glutMouseFunc$callback$FUNC, false
     );
     static final FunctionDescriptor glutMouseFunc$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle glutMouseFunc$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glutMouseFunc",
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
+        "glutMouseFunc",
         constants$943.glutMouseFunc$FUNC, false
     );
     static final FunctionDescriptor glutMotionFunc$callback$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle glutMotionFunc$callback$MH = RuntimeHelper.downcallHandle(
-        "(II)V",
         constants$943.glutMotionFunc$callback$FUNC, false
     );
     static final FunctionDescriptor glutMotionFunc$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle glutMotionFunc$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glutMotionFunc",
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
+        "glutMotionFunc",
         constants$943.glutMotionFunc$FUNC, false
     );
 }

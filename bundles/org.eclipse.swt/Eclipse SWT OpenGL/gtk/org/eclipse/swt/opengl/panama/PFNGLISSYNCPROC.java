@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLISSYNCPROC {
 
     byte apply(jdk.incubator.foreign.MemoryAddress x0);
-    static MemoryAddress allocate(PFNGLISSYNCPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLISSYNCPROC.class, fi, constants$181.PFNGLISSYNCPROC$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;)B");
-    }
-    static MemoryAddress allocate(PFNGLISSYNCPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLISSYNCPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLISSYNCPROC.class, fi, constants$181.PFNGLISSYNCPROC$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;)B", scope);
     }
-    static PFNGLISSYNCPROC ofAddress(MemoryAddress addr) {
-        return (jdk.incubator.foreign.MemoryAddress x0) -> {
+    static PFNGLISSYNCPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLISSYNCPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (jdk.incubator.foreign.MemoryAddress x0) -> {
             try {
-                return (byte)constants$181.PFNGLISSYNCPROC$MH.invokeExact((Addressable)addr, x0);
+                return (byte)constants$181.PFNGLISSYNCPROC$MH.invokeExact(symbol, (jdk.incubator.foreign.Addressable)x0);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

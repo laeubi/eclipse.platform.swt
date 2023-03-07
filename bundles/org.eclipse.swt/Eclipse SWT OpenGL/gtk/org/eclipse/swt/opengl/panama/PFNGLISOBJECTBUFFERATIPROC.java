@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLISOBJECTBUFFERATIPROC {
 
     byte apply(int x0);
-    static MemoryAddress allocate(PFNGLISOBJECTBUFFERATIPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLISOBJECTBUFFERATIPROC.class, fi, constants$497.PFNGLISOBJECTBUFFERATIPROC$FUNC, "(I)B");
-    }
-    static MemoryAddress allocate(PFNGLISOBJECTBUFFERATIPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLISOBJECTBUFFERATIPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLISOBJECTBUFFERATIPROC.class, fi, constants$497.PFNGLISOBJECTBUFFERATIPROC$FUNC, "(I)B", scope);
     }
-    static PFNGLISOBJECTBUFFERATIPROC ofAddress(MemoryAddress addr) {
-        return (int x0) -> {
+    static PFNGLISOBJECTBUFFERATIPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLISOBJECTBUFFERATIPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0) -> {
             try {
-                return (byte)constants$497.PFNGLISOBJECTBUFFERATIPROC$MH.invokeExact((Addressable)addr, x0);
+                return (byte)constants$497.PFNGLISOBJECTBUFFERATIPROC$MH.invokeExact(symbol, x0);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

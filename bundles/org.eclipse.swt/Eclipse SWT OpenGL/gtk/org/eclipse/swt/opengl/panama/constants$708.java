@@ -6,32 +6,29 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$708 {
 
     static final FunctionDescriptor PFNGLCOLORPOINTERVINTELPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLCOLORPOINTERVINTELPROC$MH = RuntimeHelper.downcallHandle(
-        "(IILjdk/incubator/foreign/MemoryAddress;)V",
         constants$708.PFNGLCOLORPOINTERVINTELPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLTEXCOORDPOINTERVINTELPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLTEXCOORDPOINTERVINTELPROC$MH = RuntimeHelper.downcallHandle(
-        "(IILjdk/incubator/foreign/MemoryAddress;)V",
         constants$708.PFNGLTEXCOORDPOINTERVINTELPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLBEGINPERFQUERYINTELPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLBEGINPERFQUERYINTELPROC$MH = RuntimeHelper.downcallHandle(
-        "(I)V",
         constants$708.PFNGLBEGINPERFQUERYINTELPROC$FUNC, false
     );
 }

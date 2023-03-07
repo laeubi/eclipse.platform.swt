@@ -6,49 +6,43 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$956 {
 
     static final FunctionDescriptor glutWireIcosahedron$FUNC = FunctionDescriptor.ofVoid();
     static final MethodHandle glutWireIcosahedron$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glutWireIcosahedron",
-        "()V",
+        "glutWireIcosahedron",
         constants$956.glutWireIcosahedron$FUNC, false
     );
     static final FunctionDescriptor glutSolidIcosahedron$FUNC = FunctionDescriptor.ofVoid();
     static final MethodHandle glutSolidIcosahedron$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glutSolidIcosahedron",
-        "()V",
+        "glutSolidIcosahedron",
         constants$956.glutSolidIcosahedron$FUNC, false
     );
     static final FunctionDescriptor glutWireTeapot$FUNC = FunctionDescriptor.ofVoid(
-        C_DOUBLE
+        Constants$root.C_DOUBLE$LAYOUT
     );
     static final MethodHandle glutWireTeapot$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glutWireTeapot",
-        "(D)V",
+        "glutWireTeapot",
         constants$956.glutWireTeapot$FUNC, false
     );
     static final FunctionDescriptor glutSolidTeapot$FUNC = FunctionDescriptor.ofVoid(
-        C_DOUBLE
+        Constants$root.C_DOUBLE$LAYOUT
     );
     static final MethodHandle glutSolidTeapot$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glutSolidTeapot",
-        "(D)V",
+        "glutSolidTeapot",
         constants$956.glutSolidTeapot$FUNC, false
     );
     static final FunctionDescriptor glutGameModeString$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle glutGameModeString$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glutGameModeString",
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
+        "glutGameModeString",
         constants$956.glutGameModeString$FUNC, false
     );
-    static final FunctionDescriptor glutEnterGameMode$FUNC = FunctionDescriptor.of(C_INT);
+    static final FunctionDescriptor glutEnterGameMode$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT);
     static final MethodHandle glutEnterGameMode$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glutEnterGameMode",
-        "()I",
+        "glutEnterGameMode",
         constants$956.glutEnterGameMode$FUNC, false
     );
 }

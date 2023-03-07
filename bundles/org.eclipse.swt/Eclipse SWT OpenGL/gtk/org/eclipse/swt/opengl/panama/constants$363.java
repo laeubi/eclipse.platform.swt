@@ -6,36 +6,33 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$363 {
 
     static final FunctionDescriptor PFNGLUNIFORM3FARBPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_FLOAT,
-        C_FLOAT,
-        C_FLOAT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT
     );
     static final MethodHandle PFNGLUNIFORM3FARBPROC$MH = RuntimeHelper.downcallHandle(
-        "(IFFF)V",
         constants$363.PFNGLUNIFORM3FARBPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLUNIFORM4FARBPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_FLOAT,
-        C_FLOAT,
-        C_FLOAT,
-        C_FLOAT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT
     );
     static final MethodHandle PFNGLUNIFORM4FARBPROC$MH = RuntimeHelper.downcallHandle(
-        "(IFFFF)V",
         constants$363.PFNGLUNIFORM4FARBPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLUNIFORM1IARBPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLUNIFORM1IARBPROC$MH = RuntimeHelper.downcallHandle(
-        "(II)V",
         constants$363.PFNGLUNIFORM1IARBPROC$FUNC, false
     );
 }

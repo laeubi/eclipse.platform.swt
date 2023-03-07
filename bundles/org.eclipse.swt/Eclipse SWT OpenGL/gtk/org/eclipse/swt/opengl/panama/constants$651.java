@@ -6,34 +6,31 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$651 {
 
     static final FunctionDescriptor PFNGLGETCOLORTABLEPARAMETERIVEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLGETCOLORTABLEPARAMETERIVEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(IILjdk/incubator/foreign/MemoryAddress;)V",
         constants$651.PFNGLGETCOLORTABLEPARAMETERIVEXTPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLGETCOLORTABLEPARAMETERFVEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLGETCOLORTABLEPARAMETERFVEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(IILjdk/incubator/foreign/MemoryAddress;)V",
         constants$651.PFNGLGETCOLORTABLEPARAMETERFVEXTPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLPIXELTRANSFORMPARAMETERIEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLPIXELTRANSFORMPARAMETERIEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(III)V",
         constants$651.PFNGLPIXELTRANSFORMPARAMETERIEXTPROC$FUNC, false
     );
 }

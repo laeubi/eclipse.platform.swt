@@ -6,34 +6,31 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$541 {
 
     static final FunctionDescriptor PFNGLMATRIXORTHOEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_DOUBLE,
-        C_DOUBLE,
-        C_DOUBLE,
-        C_DOUBLE,
-        C_DOUBLE,
-        C_DOUBLE
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT
     );
     static final MethodHandle PFNGLMATRIXORTHOEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(IDDDDDD)V",
         constants$541.PFNGLMATRIXORTHOEXTPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLMATRIXPOPEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLMATRIXPOPEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(I)V",
         constants$541.PFNGLMATRIXPOPEXTPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLMATRIXPUSHEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLMATRIXPUSHEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(I)V",
         constants$541.PFNGLMATRIXPUSHEXTPROC$FUNC, false
     );
 }

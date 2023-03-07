@@ -6,28 +6,25 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$536 {
 
     static final FunctionDescriptor PFNGLPUSHGROUPMARKEREXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLPUSHGROUPMARKEREXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(ILjdk/incubator/foreign/MemoryAddress;)V",
         constants$536.PFNGLPUSHGROUPMARKEREXTPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLPOPGROUPMARKEREXTPROC$FUNC = FunctionDescriptor.ofVoid();
     static final MethodHandle PFNGLPOPGROUPMARKEREXTPROC$MH = RuntimeHelper.downcallHandle(
-        "()V",
         constants$536.PFNGLPOPGROUPMARKEREXTPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLDEPTHBOUNDSEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_DOUBLE,
-        C_DOUBLE
+        Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT
     );
     static final MethodHandle PFNGLDEPTHBOUNDSEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(DD)V",
         constants$536.PFNGLDEPTHBOUNDSEXTPROC$FUNC, false
     );
 }

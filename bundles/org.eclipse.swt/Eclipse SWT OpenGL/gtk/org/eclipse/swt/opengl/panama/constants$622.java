@@ -6,39 +6,36 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$622 {
 
     static final FunctionDescriptor PFNGLCOLORMASKINDEXEDEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_CHAR,
-        C_CHAR,
-        C_CHAR,
-        C_CHAR
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_CHAR$LAYOUT,
+        Constants$root.C_CHAR$LAYOUT,
+        Constants$root.C_CHAR$LAYOUT,
+        Constants$root.C_CHAR$LAYOUT
     );
     static final MethodHandle PFNGLCOLORMASKINDEXEDEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(IBBBB)V",
         constants$622.PFNGLCOLORMASKINDEXEDEXTPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLDRAWARRAYSINSTANCEDEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLDRAWARRAYSINSTANCEDEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIII)V",
         constants$622.PFNGLDRAWARRAYSINSTANCEDEXTPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLDRAWELEMENTSINSTANCEDEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_POINTER,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLDRAWELEMENTSINSTANCEDEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIILjdk/incubator/foreign/MemoryAddress;I)V",
         constants$622.PFNGLDRAWELEMENTSINSTANCEDEXTPROC$FUNC, false
     );
 }

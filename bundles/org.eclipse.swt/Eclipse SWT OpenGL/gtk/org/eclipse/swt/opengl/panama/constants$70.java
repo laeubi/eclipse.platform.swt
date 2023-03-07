@@ -6,61 +6,55 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$70 {
 
     static final FunctionDescriptor glMultiTexCoord4iv$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle glMultiTexCoord4iv$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glMultiTexCoord4iv",
-        "(ILjdk/incubator/foreign/MemoryAddress;)V",
+        "glMultiTexCoord4iv",
         constants$70.glMultiTexCoord4iv$FUNC, false
     );
     static final FunctionDescriptor glMultiTexCoord4s$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_SHORT,
-        C_SHORT,
-        C_SHORT,
-        C_SHORT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_SHORT$LAYOUT,
+        Constants$root.C_SHORT$LAYOUT,
+        Constants$root.C_SHORT$LAYOUT,
+        Constants$root.C_SHORT$LAYOUT
     );
     static final MethodHandle glMultiTexCoord4s$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glMultiTexCoord4s",
-        "(ISSSS)V",
+        "glMultiTexCoord4s",
         constants$70.glMultiTexCoord4s$FUNC, false
     );
     static final FunctionDescriptor glMultiTexCoord4sv$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle glMultiTexCoord4sv$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glMultiTexCoord4sv",
-        "(ILjdk/incubator/foreign/MemoryAddress;)V",
+        "glMultiTexCoord4sv",
         constants$70.glMultiTexCoord4sv$FUNC, false
     );
     static final FunctionDescriptor glLoadTransposeMatrixd$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle glLoadTransposeMatrixd$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glLoadTransposeMatrixd",
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
+        "glLoadTransposeMatrixd",
         constants$70.glLoadTransposeMatrixd$FUNC, false
     );
     static final FunctionDescriptor glLoadTransposeMatrixf$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle glLoadTransposeMatrixf$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glLoadTransposeMatrixf",
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
+        "glLoadTransposeMatrixf",
         constants$70.glLoadTransposeMatrixf$FUNC, false
     );
     static final FunctionDescriptor glMultTransposeMatrixd$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle glMultTransposeMatrixd$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glMultTransposeMatrixd",
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
+        "glMultTransposeMatrixd",
         constants$70.glMultTransposeMatrixd$FUNC, false
     );
 }

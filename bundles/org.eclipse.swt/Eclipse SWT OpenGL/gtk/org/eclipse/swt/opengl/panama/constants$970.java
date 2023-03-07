@@ -6,36 +6,32 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$970 {
 
-    static final FunctionDescriptor atexit$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER
+    static final FunctionDescriptor atexit$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle atexit$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "atexit",
-        "(Ljdk/incubator/foreign/MemoryAddress;)I",
+        "atexit",
         constants$970.atexit$FUNC, false
     );
     static final FunctionDescriptor at_quick_exit$__func$FUNC = FunctionDescriptor.ofVoid();
     static final MethodHandle at_quick_exit$__func$MH = RuntimeHelper.downcallHandle(
-        "()V",
         constants$970.at_quick_exit$__func$FUNC, false
     );
-    static final FunctionDescriptor at_quick_exit$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER
+    static final FunctionDescriptor at_quick_exit$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle at_quick_exit$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "at_quick_exit",
-        "(Ljdk/incubator/foreign/MemoryAddress;)I",
+        "at_quick_exit",
         constants$970.at_quick_exit$FUNC, false
     );
     static final FunctionDescriptor on_exit$__func$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle on_exit$__func$MH = RuntimeHelper.downcallHandle(
-        "(ILjdk/incubator/foreign/MemoryAddress;)V",
         constants$970.on_exit$__func$FUNC, false
     );
 }

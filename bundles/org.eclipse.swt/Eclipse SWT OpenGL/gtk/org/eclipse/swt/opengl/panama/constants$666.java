@@ -6,35 +6,32 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$666 {
 
     static final FunctionDescriptor PFNGLBINDIMAGETEXTUREEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_CHAR,
-        C_INT,
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_CHAR$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLBINDIMAGETEXTUREEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIIBIII)V",
         constants$666.PFNGLBINDIMAGETEXTUREEXTPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLMEMORYBARRIEREXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLMEMORYBARRIEREXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(I)V",
         constants$666.PFNGLMEMORYBARRIEREXTPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLSTENCILCLEARTAGEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLSTENCILCLEARTAGEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(II)V",
         constants$666.PFNGLSTENCILCLEARTAGEXTPROC$FUNC, false
     );
 }

@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLFLUSHPIXELDATARANGENVPROC {
 
     void apply(int x0);
-    static MemoryAddress allocate(PFNGLFLUSHPIXELDATARANGENVPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLFLUSHPIXELDATARANGENVPROC.class, fi, constants$801.PFNGLFLUSHPIXELDATARANGENVPROC$FUNC, "(I)V");
-    }
-    static MemoryAddress allocate(PFNGLFLUSHPIXELDATARANGENVPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLFLUSHPIXELDATARANGENVPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLFLUSHPIXELDATARANGENVPROC.class, fi, constants$801.PFNGLFLUSHPIXELDATARANGENVPROC$FUNC, "(I)V", scope);
     }
-    static PFNGLFLUSHPIXELDATARANGENVPROC ofAddress(MemoryAddress addr) {
-        return (int x0) -> {
+    static PFNGLFLUSHPIXELDATARANGENVPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLFLUSHPIXELDATARANGENVPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0) -> {
             try {
-                constants$801.PFNGLFLUSHPIXELDATARANGENVPROC$MH.invokeExact((Addressable)addr, x0);
+                constants$801.PFNGLFLUSHPIXELDATARANGENVPROC$MH.invokeExact(symbol, x0);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

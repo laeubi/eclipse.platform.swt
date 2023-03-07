@@ -6,93 +6,87 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$921 {
 
     static final FunctionDescriptor gluBeginTrim$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle gluBeginTrim$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "gluBeginTrim",
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
+        "gluBeginTrim",
         constants$921.gluBeginTrim$FUNC, false
     );
-    static final FunctionDescriptor gluBuild1DMipmapLevels$FUNC = FunctionDescriptor.of(C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_POINTER
+    static final FunctionDescriptor gluBuild1DMipmapLevels$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle gluBuild1DMipmapLevels$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "gluBuild1DMipmapLevels",
-        "(IIIIIIIILjdk/incubator/foreign/MemoryAddress;)I",
+        "gluBuild1DMipmapLevels",
         constants$921.gluBuild1DMipmapLevels$FUNC, false
     );
-    static final FunctionDescriptor gluBuild1DMipmaps$FUNC = FunctionDescriptor.of(C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_POINTER
+    static final FunctionDescriptor gluBuild1DMipmaps$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle gluBuild1DMipmaps$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "gluBuild1DMipmaps",
-        "(IIIIILjdk/incubator/foreign/MemoryAddress;)I",
+        "gluBuild1DMipmaps",
         constants$921.gluBuild1DMipmaps$FUNC, false
     );
-    static final FunctionDescriptor gluBuild2DMipmapLevels$FUNC = FunctionDescriptor.of(C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_POINTER
+    static final FunctionDescriptor gluBuild2DMipmapLevels$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle gluBuild2DMipmapLevels$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "gluBuild2DMipmapLevels",
-        "(IIIIIIIIILjdk/incubator/foreign/MemoryAddress;)I",
+        "gluBuild2DMipmapLevels",
         constants$921.gluBuild2DMipmapLevels$FUNC, false
     );
-    static final FunctionDescriptor gluBuild2DMipmaps$FUNC = FunctionDescriptor.of(C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_POINTER
+    static final FunctionDescriptor gluBuild2DMipmaps$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle gluBuild2DMipmaps$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "gluBuild2DMipmaps",
-        "(IIIIIILjdk/incubator/foreign/MemoryAddress;)I",
+        "gluBuild2DMipmaps",
         constants$921.gluBuild2DMipmaps$FUNC, false
     );
-    static final FunctionDescriptor gluBuild3DMipmapLevels$FUNC = FunctionDescriptor.of(C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_POINTER
+    static final FunctionDescriptor gluBuild3DMipmapLevels$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle gluBuild3DMipmapLevels$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "gluBuild3DMipmapLevels",
-        "(IIIIIIIIIILjdk/incubator/foreign/MemoryAddress;)I",
+        "gluBuild3DMipmapLevels",
         constants$921.gluBuild3DMipmapLevels$FUNC, false
     );
 }

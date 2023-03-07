@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLWINDOWPOS2SARBPROC {
 
     void apply(short x0, short x1);
-    static MemoryAddress allocate(PFNGLWINDOWPOS2SARBPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLWINDOWPOS2SARBPROC.class, fi, constants$403.PFNGLWINDOWPOS2SARBPROC$FUNC, "(SS)V");
-    }
-    static MemoryAddress allocate(PFNGLWINDOWPOS2SARBPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLWINDOWPOS2SARBPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLWINDOWPOS2SARBPROC.class, fi, constants$403.PFNGLWINDOWPOS2SARBPROC$FUNC, "(SS)V", scope);
     }
-    static PFNGLWINDOWPOS2SARBPROC ofAddress(MemoryAddress addr) {
-        return (short x0, short x1) -> {
+    static PFNGLWINDOWPOS2SARBPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLWINDOWPOS2SARBPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (short x0, short x1) -> {
             try {
-                constants$403.PFNGLWINDOWPOS2SARBPROC$MH.invokeExact((Addressable)addr, x0, x1);
+                constants$403.PFNGLWINDOWPOS2SARBPROC$MH.invokeExact(symbol, x0, x1);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

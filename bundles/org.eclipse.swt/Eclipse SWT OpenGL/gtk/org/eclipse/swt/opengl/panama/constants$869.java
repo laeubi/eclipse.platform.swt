@@ -6,35 +6,32 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$869 {
 
     static final FunctionDescriptor PFNGLBEGINVIDEOCAPTURENVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLBEGINVIDEOCAPTURENVPROC$MH = RuntimeHelper.downcallHandle(
-        "(I)V",
         constants$869.PFNGLBEGINVIDEOCAPTURENVPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLBINDVIDEOCAPTURESTREAMBUFFERNVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_LONG
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT
     );
     static final MethodHandle PFNGLBINDVIDEOCAPTURESTREAMBUFFERNVPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIIJ)V",
         constants$869.PFNGLBINDVIDEOCAPTURESTREAMBUFFERNVPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLBINDVIDEOCAPTURESTREAMTEXTURENVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLBINDVIDEOCAPTURESTREAMTEXTURENVPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIIII)V",
         constants$869.PFNGLBINDVIDEOCAPTURESTREAMTEXTURENVPROC$FUNC, false
     );
 }

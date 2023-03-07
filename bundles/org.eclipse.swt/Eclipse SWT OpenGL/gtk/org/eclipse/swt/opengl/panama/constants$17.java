@@ -6,61 +6,55 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$17 {
 
     static final FunctionDescriptor glNormal3f$FUNC = FunctionDescriptor.ofVoid(
-        C_FLOAT,
-        C_FLOAT,
-        C_FLOAT
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT
     );
     static final MethodHandle glNormal3f$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glNormal3f",
-        "(FFF)V",
+        "glNormal3f",
         constants$17.glNormal3f$FUNC, false
     );
     static final FunctionDescriptor glNormal3i$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle glNormal3i$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glNormal3i",
-        "(III)V",
+        "glNormal3i",
         constants$17.glNormal3i$FUNC, false
     );
     static final FunctionDescriptor glNormal3s$FUNC = FunctionDescriptor.ofVoid(
-        C_SHORT,
-        C_SHORT,
-        C_SHORT
+        Constants$root.C_SHORT$LAYOUT,
+        Constants$root.C_SHORT$LAYOUT,
+        Constants$root.C_SHORT$LAYOUT
     );
     static final MethodHandle glNormal3s$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glNormal3s",
-        "(SSS)V",
+        "glNormal3s",
         constants$17.glNormal3s$FUNC, false
     );
     static final FunctionDescriptor glNormal3bv$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle glNormal3bv$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glNormal3bv",
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
+        "glNormal3bv",
         constants$17.glNormal3bv$FUNC, false
     );
     static final FunctionDescriptor glNormal3dv$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle glNormal3dv$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glNormal3dv",
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
+        "glNormal3dv",
         constants$17.glNormal3dv$FUNC, false
     );
     static final FunctionDescriptor glNormal3fv$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle glNormal3fv$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glNormal3fv",
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
+        "glNormal3fv",
         constants$17.glNormal3fv$FUNC, false
     );
 }

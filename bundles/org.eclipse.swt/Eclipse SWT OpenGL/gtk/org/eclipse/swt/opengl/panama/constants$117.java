@@ -6,29 +6,26 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$117 {
 
     static final FunctionDescriptor PFNGLDELETESHADERPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLDELETESHADERPROC$MH = RuntimeHelper.downcallHandle(
-        "(I)V",
         constants$117.PFNGLDELETESHADERPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLDETACHSHADERPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLDETACHSHADERPROC$MH = RuntimeHelper.downcallHandle(
-        "(II)V",
         constants$117.PFNGLDETACHSHADERPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLDISABLEVERTEXATTRIBARRAYPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLDISABLEVERTEXATTRIBARRAYPROC$MH = RuntimeHelper.downcallHandle(
-        "(I)V",
         constants$117.PFNGLDISABLEVERTEXATTRIBARRAYPROC$FUNC, false
     );
 }

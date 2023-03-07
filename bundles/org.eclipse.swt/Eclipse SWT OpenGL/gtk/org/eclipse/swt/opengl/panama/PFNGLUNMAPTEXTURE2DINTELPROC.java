@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLUNMAPTEXTURE2DINTELPROC {
 
     void apply(int x0, int x1);
-    static MemoryAddress allocate(PFNGLUNMAPTEXTURE2DINTELPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLUNMAPTEXTURE2DINTELPROC.class, fi, constants$706.PFNGLUNMAPTEXTURE2DINTELPROC$FUNC, "(II)V");
-    }
-    static MemoryAddress allocate(PFNGLUNMAPTEXTURE2DINTELPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLUNMAPTEXTURE2DINTELPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLUNMAPTEXTURE2DINTELPROC.class, fi, constants$706.PFNGLUNMAPTEXTURE2DINTELPROC$FUNC, "(II)V", scope);
     }
-    static PFNGLUNMAPTEXTURE2DINTELPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1) -> {
+    static PFNGLUNMAPTEXTURE2DINTELPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLUNMAPTEXTURE2DINTELPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1) -> {
             try {
-                constants$706.PFNGLUNMAPTEXTURE2DINTELPROC$MH.invokeExact((Addressable)addr, x0, x1);
+                constants$706.PFNGLUNMAPTEXTURE2DINTELPROC$MH.invokeExact(symbol, x0, x1);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

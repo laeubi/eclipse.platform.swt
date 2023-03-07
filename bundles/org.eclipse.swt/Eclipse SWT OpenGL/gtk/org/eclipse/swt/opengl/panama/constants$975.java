@@ -6,77 +6,71 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$975 {
 
     static final FunctionDescriptor lldiv$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        C_LONG_LONG.withName("quot"),
-        C_LONG_LONG.withName("rem")
+        Constants$root.C_LONG_LONG$LAYOUT.withName("quot"),
+        Constants$root.C_LONG_LONG$LAYOUT.withName("rem")
     ),
-        C_LONG_LONG,
-        C_LONG_LONG
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT
     );
     static final MethodHandle lldiv$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "lldiv",
-        "(JJ)Ljdk/incubator/foreign/MemorySegment;",
+        "lldiv",
         constants$975.lldiv$FUNC, false
     );
-    static final FunctionDescriptor ecvt$FUNC = FunctionDescriptor.of(C_POINTER,
-        C_DOUBLE,
-        C_INT,
-        C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor ecvt$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle ecvt$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "ecvt",
-        "(DILjdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)Ljdk/incubator/foreign/MemoryAddress;",
+        "ecvt",
         constants$975.ecvt$FUNC, false
     );
-    static final FunctionDescriptor fcvt$FUNC = FunctionDescriptor.of(C_POINTER,
-        C_DOUBLE,
-        C_INT,
-        C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor fcvt$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle fcvt$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "fcvt",
-        "(DILjdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)Ljdk/incubator/foreign/MemoryAddress;",
+        "fcvt",
         constants$975.fcvt$FUNC, false
     );
-    static final FunctionDescriptor gcvt$FUNC = FunctionDescriptor.of(C_POINTER,
-        C_DOUBLE,
-        C_INT,
-        C_POINTER
+    static final FunctionDescriptor gcvt$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle gcvt$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "gcvt",
-        "(DILjdk/incubator/foreign/MemoryAddress;)Ljdk/incubator/foreign/MemoryAddress;",
+        "gcvt",
         constants$975.gcvt$FUNC, false
     );
-    static final FunctionDescriptor ecvt_r$FUNC = FunctionDescriptor.of(C_INT,
-        C_DOUBLE,
-        C_INT,
-        C_POINTER,
-        C_POINTER,
-        C_POINTER,
-        C_LONG
+    static final FunctionDescriptor ecvt_r$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT
     );
     static final MethodHandle ecvt_r$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "ecvt_r",
-        "(DILjdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;J)I",
+        "ecvt_r",
         constants$975.ecvt_r$FUNC, false
     );
-    static final FunctionDescriptor fcvt_r$FUNC = FunctionDescriptor.of(C_INT,
-        C_DOUBLE,
-        C_INT,
-        C_POINTER,
-        C_POINTER,
-        C_POINTER,
-        C_LONG
+    static final FunctionDescriptor fcvt_r$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT
     );
     static final MethodHandle fcvt_r$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "fcvt_r",
-        "(DILjdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;J)I",
+        "fcvt_r",
         constants$975.fcvt_r$FUNC, false
     );
 }

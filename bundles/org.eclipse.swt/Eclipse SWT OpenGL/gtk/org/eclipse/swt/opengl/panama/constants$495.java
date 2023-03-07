@@ -6,30 +6,27 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$495 {
 
     static final FunctionDescriptor PFNGLUNMAPOBJECTBUFFERATIPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLUNMAPOBJECTBUFFERATIPROC$MH = RuntimeHelper.downcallHandle(
-        "(I)V",
         constants$495.PFNGLUNMAPOBJECTBUFFERATIPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLPNTRIANGLESIATIPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLPNTRIANGLESIATIPROC$MH = RuntimeHelper.downcallHandle(
-        "(II)V",
         constants$495.PFNGLPNTRIANGLESIATIPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLPNTRIANGLESFATIPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_FLOAT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT
     );
     static final MethodHandle PFNGLPNTRIANGLESFATIPROC$MH = RuntimeHelper.downcallHandle(
-        "(IF)V",
         constants$495.PFNGLPNTRIANGLESFATIPROC$FUNC, false
     );
 }

@@ -6,35 +6,31 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$942 {
 
     static final FunctionDescriptor glutVisibilityFunc$callback$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle glutVisibilityFunc$callback$MH = RuntimeHelper.downcallHandle(
-        "(I)V",
         constants$942.glutVisibilityFunc$callback$FUNC, false
     );
     static final FunctionDescriptor glutVisibilityFunc$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle glutVisibilityFunc$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glutVisibilityFunc",
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
+        "glutVisibilityFunc",
         constants$942.glutVisibilityFunc$FUNC, false
     );
     static final FunctionDescriptor glutDisplayFunc$callback$FUNC = FunctionDescriptor.ofVoid();
     static final MethodHandle glutDisplayFunc$callback$MH = RuntimeHelper.downcallHandle(
-        "()V",
         constants$942.glutDisplayFunc$callback$FUNC, false
     );
     static final FunctionDescriptor glutDisplayFunc$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle glutDisplayFunc$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glutDisplayFunc",
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
+        "glutDisplayFunc",
         constants$942.glutDisplayFunc$FUNC, false
     );
 }

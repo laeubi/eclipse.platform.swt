@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLBEGINPERFMONITORAMDPROC {
 
     void apply(int x0);
-    static MemoryAddress allocate(PFNGLBEGINPERFMONITORAMDPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLBEGINPERFMONITORAMDPROC.class, fi, constants$473.PFNGLBEGINPERFMONITORAMDPROC$FUNC, "(I)V");
-    }
-    static MemoryAddress allocate(PFNGLBEGINPERFMONITORAMDPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLBEGINPERFMONITORAMDPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLBEGINPERFMONITORAMDPROC.class, fi, constants$473.PFNGLBEGINPERFMONITORAMDPROC$FUNC, "(I)V", scope);
     }
-    static PFNGLBEGINPERFMONITORAMDPROC ofAddress(MemoryAddress addr) {
-        return (int x0) -> {
+    static PFNGLBEGINPERFMONITORAMDPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLBEGINPERFMONITORAMDPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0) -> {
             try {
-                constants$473.PFNGLBEGINPERFMONITORAMDPROC$MH.invokeExact((Addressable)addr, x0);
+                constants$473.PFNGLBEGINPERFMONITORAMDPROC$MH.invokeExact(symbol, x0);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLUNIFORM3DPROC {
 
     void apply(int x0, double x1, double x2, double x3);
-    static MemoryAddress allocate(PFNGLUNIFORM3DPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLUNIFORM3DPROC.class, fi, constants$208.PFNGLUNIFORM3DPROC$FUNC, "(IDDD)V");
-    }
-    static MemoryAddress allocate(PFNGLUNIFORM3DPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLUNIFORM3DPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLUNIFORM3DPROC.class, fi, constants$208.PFNGLUNIFORM3DPROC$FUNC, "(IDDD)V", scope);
     }
-    static PFNGLUNIFORM3DPROC ofAddress(MemoryAddress addr) {
-        return (int x0, double x1, double x2, double x3) -> {
+    static PFNGLUNIFORM3DPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLUNIFORM3DPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, double x1, double x2, double x3) -> {
             try {
-                constants$208.PFNGLUNIFORM3DPROC$MH.invokeExact((Addressable)addr, x0, x1, x2, x3);
+                constants$208.PFNGLUNIFORM3DPROC$MH.invokeExact(symbol, x0, x1, x2, x3);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

@@ -6,7 +6,7 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
  class glut_h_4 extends glut_h_3 {
 
     public static int GL_MAX_VERTEX_SHADER_INSTRUCTIONS_EXT() {

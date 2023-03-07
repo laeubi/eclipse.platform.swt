@@ -6,36 +6,33 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$496 {
 
     static final FunctionDescriptor PFNGLSTENCILOPSEPARATEATIPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLSTENCILOPSEPARATEATIPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIII)V",
         constants$496.PFNGLSTENCILOPSEPARATEATIPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLSTENCILFUNCSEPARATEATIPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLSTENCILFUNCSEPARATEATIPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIII)V",
         constants$496.PFNGLSTENCILFUNCSEPARATEATIPROC$FUNC, false
     );
-    static final FunctionDescriptor PFNGLNEWOBJECTBUFFERATIPROC$FUNC = FunctionDescriptor.of(C_INT,
-        C_INT,
-        C_POINTER,
-        C_INT
+    static final FunctionDescriptor PFNGLNEWOBJECTBUFFERATIPROC$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLNEWOBJECTBUFFERATIPROC$MH = RuntimeHelper.downcallHandle(
-        "(ILjdk/incubator/foreign/MemoryAddress;I)I",
         constants$496.PFNGLNEWOBJECTBUFFERATIPROC$FUNC, false
     );
 }

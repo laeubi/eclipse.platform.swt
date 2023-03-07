@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLDEFORMSGIXPROC {
 
     void apply(int x0);
-    static MemoryAddress allocate(PFNGLDEFORMSGIXPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLDEFORMSGIXPROC.class, fi, constants$895.PFNGLDEFORMSGIXPROC$FUNC, "(I)V");
-    }
-    static MemoryAddress allocate(PFNGLDEFORMSGIXPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLDEFORMSGIXPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLDEFORMSGIXPROC.class, fi, constants$895.PFNGLDEFORMSGIXPROC$FUNC, "(I)V", scope);
     }
-    static PFNGLDEFORMSGIXPROC ofAddress(MemoryAddress addr) {
-        return (int x0) -> {
+    static PFNGLDEFORMSGIXPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLDEFORMSGIXPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0) -> {
             try {
-                constants$895.PFNGLDEFORMSGIXPROC$MH.invokeExact((Addressable)addr, x0);
+                constants$895.PFNGLDEFORMSGIXPROC$MH.invokeExact(symbol, x0);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

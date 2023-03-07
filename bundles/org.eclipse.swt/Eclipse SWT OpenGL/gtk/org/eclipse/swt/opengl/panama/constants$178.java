@@ -6,56 +6,51 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$178 {
 
     static final FunctionDescriptor PFNGLUNIFORMBLOCKBINDINGPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLUNIFORMBLOCKBINDINGPROC$MH = RuntimeHelper.downcallHandle(
-        "(III)V",
         constants$178.PFNGLUNIFORMBLOCKBINDINGPROC$FUNC, false
     );
-    static final FunctionDescriptor imaxabs$FUNC = FunctionDescriptor.of(C_LONG,
-        C_LONG
+    static final FunctionDescriptor imaxabs$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT
     );
     static final MethodHandle imaxabs$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "imaxabs",
-        "(J)J",
+        "imaxabs",
         constants$178.imaxabs$FUNC, false
     );
     static final FunctionDescriptor imaxdiv$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        C_LONG.withName("quot"),
-        C_LONG.withName("rem")
+        Constants$root.C_LONG_LONG$LAYOUT.withName("quot"),
+        Constants$root.C_LONG_LONG$LAYOUT.withName("rem")
     ),
-        C_LONG,
-        C_LONG
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT
     );
     static final MethodHandle imaxdiv$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "imaxdiv",
-        "(JJ)Ljdk/incubator/foreign/MemorySegment;",
+        "imaxdiv",
         constants$178.imaxdiv$FUNC, false
     );
-    static final FunctionDescriptor strtoimax$FUNC = FunctionDescriptor.of(C_LONG,
-        C_POINTER,
-        C_POINTER,
-        C_INT
+    static final FunctionDescriptor strtoimax$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle strtoimax$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "strtoimax",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;I)J",
+        "strtoimax",
         constants$178.strtoimax$FUNC, false
     );
-    static final FunctionDescriptor strtoumax$FUNC = FunctionDescriptor.of(C_LONG,
-        C_POINTER,
-        C_POINTER,
-        C_INT
+    static final FunctionDescriptor strtoumax$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle strtoumax$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "strtoumax",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;I)J",
+        "strtoumax",
         constants$178.strtoumax$FUNC, false
     );
 }

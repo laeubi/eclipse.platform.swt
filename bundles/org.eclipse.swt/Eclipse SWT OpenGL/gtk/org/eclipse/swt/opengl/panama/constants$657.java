@@ -6,32 +6,29 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$657 {
 
     static final FunctionDescriptor PFNGLSECONDARYCOLOR3FEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_FLOAT,
-        C_FLOAT,
-        C_FLOAT
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT
     );
     static final MethodHandle PFNGLSECONDARYCOLOR3FEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(FFF)V",
         constants$657.PFNGLSECONDARYCOLOR3FEXTPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLSECONDARYCOLOR3FVEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLSECONDARYCOLOR3FVEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
         constants$657.PFNGLSECONDARYCOLOR3FVEXTPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLSECONDARYCOLOR3IEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLSECONDARYCOLOR3IEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(III)V",
         constants$657.PFNGLSECONDARYCOLOR3IEXTPROC$FUNC, false
     );
 }

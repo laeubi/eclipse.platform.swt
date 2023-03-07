@@ -6,29 +6,26 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$709 {
 
     static final FunctionDescriptor PFNGLCREATEPERFQUERYINTELPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLCREATEPERFQUERYINTELPROC$MH = RuntimeHelper.downcallHandle(
-        "(ILjdk/incubator/foreign/MemoryAddress;)V",
         constants$709.PFNGLCREATEPERFQUERYINTELPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLDELETEPERFQUERYINTELPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLDELETEPERFQUERYINTELPROC$MH = RuntimeHelper.downcallHandle(
-        "(I)V",
         constants$709.PFNGLDELETEPERFQUERYINTELPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLENDPERFQUERYINTELPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLENDPERFQUERYINTELPROC$MH = RuntimeHelper.downcallHandle(
-        "(I)V",
         constants$709.PFNGLENDPERFQUERYINTELPROC$FUNC, false
     );
 }

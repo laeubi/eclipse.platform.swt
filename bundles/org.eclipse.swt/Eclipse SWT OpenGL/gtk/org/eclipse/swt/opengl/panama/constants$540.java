@@ -6,40 +6,37 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$540 {
 
     static final FunctionDescriptor PFNGLMATRIXTRANSLATEFEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_FLOAT,
-        C_FLOAT,
-        C_FLOAT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT
     );
     static final MethodHandle PFNGLMATRIXTRANSLATEFEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(IFFF)V",
         constants$540.PFNGLMATRIXTRANSLATEFEXTPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLMATRIXTRANSLATEDEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_DOUBLE,
-        C_DOUBLE,
-        C_DOUBLE
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT
     );
     static final MethodHandle PFNGLMATRIXTRANSLATEDEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(IDDD)V",
         constants$540.PFNGLMATRIXTRANSLATEDEXTPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLMATRIXFRUSTUMEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_DOUBLE,
-        C_DOUBLE,
-        C_DOUBLE,
-        C_DOUBLE,
-        C_DOUBLE,
-        C_DOUBLE
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT
     );
     static final MethodHandle PFNGLMATRIXFRUSTUMEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(IDDDDDD)V",
         constants$540.PFNGLMATRIXFRUSTUMEXTPROC$FUNC, false
     );
 }

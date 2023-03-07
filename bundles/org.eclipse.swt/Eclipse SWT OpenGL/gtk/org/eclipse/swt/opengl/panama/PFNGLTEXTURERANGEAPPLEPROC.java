@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLTEXTURERANGEAPPLEPROC {
 
     void apply(int x0, int x1, jdk.incubator.foreign.MemoryAddress x2);
-    static MemoryAddress allocate(PFNGLTEXTURERANGEAPPLEPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLTEXTURERANGEAPPLEPROC.class, fi, constants$482.PFNGLTEXTURERANGEAPPLEPROC$FUNC, "(IILjdk/incubator/foreign/MemoryAddress;)V");
-    }
-    static MemoryAddress allocate(PFNGLTEXTURERANGEAPPLEPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLTEXTURERANGEAPPLEPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLTEXTURERANGEAPPLEPROC.class, fi, constants$482.PFNGLTEXTURERANGEAPPLEPROC$FUNC, "(IILjdk/incubator/foreign/MemoryAddress;)V", scope);
     }
-    static PFNGLTEXTURERANGEAPPLEPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, jdk.incubator.foreign.MemoryAddress x2) -> {
+    static PFNGLTEXTURERANGEAPPLEPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLTEXTURERANGEAPPLEPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1, jdk.incubator.foreign.MemoryAddress x2) -> {
             try {
-                constants$482.PFNGLTEXTURERANGEAPPLEPROC$MH.invokeExact((Addressable)addr, x0, x1, x2);
+                constants$482.PFNGLTEXTURERANGEAPPLEPROC$MH.invokeExact(symbol, x0, x1, (jdk.incubator.foreign.Addressable)x2);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

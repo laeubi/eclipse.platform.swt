@@ -6,30 +6,27 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$483 {
 
     static final FunctionDescriptor PFNGLDELETEVERTEXARRAYSAPPLEPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLDELETEVERTEXARRAYSAPPLEPROC$MH = RuntimeHelper.downcallHandle(
-        "(ILjdk/incubator/foreign/MemoryAddress;)V",
         constants$483.PFNGLDELETEVERTEXARRAYSAPPLEPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLGENVERTEXARRAYSAPPLEPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLGENVERTEXARRAYSAPPLEPROC$MH = RuntimeHelper.downcallHandle(
-        "(ILjdk/incubator/foreign/MemoryAddress;)V",
         constants$483.PFNGLGENVERTEXARRAYSAPPLEPROC$FUNC, false
     );
-    static final FunctionDescriptor PFNGLISVERTEXARRAYAPPLEPROC$FUNC = FunctionDescriptor.of(C_CHAR,
-        C_INT
+    static final FunctionDescriptor PFNGLISVERTEXARRAYAPPLEPROC$FUNC = FunctionDescriptor.of(Constants$root.C_CHAR$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLISVERTEXARRAYAPPLEPROC$MH = RuntimeHelper.downcallHandle(
-        "(I)B",
         constants$483.PFNGLISVERTEXARRAYAPPLEPROC$FUNC, false
     );
 }

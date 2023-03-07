@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLWINDOWPOS4SMESAPROC {
 
     void apply(short x0, short x1, short x2, short x3);
-    static MemoryAddress allocate(PFNGLWINDOWPOS4SMESAPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLWINDOWPOS4SMESAPROC.class, fi, constants$719.PFNGLWINDOWPOS4SMESAPROC$FUNC, "(SSSS)V");
-    }
-    static MemoryAddress allocate(PFNGLWINDOWPOS4SMESAPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLWINDOWPOS4SMESAPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLWINDOWPOS4SMESAPROC.class, fi, constants$719.PFNGLWINDOWPOS4SMESAPROC$FUNC, "(SSSS)V", scope);
     }
-    static PFNGLWINDOWPOS4SMESAPROC ofAddress(MemoryAddress addr) {
-        return (short x0, short x1, short x2, short x3) -> {
+    static PFNGLWINDOWPOS4SMESAPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLWINDOWPOS4SMESAPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (short x0, short x1, short x2, short x3) -> {
             try {
-                constants$719.PFNGLWINDOWPOS4SMESAPROC$MH.invokeExact((Addressable)addr, x0, x1, x2, x3);
+                constants$719.PFNGLWINDOWPOS4SMESAPROC$MH.invokeExact(symbol, x0, x1, x2, x3);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

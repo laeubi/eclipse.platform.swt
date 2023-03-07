@@ -6,39 +6,36 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$793 {
 
-    static final FunctionDescriptor PFNGLISPOINTINSTROKEPATHNVPROC$FUNC = FunctionDescriptor.of(C_CHAR,
-        C_INT,
-        C_FLOAT,
-        C_FLOAT
+    static final FunctionDescriptor PFNGLISPOINTINSTROKEPATHNVPROC$FUNC = FunctionDescriptor.of(Constants$root.C_CHAR$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT
     );
     static final MethodHandle PFNGLISPOINTINSTROKEPATHNVPROC$MH = RuntimeHelper.downcallHandle(
-        "(IFF)B",
         constants$793.PFNGLISPOINTINSTROKEPATHNVPROC$FUNC, false
     );
-    static final FunctionDescriptor PFNGLGETPATHLENGTHNVPROC$FUNC = FunctionDescriptor.of(C_FLOAT,
-        C_INT,
-        C_INT,
-        C_INT
+    static final FunctionDescriptor PFNGLGETPATHLENGTHNVPROC$FUNC = FunctionDescriptor.of(Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLGETPATHLENGTHNVPROC$MH = RuntimeHelper.downcallHandle(
-        "(III)F",
         constants$793.PFNGLGETPATHLENGTHNVPROC$FUNC, false
     );
-    static final FunctionDescriptor PFNGLPOINTALONGPATHNVPROC$FUNC = FunctionDescriptor.of(C_CHAR,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_FLOAT,
-        C_POINTER,
-        C_POINTER,
-        C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor PFNGLPOINTALONGPATHNVPROC$FUNC = FunctionDescriptor.of(Constants$root.C_CHAR$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLPOINTALONGPATHNVPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIIFLjdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)B",
         constants$793.PFNGLPOINTALONGPATHNVPROC$FUNC, false
     );
 }

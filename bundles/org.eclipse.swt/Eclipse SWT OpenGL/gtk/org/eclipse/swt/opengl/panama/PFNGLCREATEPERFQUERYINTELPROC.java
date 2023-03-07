@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLCREATEPERFQUERYINTELPROC {
 
     void apply(int x0, jdk.incubator.foreign.MemoryAddress x1);
-    static MemoryAddress allocate(PFNGLCREATEPERFQUERYINTELPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLCREATEPERFQUERYINTELPROC.class, fi, constants$709.PFNGLCREATEPERFQUERYINTELPROC$FUNC, "(ILjdk/incubator/foreign/MemoryAddress;)V");
-    }
-    static MemoryAddress allocate(PFNGLCREATEPERFQUERYINTELPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLCREATEPERFQUERYINTELPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLCREATEPERFQUERYINTELPROC.class, fi, constants$709.PFNGLCREATEPERFQUERYINTELPROC$FUNC, "(ILjdk/incubator/foreign/MemoryAddress;)V", scope);
     }
-    static PFNGLCREATEPERFQUERYINTELPROC ofAddress(MemoryAddress addr) {
-        return (int x0, jdk.incubator.foreign.MemoryAddress x1) -> {
+    static PFNGLCREATEPERFQUERYINTELPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLCREATEPERFQUERYINTELPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, jdk.incubator.foreign.MemoryAddress x1) -> {
             try {
-                constants$709.PFNGLCREATEPERFQUERYINTELPROC$MH.invokeExact((Addressable)addr, x0, x1);
+                constants$709.PFNGLCREATEPERFQUERYINTELPROC$MH.invokeExact(symbol, x0, (jdk.incubator.foreign.Addressable)x1);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

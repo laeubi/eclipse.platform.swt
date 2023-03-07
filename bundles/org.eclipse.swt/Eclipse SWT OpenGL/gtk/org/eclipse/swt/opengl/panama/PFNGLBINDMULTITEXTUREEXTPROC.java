@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLBINDMULTITEXTUREEXTPROC {
 
     void apply(int x0, int x1, int x2);
-    static MemoryAddress allocate(PFNGLBINDMULTITEXTUREEXTPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLBINDMULTITEXTUREEXTPROC.class, fi, constants$549.PFNGLBINDMULTITEXTUREEXTPROC$FUNC, "(III)V");
-    }
-    static MemoryAddress allocate(PFNGLBINDMULTITEXTUREEXTPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLBINDMULTITEXTUREEXTPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLBINDMULTITEXTUREEXTPROC.class, fi, constants$549.PFNGLBINDMULTITEXTUREEXTPROC$FUNC, "(III)V", scope);
     }
-    static PFNGLBINDMULTITEXTUREEXTPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, int x2) -> {
+    static PFNGLBINDMULTITEXTUREEXTPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLBINDMULTITEXTUREEXTPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1, int x2) -> {
             try {
-                constants$549.PFNGLBINDMULTITEXTUREEXTPROC$MH.invokeExact((Addressable)addr, x0, x1, x2);
+                constants$549.PFNGLBINDMULTITEXTUREEXTPROC$MH.invokeExact(symbol, x0, x1, x2);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

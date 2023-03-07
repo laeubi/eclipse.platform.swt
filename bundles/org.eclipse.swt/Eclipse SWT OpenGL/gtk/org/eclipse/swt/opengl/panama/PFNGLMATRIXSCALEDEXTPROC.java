@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLMATRIXSCALEDEXTPROC {
 
     void apply(int x0, double x1, double x2, double x3);
-    static MemoryAddress allocate(PFNGLMATRIXSCALEDEXTPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLMATRIXSCALEDEXTPROC.class, fi, constants$539.PFNGLMATRIXSCALEDEXTPROC$FUNC, "(IDDD)V");
-    }
-    static MemoryAddress allocate(PFNGLMATRIXSCALEDEXTPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLMATRIXSCALEDEXTPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLMATRIXSCALEDEXTPROC.class, fi, constants$539.PFNGLMATRIXSCALEDEXTPROC$FUNC, "(IDDD)V", scope);
     }
-    static PFNGLMATRIXSCALEDEXTPROC ofAddress(MemoryAddress addr) {
-        return (int x0, double x1, double x2, double x3) -> {
+    static PFNGLMATRIXSCALEDEXTPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLMATRIXSCALEDEXTPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, double x1, double x2, double x3) -> {
             try {
-                constants$539.PFNGLMATRIXSCALEDEXTPROC$MH.invokeExact((Addressable)addr, x0, x1, x2, x3);
+                constants$539.PFNGLMATRIXSCALEDEXTPROC$MH.invokeExact(symbol, x0, x1, x2, x3);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

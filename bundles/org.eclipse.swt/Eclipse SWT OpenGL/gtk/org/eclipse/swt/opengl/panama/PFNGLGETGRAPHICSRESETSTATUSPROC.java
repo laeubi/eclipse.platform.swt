@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLGETGRAPHICSRESETSTATUSPROC {
 
     int apply();
-    static MemoryAddress allocate(PFNGLGETGRAPHICSRESETSTATUSPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLGETGRAPHICSRESETSTATUSPROC.class, fi, constants$305.PFNGLGETGRAPHICSRESETSTATUSPROC$FUNC, "()I");
-    }
-    static MemoryAddress allocate(PFNGLGETGRAPHICSRESETSTATUSPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLGETGRAPHICSRESETSTATUSPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLGETGRAPHICSRESETSTATUSPROC.class, fi, constants$305.PFNGLGETGRAPHICSRESETSTATUSPROC$FUNC, "()I", scope);
     }
-    static PFNGLGETGRAPHICSRESETSTATUSPROC ofAddress(MemoryAddress addr) {
-        return () -> {
+    static PFNGLGETGRAPHICSRESETSTATUSPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLGETGRAPHICSRESETSTATUSPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return () -> {
             try {
-                return (int)constants$305.PFNGLGETGRAPHICSRESETSTATUSPROC$MH.invokeExact((Addressable)addr);
+                return (int)constants$305.PFNGLGETGRAPHICSRESETSTATUSPROC$MH.invokeExact(symbol);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

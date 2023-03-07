@@ -6,41 +6,37 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$951 {
 
     static final FunctionDescriptor glutTabletMotionFunc$callback$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle glutTabletMotionFunc$callback$MH = RuntimeHelper.downcallHandle(
-        "(II)V",
         constants$951.glutTabletMotionFunc$callback$FUNC, false
     );
     static final FunctionDescriptor glutTabletMotionFunc$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle glutTabletMotionFunc$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glutTabletMotionFunc",
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
+        "glutTabletMotionFunc",
         constants$951.glutTabletMotionFunc$FUNC, false
     );
     static final FunctionDescriptor glutTabletButtonFunc$callback$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle glutTabletButtonFunc$callback$MH = RuntimeHelper.downcallHandle(
-        "(IIII)V",
         constants$951.glutTabletButtonFunc$callback$FUNC, false
     );
     static final FunctionDescriptor glutTabletButtonFunc$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle glutTabletButtonFunc$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glutTabletButtonFunc",
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
+        "glutTabletButtonFunc",
         constants$951.glutTabletButtonFunc$FUNC, false
     );
 }

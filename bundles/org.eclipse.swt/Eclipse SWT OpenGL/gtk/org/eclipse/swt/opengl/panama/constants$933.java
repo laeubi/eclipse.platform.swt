@@ -6,57 +6,51 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$933 {
 
-    static final FunctionDescriptor glutCreateSubWindow$FUNC = FunctionDescriptor.of(C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT
+    static final FunctionDescriptor glutCreateSubWindow$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle glutCreateSubWindow$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glutCreateSubWindow",
-        "(IIIII)I",
+        "glutCreateSubWindow",
         constants$933.glutCreateSubWindow$FUNC, false
     );
     static final FunctionDescriptor glutDestroyWindow$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle glutDestroyWindow$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glutDestroyWindow",
-        "(I)V",
+        "glutDestroyWindow",
         constants$933.glutDestroyWindow$FUNC, false
     );
     static final FunctionDescriptor glutSetWindow$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle glutSetWindow$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glutSetWindow",
-        "(I)V",
+        "glutSetWindow",
         constants$933.glutSetWindow$FUNC, false
     );
-    static final FunctionDescriptor glutGetWindow$FUNC = FunctionDescriptor.of(C_INT);
+    static final FunctionDescriptor glutGetWindow$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT);
     static final MethodHandle glutGetWindow$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glutGetWindow",
-        "()I",
+        "glutGetWindow",
         constants$933.glutGetWindow$FUNC, false
     );
     static final FunctionDescriptor glutSetWindowTitle$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle glutSetWindowTitle$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glutSetWindowTitle",
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
+        "glutSetWindowTitle",
         constants$933.glutSetWindowTitle$FUNC, false
     );
     static final FunctionDescriptor glutSetIconTitle$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle glutSetIconTitle$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glutSetIconTitle",
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
+        "glutSetIconTitle",
         constants$933.glutSetIconTitle$FUNC, false
     );
 }

@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLNORMALSTREAM3FATIPROC {
 
     void apply(int x0, float x1, float x2, float x3);
-    static MemoryAddress allocate(PFNGLNORMALSTREAM3FATIPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLNORMALSTREAM3FATIPROC.class, fi, constants$514.PFNGLNORMALSTREAM3FATIPROC$FUNC, "(IFFF)V");
-    }
-    static MemoryAddress allocate(PFNGLNORMALSTREAM3FATIPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLNORMALSTREAM3FATIPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLNORMALSTREAM3FATIPROC.class, fi, constants$514.PFNGLNORMALSTREAM3FATIPROC$FUNC, "(IFFF)V", scope);
     }
-    static PFNGLNORMALSTREAM3FATIPROC ofAddress(MemoryAddress addr) {
-        return (int x0, float x1, float x2, float x3) -> {
+    static PFNGLNORMALSTREAM3FATIPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLNORMALSTREAM3FATIPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, float x1, float x2, float x3) -> {
             try {
-                constants$514.PFNGLNORMALSTREAM3FATIPROC$MH.invokeExact((Addressable)addr, x0, x1, x2, x3);
+                constants$514.PFNGLNORMALSTREAM3FATIPROC$MH.invokeExact(symbol, x0, x1, x2, x3);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

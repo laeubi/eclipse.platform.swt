@@ -6,69 +6,63 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$928 {
 
     static final FunctionDescriptor gluQuadricOrientation$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER,
-        C_INT
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle gluQuadricOrientation$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "gluQuadricOrientation",
-        "(Ljdk/incubator/foreign/MemoryAddress;I)V",
+        "gluQuadricOrientation",
         constants$928.gluQuadricOrientation$FUNC, false
     );
     static final FunctionDescriptor gluQuadricTexture$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER,
-        C_CHAR
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_CHAR$LAYOUT
     );
     static final MethodHandle gluQuadricTexture$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "gluQuadricTexture",
-        "(Ljdk/incubator/foreign/MemoryAddress;B)V",
+        "gluQuadricTexture",
         constants$928.gluQuadricTexture$FUNC, false
     );
-    static final FunctionDescriptor gluScaleImage$FUNC = FunctionDescriptor.of(C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_POINTER,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_POINTER
+    static final FunctionDescriptor gluScaleImage$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle gluScaleImage$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "gluScaleImage",
-        "(IIIILjdk/incubator/foreign/MemoryAddress;IIILjdk/incubator/foreign/MemoryAddress;)I",
+        "gluScaleImage",
         constants$928.gluScaleImage$FUNC, false
     );
     static final FunctionDescriptor gluSphere$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER,
-        C_DOUBLE,
-        C_INT,
-        C_INT
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle gluSphere$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "gluSphere",
-        "(Ljdk/incubator/foreign/MemoryAddress;DII)V",
+        "gluSphere",
         constants$928.gluSphere$FUNC, false
     );
     static final FunctionDescriptor gluTessBeginContour$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle gluTessBeginContour$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "gluTessBeginContour",
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
+        "gluTessBeginContour",
         constants$928.gluTessBeginContour$FUNC, false
     );
     static final FunctionDescriptor gluTessBeginPolygon$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER,
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle gluTessBeginPolygon$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "gluTessBeginPolygon",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)V",
+        "gluTessBeginPolygon",
         constants$928.gluTessBeginPolygon$FUNC, false
     );
 }

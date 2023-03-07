@@ -6,67 +6,61 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$44 {
 
     static final FunctionDescriptor glTexGend$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_DOUBLE
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT
     );
     static final MethodHandle glTexGend$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glTexGend",
-        "(IID)V",
+        "glTexGend",
         constants$44.glTexGend$FUNC, false
     );
     static final FunctionDescriptor glTexGenf$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_FLOAT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT
     );
     static final MethodHandle glTexGenf$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glTexGenf",
-        "(IIF)V",
+        "glTexGenf",
         constants$44.glTexGenf$FUNC, false
     );
     static final FunctionDescriptor glTexGeni$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle glTexGeni$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glTexGeni",
-        "(III)V",
+        "glTexGeni",
         constants$44.glTexGeni$FUNC, false
     );
     static final FunctionDescriptor glTexGendv$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle glTexGendv$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glTexGendv",
-        "(IILjdk/incubator/foreign/MemoryAddress;)V",
+        "glTexGendv",
         constants$44.glTexGendv$FUNC, false
     );
     static final FunctionDescriptor glTexGenfv$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle glTexGenfv$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glTexGenfv",
-        "(IILjdk/incubator/foreign/MemoryAddress;)V",
+        "glTexGenfv",
         constants$44.glTexGenfv$FUNC, false
     );
     static final FunctionDescriptor glTexGeniv$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle glTexGeniv$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glTexGeniv",
-        "(IILjdk/incubator/foreign/MemoryAddress;)V",
+        "glTexGeniv",
         constants$44.glTexGeniv$FUNC, false
     );
 }

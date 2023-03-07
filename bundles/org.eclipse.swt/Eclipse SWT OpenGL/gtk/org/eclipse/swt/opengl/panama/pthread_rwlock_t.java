@@ -6,27 +6,27 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public class pthread_rwlock_t {
 
-    static final MemoryLayout $union$LAYOUT = MemoryLayout.unionLayout(
+    static final  GroupLayout $union$LAYOUT = MemoryLayout.unionLayout(
         MemoryLayout.structLayout(
-            C_INT.withName("__readers"),
-            C_INT.withName("__writers"),
-            C_INT.withName("__wrphase_futex"),
-            C_INT.withName("__writers_futex"),
-            C_INT.withName("__pad3"),
-            C_INT.withName("__pad4"),
-            C_INT.withName("__cur_writer"),
-            C_INT.withName("__shared"),
-            C_CHAR.withName("__rwelision"),
-            MemoryLayout.sequenceLayout(7, C_CHAR).withName("__pad1"),
-            C_LONG.withName("__pad2"),
-            C_INT.withName("__flags"),
+            Constants$root.C_INT$LAYOUT.withName("__readers"),
+            Constants$root.C_INT$LAYOUT.withName("__writers"),
+            Constants$root.C_INT$LAYOUT.withName("__wrphase_futex"),
+            Constants$root.C_INT$LAYOUT.withName("__writers_futex"),
+            Constants$root.C_INT$LAYOUT.withName("__pad3"),
+            Constants$root.C_INT$LAYOUT.withName("__pad4"),
+            Constants$root.C_INT$LAYOUT.withName("__cur_writer"),
+            Constants$root.C_INT$LAYOUT.withName("__shared"),
+            Constants$root.C_CHAR$LAYOUT.withName("__rwelision"),
+            MemoryLayout.sequenceLayout(7, Constants$root.C_CHAR$LAYOUT).withName("__pad1"),
+            Constants$root.C_LONG_LONG$LAYOUT.withName("__pad2"),
+            Constants$root.C_INT$LAYOUT.withName("__flags"),
             MemoryLayout.paddingLayout(32)
         ).withName("__data"),
-        MemoryLayout.sequenceLayout(56, C_CHAR).withName("__size"),
-        C_LONG.withName("__align")
+        MemoryLayout.sequenceLayout(56, Constants$root.C_CHAR$LAYOUT).withName("__size"),
+        Constants$root.C_LONG_LONG$LAYOUT.withName("__align")
     );
     public static MemoryLayout $LAYOUT() {
         return pthread_rwlock_t.$union$LAYOUT;
@@ -37,7 +37,7 @@ public class pthread_rwlock_t {
     public static MemorySegment __size$slice(MemorySegment seg) {
         return seg.asSlice(0, 56);
     }
-    static final VarHandle __align$VH = $union$LAYOUT.varHandle(long.class, MemoryLayout.PathElement.groupElement("__align"));
+    static final VarHandle __align$VH = $union$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("__align"));
     public static VarHandle __align$VH() {
         return pthread_rwlock_t.__align$VH;
     }
@@ -55,12 +55,12 @@ public class pthread_rwlock_t {
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }
-    public static MemorySegment allocate(ResourceScope scope) { return allocate(SegmentAllocator.ofScope(scope)); }
     public static MemorySegment allocateArray(int len, SegmentAllocator allocator) {
         return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
     }
+    public static MemorySegment allocate(ResourceScope scope) { return allocate(SegmentAllocator.nativeAllocator(scope)); }
     public static MemorySegment allocateArray(int len, ResourceScope scope) {
-        return allocateArray(len, SegmentAllocator.ofScope(scope));
+        return allocateArray(len, SegmentAllocator.nativeAllocator(scope));
     }
     public static MemorySegment ofAddress(MemoryAddress addr, ResourceScope scope) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, scope); }
 }

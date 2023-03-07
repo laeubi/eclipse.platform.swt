@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLCOLOR4UBVERTEX3FSUNPROC {
 
     void apply(byte x0, byte x1, byte x2, byte x3, float x4, float x5, float x6);
-    static MemoryAddress allocate(PFNGLCOLOR4UBVERTEX3FSUNPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLCOLOR4UBVERTEX3FSUNPROC.class, fi, constants$906.PFNGLCOLOR4UBVERTEX3FSUNPROC$FUNC, "(BBBBFFF)V");
-    }
-    static MemoryAddress allocate(PFNGLCOLOR4UBVERTEX3FSUNPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLCOLOR4UBVERTEX3FSUNPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLCOLOR4UBVERTEX3FSUNPROC.class, fi, constants$906.PFNGLCOLOR4UBVERTEX3FSUNPROC$FUNC, "(BBBBFFF)V", scope);
     }
-    static PFNGLCOLOR4UBVERTEX3FSUNPROC ofAddress(MemoryAddress addr) {
-        return (byte x0, byte x1, byte x2, byte x3, float x4, float x5, float x6) -> {
+    static PFNGLCOLOR4UBVERTEX3FSUNPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLCOLOR4UBVERTEX3FSUNPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (byte x0, byte x1, byte x2, byte x3, float x4, float x5, float x6) -> {
             try {
-                constants$906.PFNGLCOLOR4UBVERTEX3FSUNPROC$MH.invokeExact((Addressable)addr, x0, x1, x2, x3, x4, x5, x6);
+                constants$906.PFNGLCOLOR4UBVERTEX3FSUNPROC$MH.invokeExact(symbol, x0, x1, x2, x3, x4, x5, x6);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLGETTEXTURELEVELPARAMETERFVPROC {
 
     void apply(int x0, int x1, int x2, jdk.incubator.foreign.MemoryAddress x3);
-    static MemoryAddress allocate(PFNGLGETTEXTURELEVELPARAMETERFVPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLGETTEXTURELEVELPARAMETERFVPROC.class, fi, constants$295.PFNGLGETTEXTURELEVELPARAMETERFVPROC$FUNC, "(IIILjdk/incubator/foreign/MemoryAddress;)V");
-    }
-    static MemoryAddress allocate(PFNGLGETTEXTURELEVELPARAMETERFVPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLGETTEXTURELEVELPARAMETERFVPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLGETTEXTURELEVELPARAMETERFVPROC.class, fi, constants$295.PFNGLGETTEXTURELEVELPARAMETERFVPROC$FUNC, "(IIILjdk/incubator/foreign/MemoryAddress;)V", scope);
     }
-    static PFNGLGETTEXTURELEVELPARAMETERFVPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, int x2, jdk.incubator.foreign.MemoryAddress x3) -> {
+    static PFNGLGETTEXTURELEVELPARAMETERFVPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLGETTEXTURELEVELPARAMETERFVPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1, int x2, jdk.incubator.foreign.MemoryAddress x3) -> {
             try {
-                constants$295.PFNGLGETTEXTURELEVELPARAMETERFVPROC$MH.invokeExact((Addressable)addr, x0, x1, x2, x3);
+                constants$295.PFNGLGETTEXTURELEVELPARAMETERFVPROC$MH.invokeExact(symbol, x0, x1, x2, (jdk.incubator.foreign.Addressable)x3);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

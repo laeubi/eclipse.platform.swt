@@ -6,32 +6,29 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$404 {
 
     static final FunctionDescriptor PFNGLWINDOWPOS3DARBPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_DOUBLE,
-        C_DOUBLE,
-        C_DOUBLE
+        Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT
     );
     static final MethodHandle PFNGLWINDOWPOS3DARBPROC$MH = RuntimeHelper.downcallHandle(
-        "(DDD)V",
         constants$404.PFNGLWINDOWPOS3DARBPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLWINDOWPOS3DVARBPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLWINDOWPOS3DVARBPROC$MH = RuntimeHelper.downcallHandle(
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
         constants$404.PFNGLWINDOWPOS3DVARBPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLWINDOWPOS3FARBPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_FLOAT,
-        C_FLOAT,
-        C_FLOAT
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT
     );
     static final MethodHandle PFNGLWINDOWPOS3FARBPROC$MH = RuntimeHelper.downcallHandle(
-        "(FFF)V",
         constants$404.PFNGLWINDOWPOS3FARBPROC$FUNC, false
     );
 }

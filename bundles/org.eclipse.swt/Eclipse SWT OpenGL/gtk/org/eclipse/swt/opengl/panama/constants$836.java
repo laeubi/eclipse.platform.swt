@@ -6,34 +6,31 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$836 {
 
     static final FunctionDescriptor PFNGLBUFFERADDRESSRANGENVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_LONG,
-        C_LONG
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT
     );
     static final MethodHandle PFNGLBUFFERADDRESSRANGENVPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIJJ)V",
         constants$836.PFNGLBUFFERADDRESSRANGENVPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLVERTEXFORMATNVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLVERTEXFORMATNVPROC$MH = RuntimeHelper.downcallHandle(
-        "(III)V",
         constants$836.PFNGLVERTEXFORMATNVPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLNORMALFORMATNVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLNORMALFORMATNVPROC$MH = RuntimeHelper.downcallHandle(
-        "(II)V",
         constants$836.PFNGLNORMALFORMATNVPROC$FUNC, false
     );
 }

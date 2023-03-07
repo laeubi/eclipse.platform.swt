@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLENDQUERYPROC {
 
     void apply(int x0);
-    static MemoryAddress allocate(PFNGLENDQUERYPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLENDQUERYPROC.class, fi, constants$108.PFNGLENDQUERYPROC$FUNC, "(I)V");
-    }
-    static MemoryAddress allocate(PFNGLENDQUERYPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLENDQUERYPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLENDQUERYPROC.class, fi, constants$108.PFNGLENDQUERYPROC$FUNC, "(I)V", scope);
     }
-    static PFNGLENDQUERYPROC ofAddress(MemoryAddress addr) {
-        return (int x0) -> {
+    static PFNGLENDQUERYPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLENDQUERYPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0) -> {
             try {
-                constants$108.PFNGLENDQUERYPROC$MH.invokeExact((Addressable)addr, x0);
+                constants$108.PFNGLENDQUERYPROC$MH.invokeExact(symbol, x0);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

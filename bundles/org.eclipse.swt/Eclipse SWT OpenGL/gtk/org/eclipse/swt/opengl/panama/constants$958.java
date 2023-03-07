@@ -6,62 +6,56 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$958 {
 
     static final FunctionDescriptor glutVideoPan$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle glutVideoPan$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glutVideoPan",
-        "(IIII)V",
+        "glutVideoPan",
         constants$958.glutVideoPan$FUNC, false
     );
     static final FunctionDescriptor glutSetColor$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_FLOAT,
-        C_FLOAT,
-        C_FLOAT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT
     );
     static final MethodHandle glutSetColor$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glutSetColor",
-        "(IFFF)V",
+        "glutSetColor",
         constants$958.glutSetColor$FUNC, false
     );
-    static final FunctionDescriptor glutGetColor$FUNC = FunctionDescriptor.of(C_FLOAT,
-        C_INT,
-        C_INT
+    static final FunctionDescriptor glutGetColor$FUNC = FunctionDescriptor.of(Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle glutGetColor$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glutGetColor",
-        "(II)F",
+        "glutGetColor",
         constants$958.glutGetColor$FUNC, false
     );
     static final FunctionDescriptor glutCopyColormap$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle glutCopyColormap$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glutCopyColormap",
-        "(I)V",
+        "glutCopyColormap",
         constants$958.glutCopyColormap$FUNC, false
     );
     static final FunctionDescriptor glutIgnoreKeyRepeat$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle glutIgnoreKeyRepeat$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glutIgnoreKeyRepeat",
-        "(I)V",
+        "glutIgnoreKeyRepeat",
         constants$958.glutIgnoreKeyRepeat$FUNC, false
     );
     static final FunctionDescriptor glutSetKeyRepeat$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle glutSetKeyRepeat$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glutSetKeyRepeat",
-        "(I)V",
+        "glutSetKeyRepeat",
         constants$958.glutSetKeyRepeat$FUNC, false
     );
 }

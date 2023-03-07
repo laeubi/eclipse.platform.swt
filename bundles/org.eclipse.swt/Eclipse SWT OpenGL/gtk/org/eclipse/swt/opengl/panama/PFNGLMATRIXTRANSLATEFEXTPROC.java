@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLMATRIXTRANSLATEFEXTPROC {
 
     void apply(int x0, float x1, float x2, float x3);
-    static MemoryAddress allocate(PFNGLMATRIXTRANSLATEFEXTPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLMATRIXTRANSLATEFEXTPROC.class, fi, constants$540.PFNGLMATRIXTRANSLATEFEXTPROC$FUNC, "(IFFF)V");
-    }
-    static MemoryAddress allocate(PFNGLMATRIXTRANSLATEFEXTPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLMATRIXTRANSLATEFEXTPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLMATRIXTRANSLATEFEXTPROC.class, fi, constants$540.PFNGLMATRIXTRANSLATEFEXTPROC$FUNC, "(IFFF)V", scope);
     }
-    static PFNGLMATRIXTRANSLATEFEXTPROC ofAddress(MemoryAddress addr) {
-        return (int x0, float x1, float x2, float x3) -> {
+    static PFNGLMATRIXTRANSLATEFEXTPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLMATRIXTRANSLATEFEXTPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, float x1, float x2, float x3) -> {
             try {
-                constants$540.PFNGLMATRIXTRANSLATEFEXTPROC$MH.invokeExact((Addressable)addr, x0, x1, x2, x3);
+                constants$540.PFNGLMATRIXTRANSLATEFEXTPROC$MH.invokeExact(symbol, x0, x1, x2, x3);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

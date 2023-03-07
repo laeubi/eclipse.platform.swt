@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLPROGRAMLOCALPARAMETER4FARBPROC {
 
     void apply(int x0, int x1, float x2, float x3, float x4, float x5);
-    static MemoryAddress allocate(PFNGLPROGRAMLOCALPARAMETER4FARBPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLPROGRAMLOCALPARAMETER4FARBPROC.class, fi, constants$327.PFNGLPROGRAMLOCALPARAMETER4FARBPROC$FUNC, "(IIFFFF)V");
-    }
-    static MemoryAddress allocate(PFNGLPROGRAMLOCALPARAMETER4FARBPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLPROGRAMLOCALPARAMETER4FARBPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLPROGRAMLOCALPARAMETER4FARBPROC.class, fi, constants$327.PFNGLPROGRAMLOCALPARAMETER4FARBPROC$FUNC, "(IIFFFF)V", scope);
     }
-    static PFNGLPROGRAMLOCALPARAMETER4FARBPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, float x2, float x3, float x4, float x5) -> {
+    static PFNGLPROGRAMLOCALPARAMETER4FARBPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLPROGRAMLOCALPARAMETER4FARBPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1, float x2, float x3, float x4, float x5) -> {
             try {
-                constants$327.PFNGLPROGRAMLOCALPARAMETER4FARBPROC$MH.invokeExact((Addressable)addr, x0, x1, x2, x3, x4, x5);
+                constants$327.PFNGLPROGRAMLOCALPARAMETER4FARBPROC$MH.invokeExact(symbol, x0, x1, x2, x3, x4, x5);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

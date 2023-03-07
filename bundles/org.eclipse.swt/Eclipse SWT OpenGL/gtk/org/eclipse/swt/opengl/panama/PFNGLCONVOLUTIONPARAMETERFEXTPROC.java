@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLCONVOLUTIONPARAMETERFEXTPROC {
 
     void apply(int x0, int x1, float x2);
-    static MemoryAddress allocate(PFNGLCONVOLUTIONPARAMETERFEXTPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLCONVOLUTIONPARAMETERFEXTPROC.class, fi, constants$521.PFNGLCONVOLUTIONPARAMETERFEXTPROC$FUNC, "(IIF)V");
-    }
-    static MemoryAddress allocate(PFNGLCONVOLUTIONPARAMETERFEXTPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLCONVOLUTIONPARAMETERFEXTPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLCONVOLUTIONPARAMETERFEXTPROC.class, fi, constants$521.PFNGLCONVOLUTIONPARAMETERFEXTPROC$FUNC, "(IIF)V", scope);
     }
-    static PFNGLCONVOLUTIONPARAMETERFEXTPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, float x2) -> {
+    static PFNGLCONVOLUTIONPARAMETERFEXTPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLCONVOLUTIONPARAMETERFEXTPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1, float x2) -> {
             try {
-                constants$521.PFNGLCONVOLUTIONPARAMETERFEXTPROC$MH.invokeExact((Addressable)addr, x0, x1, x2);
+                constants$521.PFNGLCONVOLUTIONPARAMETERFEXTPROC$MH.invokeExact(symbol, x0, x1, x2);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

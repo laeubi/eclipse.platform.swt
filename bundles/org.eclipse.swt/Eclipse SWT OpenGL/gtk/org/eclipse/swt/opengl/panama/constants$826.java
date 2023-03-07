@@ -6,32 +6,29 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$826 {
 
     static final FunctionDescriptor PFNGLVDPAUFININVPROC$FUNC = FunctionDescriptor.ofVoid();
     static final MethodHandle PFNGLVDPAUFININVPROC$MH = RuntimeHelper.downcallHandle(
-        "()V",
         constants$826.PFNGLVDPAUFININVPROC$FUNC, false
     );
-    static final FunctionDescriptor PFNGLVDPAUREGISTERVIDEOSURFACENVPROC$FUNC = FunctionDescriptor.of(C_LONG,
-        C_POINTER,
-        C_INT,
-        C_INT,
-        C_POINTER
+    static final FunctionDescriptor PFNGLVDPAUREGISTERVIDEOSURFACENVPROC$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLVDPAUREGISTERVIDEOSURFACENVPROC$MH = RuntimeHelper.downcallHandle(
-        "(Ljdk/incubator/foreign/MemoryAddress;IILjdk/incubator/foreign/MemoryAddress;)J",
         constants$826.PFNGLVDPAUREGISTERVIDEOSURFACENVPROC$FUNC, false
     );
-    static final FunctionDescriptor PFNGLVDPAUREGISTEROUTPUTSURFACENVPROC$FUNC = FunctionDescriptor.of(C_LONG,
-        C_POINTER,
-        C_INT,
-        C_INT,
-        C_POINTER
+    static final FunctionDescriptor PFNGLVDPAUREGISTEROUTPUTSURFACENVPROC$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLVDPAUREGISTEROUTPUTSURFACENVPROC$MH = RuntimeHelper.downcallHandle(
-        "(Ljdk/incubator/foreign/MemoryAddress;IILjdk/incubator/foreign/MemoryAddress;)J",
         constants$826.PFNGLVDPAUREGISTEROUTPUTSURFACENVPROC$FUNC, false
     );
 }

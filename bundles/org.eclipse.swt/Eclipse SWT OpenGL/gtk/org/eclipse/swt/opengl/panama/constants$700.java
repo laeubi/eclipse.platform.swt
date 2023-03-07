@@ -6,34 +6,31 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$700 {
 
     static final FunctionDescriptor PFNGLIMAGETRANSFORMPARAMETERIHPPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLIMAGETRANSFORMPARAMETERIHPPROC$MH = RuntimeHelper.downcallHandle(
-        "(III)V",
         constants$700.PFNGLIMAGETRANSFORMPARAMETERIHPPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLIMAGETRANSFORMPARAMETERFHPPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_FLOAT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT
     );
     static final MethodHandle PFNGLIMAGETRANSFORMPARAMETERFHPPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIF)V",
         constants$700.PFNGLIMAGETRANSFORMPARAMETERFHPPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLIMAGETRANSFORMPARAMETERIVHPPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLIMAGETRANSFORMPARAMETERIVHPPROC$MH = RuntimeHelper.downcallHandle(
-        "(IILjdk/incubator/foreign/MemoryAddress;)V",
         constants$700.PFNGLIMAGETRANSFORMPARAMETERIVHPPROC$FUNC, false
     );
 }

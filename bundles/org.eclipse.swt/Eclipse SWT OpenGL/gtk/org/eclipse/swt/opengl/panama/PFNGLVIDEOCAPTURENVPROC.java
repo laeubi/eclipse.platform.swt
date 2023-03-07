@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLVIDEOCAPTURENVPROC {
 
     int apply(int x0, jdk.incubator.foreign.MemoryAddress x1, jdk.incubator.foreign.MemoryAddress x2);
-    static MemoryAddress allocate(PFNGLVIDEOCAPTURENVPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLVIDEOCAPTURENVPROC.class, fi, constants$871.PFNGLVIDEOCAPTURENVPROC$FUNC, "(ILjdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I");
-    }
-    static MemoryAddress allocate(PFNGLVIDEOCAPTURENVPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLVIDEOCAPTURENVPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLVIDEOCAPTURENVPROC.class, fi, constants$871.PFNGLVIDEOCAPTURENVPROC$FUNC, "(ILjdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I", scope);
     }
-    static PFNGLVIDEOCAPTURENVPROC ofAddress(MemoryAddress addr) {
-        return (int x0, jdk.incubator.foreign.MemoryAddress x1, jdk.incubator.foreign.MemoryAddress x2) -> {
+    static PFNGLVIDEOCAPTURENVPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLVIDEOCAPTURENVPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, jdk.incubator.foreign.MemoryAddress x1, jdk.incubator.foreign.MemoryAddress x2) -> {
             try {
-                return (int)constants$871.PFNGLVIDEOCAPTURENVPROC$MH.invokeExact((Addressable)addr, x0, x1, x2);
+                return (int)constants$871.PFNGLVIDEOCAPTURENVPROC$MH.invokeExact(symbol, x0, (jdk.incubator.foreign.Addressable)x1, (jdk.incubator.foreign.Addressable)x2);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

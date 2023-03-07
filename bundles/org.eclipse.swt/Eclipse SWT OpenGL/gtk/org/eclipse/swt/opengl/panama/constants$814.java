@@ -6,30 +6,27 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$814 {
 
     static final FunctionDescriptor PFNGLMAKENAMEDBUFFERNONRESIDENTNVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLMAKENAMEDBUFFERNONRESIDENTNVPROC$MH = RuntimeHelper.downcallHandle(
-        "(I)V",
         constants$814.PFNGLMAKENAMEDBUFFERNONRESIDENTNVPROC$FUNC, false
     );
-    static final FunctionDescriptor PFNGLISNAMEDBUFFERRESIDENTNVPROC$FUNC = FunctionDescriptor.of(C_CHAR,
-        C_INT
+    static final FunctionDescriptor PFNGLISNAMEDBUFFERRESIDENTNVPROC$FUNC = FunctionDescriptor.of(Constants$root.C_CHAR$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLISNAMEDBUFFERRESIDENTNVPROC$MH = RuntimeHelper.downcallHandle(
-        "(I)B",
         constants$814.PFNGLISNAMEDBUFFERRESIDENTNVPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLGETBUFFERPARAMETERUI64VNVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLGETBUFFERPARAMETERUI64VNVPROC$MH = RuntimeHelper.downcallHandle(
-        "(IILjdk/incubator/foreign/MemoryAddress;)V",
         constants$814.PFNGLGETBUFFERPARAMETERUI64VNVPROC$FUNC, false
     );
 }

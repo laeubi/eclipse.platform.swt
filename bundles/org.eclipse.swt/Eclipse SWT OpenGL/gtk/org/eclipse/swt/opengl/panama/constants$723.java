@@ -6,39 +6,36 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$723 {
 
     static final FunctionDescriptor PFNGLMULTIDRAWARRAYSINDIRECTBINDLESSCOUNTNVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_POINTER,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLMULTIDRAWARRAYSINDIRECTBINDLESSCOUNTNVPROC$MH = RuntimeHelper.downcallHandle(
-        "(ILjdk/incubator/foreign/MemoryAddress;IIII)V",
         constants$723.PFNGLMULTIDRAWARRAYSINDIRECTBINDLESSCOUNTNVPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLMULTIDRAWELEMENTSINDIRECTBINDLESSCOUNTNVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_POINTER,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLMULTIDRAWELEMENTSINDIRECTBINDLESSCOUNTNVPROC$MH = RuntimeHelper.downcallHandle(
-        "(IILjdk/incubator/foreign/MemoryAddress;IIII)V",
         constants$723.PFNGLMULTIDRAWELEMENTSINDIRECTBINDLESSCOUNTNVPROC$FUNC, false
     );
-    static final FunctionDescriptor PFNGLGETTEXTUREHANDLENVPROC$FUNC = FunctionDescriptor.of(C_LONG,
-        C_INT
+    static final FunctionDescriptor PFNGLGETTEXTUREHANDLENVPROC$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLGETTEXTUREHANDLENVPROC$MH = RuntimeHelper.downcallHandle(
-        "(I)J",
         constants$723.PFNGLGETTEXTUREHANDLENVPROC$FUNC, false
     );
 }

@@ -6,15 +6,15 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$978 {
 
-    static final MemorySegment PRId32$SEGMENT = CLinker.toCString("d", ResourceScope.newImplicitScope());
-    static final MemorySegment PRId64$SEGMENT = CLinker.toCString("ld", ResourceScope.newImplicitScope());
-    static final MemorySegment PRIdLEAST8$SEGMENT = CLinker.toCString("d", ResourceScope.newImplicitScope());
-    static final MemorySegment PRIdLEAST16$SEGMENT = CLinker.toCString("d", ResourceScope.newImplicitScope());
-    static final MemorySegment PRIdLEAST32$SEGMENT = CLinker.toCString("d", ResourceScope.newImplicitScope());
-    static final MemorySegment PRIdLEAST64$SEGMENT = CLinker.toCString("ld", ResourceScope.newImplicitScope());
+    static final MemorySegment PRId32$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("d");
+    static final MemorySegment PRId64$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ld");
+    static final MemorySegment PRIdLEAST8$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("d");
+    static final MemorySegment PRIdLEAST16$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("d");
+    static final MemorySegment PRIdLEAST32$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("d");
+    static final MemorySegment PRIdLEAST64$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ld");
 }
 
 

@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLVERTEXSTREAM4SATIPROC {
 
     void apply(int x0, short x1, short x2, short x3, short x4);
-    static MemoryAddress allocate(PFNGLVERTEXSTREAM4SATIPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLVERTEXSTREAM4SATIPROC.class, fi, constants$509.PFNGLVERTEXSTREAM4SATIPROC$FUNC, "(ISSSS)V");
-    }
-    static MemoryAddress allocate(PFNGLVERTEXSTREAM4SATIPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLVERTEXSTREAM4SATIPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLVERTEXSTREAM4SATIPROC.class, fi, constants$509.PFNGLVERTEXSTREAM4SATIPROC$FUNC, "(ISSSS)V", scope);
     }
-    static PFNGLVERTEXSTREAM4SATIPROC ofAddress(MemoryAddress addr) {
-        return (int x0, short x1, short x2, short x3, short x4) -> {
+    static PFNGLVERTEXSTREAM4SATIPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLVERTEXSTREAM4SATIPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, short x1, short x2, short x3, short x4) -> {
             try {
-                constants$509.PFNGLVERTEXSTREAM4SATIPROC$MH.invokeExact((Addressable)addr, x0, x1, x2, x3, x4);
+                constants$509.PFNGLVERTEXSTREAM4SATIPROC$MH.invokeExact(symbol, x0, x1, x2, x3, x4);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

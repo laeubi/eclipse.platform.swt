@@ -6,51 +6,47 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$179 {
 
-    static final FunctionDescriptor wcstoimax$FUNC = FunctionDescriptor.of(C_LONG,
-        C_POINTER,
-        C_POINTER,
-        C_INT
+    static final FunctionDescriptor wcstoimax$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle wcstoimax$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "wcstoimax",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;I)J",
+        "wcstoimax",
         constants$179.wcstoimax$FUNC, false
     );
-    static final FunctionDescriptor wcstoumax$FUNC = FunctionDescriptor.of(C_LONG,
-        C_POINTER,
-        C_POINTER,
-        C_INT
+    static final FunctionDescriptor wcstoumax$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle wcstoumax$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "wcstoumax",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;I)J",
+        "wcstoumax",
         constants$179.wcstoumax$FUNC, false
     );
     static final FunctionDescriptor PFNGLDRAWELEMENTSBASEVERTEXPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_POINTER,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLDRAWELEMENTSBASEVERTEXPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIILjdk/incubator/foreign/MemoryAddress;I)V",
         constants$179.PFNGLDRAWELEMENTSBASEVERTEXPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLDRAWRANGEELEMENTSBASEVERTEXPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_POINTER,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLDRAWRANGEELEMENTSBASEVERTEXPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIIIILjdk/incubator/foreign/MemoryAddress;I)V",
         constants$179.PFNGLDRAWRANGEELEMENTSBASEVERTEXPROC$FUNC, false
     );
 }

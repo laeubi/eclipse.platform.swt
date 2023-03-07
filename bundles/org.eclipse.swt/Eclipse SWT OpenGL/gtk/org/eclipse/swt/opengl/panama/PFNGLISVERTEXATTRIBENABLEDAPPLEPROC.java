@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLISVERTEXATTRIBENABLEDAPPLEPROC {
 
     byte apply(int x0, int x1);
-    static MemoryAddress allocate(PFNGLISVERTEXATTRIBENABLEDAPPLEPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLISVERTEXATTRIBENABLEDAPPLEPROC.class, fi, constants$485.PFNGLISVERTEXATTRIBENABLEDAPPLEPROC$FUNC, "(II)B");
-    }
-    static MemoryAddress allocate(PFNGLISVERTEXATTRIBENABLEDAPPLEPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLISVERTEXATTRIBENABLEDAPPLEPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLISVERTEXATTRIBENABLEDAPPLEPROC.class, fi, constants$485.PFNGLISVERTEXATTRIBENABLEDAPPLEPROC$FUNC, "(II)B", scope);
     }
-    static PFNGLISVERTEXATTRIBENABLEDAPPLEPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1) -> {
+    static PFNGLISVERTEXATTRIBENABLEDAPPLEPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLISVERTEXATTRIBENABLEDAPPLEPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1) -> {
             try {
-                return (byte)constants$485.PFNGLISVERTEXATTRIBENABLEDAPPLEPROC$MH.invokeExact((Addressable)addr, x0, x1);
+                return (byte)constants$485.PFNGLISVERTEXATTRIBENABLEDAPPLEPROC$MH.invokeExact(symbol, x0, x1);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

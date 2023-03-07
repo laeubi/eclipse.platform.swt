@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLISPOINTINSTROKEPATHNVPROC {
 
     byte apply(int x0, float x1, float x2);
-    static MemoryAddress allocate(PFNGLISPOINTINSTROKEPATHNVPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLISPOINTINSTROKEPATHNVPROC.class, fi, constants$793.PFNGLISPOINTINSTROKEPATHNVPROC$FUNC, "(IFF)B");
-    }
-    static MemoryAddress allocate(PFNGLISPOINTINSTROKEPATHNVPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLISPOINTINSTROKEPATHNVPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLISPOINTINSTROKEPATHNVPROC.class, fi, constants$793.PFNGLISPOINTINSTROKEPATHNVPROC$FUNC, "(IFF)B", scope);
     }
-    static PFNGLISPOINTINSTROKEPATHNVPROC ofAddress(MemoryAddress addr) {
-        return (int x0, float x1, float x2) -> {
+    static PFNGLISPOINTINSTROKEPATHNVPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLISPOINTINSTROKEPATHNVPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, float x1, float x2) -> {
             try {
-                return (byte)constants$793.PFNGLISPOINTINSTROKEPATHNVPROC$MH.invokeExact((Addressable)addr, x0, x1, x2);
+                return (byte)constants$793.PFNGLISPOINTINSTROKEPATHNVPROC$MH.invokeExact(symbol, x0, x1, x2);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

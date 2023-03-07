@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLTRANSFORMFEEDBACKVARYINGSPROC {
 
     void apply(int x0, int x1, jdk.incubator.foreign.MemoryAddress x2, int x3);
-    static MemoryAddress allocate(PFNGLTRANSFORMFEEDBACKVARYINGSPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLTRANSFORMFEEDBACKVARYINGSPROC.class, fi, constants$149.PFNGLTRANSFORMFEEDBACKVARYINGSPROC$FUNC, "(IILjdk/incubator/foreign/MemoryAddress;I)V");
-    }
-    static MemoryAddress allocate(PFNGLTRANSFORMFEEDBACKVARYINGSPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLTRANSFORMFEEDBACKVARYINGSPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLTRANSFORMFEEDBACKVARYINGSPROC.class, fi, constants$149.PFNGLTRANSFORMFEEDBACKVARYINGSPROC$FUNC, "(IILjdk/incubator/foreign/MemoryAddress;I)V", scope);
     }
-    static PFNGLTRANSFORMFEEDBACKVARYINGSPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, jdk.incubator.foreign.MemoryAddress x2, int x3) -> {
+    static PFNGLTRANSFORMFEEDBACKVARYINGSPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLTRANSFORMFEEDBACKVARYINGSPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1, jdk.incubator.foreign.MemoryAddress x2, int x3) -> {
             try {
-                constants$149.PFNGLTRANSFORMFEEDBACKVARYINGSPROC$MH.invokeExact((Addressable)addr, x0, x1, x2, x3);
+                constants$149.PFNGLTRANSFORMFEEDBACKVARYINGSPROC$MH.invokeExact(symbol, x0, x1, (jdk.incubator.foreign.Addressable)x2, x3);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

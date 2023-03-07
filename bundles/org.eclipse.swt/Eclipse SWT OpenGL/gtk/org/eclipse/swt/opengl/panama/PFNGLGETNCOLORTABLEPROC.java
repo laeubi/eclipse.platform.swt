@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLGETNCOLORTABLEPROC {
 
     void apply(int x0, int x1, int x2, int x3, jdk.incubator.foreign.MemoryAddress x4);
-    static MemoryAddress allocate(PFNGLGETNCOLORTABLEPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLGETNCOLORTABLEPROC.class, fi, constants$310.PFNGLGETNCOLORTABLEPROC$FUNC, "(IIIILjdk/incubator/foreign/MemoryAddress;)V");
-    }
-    static MemoryAddress allocate(PFNGLGETNCOLORTABLEPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLGETNCOLORTABLEPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLGETNCOLORTABLEPROC.class, fi, constants$310.PFNGLGETNCOLORTABLEPROC$FUNC, "(IIIILjdk/incubator/foreign/MemoryAddress;)V", scope);
     }
-    static PFNGLGETNCOLORTABLEPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, int x2, int x3, jdk.incubator.foreign.MemoryAddress x4) -> {
+    static PFNGLGETNCOLORTABLEPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLGETNCOLORTABLEPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1, int x2, int x3, jdk.incubator.foreign.MemoryAddress x4) -> {
             try {
-                constants$310.PFNGLGETNCOLORTABLEPROC$MH.invokeExact((Addressable)addr, x0, x1, x2, x3, x4);
+                constants$310.PFNGLGETNCOLORTABLEPROC$MH.invokeExact(symbol, x0, x1, x2, x3, (jdk.incubator.foreign.Addressable)x4);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

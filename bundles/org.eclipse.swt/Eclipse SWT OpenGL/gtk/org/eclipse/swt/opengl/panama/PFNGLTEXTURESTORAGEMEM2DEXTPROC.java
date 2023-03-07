@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLTEXTURESTORAGEMEM2DEXTPROC {
 
     void apply(int x0, int x1, int x2, int x3, int x4, int x5, long x6);
-    static MemoryAddress allocate(PFNGLTEXTURESTORAGEMEM2DEXTPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLTEXTURESTORAGEMEM2DEXTPROC.class, fi, constants$645.PFNGLTEXTURESTORAGEMEM2DEXTPROC$FUNC, "(IIIIIIJ)V");
-    }
-    static MemoryAddress allocate(PFNGLTEXTURESTORAGEMEM2DEXTPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLTEXTURESTORAGEMEM2DEXTPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLTEXTURESTORAGEMEM2DEXTPROC.class, fi, constants$645.PFNGLTEXTURESTORAGEMEM2DEXTPROC$FUNC, "(IIIIIIJ)V", scope);
     }
-    static PFNGLTEXTURESTORAGEMEM2DEXTPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, int x2, int x3, int x4, int x5, long x6) -> {
+    static PFNGLTEXTURESTORAGEMEM2DEXTPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLTEXTURESTORAGEMEM2DEXTPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1, int x2, int x3, int x4, int x5, long x6) -> {
             try {
-                constants$645.PFNGLTEXTURESTORAGEMEM2DEXTPROC$MH.invokeExact((Addressable)addr, x0, x1, x2, x3, x4, x5, x6);
+                constants$645.PFNGLTEXTURESTORAGEMEM2DEXTPROC$MH.invokeExact(symbol, x0, x1, x2, x3, x4, x5, x6);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

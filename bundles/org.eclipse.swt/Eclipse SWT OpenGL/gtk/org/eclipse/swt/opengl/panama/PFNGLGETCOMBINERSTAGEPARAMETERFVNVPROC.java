@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLGETCOMBINERSTAGEPARAMETERFVNVPROC {
 
     void apply(int x0, int x1, jdk.incubator.foreign.MemoryAddress x2);
-    static MemoryAddress allocate(PFNGLGETCOMBINERSTAGEPARAMETERFVNVPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLGETCOMBINERSTAGEPARAMETERFVNVPROC.class, fi, constants$811.PFNGLGETCOMBINERSTAGEPARAMETERFVNVPROC$FUNC, "(IILjdk/incubator/foreign/MemoryAddress;)V");
-    }
-    static MemoryAddress allocate(PFNGLGETCOMBINERSTAGEPARAMETERFVNVPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLGETCOMBINERSTAGEPARAMETERFVNVPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLGETCOMBINERSTAGEPARAMETERFVNVPROC.class, fi, constants$811.PFNGLGETCOMBINERSTAGEPARAMETERFVNVPROC$FUNC, "(IILjdk/incubator/foreign/MemoryAddress;)V", scope);
     }
-    static PFNGLGETCOMBINERSTAGEPARAMETERFVNVPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, jdk.incubator.foreign.MemoryAddress x2) -> {
+    static PFNGLGETCOMBINERSTAGEPARAMETERFVNVPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLGETCOMBINERSTAGEPARAMETERFVNVPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1, jdk.incubator.foreign.MemoryAddress x2) -> {
             try {
-                constants$811.PFNGLGETCOMBINERSTAGEPARAMETERFVNVPROC$MH.invokeExact((Addressable)addr, x0, x1, x2);
+                constants$811.PFNGLGETCOMBINERSTAGEPARAMETERFVNVPROC$MH.invokeExact(symbol, x0, x1, (jdk.incubator.foreign.Addressable)x2);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

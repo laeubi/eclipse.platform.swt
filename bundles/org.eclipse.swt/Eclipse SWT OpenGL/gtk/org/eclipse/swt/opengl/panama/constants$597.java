@@ -6,41 +6,38 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$597 {
 
     static final FunctionDescriptor PFNGLNAMEDFRAMEBUFFERTEXTURE1DEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLNAMEDFRAMEBUFFERTEXTURE1DEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIIII)V",
         constants$597.PFNGLNAMEDFRAMEBUFFERTEXTURE1DEXTPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLNAMEDFRAMEBUFFERTEXTURE2DEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLNAMEDFRAMEBUFFERTEXTURE2DEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIIII)V",
         constants$597.PFNGLNAMEDFRAMEBUFFERTEXTURE2DEXTPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLNAMEDFRAMEBUFFERTEXTURE3DEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLNAMEDFRAMEBUFFERTEXTURE3DEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIIIII)V",
         constants$597.PFNGLNAMEDFRAMEBUFFERTEXTURE3DEXTPROC$FUNC, false
     );
 }

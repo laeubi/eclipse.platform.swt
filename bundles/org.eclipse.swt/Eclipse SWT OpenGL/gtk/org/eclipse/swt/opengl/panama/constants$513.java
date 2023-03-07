@@ -6,35 +6,32 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$513 {
 
     static final FunctionDescriptor PFNGLNORMALSTREAM3SATIPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_SHORT,
-        C_SHORT,
-        C_SHORT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_SHORT$LAYOUT,
+        Constants$root.C_SHORT$LAYOUT,
+        Constants$root.C_SHORT$LAYOUT
     );
     static final MethodHandle PFNGLNORMALSTREAM3SATIPROC$MH = RuntimeHelper.downcallHandle(
-        "(ISSS)V",
         constants$513.PFNGLNORMALSTREAM3SATIPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLNORMALSTREAM3SVATIPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLNORMALSTREAM3SVATIPROC$MH = RuntimeHelper.downcallHandle(
-        "(ILjdk/incubator/foreign/MemoryAddress;)V",
         constants$513.PFNGLNORMALSTREAM3SVATIPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLNORMALSTREAM3IATIPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLNORMALSTREAM3IATIPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIII)V",
         constants$513.PFNGLNORMALSTREAM3IATIPROC$FUNC, false
     );
 }

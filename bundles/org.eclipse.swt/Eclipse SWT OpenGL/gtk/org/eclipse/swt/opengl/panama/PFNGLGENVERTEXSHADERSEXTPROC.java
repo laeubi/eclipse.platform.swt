@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLGENVERTEXSHADERSEXTPROC {
 
     int apply(int x0);
-    static MemoryAddress allocate(PFNGLGENVERTEXSHADERSEXTPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLGENVERTEXSHADERSEXTPROC.class, fi, constants$684.PFNGLGENVERTEXSHADERSEXTPROC$FUNC, "(I)I");
-    }
-    static MemoryAddress allocate(PFNGLGENVERTEXSHADERSEXTPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLGENVERTEXSHADERSEXTPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLGENVERTEXSHADERSEXTPROC.class, fi, constants$684.PFNGLGENVERTEXSHADERSEXTPROC$FUNC, "(I)I", scope);
     }
-    static PFNGLGENVERTEXSHADERSEXTPROC ofAddress(MemoryAddress addr) {
-        return (int x0) -> {
+    static PFNGLGENVERTEXSHADERSEXTPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLGENVERTEXSHADERSEXTPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0) -> {
             try {
-                return (int)constants$684.PFNGLGENVERTEXSHADERSEXTPROC$MH.invokeExact((Addressable)addr, x0);
+                return (int)constants$684.PFNGLGENVERTEXSHADERSEXTPROC$MH.invokeExact(symbol, x0);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

@@ -6,33 +6,30 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$264 {
 
     static final FunctionDescriptor PFNGLVERTEXATTRIBLFORMATPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLVERTEXATTRIBLFORMATPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIII)V",
         constants$264.PFNGLVERTEXATTRIBLFORMATPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLVERTEXATTRIBBINDINGPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLVERTEXATTRIBBINDINGPROC$MH = RuntimeHelper.downcallHandle(
-        "(II)V",
         constants$264.PFNGLVERTEXATTRIBBINDINGPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLVERTEXBINDINGDIVISORPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLVERTEXBINDINGDIVISORPROC$MH = RuntimeHelper.downcallHandle(
-        "(II)V",
         constants$264.PFNGLVERTEXBINDINGDIVISORPROC$FUNC, false
     );
 }

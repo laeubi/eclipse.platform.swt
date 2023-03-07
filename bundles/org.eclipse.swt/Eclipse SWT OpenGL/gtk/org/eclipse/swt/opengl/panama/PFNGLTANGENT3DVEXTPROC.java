@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLTANGENT3DVEXTPROC {
 
     void apply(jdk.incubator.foreign.MemoryAddress x0);
-    static MemoryAddress allocate(PFNGLTANGENT3DVEXTPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLTANGENT3DVEXTPROC.class, fi, constants$526.PFNGLTANGENT3DVEXTPROC$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;)V");
-    }
-    static MemoryAddress allocate(PFNGLTANGENT3DVEXTPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLTANGENT3DVEXTPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLTANGENT3DVEXTPROC.class, fi, constants$526.PFNGLTANGENT3DVEXTPROC$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;)V", scope);
     }
-    static PFNGLTANGENT3DVEXTPROC ofAddress(MemoryAddress addr) {
-        return (jdk.incubator.foreign.MemoryAddress x0) -> {
+    static PFNGLTANGENT3DVEXTPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLTANGENT3DVEXTPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (jdk.incubator.foreign.MemoryAddress x0) -> {
             try {
-                constants$526.PFNGLTANGENT3DVEXTPROC$MH.invokeExact((Addressable)addr, x0);
+                constants$526.PFNGLTANGENT3DVEXTPROC$MH.invokeExact(symbol, (jdk.incubator.foreign.Addressable)x0);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

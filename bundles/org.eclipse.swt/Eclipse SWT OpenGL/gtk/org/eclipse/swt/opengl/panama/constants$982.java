@@ -6,15 +6,15 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$982 {
 
-    static final MemorySegment PRIo32$SEGMENT = CLinker.toCString("o", ResourceScope.newImplicitScope());
-    static final MemorySegment PRIo64$SEGMENT = CLinker.toCString("lo", ResourceScope.newImplicitScope());
-    static final MemorySegment PRIoLEAST8$SEGMENT = CLinker.toCString("o", ResourceScope.newImplicitScope());
-    static final MemorySegment PRIoLEAST16$SEGMENT = CLinker.toCString("o", ResourceScope.newImplicitScope());
-    static final MemorySegment PRIoLEAST32$SEGMENT = CLinker.toCString("o", ResourceScope.newImplicitScope());
-    static final MemorySegment PRIoLEAST64$SEGMENT = CLinker.toCString("lo", ResourceScope.newImplicitScope());
+    static final MemorySegment PRIo32$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("o");
+    static final MemorySegment PRIo64$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lo");
+    static final MemorySegment PRIoLEAST8$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("o");
+    static final MemorySegment PRIoLEAST16$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("o");
+    static final MemorySegment PRIoLEAST32$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("o");
+    static final MemorySegment PRIoLEAST64$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lo");
 }
 
 

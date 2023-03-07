@@ -6,31 +6,28 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$828 {
 
     static final FunctionDescriptor PFNGLVDPAUSURFACEACCESSNVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_LONG,
-        C_INT
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLVDPAUSURFACEACCESSNVPROC$MH = RuntimeHelper.downcallHandle(
-        "(JI)V",
         constants$828.PFNGLVDPAUSURFACEACCESSNVPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLVDPAUMAPSURFACESNVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLVDPAUMAPSURFACESNVPROC$MH = RuntimeHelper.downcallHandle(
-        "(ILjdk/incubator/foreign/MemoryAddress;)V",
         constants$828.PFNGLVDPAUMAPSURFACESNVPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLVDPAUUNMAPSURFACESNVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLVDPAUUNMAPSURFACESNVPROC$MH = RuntimeHelper.downcallHandle(
-        "(ILjdk/incubator/foreign/MemoryAddress;)V",
         constants$828.PFNGLVDPAUUNMAPSURFACESNVPROC$FUNC, false
     );
 }

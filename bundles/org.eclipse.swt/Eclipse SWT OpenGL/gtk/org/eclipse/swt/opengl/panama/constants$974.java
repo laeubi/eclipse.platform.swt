@@ -6,66 +6,60 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$974 {
 
     static final FunctionDescriptor qsort$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER,
-        C_LONG,
-        C_LONG,
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle qsort$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "qsort",
-        "(Ljdk/incubator/foreign/MemoryAddress;JJLjdk/incubator/foreign/MemoryAddress;)V",
+        "qsort",
         constants$974.qsort$FUNC, false
     );
-    static final FunctionDescriptor abs$FUNC = FunctionDescriptor.of(C_INT,
-        C_INT
+    static final FunctionDescriptor abs$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle abs$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "abs",
-        "(I)I",
+        "abs",
         constants$974.abs$FUNC, false
     );
-    static final FunctionDescriptor labs$FUNC = FunctionDescriptor.of(C_LONG,
-        C_LONG
+    static final FunctionDescriptor labs$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT
     );
     static final MethodHandle labs$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "labs",
-        "(J)J",
+        "labs",
         constants$974.labs$FUNC, false
     );
-    static final FunctionDescriptor llabs$FUNC = FunctionDescriptor.of(C_LONG_LONG,
-        C_LONG_LONG
+    static final FunctionDescriptor llabs$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT
     );
     static final MethodHandle llabs$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "llabs",
-        "(J)J",
+        "llabs",
         constants$974.llabs$FUNC, false
     );
     static final FunctionDescriptor div$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        C_INT.withName("quot"),
-        C_INT.withName("rem")
+        Constants$root.C_INT$LAYOUT.withName("quot"),
+        Constants$root.C_INT$LAYOUT.withName("rem")
     ),
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle div$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "div",
-        "(II)Ljdk/incubator/foreign/MemorySegment;",
+        "div",
         constants$974.div$FUNC, false
     );
     static final FunctionDescriptor ldiv$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        C_LONG.withName("quot"),
-        C_LONG.withName("rem")
+        Constants$root.C_LONG_LONG$LAYOUT.withName("quot"),
+        Constants$root.C_LONG_LONG$LAYOUT.withName("rem")
     ),
-        C_LONG,
-        C_LONG
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT
     );
     static final MethodHandle ldiv$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "ldiv",
-        "(JJ)Ljdk/incubator/foreign/MemorySegment;",
+        "ldiv",
         constants$974.ldiv$FUNC, false
     );
 }

@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLFOGCOORDPOINTERPROC {
 
     void apply(int x0, int x1, jdk.incubator.foreign.MemoryAddress x2);
-    static MemoryAddress allocate(PFNGLFOGCOORDPOINTERPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLFOGCOORDPOINTERPROC.class, fi, constants$95.PFNGLFOGCOORDPOINTERPROC$FUNC, "(IILjdk/incubator/foreign/MemoryAddress;)V");
-    }
-    static MemoryAddress allocate(PFNGLFOGCOORDPOINTERPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLFOGCOORDPOINTERPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLFOGCOORDPOINTERPROC.class, fi, constants$95.PFNGLFOGCOORDPOINTERPROC$FUNC, "(IILjdk/incubator/foreign/MemoryAddress;)V", scope);
     }
-    static PFNGLFOGCOORDPOINTERPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, jdk.incubator.foreign.MemoryAddress x2) -> {
+    static PFNGLFOGCOORDPOINTERPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLFOGCOORDPOINTERPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1, jdk.incubator.foreign.MemoryAddress x2) -> {
             try {
-                constants$95.PFNGLFOGCOORDPOINTERPROC$MH.invokeExact((Addressable)addr, x0, x1, x2);
+                constants$95.PFNGLFOGCOORDPOINTERPROC$MH.invokeExact(symbol, x0, x1, (jdk.incubator.foreign.Addressable)x2);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

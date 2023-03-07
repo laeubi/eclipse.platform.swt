@@ -6,41 +6,37 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$945 {
 
     static final FunctionDescriptor glutKeyboardUpFunc$callback$FUNC = FunctionDescriptor.ofVoid(
-        C_CHAR,
-        C_INT,
-        C_INT
+        Constants$root.C_CHAR$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle glutKeyboardUpFunc$callback$MH = RuntimeHelper.downcallHandle(
-        "(BII)V",
         constants$945.glutKeyboardUpFunc$callback$FUNC, false
     );
     static final FunctionDescriptor glutKeyboardUpFunc$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle glutKeyboardUpFunc$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glutKeyboardUpFunc",
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
+        "glutKeyboardUpFunc",
         constants$945.glutKeyboardUpFunc$FUNC, false
     );
     static final FunctionDescriptor glutSpecialUpFunc$callback$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle glutSpecialUpFunc$callback$MH = RuntimeHelper.downcallHandle(
-        "(III)V",
         constants$945.glutSpecialUpFunc$callback$FUNC, false
     );
     static final FunctionDescriptor glutSpecialUpFunc$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle glutSpecialUpFunc$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glutSpecialUpFunc",
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
+        "glutSpecialUpFunc",
         constants$945.glutSpecialUpFunc$FUNC, false
     );
 }

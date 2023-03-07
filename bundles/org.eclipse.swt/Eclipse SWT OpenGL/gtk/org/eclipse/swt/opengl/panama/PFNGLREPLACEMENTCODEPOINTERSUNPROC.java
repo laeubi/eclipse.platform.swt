@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLREPLACEMENTCODEPOINTERSUNPROC {
 
     void apply(int x0, int x1, jdk.incubator.foreign.MemoryAddress x2);
-    static MemoryAddress allocate(PFNGLREPLACEMENTCODEPOINTERSUNPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLREPLACEMENTCODEPOINTERSUNPROC.class, fi, constants$905.PFNGLREPLACEMENTCODEPOINTERSUNPROC$FUNC, "(IILjdk/incubator/foreign/MemoryAddress;)V");
-    }
-    static MemoryAddress allocate(PFNGLREPLACEMENTCODEPOINTERSUNPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLREPLACEMENTCODEPOINTERSUNPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLREPLACEMENTCODEPOINTERSUNPROC.class, fi, constants$905.PFNGLREPLACEMENTCODEPOINTERSUNPROC$FUNC, "(IILjdk/incubator/foreign/MemoryAddress;)V", scope);
     }
-    static PFNGLREPLACEMENTCODEPOINTERSUNPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, jdk.incubator.foreign.MemoryAddress x2) -> {
+    static PFNGLREPLACEMENTCODEPOINTERSUNPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLREPLACEMENTCODEPOINTERSUNPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1, jdk.incubator.foreign.MemoryAddress x2) -> {
             try {
-                constants$905.PFNGLREPLACEMENTCODEPOINTERSUNPROC$MH.invokeExact((Addressable)addr, x0, x1, x2);
+                constants$905.PFNGLREPLACEMENTCODEPOINTERSUNPROC$MH.invokeExact(symbol, x0, x1, (jdk.incubator.foreign.Addressable)x2);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

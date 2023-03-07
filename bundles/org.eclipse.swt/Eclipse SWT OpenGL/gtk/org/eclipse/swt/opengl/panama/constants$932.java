@@ -6,55 +6,49 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$932 {
 
     static final FunctionDescriptor glutInitWindowPosition$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle glutInitWindowPosition$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glutInitWindowPosition",
-        "(II)V",
+        "glutInitWindowPosition",
         constants$932.glutInitWindowPosition$FUNC, false
     );
     static final FunctionDescriptor glutInitWindowSize$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle glutInitWindowSize$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glutInitWindowSize",
-        "(II)V",
+        "glutInitWindowSize",
         constants$932.glutInitWindowSize$FUNC, false
     );
     static final FunctionDescriptor glutInitDisplayMode$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle glutInitDisplayMode$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glutInitDisplayMode",
-        "(I)V",
+        "glutInitDisplayMode",
         constants$932.glutInitDisplayMode$FUNC, false
     );
     static final FunctionDescriptor glutInitDisplayString$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle glutInitDisplayString$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glutInitDisplayString",
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
+        "glutInitDisplayString",
         constants$932.glutInitDisplayString$FUNC, false
     );
     static final FunctionDescriptor glutMainLoop$FUNC = FunctionDescriptor.ofVoid();
     static final MethodHandle glutMainLoop$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glutMainLoop",
-        "()V",
+        "glutMainLoop",
         constants$932.glutMainLoop$FUNC, false
     );
-    static final FunctionDescriptor glutCreateWindow$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER
+    static final FunctionDescriptor glutCreateWindow$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle glutCreateWindow$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glutCreateWindow",
-        "(Ljdk/incubator/foreign/MemoryAddress;)I",
+        "glutCreateWindow",
         constants$932.glutCreateWindow$FUNC, false
     );
 }

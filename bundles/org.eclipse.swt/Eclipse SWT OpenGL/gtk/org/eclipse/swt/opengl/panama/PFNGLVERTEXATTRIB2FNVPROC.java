@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLVERTEXATTRIB2FNVPROC {
 
     void apply(int x0, float x1, float x2);
-    static MemoryAddress allocate(PFNGLVERTEXATTRIB2FNVPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLVERTEXATTRIB2FNVPROC.class, fi, constants$851.PFNGLVERTEXATTRIB2FNVPROC$FUNC, "(IFF)V");
-    }
-    static MemoryAddress allocate(PFNGLVERTEXATTRIB2FNVPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLVERTEXATTRIB2FNVPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLVERTEXATTRIB2FNVPROC.class, fi, constants$851.PFNGLVERTEXATTRIB2FNVPROC$FUNC, "(IFF)V", scope);
     }
-    static PFNGLVERTEXATTRIB2FNVPROC ofAddress(MemoryAddress addr) {
-        return (int x0, float x1, float x2) -> {
+    static PFNGLVERTEXATTRIB2FNVPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLVERTEXATTRIB2FNVPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, float x1, float x2) -> {
             try {
-                constants$851.PFNGLVERTEXATTRIB2FNVPROC$MH.invokeExact((Addressable)addr, x0, x1, x2);
+                constants$851.PFNGLVERTEXATTRIB2FNVPROC$MH.invokeExact(symbol, x0, x1, x2);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

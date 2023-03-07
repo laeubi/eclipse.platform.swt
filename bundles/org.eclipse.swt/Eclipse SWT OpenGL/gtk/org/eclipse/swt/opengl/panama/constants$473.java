@@ -6,32 +6,29 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$473 {
 
     static final FunctionDescriptor PFNGLBEGINPERFMONITORAMDPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLBEGINPERFMONITORAMDPROC$MH = RuntimeHelper.downcallHandle(
-        "(I)V",
         constants$473.PFNGLBEGINPERFMONITORAMDPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLENDPERFMONITORAMDPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLENDPERFMONITORAMDPROC$MH = RuntimeHelper.downcallHandle(
-        "(I)V",
         constants$473.PFNGLENDPERFMONITORAMDPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLGETPERFMONITORCOUNTERDATAAMDPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_POINTER,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLGETPERFMONITORCOUNTERDATAAMDPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIILjdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)V",
         constants$473.PFNGLGETPERFMONITORCOUNTERDATAAMDPROC$FUNC, false
     );
 }

@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLUNIFORMMATRIX4X3FVPROC {
 
     void apply(int x0, int x1, byte x2, jdk.incubator.foreign.MemoryAddress x3);
-    static MemoryAddress allocate(PFNGLUNIFORMMATRIX4X3FVPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLUNIFORMMATRIX4X3FVPROC.class, fi, constants$146.PFNGLUNIFORMMATRIX4X3FVPROC$FUNC, "(IIBLjdk/incubator/foreign/MemoryAddress;)V");
-    }
-    static MemoryAddress allocate(PFNGLUNIFORMMATRIX4X3FVPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLUNIFORMMATRIX4X3FVPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLUNIFORMMATRIX4X3FVPROC.class, fi, constants$146.PFNGLUNIFORMMATRIX4X3FVPROC$FUNC, "(IIBLjdk/incubator/foreign/MemoryAddress;)V", scope);
     }
-    static PFNGLUNIFORMMATRIX4X3FVPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, byte x2, jdk.incubator.foreign.MemoryAddress x3) -> {
+    static PFNGLUNIFORMMATRIX4X3FVPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLUNIFORMMATRIX4X3FVPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1, byte x2, jdk.incubator.foreign.MemoryAddress x3) -> {
             try {
-                constants$146.PFNGLUNIFORMMATRIX4X3FVPROC$MH.invokeExact((Addressable)addr, x0, x1, x2, x3);
+                constants$146.PFNGLUNIFORMMATRIX4X3FVPROC$MH.invokeExact(symbol, x0, x1, x2, (jdk.incubator.foreign.Addressable)x3);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

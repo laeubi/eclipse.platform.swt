@@ -6,29 +6,26 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$728 {
 
     static final FunctionDescriptor PFNGLBLENDPARAMETERINVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLBLENDPARAMETERINVPROC$MH = RuntimeHelper.downcallHandle(
-        "(II)V",
         constants$728.PFNGLBLENDPARAMETERINVPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLBLENDBARRIERNVPROC$FUNC = FunctionDescriptor.ofVoid();
     static final MethodHandle PFNGLBLENDBARRIERNVPROC$MH = RuntimeHelper.downcallHandle(
-        "()V",
         constants$728.PFNGLBLENDBARRIERNVPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLVIEWPORTPOSITIONWSCALENVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_FLOAT,
-        C_FLOAT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT
     );
     static final MethodHandle PFNGLVIEWPORTPOSITIONWSCALENVPROC$MH = RuntimeHelper.downcallHandle(
-        "(IFF)V",
         constants$728.PFNGLVIEWPORTPOSITIONWSCALENVPROC$FUNC, false
     );
 }

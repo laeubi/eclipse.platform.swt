@@ -6,29 +6,26 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$691 {
 
     static final FunctionDescriptor PFNGLENABLEVARIANTCLIENTSTATEEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLENABLEVARIANTCLIENTSTATEEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(I)V",
         constants$691.PFNGLENABLEVARIANTCLIENTSTATEEXTPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLDISABLEVARIANTCLIENTSTATEEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLDISABLEVARIANTCLIENTSTATEEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(I)V",
         constants$691.PFNGLDISABLEVARIANTCLIENTSTATEEXTPROC$FUNC, false
     );
-    static final FunctionDescriptor PFNGLBINDLIGHTPARAMETEREXTPROC$FUNC = FunctionDescriptor.of(C_INT,
-        C_INT,
-        C_INT
+    static final FunctionDescriptor PFNGLBINDLIGHTPARAMETEREXTPROC$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLBINDLIGHTPARAMETEREXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(II)I",
         constants$691.PFNGLBINDLIGHTPARAMETEREXTPROC$FUNC, false
     );
 }

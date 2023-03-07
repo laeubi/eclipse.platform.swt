@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLGETMULTITEXGENFVEXTPROC {
 
     void apply(int x0, int x1, int x2, jdk.incubator.foreign.MemoryAddress x3);
-    static MemoryAddress allocate(PFNGLGETMULTITEXGENFVEXTPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLGETMULTITEXGENFVEXTPROC.class, fi, constants$554.PFNGLGETMULTITEXGENFVEXTPROC$FUNC, "(IIILjdk/incubator/foreign/MemoryAddress;)V");
-    }
-    static MemoryAddress allocate(PFNGLGETMULTITEXGENFVEXTPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLGETMULTITEXGENFVEXTPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLGETMULTITEXGENFVEXTPROC.class, fi, constants$554.PFNGLGETMULTITEXGENFVEXTPROC$FUNC, "(IIILjdk/incubator/foreign/MemoryAddress;)V", scope);
     }
-    static PFNGLGETMULTITEXGENFVEXTPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, int x2, jdk.incubator.foreign.MemoryAddress x3) -> {
+    static PFNGLGETMULTITEXGENFVEXTPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLGETMULTITEXGENFVEXTPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1, int x2, jdk.incubator.foreign.MemoryAddress x3) -> {
             try {
-                constants$554.PFNGLGETMULTITEXGENFVEXTPROC$MH.invokeExact((Addressable)addr, x0, x1, x2, x3);
+                constants$554.PFNGLGETMULTITEXGENFVEXTPROC$MH.invokeExact(symbol, x0, x1, x2, (jdk.incubator.foreign.Addressable)x3);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

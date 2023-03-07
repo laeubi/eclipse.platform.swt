@@ -6,56 +6,50 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$971 {
 
-    static final FunctionDescriptor on_exit$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor on_exit$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle on_exit$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "on_exit",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I",
+        "on_exit",
         constants$971.on_exit$FUNC, false
     );
     static final FunctionDescriptor exit$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle exit$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "exit",
-        "(I)V",
+        "exit",
         constants$971.exit$FUNC, false
     );
     static final FunctionDescriptor quick_exit$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle quick_exit$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "quick_exit",
-        "(I)V",
+        "quick_exit",
         constants$971.quick_exit$FUNC, false
     );
     static final FunctionDescriptor _Exit$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle _Exit$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "_Exit",
-        "(I)V",
+        "_Exit",
         constants$971._Exit$FUNC, false
     );
-    static final FunctionDescriptor getenv$FUNC = FunctionDescriptor.of(C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor getenv$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle getenv$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "getenv",
-        "(Ljdk/incubator/foreign/MemoryAddress;)Ljdk/incubator/foreign/MemoryAddress;",
+        "getenv",
         constants$971.getenv$FUNC, false
     );
-    static final FunctionDescriptor putenv$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER
+    static final FunctionDescriptor putenv$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle putenv$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "putenv",
-        "(Ljdk/incubator/foreign/MemoryAddress;)I",
+        "putenv",
         constants$971.putenv$FUNC, false
     );
 }

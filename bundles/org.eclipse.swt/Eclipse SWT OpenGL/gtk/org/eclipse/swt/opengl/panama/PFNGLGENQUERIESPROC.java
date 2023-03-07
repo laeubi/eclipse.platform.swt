@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLGENQUERIESPROC {
 
     void apply(int x0, jdk.incubator.foreign.MemoryAddress x1);
-    static MemoryAddress allocate(PFNGLGENQUERIESPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLGENQUERIESPROC.class, fi, constants$107.PFNGLGENQUERIESPROC$FUNC, "(ILjdk/incubator/foreign/MemoryAddress;)V");
-    }
-    static MemoryAddress allocate(PFNGLGENQUERIESPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLGENQUERIESPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLGENQUERIESPROC.class, fi, constants$107.PFNGLGENQUERIESPROC$FUNC, "(ILjdk/incubator/foreign/MemoryAddress;)V", scope);
     }
-    static PFNGLGENQUERIESPROC ofAddress(MemoryAddress addr) {
-        return (int x0, jdk.incubator.foreign.MemoryAddress x1) -> {
+    static PFNGLGENQUERIESPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLGENQUERIESPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, jdk.incubator.foreign.MemoryAddress x1) -> {
             try {
-                constants$107.PFNGLGENQUERIESPROC$MH.invokeExact((Addressable)addr, x0, x1);
+                constants$107.PFNGLGENQUERIESPROC$MH.invokeExact(symbol, x0, (jdk.incubator.foreign.Addressable)x1);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

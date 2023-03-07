@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLSPRITEPARAMETERISGIXPROC {
 
     void apply(int x0, int x1);
-    static MemoryAddress allocate(PFNGLSPRITEPARAMETERISGIXPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLSPRITEPARAMETERISGIXPROC.class, fi, constants$896.PFNGLSPRITEPARAMETERISGIXPROC$FUNC, "(II)V");
-    }
-    static MemoryAddress allocate(PFNGLSPRITEPARAMETERISGIXPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLSPRITEPARAMETERISGIXPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLSPRITEPARAMETERISGIXPROC.class, fi, constants$896.PFNGLSPRITEPARAMETERISGIXPROC$FUNC, "(II)V", scope);
     }
-    static PFNGLSPRITEPARAMETERISGIXPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1) -> {
+    static PFNGLSPRITEPARAMETERISGIXPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLSPRITEPARAMETERISGIXPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1) -> {
             try {
-                constants$896.PFNGLSPRITEPARAMETERISGIXPROC$MH.invokeExact((Addressable)addr, x0, x1);
+                constants$896.PFNGLSPRITEPARAMETERISGIXPROC$MH.invokeExact(symbol, x0, x1);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

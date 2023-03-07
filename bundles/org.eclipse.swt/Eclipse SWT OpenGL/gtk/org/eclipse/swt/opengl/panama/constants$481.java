@@ -6,35 +6,32 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$481 {
 
-    static final FunctionDescriptor PFNGLOBJECTPURGEABLEAPPLEPROC$FUNC = FunctionDescriptor.of(C_INT,
-        C_INT,
-        C_INT,
-        C_INT
+    static final FunctionDescriptor PFNGLOBJECTPURGEABLEAPPLEPROC$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLOBJECTPURGEABLEAPPLEPROC$MH = RuntimeHelper.downcallHandle(
-        "(III)I",
         constants$481.PFNGLOBJECTPURGEABLEAPPLEPROC$FUNC, false
     );
-    static final FunctionDescriptor PFNGLOBJECTUNPURGEABLEAPPLEPROC$FUNC = FunctionDescriptor.of(C_INT,
-        C_INT,
-        C_INT,
-        C_INT
+    static final FunctionDescriptor PFNGLOBJECTUNPURGEABLEAPPLEPROC$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLOBJECTUNPURGEABLEAPPLEPROC$MH = RuntimeHelper.downcallHandle(
-        "(III)I",
         constants$481.PFNGLOBJECTUNPURGEABLEAPPLEPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLGETOBJECTPARAMETERIVAPPLEPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLGETOBJECTPARAMETERIVAPPLEPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIILjdk/incubator/foreign/MemoryAddress;)V",
         constants$481.PFNGLGETOBJECTPARAMETERIVAPPLEPROC$FUNC, false
     );
 }

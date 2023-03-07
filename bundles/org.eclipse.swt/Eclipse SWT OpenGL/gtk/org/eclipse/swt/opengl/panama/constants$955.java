@@ -6,43 +6,37 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$955 {
 
     static final FunctionDescriptor glutWireDodecahedron$FUNC = FunctionDescriptor.ofVoid();
     static final MethodHandle glutWireDodecahedron$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glutWireDodecahedron",
-        "()V",
+        "glutWireDodecahedron",
         constants$955.glutWireDodecahedron$FUNC, false
     );
     static final FunctionDescriptor glutSolidDodecahedron$FUNC = FunctionDescriptor.ofVoid();
     static final MethodHandle glutSolidDodecahedron$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glutSolidDodecahedron",
-        "()V",
+        "glutSolidDodecahedron",
         constants$955.glutSolidDodecahedron$FUNC, false
     );
     static final FunctionDescriptor glutWireOctahedron$FUNC = FunctionDescriptor.ofVoid();
     static final MethodHandle glutWireOctahedron$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glutWireOctahedron",
-        "()V",
+        "glutWireOctahedron",
         constants$955.glutWireOctahedron$FUNC, false
     );
     static final FunctionDescriptor glutSolidOctahedron$FUNC = FunctionDescriptor.ofVoid();
     static final MethodHandle glutSolidOctahedron$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glutSolidOctahedron",
-        "()V",
+        "glutSolidOctahedron",
         constants$955.glutSolidOctahedron$FUNC, false
     );
     static final FunctionDescriptor glutWireTetrahedron$FUNC = FunctionDescriptor.ofVoid();
     static final MethodHandle glutWireTetrahedron$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glutWireTetrahedron",
-        "()V",
+        "glutWireTetrahedron",
         constants$955.glutWireTetrahedron$FUNC, false
     );
     static final FunctionDescriptor glutSolidTetrahedron$FUNC = FunctionDescriptor.ofVoid();
     static final MethodHandle glutSolidTetrahedron$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glutSolidTetrahedron",
-        "()V",
+        "glutSolidTetrahedron",
         constants$955.glutSolidTetrahedron$FUNC, false
     );
 }

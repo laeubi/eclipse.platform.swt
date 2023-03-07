@@ -6,31 +6,28 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$877 {
 
     static final FunctionDescriptor PFNGLPIXELTEXGENPARAMETERFVSGISPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLPIXELTEXGENPARAMETERFVSGISPROC$MH = RuntimeHelper.downcallHandle(
-        "(ILjdk/incubator/foreign/MemoryAddress;)V",
         constants$877.PFNGLPIXELTEXGENPARAMETERFVSGISPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLGETPIXELTEXGENPARAMETERIVSGISPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLGETPIXELTEXGENPARAMETERIVSGISPROC$MH = RuntimeHelper.downcallHandle(
-        "(ILjdk/incubator/foreign/MemoryAddress;)V",
         constants$877.PFNGLGETPIXELTEXGENPARAMETERIVSGISPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLGETPIXELTEXGENPARAMETERFVSGISPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLGETPIXELTEXGENPARAMETERFVSGISPROC$MH = RuntimeHelper.downcallHandle(
-        "(ILjdk/incubator/foreign/MemoryAddress;)V",
         constants$877.PFNGLGETPIXELTEXGENPARAMETERFVSGISPROC$FUNC, false
     );
 }

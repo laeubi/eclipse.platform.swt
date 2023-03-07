@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLFRAMEBUFFERTEXTUREMULTIVIEWOVRPROC {
 
     void apply(int x0, int x1, int x2, int x3, int x4, int x5);
-    static MemoryAddress allocate(PFNGLFRAMEBUFFERTEXTUREMULTIVIEWOVRPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLFRAMEBUFFERTEXTUREMULTIVIEWOVRPROC.class, fi, constants$873.PFNGLFRAMEBUFFERTEXTUREMULTIVIEWOVRPROC$FUNC, "(IIIIII)V");
-    }
-    static MemoryAddress allocate(PFNGLFRAMEBUFFERTEXTUREMULTIVIEWOVRPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLFRAMEBUFFERTEXTUREMULTIVIEWOVRPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLFRAMEBUFFERTEXTUREMULTIVIEWOVRPROC.class, fi, constants$873.PFNGLFRAMEBUFFERTEXTUREMULTIVIEWOVRPROC$FUNC, "(IIIIII)V", scope);
     }
-    static PFNGLFRAMEBUFFERTEXTUREMULTIVIEWOVRPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, int x2, int x3, int x4, int x5) -> {
+    static PFNGLFRAMEBUFFERTEXTUREMULTIVIEWOVRPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLFRAMEBUFFERTEXTUREMULTIVIEWOVRPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1, int x2, int x3, int x4, int x5) -> {
             try {
-                constants$873.PFNGLFRAMEBUFFERTEXTUREMULTIVIEWOVRPROC$MH.invokeExact((Addressable)addr, x0, x1, x2, x3, x4, x5);
+                constants$873.PFNGLFRAMEBUFFERTEXTUREMULTIVIEWOVRPROC$MH.invokeExact(symbol, x0, x1, x2, x3, x4, x5);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLBLENDBARRIERKHRPROC {
 
     void apply();
-    static MemoryAddress allocate(PFNGLBLENDBARRIERKHRPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLBLENDBARRIERKHRPROC.class, fi, constants$406.PFNGLBLENDBARRIERKHRPROC$FUNC, "()V");
-    }
-    static MemoryAddress allocate(PFNGLBLENDBARRIERKHRPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLBLENDBARRIERKHRPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLBLENDBARRIERKHRPROC.class, fi, constants$406.PFNGLBLENDBARRIERKHRPROC$FUNC, "()V", scope);
     }
-    static PFNGLBLENDBARRIERKHRPROC ofAddress(MemoryAddress addr) {
-        return () -> {
+    static PFNGLBLENDBARRIERKHRPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLBLENDBARRIERKHRPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return () -> {
             try {
-                constants$406.PFNGLBLENDBARRIERKHRPROC$MH.invokeExact((Addressable)addr);
+                constants$406.PFNGLBLENDBARRIERKHRPROC$MH.invokeExact(symbol);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

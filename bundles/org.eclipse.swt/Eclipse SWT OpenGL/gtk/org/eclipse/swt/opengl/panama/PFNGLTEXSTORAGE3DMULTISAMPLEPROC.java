@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLTEXSTORAGE3DMULTISAMPLEPROC {
 
     void apply(int x0, int x1, int x2, int x3, int x4, int x5, byte x6);
-    static MemoryAddress allocate(PFNGLTEXSTORAGE3DMULTISAMPLEPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLTEXSTORAGE3DMULTISAMPLEPROC.class, fi, constants$262.PFNGLTEXSTORAGE3DMULTISAMPLEPROC$FUNC, "(IIIIIIB)V");
-    }
-    static MemoryAddress allocate(PFNGLTEXSTORAGE3DMULTISAMPLEPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLTEXSTORAGE3DMULTISAMPLEPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLTEXSTORAGE3DMULTISAMPLEPROC.class, fi, constants$262.PFNGLTEXSTORAGE3DMULTISAMPLEPROC$FUNC, "(IIIIIIB)V", scope);
     }
-    static PFNGLTEXSTORAGE3DMULTISAMPLEPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, int x2, int x3, int x4, int x5, byte x6) -> {
+    static PFNGLTEXSTORAGE3DMULTISAMPLEPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLTEXSTORAGE3DMULTISAMPLEPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1, int x2, int x3, int x4, int x5, byte x6) -> {
             try {
-                constants$262.PFNGLTEXSTORAGE3DMULTISAMPLEPROC$MH.invokeExact((Addressable)addr, x0, x1, x2, x3, x4, x5, x6);
+                constants$262.PFNGLTEXSTORAGE3DMULTISAMPLEPROC$MH.invokeExact(symbol, x0, x1, x2, x3, x4, x5, x6);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

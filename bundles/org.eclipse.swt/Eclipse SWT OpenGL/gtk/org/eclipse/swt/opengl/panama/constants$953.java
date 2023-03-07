@@ -6,59 +6,53 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$953 {
 
     static final FunctionDescriptor glutStrokeCharacter$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER,
-        C_INT
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle glutStrokeCharacter$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glutStrokeCharacter",
-        "(Ljdk/incubator/foreign/MemoryAddress;I)V",
+        "glutStrokeCharacter",
         constants$953.glutStrokeCharacter$FUNC, false
     );
-    static final FunctionDescriptor glutStrokeWidth$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_INT
+    static final FunctionDescriptor glutStrokeWidth$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle glutStrokeWidth$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glutStrokeWidth",
-        "(Ljdk/incubator/foreign/MemoryAddress;I)I",
+        "glutStrokeWidth",
         constants$953.glutStrokeWidth$FUNC, false
     );
-    static final FunctionDescriptor glutBitmapLength$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor glutBitmapLength$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle glutBitmapLength$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glutBitmapLength",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I",
+        "glutBitmapLength",
         constants$953.glutBitmapLength$FUNC, false
     );
-    static final FunctionDescriptor glutStrokeLength$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor glutStrokeLength$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle glutStrokeLength$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glutStrokeLength",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I",
+        "glutStrokeLength",
         constants$953.glutStrokeLength$FUNC, false
     );
     static final FunctionDescriptor glutWireCube$FUNC = FunctionDescriptor.ofVoid(
-        C_DOUBLE
+        Constants$root.C_DOUBLE$LAYOUT
     );
     static final MethodHandle glutWireCube$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glutWireCube",
-        "(D)V",
+        "glutWireCube",
         constants$953.glutWireCube$FUNC, false
     );
     static final FunctionDescriptor glutSolidCube$FUNC = FunctionDescriptor.ofVoid(
-        C_DOUBLE
+        Constants$root.C_DOUBLE$LAYOUT
     );
     static final MethodHandle glutSolidCube$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glutSolidCube",
-        "(D)V",
+        "glutSolidCube",
         constants$953.glutSolidCube$FUNC, false
     );
 }

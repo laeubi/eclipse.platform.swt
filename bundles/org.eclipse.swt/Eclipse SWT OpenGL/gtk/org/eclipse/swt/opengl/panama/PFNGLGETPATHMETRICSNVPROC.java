@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLGETPATHMETRICSNVPROC {
 
     void apply(int x0, int x1, int x2, jdk.incubator.foreign.MemoryAddress x3, int x4, int x5, jdk.incubator.foreign.MemoryAddress x6);
-    static MemoryAddress allocate(PFNGLGETPATHMETRICSNVPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLGETPATHMETRICSNVPROC.class, fi, constants$791.PFNGLGETPATHMETRICSNVPROC$FUNC, "(IIILjdk/incubator/foreign/MemoryAddress;IILjdk/incubator/foreign/MemoryAddress;)V");
-    }
-    static MemoryAddress allocate(PFNGLGETPATHMETRICSNVPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLGETPATHMETRICSNVPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLGETPATHMETRICSNVPROC.class, fi, constants$791.PFNGLGETPATHMETRICSNVPROC$FUNC, "(IIILjdk/incubator/foreign/MemoryAddress;IILjdk/incubator/foreign/MemoryAddress;)V", scope);
     }
-    static PFNGLGETPATHMETRICSNVPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, int x2, jdk.incubator.foreign.MemoryAddress x3, int x4, int x5, jdk.incubator.foreign.MemoryAddress x6) -> {
+    static PFNGLGETPATHMETRICSNVPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLGETPATHMETRICSNVPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1, int x2, jdk.incubator.foreign.MemoryAddress x3, int x4, int x5, jdk.incubator.foreign.MemoryAddress x6) -> {
             try {
-                constants$791.PFNGLGETPATHMETRICSNVPROC$MH.invokeExact((Addressable)addr, x0, x1, x2, x3, x4, x5, x6);
+                constants$791.PFNGLGETPATHMETRICSNVPROC$MH.invokeExact(symbol, x0, x1, x2, (jdk.incubator.foreign.Addressable)x3, x4, x5, (jdk.incubator.foreign.Addressable)x6);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

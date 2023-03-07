@@ -6,47 +6,41 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$6 {
 
     static final FunctionDescriptor glPopClientAttrib$FUNC = FunctionDescriptor.ofVoid();
     static final MethodHandle glPopClientAttrib$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glPopClientAttrib",
-        "()V",
+        "glPopClientAttrib",
         constants$6.glPopClientAttrib$FUNC, false
     );
-    static final FunctionDescriptor glRenderMode$FUNC = FunctionDescriptor.of(C_INT,
-        C_INT
+    static final FunctionDescriptor glRenderMode$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle glRenderMode$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glRenderMode",
-        "(I)I",
+        "glRenderMode",
         constants$6.glRenderMode$FUNC, false
     );
-    static final FunctionDescriptor glGetError$FUNC = FunctionDescriptor.of(C_INT);
+    static final FunctionDescriptor glGetError$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT);
     static final MethodHandle glGetError$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glGetError",
-        "()I",
+        "glGetError",
         constants$6.glGetError$FUNC, false
     );
-    static final FunctionDescriptor glGetString$FUNC = FunctionDescriptor.of(C_POINTER,
-        C_INT
+    static final FunctionDescriptor glGetString$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle glGetString$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glGetString",
-        "(I)Ljdk/incubator/foreign/MemoryAddress;",
+        "glGetString",
         constants$6.glGetString$FUNC, false
     );
     static final FunctionDescriptor glFinish$FUNC = FunctionDescriptor.ofVoid();
     static final MethodHandle glFinish$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glFinish",
-        "()V",
+        "glFinish",
         constants$6.glFinish$FUNC, false
     );
     static final FunctionDescriptor glFlush$FUNC = FunctionDescriptor.ofVoid();
     static final MethodHandle glFlush$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glFlush",
-        "()V",
+        "glFlush",
         constants$6.glFlush$FUNC, false
     );
 }

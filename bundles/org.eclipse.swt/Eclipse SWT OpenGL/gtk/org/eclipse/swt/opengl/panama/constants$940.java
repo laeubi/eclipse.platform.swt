@@ -6,37 +6,33 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$940 {
 
     static final FunctionDescriptor glutIdleFunc$callback$FUNC = FunctionDescriptor.ofVoid();
     static final MethodHandle glutIdleFunc$callback$MH = RuntimeHelper.downcallHandle(
-        "()V",
         constants$940.glutIdleFunc$callback$FUNC, false
     );
     static final FunctionDescriptor glutIdleFunc$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle glutIdleFunc$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glutIdleFunc",
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
+        "glutIdleFunc",
         constants$940.glutIdleFunc$FUNC, false
     );
     static final FunctionDescriptor glutKeyboardFunc$callback$FUNC = FunctionDescriptor.ofVoid(
-        C_CHAR,
-        C_INT,
-        C_INT
+        Constants$root.C_CHAR$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle glutKeyboardFunc$callback$MH = RuntimeHelper.downcallHandle(
-        "(BII)V",
         constants$940.glutKeyboardFunc$callback$FUNC, false
     );
     static final FunctionDescriptor glutKeyboardFunc$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle glutKeyboardFunc$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glutKeyboardFunc",
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
+        "glutKeyboardFunc",
         constants$940.glutKeyboardFunc$FUNC, false
     );
 }

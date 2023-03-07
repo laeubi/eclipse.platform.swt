@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLENABLEVERTEXARRAYATTRIBEXTPROC {
 
     void apply(int x0, int x1);
-    static MemoryAddress allocate(PFNGLENABLEVERTEXARRAYATTRIBEXTPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLENABLEVERTEXARRAYATTRIBEXTPROC.class, fi, constants$607.PFNGLENABLEVERTEXARRAYATTRIBEXTPROC$FUNC, "(II)V");
-    }
-    static MemoryAddress allocate(PFNGLENABLEVERTEXARRAYATTRIBEXTPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLENABLEVERTEXARRAYATTRIBEXTPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLENABLEVERTEXARRAYATTRIBEXTPROC.class, fi, constants$607.PFNGLENABLEVERTEXARRAYATTRIBEXTPROC$FUNC, "(II)V", scope);
     }
-    static PFNGLENABLEVERTEXARRAYATTRIBEXTPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1) -> {
+    static PFNGLENABLEVERTEXARRAYATTRIBEXTPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLENABLEVERTEXARRAYATTRIBEXTPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1) -> {
             try {
-                constants$607.PFNGLENABLEVERTEXARRAYATTRIBEXTPROC$MH.invokeExact((Addressable)addr, x0, x1);
+                constants$607.PFNGLENABLEVERTEXARRAYATTRIBEXTPROC$MH.invokeExact(symbol, x0, x1);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

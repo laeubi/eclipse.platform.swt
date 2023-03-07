@@ -6,7 +6,7 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
  class glut_h_5 extends glut_h_4 {
 
     public static int GL_PROGRAM_ERROR_POSITION_NV() {
@@ -2682,13 +2682,13 @@ import static jdk.incubator.foreign.CLinker.*;
     public static int _ALLOCA_H() {
         return (int)1L;
     }
-    public static ValueLayout GLshort = C_SHORT;
-    public static ValueLayout GLint = C_INT;
-    public static ValueLayout GLsizei = C_INT;
-    public static ValueLayout GLfloat = C_FLOAT;
-    public static ValueLayout GLclampf = C_FLOAT;
-    public static ValueLayout GLdouble = C_DOUBLE;
-    public static ValueLayout GLclampd = C_DOUBLE;
+    public static OfShort GLshort = Constants$root.C_SHORT$LAYOUT;
+    public static OfInt GLint = Constants$root.C_INT$LAYOUT;
+    public static OfInt GLsizei = Constants$root.C_INT$LAYOUT;
+    public static OfFloat GLfloat = Constants$root.C_FLOAT$LAYOUT;
+    public static OfFloat GLclampf = Constants$root.C_FLOAT$LAYOUT;
+    public static OfDouble GLdouble = Constants$root.C_DOUBLE$LAYOUT;
+    public static OfDouble GLclampd = Constants$root.C_DOUBLE$LAYOUT;
     public static MethodHandle glClearIndex$MH() {
         return RuntimeHelper.requireNonNull(constants$0.glClearIndex$MH,"glClearIndex");
     }
@@ -2860,7 +2860,7 @@ import static jdk.incubator.foreign.CLinker.*;
     public static void glPolygonStipple ( Addressable mask) {
         var mh$ = RuntimeHelper.requireNonNull(constants$2.glPolygonStipple$MH, "glPolygonStipple");
         try {
-            mh$.invokeExact(mask.address());
+            mh$.invokeExact(mask);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -2871,7 +2871,7 @@ import static jdk.incubator.foreign.CLinker.*;
     public static void glGetPolygonStipple ( Addressable mask) {
         var mh$ = RuntimeHelper.requireNonNull(constants$2.glGetPolygonStipple$MH, "glGetPolygonStipple");
         try {
-            mh$.invokeExact(mask.address());
+            mh$.invokeExact(mask);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -2893,7 +2893,7 @@ import static jdk.incubator.foreign.CLinker.*;
     public static void glEdgeFlagv ( Addressable flag) {
         var mh$ = RuntimeHelper.requireNonNull(constants$3.glEdgeFlagv$MH, "glEdgeFlagv");
         try {
-            mh$.invokeExact(flag.address());
+            mh$.invokeExact(flag);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -2915,7 +2915,7 @@ import static jdk.incubator.foreign.CLinker.*;
     public static void glClipPlane ( int plane,  Addressable equation) {
         var mh$ = RuntimeHelper.requireNonNull(constants$3.glClipPlane$MH, "glClipPlane");
         try {
-            mh$.invokeExact(plane, equation.address());
+            mh$.invokeExact(plane, equation);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -2926,7 +2926,7 @@ import static jdk.incubator.foreign.CLinker.*;
     public static void glGetClipPlane ( int plane,  Addressable equation) {
         var mh$ = RuntimeHelper.requireNonNull(constants$3.glGetClipPlane$MH, "glGetClipPlane");
         try {
-            mh$.invokeExact(plane, equation.address());
+            mh$.invokeExact(plane, equation);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -3014,7 +3014,7 @@ import static jdk.incubator.foreign.CLinker.*;
     public static void glGetBooleanv ( int pname,  Addressable params) {
         var mh$ = RuntimeHelper.requireNonNull(constants$4.glGetBooleanv$MH, "glGetBooleanv");
         try {
-            mh$.invokeExact(pname, params.address());
+            mh$.invokeExact(pname, params);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -3025,7 +3025,7 @@ import static jdk.incubator.foreign.CLinker.*;
     public static void glGetDoublev ( int pname,  Addressable params) {
         var mh$ = RuntimeHelper.requireNonNull(constants$5.glGetDoublev$MH, "glGetDoublev");
         try {
-            mh$.invokeExact(pname, params.address());
+            mh$.invokeExact(pname, params);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -3036,7 +3036,7 @@ import static jdk.incubator.foreign.CLinker.*;
     public static void glGetFloatv ( int pname,  Addressable params) {
         var mh$ = RuntimeHelper.requireNonNull(constants$5.glGetFloatv$MH, "glGetFloatv");
         try {
-            mh$.invokeExact(pname, params.address());
+            mh$.invokeExact(pname, params);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -3047,7 +3047,7 @@ import static jdk.incubator.foreign.CLinker.*;
     public static void glGetIntegerv ( int pname,  Addressable params) {
         var mh$ = RuntimeHelper.requireNonNull(constants$5.glGetIntegerv$MH, "glGetIntegerv");
         try {
-            mh$.invokeExact(pname, params.address());
+            mh$.invokeExact(pname, params);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -3311,7 +3311,7 @@ import static jdk.incubator.foreign.CLinker.*;
     public static void glLoadMatrixd ( Addressable m) {
         var mh$ = RuntimeHelper.requireNonNull(constants$9.glLoadMatrixd$MH, "glLoadMatrixd");
         try {
-            mh$.invokeExact(m.address());
+            mh$.invokeExact(m);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -3322,7 +3322,7 @@ import static jdk.incubator.foreign.CLinker.*;
     public static void glLoadMatrixf ( Addressable m) {
         var mh$ = RuntimeHelper.requireNonNull(constants$9.glLoadMatrixf$MH, "glLoadMatrixf");
         try {
-            mh$.invokeExact(m.address());
+            mh$.invokeExact(m);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -3333,7 +3333,7 @@ import static jdk.incubator.foreign.CLinker.*;
     public static void glMultMatrixd ( Addressable m) {
         var mh$ = RuntimeHelper.requireNonNull(constants$9.glMultMatrixd$MH, "glMultMatrixd");
         try {
-            mh$.invokeExact(m.address());
+            mh$.invokeExact(m);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -3344,7 +3344,7 @@ import static jdk.incubator.foreign.CLinker.*;
     public static void glMultMatrixf ( Addressable m) {
         var mh$ = RuntimeHelper.requireNonNull(constants$9.glMultMatrixf$MH, "glMultMatrixf");
         try {
-            mh$.invokeExact(m.address());
+            mh$.invokeExact(m);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -3487,7 +3487,7 @@ import static jdk.incubator.foreign.CLinker.*;
     public static void glCallLists ( int n,  int type,  Addressable lists) {
         var mh$ = RuntimeHelper.requireNonNull(constants$12.glCallLists$MH, "glCallLists");
         try {
-            mh$.invokeExact(n, type, lists.address());
+            mh$.invokeExact(n, type, lists);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -3663,7 +3663,7 @@ import static jdk.incubator.foreign.CLinker.*;
     public static void glVertex2dv ( Addressable v) {
         var mh$ = RuntimeHelper.requireNonNull(constants$14.glVertex2dv$MH, "glVertex2dv");
         try {
-            mh$.invokeExact(v.address());
+            mh$.invokeExact(v);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -3674,7 +3674,7 @@ import static jdk.incubator.foreign.CLinker.*;
     public static void glVertex2fv ( Addressable v) {
         var mh$ = RuntimeHelper.requireNonNull(constants$14.glVertex2fv$MH, "glVertex2fv");
         try {
-            mh$.invokeExact(v.address());
+            mh$.invokeExact(v);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -3685,7 +3685,7 @@ import static jdk.incubator.foreign.CLinker.*;
     public static void glVertex2iv ( Addressable v) {
         var mh$ = RuntimeHelper.requireNonNull(constants$15.glVertex2iv$MH, "glVertex2iv");
         try {
-            mh$.invokeExact(v.address());
+            mh$.invokeExact(v);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -3696,7 +3696,7 @@ import static jdk.incubator.foreign.CLinker.*;
     public static void glVertex2sv ( Addressable v) {
         var mh$ = RuntimeHelper.requireNonNull(constants$15.glVertex2sv$MH, "glVertex2sv");
         try {
-            mh$.invokeExact(v.address());
+            mh$.invokeExact(v);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -3707,7 +3707,7 @@ import static jdk.incubator.foreign.CLinker.*;
     public static void glVertex3dv ( Addressable v) {
         var mh$ = RuntimeHelper.requireNonNull(constants$15.glVertex3dv$MH, "glVertex3dv");
         try {
-            mh$.invokeExact(v.address());
+            mh$.invokeExact(v);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -3718,7 +3718,7 @@ import static jdk.incubator.foreign.CLinker.*;
     public static void glVertex3fv ( Addressable v) {
         var mh$ = RuntimeHelper.requireNonNull(constants$15.glVertex3fv$MH, "glVertex3fv");
         try {
-            mh$.invokeExact(v.address());
+            mh$.invokeExact(v);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -3729,7 +3729,7 @@ import static jdk.incubator.foreign.CLinker.*;
     public static void glVertex3iv ( Addressable v) {
         var mh$ = RuntimeHelper.requireNonNull(constants$15.glVertex3iv$MH, "glVertex3iv");
         try {
-            mh$.invokeExact(v.address());
+            mh$.invokeExact(v);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -3740,7 +3740,7 @@ import static jdk.incubator.foreign.CLinker.*;
     public static void glVertex3sv ( Addressable v) {
         var mh$ = RuntimeHelper.requireNonNull(constants$15.glVertex3sv$MH, "glVertex3sv");
         try {
-            mh$.invokeExact(v.address());
+            mh$.invokeExact(v);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -3751,7 +3751,7 @@ import static jdk.incubator.foreign.CLinker.*;
     public static void glVertex4dv ( Addressable v) {
         var mh$ = RuntimeHelper.requireNonNull(constants$16.glVertex4dv$MH, "glVertex4dv");
         try {
-            mh$.invokeExact(v.address());
+            mh$.invokeExact(v);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -3762,7 +3762,7 @@ import static jdk.incubator.foreign.CLinker.*;
     public static void glVertex4fv ( Addressable v) {
         var mh$ = RuntimeHelper.requireNonNull(constants$16.glVertex4fv$MH, "glVertex4fv");
         try {
-            mh$.invokeExact(v.address());
+            mh$.invokeExact(v);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -3773,7 +3773,7 @@ import static jdk.incubator.foreign.CLinker.*;
     public static void glVertex4iv ( Addressable v) {
         var mh$ = RuntimeHelper.requireNonNull(constants$16.glVertex4iv$MH, "glVertex4iv");
         try {
-            mh$.invokeExact(v.address());
+            mh$.invokeExact(v);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -3784,7 +3784,7 @@ import static jdk.incubator.foreign.CLinker.*;
     public static void glVertex4sv ( Addressable v) {
         var mh$ = RuntimeHelper.requireNonNull(constants$16.glVertex4sv$MH, "glVertex4sv");
         try {
-            mh$.invokeExact(v.address());
+            mh$.invokeExact(v);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }

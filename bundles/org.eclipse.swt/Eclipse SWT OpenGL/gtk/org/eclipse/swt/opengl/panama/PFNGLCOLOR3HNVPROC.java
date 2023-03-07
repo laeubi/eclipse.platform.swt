@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLCOLOR3HNVPROC {
 
     void apply(short x0, short x1, short x2);
-    static MemoryAddress allocate(PFNGLCOLOR3HNVPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLCOLOR3HNVPROC.class, fi, constants$763.PFNGLCOLOR3HNVPROC$FUNC, "(SSS)V");
-    }
-    static MemoryAddress allocate(PFNGLCOLOR3HNVPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLCOLOR3HNVPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLCOLOR3HNVPROC.class, fi, constants$763.PFNGLCOLOR3HNVPROC$FUNC, "(SSS)V", scope);
     }
-    static PFNGLCOLOR3HNVPROC ofAddress(MemoryAddress addr) {
-        return (short x0, short x1, short x2) -> {
+    static PFNGLCOLOR3HNVPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLCOLOR3HNVPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (short x0, short x1, short x2) -> {
             try {
-                constants$763.PFNGLCOLOR3HNVPROC$MH.invokeExact((Addressable)addr, x0, x1, x2);
+                constants$763.PFNGLCOLOR3HNVPROC$MH.invokeExact(symbol, x0, x1, x2);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

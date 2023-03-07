@@ -6,31 +6,28 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$628 {
 
     static final FunctionDescriptor PFNGLGETRENDERBUFFERPARAMETERIVEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLGETRENDERBUFFERPARAMETERIVEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(IILjdk/incubator/foreign/MemoryAddress;)V",
         constants$628.PFNGLGETRENDERBUFFERPARAMETERIVEXTPROC$FUNC, false
     );
-    static final FunctionDescriptor PFNGLISFRAMEBUFFEREXTPROC$FUNC = FunctionDescriptor.of(C_CHAR,
-        C_INT
+    static final FunctionDescriptor PFNGLISFRAMEBUFFEREXTPROC$FUNC = FunctionDescriptor.of(Constants$root.C_CHAR$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLISFRAMEBUFFEREXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(I)B",
         constants$628.PFNGLISFRAMEBUFFEREXTPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLBINDFRAMEBUFFEREXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLBINDFRAMEBUFFEREXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(II)V",
         constants$628.PFNGLBINDFRAMEBUFFEREXTPROC$FUNC, false
     );
 }

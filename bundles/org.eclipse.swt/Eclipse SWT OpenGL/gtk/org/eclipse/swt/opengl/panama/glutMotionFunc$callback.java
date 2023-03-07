@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface glutMotionFunc$callback {
 
     void apply(int x0, int x1);
-    static MemoryAddress allocate(glutMotionFunc$callback fi) {
-        return RuntimeHelper.upcallStub(glutMotionFunc$callback.class, fi, constants$943.glutMotionFunc$callback$FUNC, "(II)V");
-    }
-    static MemoryAddress allocate(glutMotionFunc$callback fi, ResourceScope scope) {
+    static NativeSymbol allocate(glutMotionFunc$callback fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(glutMotionFunc$callback.class, fi, constants$943.glutMotionFunc$callback$FUNC, "(II)V", scope);
     }
-    static glutMotionFunc$callback ofAddress(MemoryAddress addr) {
-        return (int x0, int x1) -> {
+    static glutMotionFunc$callback ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("glutMotionFunc$callback::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1) -> {
             try {
-                constants$943.glutMotionFunc$callback$MH.invokeExact((Addressable)addr, x0, x1);
+                constants$943.glutMotionFunc$callback$MH.invokeExact(symbol, x0, x1);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

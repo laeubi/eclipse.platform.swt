@@ -6,37 +6,34 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$648 {
 
     static final FunctionDescriptor PFNGLIMPORTMEMORYFDEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_LONG,
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLIMPORTMEMORYFDEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(IJII)V",
         constants$648.PFNGLIMPORTMEMORYFDEXTPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLIMPORTMEMORYWIN32HANDLEEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_LONG,
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLIMPORTMEMORYWIN32HANDLEEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(IJILjdk/incubator/foreign/MemoryAddress;)V",
         constants$648.PFNGLIMPORTMEMORYWIN32HANDLEEXTPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLIMPORTMEMORYWIN32NAMEEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_LONG,
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLIMPORTMEMORYWIN32NAMEEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(IJILjdk/incubator/foreign/MemoryAddress;)V",
         constants$648.PFNGLIMPORTMEMORYWIN32NAMEEXTPROC$FUNC, false
     );
 }

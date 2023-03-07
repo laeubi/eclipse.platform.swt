@@ -6,32 +6,29 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$743 {
 
     static final FunctionDescriptor PFNGLGETMULTISAMPLEFVNVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLGETMULTISAMPLEFVNVPROC$MH = RuntimeHelper.downcallHandle(
-        "(IILjdk/incubator/foreign/MemoryAddress;)V",
         constants$743.PFNGLGETMULTISAMPLEFVNVPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLSAMPLEMASKINDEXEDNVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLSAMPLEMASKINDEXEDNVPROC$MH = RuntimeHelper.downcallHandle(
-        "(II)V",
         constants$743.PFNGLSAMPLEMASKINDEXEDNVPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLTEXRENDERBUFFERNVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLTEXRENDERBUFFERNVPROC$MH = RuntimeHelper.downcallHandle(
-        "(II)V",
         constants$743.PFNGLTEXRENDERBUFFERNVPROC$FUNC, false
     );
 }

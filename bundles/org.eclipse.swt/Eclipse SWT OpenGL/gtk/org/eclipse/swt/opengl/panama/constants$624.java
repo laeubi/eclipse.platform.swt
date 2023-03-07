@@ -6,28 +6,25 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$624 {
 
     static final FunctionDescriptor PFNGLFOGCOORDFEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_FLOAT
+        Constants$root.C_FLOAT$LAYOUT
     );
     static final MethodHandle PFNGLFOGCOORDFEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(F)V",
         constants$624.PFNGLFOGCOORDFEXTPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLFOGCOORDFVEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLFOGCOORDFVEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
         constants$624.PFNGLFOGCOORDFVEXTPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLFOGCOORDDEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_DOUBLE
+        Constants$root.C_DOUBLE$LAYOUT
     );
     static final MethodHandle PFNGLFOGCOORDDEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(D)V",
         constants$624.PFNGLFOGCOORDDEXTPROC$FUNC, false
     );
 }

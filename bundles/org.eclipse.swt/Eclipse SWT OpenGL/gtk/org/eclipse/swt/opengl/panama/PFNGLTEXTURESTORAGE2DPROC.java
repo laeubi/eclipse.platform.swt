@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLTEXTURESTORAGE2DPROC {
 
     void apply(int x0, int x1, int x2, int x3, int x4);
-    static MemoryAddress allocate(PFNGLTEXTURESTORAGE2DPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLTEXTURESTORAGE2DPROC.class, fi, constants$287.PFNGLTEXTURESTORAGE2DPROC$FUNC, "(IIIII)V");
-    }
-    static MemoryAddress allocate(PFNGLTEXTURESTORAGE2DPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLTEXTURESTORAGE2DPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLTEXTURESTORAGE2DPROC.class, fi, constants$287.PFNGLTEXTURESTORAGE2DPROC$FUNC, "(IIIII)V", scope);
     }
-    static PFNGLTEXTURESTORAGE2DPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, int x2, int x3, int x4) -> {
+    static PFNGLTEXTURESTORAGE2DPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLTEXTURESTORAGE2DPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1, int x2, int x3, int x4) -> {
             try {
-                constants$287.PFNGLTEXTURESTORAGE2DPROC$MH.invokeExact((Addressable)addr, x0, x1, x2, x3, x4);
+                constants$287.PFNGLTEXTURESTORAGE2DPROC$MH.invokeExact(symbol, x0, x1, x2, x3, x4);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

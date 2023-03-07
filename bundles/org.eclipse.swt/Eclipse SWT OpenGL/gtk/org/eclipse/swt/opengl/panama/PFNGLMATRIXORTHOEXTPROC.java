@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLMATRIXORTHOEXTPROC {
 
     void apply(int x0, double x1, double x2, double x3, double x4, double x5, double x6);
-    static MemoryAddress allocate(PFNGLMATRIXORTHOEXTPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLMATRIXORTHOEXTPROC.class, fi, constants$541.PFNGLMATRIXORTHOEXTPROC$FUNC, "(IDDDDDD)V");
-    }
-    static MemoryAddress allocate(PFNGLMATRIXORTHOEXTPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLMATRIXORTHOEXTPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLMATRIXORTHOEXTPROC.class, fi, constants$541.PFNGLMATRIXORTHOEXTPROC$FUNC, "(IDDDDDD)V", scope);
     }
-    static PFNGLMATRIXORTHOEXTPROC ofAddress(MemoryAddress addr) {
-        return (int x0, double x1, double x2, double x3, double x4, double x5, double x6) -> {
+    static PFNGLMATRIXORTHOEXTPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLMATRIXORTHOEXTPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, double x1, double x2, double x3, double x4, double x5, double x6) -> {
             try {
-                constants$541.PFNGLMATRIXORTHOEXTPROC$MH.invokeExact((Addressable)addr, x0, x1, x2, x3, x4, x5, x6);
+                constants$541.PFNGLMATRIXORTHOEXTPROC$MH.invokeExact(symbol, x0, x1, x2, x3, x4, x5, x6);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

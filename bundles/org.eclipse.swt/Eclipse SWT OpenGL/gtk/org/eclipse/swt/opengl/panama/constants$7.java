@@ -6,60 +6,54 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$7 {
 
     static final FunctionDescriptor glHint$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle glHint$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glHint",
-        "(II)V",
+        "glHint",
         constants$7.glHint$FUNC, false
     );
     static final FunctionDescriptor glClearDepth$FUNC = FunctionDescriptor.ofVoid(
-        C_DOUBLE
+        Constants$root.C_DOUBLE$LAYOUT
     );
     static final MethodHandle glClearDepth$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glClearDepth",
-        "(D)V",
+        "glClearDepth",
         constants$7.glClearDepth$FUNC, false
     );
     static final FunctionDescriptor glDepthFunc$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle glDepthFunc$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glDepthFunc",
-        "(I)V",
+        "glDepthFunc",
         constants$7.glDepthFunc$FUNC, false
     );
     static final FunctionDescriptor glDepthMask$FUNC = FunctionDescriptor.ofVoid(
-        C_CHAR
+        Constants$root.C_CHAR$LAYOUT
     );
     static final MethodHandle glDepthMask$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glDepthMask",
-        "(B)V",
+        "glDepthMask",
         constants$7.glDepthMask$FUNC, false
     );
     static final FunctionDescriptor glDepthRange$FUNC = FunctionDescriptor.ofVoid(
-        C_DOUBLE,
-        C_DOUBLE
+        Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT
     );
     static final MethodHandle glDepthRange$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glDepthRange",
-        "(DD)V",
+        "glDepthRange",
         constants$7.glDepthRange$FUNC, false
     );
     static final FunctionDescriptor glClearAccum$FUNC = FunctionDescriptor.ofVoid(
-        C_FLOAT,
-        C_FLOAT,
-        C_FLOAT,
-        C_FLOAT
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT
     );
     static final MethodHandle glClearAccum$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glClearAccum",
-        "(FFFF)V",
+        "glClearAccum",
         constants$7.glClearAccum$FUNC, false
     );
 }

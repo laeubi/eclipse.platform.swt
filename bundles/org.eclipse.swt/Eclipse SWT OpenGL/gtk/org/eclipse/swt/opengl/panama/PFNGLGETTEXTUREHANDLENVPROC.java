@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLGETTEXTUREHANDLENVPROC {
 
     long apply(int x0);
-    static MemoryAddress allocate(PFNGLGETTEXTUREHANDLENVPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLGETTEXTUREHANDLENVPROC.class, fi, constants$723.PFNGLGETTEXTUREHANDLENVPROC$FUNC, "(I)J");
-    }
-    static MemoryAddress allocate(PFNGLGETTEXTUREHANDLENVPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLGETTEXTUREHANDLENVPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLGETTEXTUREHANDLENVPROC.class, fi, constants$723.PFNGLGETTEXTUREHANDLENVPROC$FUNC, "(I)J", scope);
     }
-    static PFNGLGETTEXTUREHANDLENVPROC ofAddress(MemoryAddress addr) {
-        return (int x0) -> {
+    static PFNGLGETTEXTUREHANDLENVPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLGETTEXTUREHANDLENVPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0) -> {
             try {
-                return (long)constants$723.PFNGLGETTEXTUREHANDLENVPROC$MH.invokeExact((Addressable)addr, x0);
+                return (long)constants$723.PFNGLGETTEXTUREHANDLENVPROC$MH.invokeExact(symbol, x0);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

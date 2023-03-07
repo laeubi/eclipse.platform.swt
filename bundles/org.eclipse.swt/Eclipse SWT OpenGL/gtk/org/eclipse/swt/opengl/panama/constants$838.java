@@ -6,31 +6,28 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$838 {
 
     static final FunctionDescriptor PFNGLEDGEFLAGFORMATNVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLEDGEFLAGFORMATNVPROC$MH = RuntimeHelper.downcallHandle(
-        "(I)V",
         constants$838.PFNGLEDGEFLAGFORMATNVPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLSECONDARYCOLORFORMATNVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLSECONDARYCOLORFORMATNVPROC$MH = RuntimeHelper.downcallHandle(
-        "(III)V",
         constants$838.PFNGLSECONDARYCOLORFORMATNVPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLFOGCOORDFORMATNVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLFOGCOORDFORMATNVPROC$MH = RuntimeHelper.downcallHandle(
-        "(II)V",
         constants$838.PFNGLFOGCOORDFORMATNVPROC$FUNC, false
     );
 }

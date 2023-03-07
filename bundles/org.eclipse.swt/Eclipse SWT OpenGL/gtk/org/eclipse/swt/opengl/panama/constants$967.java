@@ -6,63 +6,57 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$967 {
 
-    static final FunctionDescriptor lrand48_r$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor lrand48_r$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle lrand48_r$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "lrand48_r",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I",
+        "lrand48_r",
         constants$967.lrand48_r$FUNC, false
     );
-    static final FunctionDescriptor nrand48_r$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor nrand48_r$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle nrand48_r$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "nrand48_r",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I",
+        "nrand48_r",
         constants$967.nrand48_r$FUNC, false
     );
-    static final FunctionDescriptor mrand48_r$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor mrand48_r$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle mrand48_r$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "mrand48_r",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I",
+        "mrand48_r",
         constants$967.mrand48_r$FUNC, false
     );
-    static final FunctionDescriptor jrand48_r$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor jrand48_r$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle jrand48_r$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "jrand48_r",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I",
+        "jrand48_r",
         constants$967.jrand48_r$FUNC, false
     );
-    static final FunctionDescriptor srand48_r$FUNC = FunctionDescriptor.of(C_INT,
-        C_LONG,
-        C_POINTER
+    static final FunctionDescriptor srand48_r$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle srand48_r$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "srand48_r",
-        "(JLjdk/incubator/foreign/MemoryAddress;)I",
+        "srand48_r",
         constants$967.srand48_r$FUNC, false
     );
-    static final FunctionDescriptor seed48_r$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor seed48_r$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle seed48_r$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "seed48_r",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I",
+        "seed48_r",
         constants$967.seed48_r$FUNC, false
     );
 }

@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLTEXTURECOLORMASKSGISPROC {
 
     void apply(byte x0, byte x1, byte x2, byte x3);
-    static MemoryAddress allocate(PFNGLTEXTURECOLORMASKSGISPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLTEXTURECOLORMASKSGISPROC.class, fi, constants$880.PFNGLTEXTURECOLORMASKSGISPROC$FUNC, "(BBBB)V");
-    }
-    static MemoryAddress allocate(PFNGLTEXTURECOLORMASKSGISPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLTEXTURECOLORMASKSGISPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLTEXTURECOLORMASKSGISPROC.class, fi, constants$880.PFNGLTEXTURECOLORMASKSGISPROC$FUNC, "(BBBB)V", scope);
     }
-    static PFNGLTEXTURECOLORMASKSGISPROC ofAddress(MemoryAddress addr) {
-        return (byte x0, byte x1, byte x2, byte x3) -> {
+    static PFNGLTEXTURECOLORMASKSGISPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLTEXTURECOLORMASKSGISPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (byte x0, byte x1, byte x2, byte x3) -> {
             try {
-                constants$880.PFNGLTEXTURECOLORMASKSGISPROC$MH.invokeExact((Addressable)addr, x0, x1, x2, x3);
+                constants$880.PFNGLTEXTURECOLORMASKSGISPROC$MH.invokeExact(symbol, x0, x1, x2, x3);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

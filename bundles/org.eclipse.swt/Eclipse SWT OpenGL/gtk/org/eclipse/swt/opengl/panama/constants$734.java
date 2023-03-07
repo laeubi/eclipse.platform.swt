@@ -6,29 +6,26 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$734 {
 
     static final FunctionDescriptor PFNGLCOMPILECOMMANDLISTNVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLCOMPILECOMMANDLISTNVPROC$MH = RuntimeHelper.downcallHandle(
-        "(I)V",
         constants$734.PFNGLCOMPILECOMMANDLISTNVPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLCALLCOMMANDLISTNVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLCALLCOMMANDLISTNVPROC$MH = RuntimeHelper.downcallHandle(
-        "(I)V",
         constants$734.PFNGLCALLCOMMANDLISTNVPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLBEGINCONDITIONALRENDERNVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLBEGINCONDITIONALRENDERNVPROC$MH = RuntimeHelper.downcallHandle(
-        "(II)V",
         constants$734.PFNGLBEGINCONDITIONALRENDERNVPROC$FUNC, false
     );
 }

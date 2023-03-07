@@ -6,65 +6,59 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$54 {
 
     static final FunctionDescriptor glEvalMesh2$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle glEvalMesh2$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glEvalMesh2",
-        "(IIIII)V",
+        "glEvalMesh2",
         constants$54.glEvalMesh2$FUNC, false
     );
     static final FunctionDescriptor glFogf$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_FLOAT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT
     );
     static final MethodHandle glFogf$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glFogf",
-        "(IF)V",
+        "glFogf",
         constants$54.glFogf$FUNC, false
     );
     static final FunctionDescriptor glFogi$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle glFogi$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glFogi",
-        "(II)V",
+        "glFogi",
         constants$54.glFogi$FUNC, false
     );
     static final FunctionDescriptor glFogfv$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle glFogfv$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glFogfv",
-        "(ILjdk/incubator/foreign/MemoryAddress;)V",
+        "glFogfv",
         constants$54.glFogfv$FUNC, false
     );
     static final FunctionDescriptor glFogiv$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle glFogiv$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glFogiv",
-        "(ILjdk/incubator/foreign/MemoryAddress;)V",
+        "glFogiv",
         constants$54.glFogiv$FUNC, false
     );
     static final FunctionDescriptor glFeedbackBuffer$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle glFeedbackBuffer$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glFeedbackBuffer",
-        "(IILjdk/incubator/foreign/MemoryAddress;)V",
+        "glFeedbackBuffer",
         constants$54.glFeedbackBuffer$FUNC, false
     );
 }

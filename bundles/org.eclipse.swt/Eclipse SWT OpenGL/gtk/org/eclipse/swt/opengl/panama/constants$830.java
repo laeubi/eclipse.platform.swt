@@ -6,37 +6,34 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$830 {
 
     static final FunctionDescriptor PFNGLVERTEXATTRIBL2I64NVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_LONG,
-        C_LONG
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT
     );
     static final MethodHandle PFNGLVERTEXATTRIBL2I64NVPROC$MH = RuntimeHelper.downcallHandle(
-        "(IJJ)V",
         constants$830.PFNGLVERTEXATTRIBL2I64NVPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLVERTEXATTRIBL3I64NVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_LONG,
-        C_LONG,
-        C_LONG
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT
     );
     static final MethodHandle PFNGLVERTEXATTRIBL3I64NVPROC$MH = RuntimeHelper.downcallHandle(
-        "(IJJJ)V",
         constants$830.PFNGLVERTEXATTRIBL3I64NVPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLVERTEXATTRIBL4I64NVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_LONG,
-        C_LONG,
-        C_LONG,
-        C_LONG
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT
     );
     static final MethodHandle PFNGLVERTEXATTRIBL4I64NVPROC$MH = RuntimeHelper.downcallHandle(
-        "(IJJJJ)V",
         constants$830.PFNGLVERTEXATTRIBL4I64NVPROC$FUNC, false
     );
 }

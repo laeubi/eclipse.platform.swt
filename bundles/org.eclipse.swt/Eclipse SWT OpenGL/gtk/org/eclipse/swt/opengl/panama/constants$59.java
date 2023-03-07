@@ -6,68 +6,62 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$59 {
 
     static final FunctionDescriptor glGetColorTable$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle glGetColorTable$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glGetColorTable",
-        "(IIILjdk/incubator/foreign/MemoryAddress;)V",
+        "glGetColorTable",
         constants$59.glGetColorTable$FUNC, false
     );
     static final FunctionDescriptor glGetColorTableParameterfv$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle glGetColorTableParameterfv$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glGetColorTableParameterfv",
-        "(IILjdk/incubator/foreign/MemoryAddress;)V",
+        "glGetColorTableParameterfv",
         constants$59.glGetColorTableParameterfv$FUNC, false
     );
     static final FunctionDescriptor glGetColorTableParameteriv$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle glGetColorTableParameteriv$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glGetColorTableParameteriv",
-        "(IILjdk/incubator/foreign/MemoryAddress;)V",
+        "glGetColorTableParameteriv",
         constants$59.glGetColorTableParameteriv$FUNC, false
     );
     static final FunctionDescriptor glBlendEquation$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle glBlendEquation$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glBlendEquation",
-        "(I)V",
+        "glBlendEquation",
         constants$59.glBlendEquation$FUNC, false
     );
     static final FunctionDescriptor glBlendColor$FUNC = FunctionDescriptor.ofVoid(
-        C_FLOAT,
-        C_FLOAT,
-        C_FLOAT,
-        C_FLOAT
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT
     );
     static final MethodHandle glBlendColor$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glBlendColor",
-        "(FFFF)V",
+        "glBlendColor",
         constants$59.glBlendColor$FUNC, false
     );
     static final FunctionDescriptor glHistogram$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_CHAR
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_CHAR$LAYOUT
     );
     static final MethodHandle glHistogram$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glHistogram",
-        "(IIIB)V",
+        "glHistogram",
         constants$59.glHistogram$FUNC, false
     );
 }

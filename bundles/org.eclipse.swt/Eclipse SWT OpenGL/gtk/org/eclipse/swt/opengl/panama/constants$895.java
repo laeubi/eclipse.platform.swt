@@ -6,28 +6,25 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$895 {
 
     static final FunctionDescriptor PFNGLDEFORMSGIXPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLDEFORMSGIXPROC$MH = RuntimeHelper.downcallHandle(
-        "(I)V",
         constants$895.PFNGLDEFORMSGIXPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLLOADIDENTITYDEFORMATIONMAPSGIXPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLLOADIDENTITYDEFORMATIONMAPSGIXPROC$MH = RuntimeHelper.downcallHandle(
-        "(I)V",
         constants$895.PFNGLLOADIDENTITYDEFORMATIONMAPSGIXPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLREFERENCEPLANESGIXPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLREFERENCEPLANESGIXPROC$MH = RuntimeHelper.downcallHandle(
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
         constants$895.PFNGLREFERENCEPLANESGIXPROC$FUNC, false
     );
 }

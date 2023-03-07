@@ -6,30 +6,27 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$531 {
 
     static final FunctionDescriptor PFNGLBINORMAL3IVEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLBINORMAL3IVEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
         constants$531.PFNGLBINORMAL3IVEXTPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLBINORMAL3SEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_SHORT,
-        C_SHORT,
-        C_SHORT
+        Constants$root.C_SHORT$LAYOUT,
+        Constants$root.C_SHORT$LAYOUT,
+        Constants$root.C_SHORT$LAYOUT
     );
     static final MethodHandle PFNGLBINORMAL3SEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(SSS)V",
         constants$531.PFNGLBINORMAL3SEXTPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLBINORMAL3SVEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLBINORMAL3SVEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
         constants$531.PFNGLBINORMAL3SVEXTPROC$FUNC, false
     );
 }

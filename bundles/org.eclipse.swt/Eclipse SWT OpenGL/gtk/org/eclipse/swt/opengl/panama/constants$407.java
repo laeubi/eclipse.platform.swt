@@ -6,30 +6,27 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$407 {
 
     static final FunctionDescriptor PFNGLMAXSHADERCOMPILERTHREADSKHRPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLMAXSHADERCOMPILERTHREADSKHRPROC$MH = RuntimeHelper.downcallHandle(
-        "(I)V",
         constants$407.PFNGLMAXSHADERCOMPILERTHREADSKHRPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLMULTITEXCOORD1BOESPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_CHAR
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_CHAR$LAYOUT
     );
     static final MethodHandle PFNGLMULTITEXCOORD1BOESPROC$MH = RuntimeHelper.downcallHandle(
-        "(IB)V",
         constants$407.PFNGLMULTITEXCOORD1BOESPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLMULTITEXCOORD1BVOESPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLMULTITEXCOORD1BVOESPROC$MH = RuntimeHelper.downcallHandle(
-        "(ILjdk/incubator/foreign/MemoryAddress;)V",
         constants$407.PFNGLMULTITEXCOORD1BVOESPROC$FUNC, false
     );
 }

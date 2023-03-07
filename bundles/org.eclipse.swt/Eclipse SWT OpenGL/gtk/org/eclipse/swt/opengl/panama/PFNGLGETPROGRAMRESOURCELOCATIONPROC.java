@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLGETPROGRAMRESOURCELOCATIONPROC {
 
     int apply(int x0, int x1, jdk.incubator.foreign.MemoryAddress x2);
-    static MemoryAddress allocate(PFNGLGETPROGRAMRESOURCELOCATIONPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLGETPROGRAMRESOURCELOCATIONPROC.class, fi, constants$260.PFNGLGETPROGRAMRESOURCELOCATIONPROC$FUNC, "(IILjdk/incubator/foreign/MemoryAddress;)I");
-    }
-    static MemoryAddress allocate(PFNGLGETPROGRAMRESOURCELOCATIONPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLGETPROGRAMRESOURCELOCATIONPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLGETPROGRAMRESOURCELOCATIONPROC.class, fi, constants$260.PFNGLGETPROGRAMRESOURCELOCATIONPROC$FUNC, "(IILjdk/incubator/foreign/MemoryAddress;)I", scope);
     }
-    static PFNGLGETPROGRAMRESOURCELOCATIONPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, jdk.incubator.foreign.MemoryAddress x2) -> {
+    static PFNGLGETPROGRAMRESOURCELOCATIONPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLGETPROGRAMRESOURCELOCATIONPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1, jdk.incubator.foreign.MemoryAddress x2) -> {
             try {
-                return (int)constants$260.PFNGLGETPROGRAMRESOURCELOCATIONPROC$MH.invokeExact((Addressable)addr, x0, x1, x2);
+                return (int)constants$260.PFNGLGETPROGRAMRESOURCELOCATIONPROC$MH.invokeExact(symbol, x0, x1, (jdk.incubator.foreign.Addressable)x2);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

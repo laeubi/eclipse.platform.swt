@@ -6,31 +6,28 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$115 {
 
     static final FunctionDescriptor PFNGLATTACHSHADERPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLATTACHSHADERPROC$MH = RuntimeHelper.downcallHandle(
-        "(II)V",
         constants$115.PFNGLATTACHSHADERPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLBINDATTRIBLOCATIONPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLBINDATTRIBLOCATIONPROC$MH = RuntimeHelper.downcallHandle(
-        "(IILjdk/incubator/foreign/MemoryAddress;)V",
         constants$115.PFNGLBINDATTRIBLOCATIONPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLCOMPILESHADERPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLCOMPILESHADERPROC$MH = RuntimeHelper.downcallHandle(
-        "(I)V",
         constants$115.PFNGLCOMPILESHADERPROC$FUNC, false
     );
 }

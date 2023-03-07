@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLFRAGMENTCOLORMATERIALSGIXPROC {
 
     void apply(int x0, int x1);
-    static MemoryAddress allocate(PFNGLFRAGMENTCOLORMATERIALSGIXPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLFRAGMENTCOLORMATERIALSGIXPROC.class, fi, constants$883.PFNGLFRAGMENTCOLORMATERIALSGIXPROC$FUNC, "(II)V");
-    }
-    static MemoryAddress allocate(PFNGLFRAGMENTCOLORMATERIALSGIXPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLFRAGMENTCOLORMATERIALSGIXPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLFRAGMENTCOLORMATERIALSGIXPROC.class, fi, constants$883.PFNGLFRAGMENTCOLORMATERIALSGIXPROC$FUNC, "(II)V", scope);
     }
-    static PFNGLFRAGMENTCOLORMATERIALSGIXPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1) -> {
+    static PFNGLFRAGMENTCOLORMATERIALSGIXPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLFRAGMENTCOLORMATERIALSGIXPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1) -> {
             try {
-                constants$883.PFNGLFRAGMENTCOLORMATERIALSGIXPROC$MH.invokeExact((Addressable)addr, x0, x1);
+                constants$883.PFNGLFRAGMENTCOLORMATERIALSGIXPROC$MH.invokeExact(symbol, x0, x1);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

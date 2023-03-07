@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLALPHATOCOVERAGEDITHERCONTROLNVPROC {
 
     void apply(int x0);
-    static MemoryAddress allocate(PFNGLALPHATOCOVERAGEDITHERCONTROLNVPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLALPHATOCOVERAGEDITHERCONTROLNVPROC.class, fi, constants$722.PFNGLALPHATOCOVERAGEDITHERCONTROLNVPROC$FUNC, "(I)V");
-    }
-    static MemoryAddress allocate(PFNGLALPHATOCOVERAGEDITHERCONTROLNVPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLALPHATOCOVERAGEDITHERCONTROLNVPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLALPHATOCOVERAGEDITHERCONTROLNVPROC.class, fi, constants$722.PFNGLALPHATOCOVERAGEDITHERCONTROLNVPROC$FUNC, "(I)V", scope);
     }
-    static PFNGLALPHATOCOVERAGEDITHERCONTROLNVPROC ofAddress(MemoryAddress addr) {
-        return (int x0) -> {
+    static PFNGLALPHATOCOVERAGEDITHERCONTROLNVPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLALPHATOCOVERAGEDITHERCONTROLNVPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0) -> {
             try {
-                constants$722.PFNGLALPHATOCOVERAGEDITHERCONTROLNVPROC$MH.invokeExact((Addressable)addr, x0);
+                constants$722.PFNGLALPHATOCOVERAGEDITHERCONTROLNVPROC$MH.invokeExact(symbol, x0);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

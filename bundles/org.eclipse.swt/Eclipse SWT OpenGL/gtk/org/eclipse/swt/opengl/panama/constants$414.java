@@ -6,32 +6,29 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$414 {
 
     static final FunctionDescriptor PFNGLVERTEX4BOESPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_CHAR,
-        C_CHAR,
-        C_CHAR,
-        C_CHAR
+        Constants$root.C_CHAR$LAYOUT,
+        Constants$root.C_CHAR$LAYOUT,
+        Constants$root.C_CHAR$LAYOUT,
+        Constants$root.C_CHAR$LAYOUT
     );
     static final MethodHandle PFNGLVERTEX4BOESPROC$MH = RuntimeHelper.downcallHandle(
-        "(BBBB)V",
         constants$414.PFNGLVERTEX4BOESPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLVERTEX4BVOESPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLVERTEX4BVOESPROC$MH = RuntimeHelper.downcallHandle(
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
         constants$414.PFNGLVERTEX4BVOESPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLALPHAFUNCXOESPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLALPHAFUNCXOESPROC$MH = RuntimeHelper.downcallHandle(
-        "(II)V",
         constants$414.PFNGLALPHAFUNCXOESPROC$FUNC, false
     );
 }

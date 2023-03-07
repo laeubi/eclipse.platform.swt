@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLCOPYCOLORTABLESGIPROC {
 
     void apply(int x0, int x1, int x2, int x3, int x4);
-    static MemoryAddress allocate(PFNGLCOPYCOLORTABLESGIPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLCOPYCOLORTABLESGIPROC.class, fi, constants$898.PFNGLCOPYCOLORTABLESGIPROC$FUNC, "(IIIII)V");
-    }
-    static MemoryAddress allocate(PFNGLCOPYCOLORTABLESGIPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLCOPYCOLORTABLESGIPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLCOPYCOLORTABLESGIPROC.class, fi, constants$898.PFNGLCOPYCOLORTABLESGIPROC$FUNC, "(IIIII)V", scope);
     }
-    static PFNGLCOPYCOLORTABLESGIPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, int x2, int x3, int x4) -> {
+    static PFNGLCOPYCOLORTABLESGIPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLCOPYCOLORTABLESGIPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1, int x2, int x3, int x4) -> {
             try {
-                constants$898.PFNGLCOPYCOLORTABLESGIPROC$MH.invokeExact((Addressable)addr, x0, x1, x2, x3, x4);
+                constants$898.PFNGLCOPYCOLORTABLESGIPROC$MH.invokeExact(symbol, x0, x1, x2, x3, x4);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

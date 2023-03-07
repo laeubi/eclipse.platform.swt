@@ -6,34 +6,31 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$277 {
 
     static final FunctionDescriptor PFNGLFLUSHMAPPEDNAMEDBUFFERRANGEPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_LONG,
-        C_LONG
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT
     );
     static final MethodHandle PFNGLFLUSHMAPPEDNAMEDBUFFERRANGEPROC$MH = RuntimeHelper.downcallHandle(
-        "(IJJ)V",
         constants$277.PFNGLFLUSHMAPPEDNAMEDBUFFERRANGEPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLGETNAMEDBUFFERPARAMETERIVPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLGETNAMEDBUFFERPARAMETERIVPROC$MH = RuntimeHelper.downcallHandle(
-        "(IILjdk/incubator/foreign/MemoryAddress;)V",
         constants$277.PFNGLGETNAMEDBUFFERPARAMETERIVPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLGETNAMEDBUFFERPARAMETERI64VPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLGETNAMEDBUFFERPARAMETERI64VPROC$MH = RuntimeHelper.downcallHandle(
-        "(IILjdk/incubator/foreign/MemoryAddress;)V",
         constants$277.PFNGLGETNAMEDBUFFERPARAMETERI64VPROC$FUNC, false
     );
 }

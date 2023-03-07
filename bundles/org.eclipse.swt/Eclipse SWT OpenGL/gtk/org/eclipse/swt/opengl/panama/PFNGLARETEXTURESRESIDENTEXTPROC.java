@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLARETEXTURESRESIDENTEXTPROC {
 
     byte apply(int x0, jdk.incubator.foreign.MemoryAddress x1, jdk.incubator.foreign.MemoryAddress x2);
-    static MemoryAddress allocate(PFNGLARETEXTURESRESIDENTEXTPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLARETEXTURESRESIDENTEXTPROC.class, fi, constants$671.PFNGLARETEXTURESRESIDENTEXTPROC$FUNC, "(ILjdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)B");
-    }
-    static MemoryAddress allocate(PFNGLARETEXTURESRESIDENTEXTPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLARETEXTURESRESIDENTEXTPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLARETEXTURESRESIDENTEXTPROC.class, fi, constants$671.PFNGLARETEXTURESRESIDENTEXTPROC$FUNC, "(ILjdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)B", scope);
     }
-    static PFNGLARETEXTURESRESIDENTEXTPROC ofAddress(MemoryAddress addr) {
-        return (int x0, jdk.incubator.foreign.MemoryAddress x1, jdk.incubator.foreign.MemoryAddress x2) -> {
+    static PFNGLARETEXTURESRESIDENTEXTPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLARETEXTURESRESIDENTEXTPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, jdk.incubator.foreign.MemoryAddress x1, jdk.incubator.foreign.MemoryAddress x2) -> {
             try {
-                return (byte)constants$671.PFNGLARETEXTURESRESIDENTEXTPROC$MH.invokeExact((Addressable)addr, x0, x1, x2);
+                return (byte)constants$671.PFNGLARETEXTURESRESIDENTEXTPROC$MH.invokeExact(symbol, x0, (jdk.incubator.foreign.Addressable)x1, (jdk.incubator.foreign.Addressable)x2);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

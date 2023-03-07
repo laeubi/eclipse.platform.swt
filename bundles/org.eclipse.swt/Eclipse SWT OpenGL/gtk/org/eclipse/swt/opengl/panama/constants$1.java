@@ -6,56 +6,50 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1 {
 
     static final FunctionDescriptor glBlendFunc$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle glBlendFunc$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glBlendFunc",
-        "(II)V",
+        "glBlendFunc",
         constants$1.glBlendFunc$FUNC, false
     );
     static final FunctionDescriptor glLogicOp$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle glLogicOp$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glLogicOp",
-        "(I)V",
+        "glLogicOp",
         constants$1.glLogicOp$FUNC, false
     );
     static final FunctionDescriptor glCullFace$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle glCullFace$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glCullFace",
-        "(I)V",
+        "glCullFace",
         constants$1.glCullFace$FUNC, false
     );
     static final FunctionDescriptor glFrontFace$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle glFrontFace$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glFrontFace",
-        "(I)V",
+        "glFrontFace",
         constants$1.glFrontFace$FUNC, false
     );
     static final FunctionDescriptor glPointSize$FUNC = FunctionDescriptor.ofVoid(
-        C_FLOAT
+        Constants$root.C_FLOAT$LAYOUT
     );
     static final MethodHandle glPointSize$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glPointSize",
-        "(F)V",
+        "glPointSize",
         constants$1.glPointSize$FUNC, false
     );
     static final FunctionDescriptor glLineWidth$FUNC = FunctionDescriptor.ofVoid(
-        C_FLOAT
+        Constants$root.C_FLOAT$LAYOUT
     );
     static final MethodHandle glLineWidth$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glLineWidth",
-        "(F)V",
+        "glLineWidth",
         constants$1.glLineWidth$FUNC, false
     );
 }

@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLBINDTEXGENPARAMETEREXTPROC {
 
     int apply(int x0, int x1, int x2);
-    static MemoryAddress allocate(PFNGLBINDTEXGENPARAMETEREXTPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLBINDTEXGENPARAMETEREXTPROC.class, fi, constants$692.PFNGLBINDTEXGENPARAMETEREXTPROC$FUNC, "(III)I");
-    }
-    static MemoryAddress allocate(PFNGLBINDTEXGENPARAMETEREXTPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLBINDTEXGENPARAMETEREXTPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLBINDTEXGENPARAMETEREXTPROC.class, fi, constants$692.PFNGLBINDTEXGENPARAMETEREXTPROC$FUNC, "(III)I", scope);
     }
-    static PFNGLBINDTEXGENPARAMETEREXTPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, int x2) -> {
+    static PFNGLBINDTEXGENPARAMETEREXTPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLBINDTEXGENPARAMETEREXTPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1, int x2) -> {
             try {
-                return (int)constants$692.PFNGLBINDTEXGENPARAMETEREXTPROC$MH.invokeExact((Addressable)addr, x0, x1, x2);
+                return (int)constants$692.PFNGLBINDTEXGENPARAMETEREXTPROC$MH.invokeExact(symbol, x0, x1, x2);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

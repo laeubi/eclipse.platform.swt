@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLNAMEDPROGRAMLOCALPARAMETER4FEXTPROC {
 
     void apply(int x0, int x1, int x2, float x3, float x4, float x5, float x6);
-    static MemoryAddress allocate(PFNGLNAMEDPROGRAMLOCALPARAMETER4FEXTPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLNAMEDPROGRAMLOCALPARAMETER4FEXTPROC.class, fi, constants$593.PFNGLNAMEDPROGRAMLOCALPARAMETER4FEXTPROC$FUNC, "(IIIFFFF)V");
-    }
-    static MemoryAddress allocate(PFNGLNAMEDPROGRAMLOCALPARAMETER4FEXTPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLNAMEDPROGRAMLOCALPARAMETER4FEXTPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLNAMEDPROGRAMLOCALPARAMETER4FEXTPROC.class, fi, constants$593.PFNGLNAMEDPROGRAMLOCALPARAMETER4FEXTPROC$FUNC, "(IIIFFFF)V", scope);
     }
-    static PFNGLNAMEDPROGRAMLOCALPARAMETER4FEXTPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, int x2, float x3, float x4, float x5, float x6) -> {
+    static PFNGLNAMEDPROGRAMLOCALPARAMETER4FEXTPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLNAMEDPROGRAMLOCALPARAMETER4FEXTPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1, int x2, float x3, float x4, float x5, float x6) -> {
             try {
-                constants$593.PFNGLNAMEDPROGRAMLOCALPARAMETER4FEXTPROC$MH.invokeExact((Addressable)addr, x0, x1, x2, x3, x4, x5, x6);
+                constants$593.PFNGLNAMEDPROGRAMLOCALPARAMETER4FEXTPROC$MH.invokeExact(symbol, x0, x1, x2, x3, x4, x5, x6);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLTANGENT3DEXTPROC {
 
     void apply(double x0, double x1, double x2);
-    static MemoryAddress allocate(PFNGLTANGENT3DEXTPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLTANGENT3DEXTPROC.class, fi, constants$526.PFNGLTANGENT3DEXTPROC$FUNC, "(DDD)V");
-    }
-    static MemoryAddress allocate(PFNGLTANGENT3DEXTPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLTANGENT3DEXTPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLTANGENT3DEXTPROC.class, fi, constants$526.PFNGLTANGENT3DEXTPROC$FUNC, "(DDD)V", scope);
     }
-    static PFNGLTANGENT3DEXTPROC ofAddress(MemoryAddress addr) {
-        return (double x0, double x1, double x2) -> {
+    static PFNGLTANGENT3DEXTPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLTANGENT3DEXTPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (double x0, double x1, double x2) -> {
             try {
-                constants$526.PFNGLTANGENT3DEXTPROC$MH.invokeExact((Addressable)addr, x0, x1, x2);
+                constants$526.PFNGLTANGENT3DEXTPROC$MH.invokeExact(symbol, x0, x1, x2);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

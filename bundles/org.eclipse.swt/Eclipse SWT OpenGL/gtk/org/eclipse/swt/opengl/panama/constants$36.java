@@ -6,69 +6,63 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$36 {
 
     static final FunctionDescriptor glVertexPointer$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle glVertexPointer$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glVertexPointer",
-        "(IIILjdk/incubator/foreign/MemoryAddress;)V",
+        "glVertexPointer",
         constants$36.glVertexPointer$FUNC, false
     );
     static final FunctionDescriptor glNormalPointer$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle glNormalPointer$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glNormalPointer",
-        "(IILjdk/incubator/foreign/MemoryAddress;)V",
+        "glNormalPointer",
         constants$36.glNormalPointer$FUNC, false
     );
     static final FunctionDescriptor glColorPointer$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle glColorPointer$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glColorPointer",
-        "(IIILjdk/incubator/foreign/MemoryAddress;)V",
+        "glColorPointer",
         constants$36.glColorPointer$FUNC, false
     );
     static final FunctionDescriptor glIndexPointer$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle glIndexPointer$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glIndexPointer",
-        "(IILjdk/incubator/foreign/MemoryAddress;)V",
+        "glIndexPointer",
         constants$36.glIndexPointer$FUNC, false
     );
     static final FunctionDescriptor glTexCoordPointer$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle glTexCoordPointer$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glTexCoordPointer",
-        "(IIILjdk/incubator/foreign/MemoryAddress;)V",
+        "glTexCoordPointer",
         constants$36.glTexCoordPointer$FUNC, false
     );
     static final FunctionDescriptor glEdgeFlagPointer$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle glEdgeFlagPointer$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glEdgeFlagPointer",
-        "(ILjdk/incubator/foreign/MemoryAddress;)V",
+        "glEdgeFlagPointer",
         constants$36.glEdgeFlagPointer$FUNC, false
     );
 }

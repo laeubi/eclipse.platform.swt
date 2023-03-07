@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLGETBUFFERSUBDATAPROC {
 
     void apply(int x0, long x1, long x2, jdk.incubator.foreign.MemoryAddress x3);
-    static MemoryAddress allocate(PFNGLGETBUFFERSUBDATAPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLGETBUFFERSUBDATAPROC.class, fi, constants$111.PFNGLGETBUFFERSUBDATAPROC$FUNC, "(IJJLjdk/incubator/foreign/MemoryAddress;)V");
-    }
-    static MemoryAddress allocate(PFNGLGETBUFFERSUBDATAPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLGETBUFFERSUBDATAPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLGETBUFFERSUBDATAPROC.class, fi, constants$111.PFNGLGETBUFFERSUBDATAPROC$FUNC, "(IJJLjdk/incubator/foreign/MemoryAddress;)V", scope);
     }
-    static PFNGLGETBUFFERSUBDATAPROC ofAddress(MemoryAddress addr) {
-        return (int x0, long x1, long x2, jdk.incubator.foreign.MemoryAddress x3) -> {
+    static PFNGLGETBUFFERSUBDATAPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLGETBUFFERSUBDATAPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, long x1, long x2, jdk.incubator.foreign.MemoryAddress x3) -> {
             try {
-                constants$111.PFNGLGETBUFFERSUBDATAPROC$MH.invokeExact((Addressable)addr, x0, x1, x2, x3);
+                constants$111.PFNGLGETBUFFERSUBDATAPROC$MH.invokeExact(symbol, x0, x1, x2, (jdk.incubator.foreign.Addressable)x3);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLMULTIDRAWELEMENTSPROC {
 
     void apply(int x0, jdk.incubator.foreign.MemoryAddress x1, int x2, jdk.incubator.foreign.MemoryAddress x3, int x4);
-    static MemoryAddress allocate(PFNGLMULTIDRAWELEMENTSPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLMULTIDRAWELEMENTSPROC.class, fi, constants$92.PFNGLMULTIDRAWELEMENTSPROC$FUNC, "(ILjdk/incubator/foreign/MemoryAddress;ILjdk/incubator/foreign/MemoryAddress;I)V");
-    }
-    static MemoryAddress allocate(PFNGLMULTIDRAWELEMENTSPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLMULTIDRAWELEMENTSPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLMULTIDRAWELEMENTSPROC.class, fi, constants$92.PFNGLMULTIDRAWELEMENTSPROC$FUNC, "(ILjdk/incubator/foreign/MemoryAddress;ILjdk/incubator/foreign/MemoryAddress;I)V", scope);
     }
-    static PFNGLMULTIDRAWELEMENTSPROC ofAddress(MemoryAddress addr) {
-        return (int x0, jdk.incubator.foreign.MemoryAddress x1, int x2, jdk.incubator.foreign.MemoryAddress x3, int x4) -> {
+    static PFNGLMULTIDRAWELEMENTSPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLMULTIDRAWELEMENTSPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, jdk.incubator.foreign.MemoryAddress x1, int x2, jdk.incubator.foreign.MemoryAddress x3, int x4) -> {
             try {
-                constants$92.PFNGLMULTIDRAWELEMENTSPROC$MH.invokeExact((Addressable)addr, x0, x1, x2, x3, x4);
+                constants$92.PFNGLMULTIDRAWELEMENTSPROC$MH.invokeExact(symbol, x0, (jdk.incubator.foreign.Addressable)x1, x2, (jdk.incubator.foreign.Addressable)x3, x4);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

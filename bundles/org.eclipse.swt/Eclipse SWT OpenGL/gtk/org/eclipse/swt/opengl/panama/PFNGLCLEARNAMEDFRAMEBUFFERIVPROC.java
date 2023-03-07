@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLCLEARNAMEDFRAMEBUFFERIVPROC {
 
     void apply(int x0, int x1, int x2, jdk.incubator.foreign.MemoryAddress x3);
-    static MemoryAddress allocate(PFNGLCLEARNAMEDFRAMEBUFFERIVPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLCLEARNAMEDFRAMEBUFFERIVPROC.class, fi, constants$282.PFNGLCLEARNAMEDFRAMEBUFFERIVPROC$FUNC, "(IIILjdk/incubator/foreign/MemoryAddress;)V");
-    }
-    static MemoryAddress allocate(PFNGLCLEARNAMEDFRAMEBUFFERIVPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLCLEARNAMEDFRAMEBUFFERIVPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLCLEARNAMEDFRAMEBUFFERIVPROC.class, fi, constants$282.PFNGLCLEARNAMEDFRAMEBUFFERIVPROC$FUNC, "(IIILjdk/incubator/foreign/MemoryAddress;)V", scope);
     }
-    static PFNGLCLEARNAMEDFRAMEBUFFERIVPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, int x2, jdk.incubator.foreign.MemoryAddress x3) -> {
+    static PFNGLCLEARNAMEDFRAMEBUFFERIVPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLCLEARNAMEDFRAMEBUFFERIVPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1, int x2, jdk.incubator.foreign.MemoryAddress x3) -> {
             try {
-                constants$282.PFNGLCLEARNAMEDFRAMEBUFFERIVPROC$MH.invokeExact((Addressable)addr, x0, x1, x2, x3);
+                constants$282.PFNGLCLEARNAMEDFRAMEBUFFERIVPROC$MH.invokeExact(symbol, x0, x1, x2, (jdk.incubator.foreign.Addressable)x3);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

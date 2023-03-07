@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLVERTEXARRAYBINDVERTEXBUFFEREXTPROC {
 
     void apply(int x0, int x1, int x2, long x3, int x4);
-    static MemoryAddress allocate(PFNGLVERTEXARRAYBINDVERTEXBUFFEREXTPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLVERTEXARRAYBINDVERTEXBUFFEREXTPROC.class, fi, constants$619.PFNGLVERTEXARRAYBINDVERTEXBUFFEREXTPROC$FUNC, "(IIIJI)V");
-    }
-    static MemoryAddress allocate(PFNGLVERTEXARRAYBINDVERTEXBUFFEREXTPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLVERTEXARRAYBINDVERTEXBUFFEREXTPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLVERTEXARRAYBINDVERTEXBUFFEREXTPROC.class, fi, constants$619.PFNGLVERTEXARRAYBINDVERTEXBUFFEREXTPROC$FUNC, "(IIIJI)V", scope);
     }
-    static PFNGLVERTEXARRAYBINDVERTEXBUFFEREXTPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, int x2, long x3, int x4) -> {
+    static PFNGLVERTEXARRAYBINDVERTEXBUFFEREXTPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLVERTEXARRAYBINDVERTEXBUFFEREXTPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1, int x2, long x3, int x4) -> {
             try {
-                constants$619.PFNGLVERTEXARRAYBINDVERTEXBUFFEREXTPROC$MH.invokeExact((Addressable)addr, x0, x1, x2, x3, x4);
+                constants$619.PFNGLVERTEXARRAYBINDVERTEXBUFFEREXTPROC$MH.invokeExact(symbol, x0, x1, x2, x3, x4);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

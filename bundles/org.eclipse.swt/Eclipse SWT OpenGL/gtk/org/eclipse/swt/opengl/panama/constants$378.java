@@ -6,28 +6,25 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$378 {
 
     static final FunctionDescriptor PFNGLLOADTRANSPOSEMATRIXDARBPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLLOADTRANSPOSEMATRIXDARBPROC$MH = RuntimeHelper.downcallHandle(
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
         constants$378.PFNGLLOADTRANSPOSEMATRIXDARBPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLMULTTRANSPOSEMATRIXFARBPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLMULTTRANSPOSEMATRIXFARBPROC$MH = RuntimeHelper.downcallHandle(
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
         constants$378.PFNGLMULTTRANSPOSEMATRIXFARBPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLMULTTRANSPOSEMATRIXDARBPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLMULTTRANSPOSEMATRIXDARBPROC$MH = RuntimeHelper.downcallHandle(
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
         constants$378.PFNGLMULTTRANSPOSEMATRIXDARBPROC$FUNC, false
     );
 }

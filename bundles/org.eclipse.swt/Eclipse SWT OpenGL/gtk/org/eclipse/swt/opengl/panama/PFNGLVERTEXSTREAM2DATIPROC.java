@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLVERTEXSTREAM2DATIPROC {
 
     void apply(int x0, double x1, double x2);
-    static MemoryAddress allocate(PFNGLVERTEXSTREAM2DATIPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLVERTEXSTREAM2DATIPROC.class, fi, constants$506.PFNGLVERTEXSTREAM2DATIPROC$FUNC, "(IDD)V");
-    }
-    static MemoryAddress allocate(PFNGLVERTEXSTREAM2DATIPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLVERTEXSTREAM2DATIPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLVERTEXSTREAM2DATIPROC.class, fi, constants$506.PFNGLVERTEXSTREAM2DATIPROC$FUNC, "(IDD)V", scope);
     }
-    static PFNGLVERTEXSTREAM2DATIPROC ofAddress(MemoryAddress addr) {
-        return (int x0, double x1, double x2) -> {
+    static PFNGLVERTEXSTREAM2DATIPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLVERTEXSTREAM2DATIPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, double x1, double x2) -> {
             try {
-                constants$506.PFNGLVERTEXSTREAM2DATIPROC$MH.invokeExact((Addressable)addr, x0, x1, x2);
+                constants$506.PFNGLVERTEXSTREAM2DATIPROC$MH.invokeExact(symbol, x0, x1, x2);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

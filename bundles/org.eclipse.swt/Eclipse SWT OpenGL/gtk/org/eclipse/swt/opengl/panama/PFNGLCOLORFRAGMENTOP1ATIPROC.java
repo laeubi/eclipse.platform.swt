@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLCOLORFRAGMENTOP1ATIPROC {
 
     void apply(int x0, int x1, int x2, int x3, int x4, int x5, int x6);
-    static MemoryAddress allocate(PFNGLCOLORFRAGMENTOP1ATIPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLCOLORFRAGMENTOP1ATIPROC.class, fi, constants$492.PFNGLCOLORFRAGMENTOP1ATIPROC$FUNC, "(IIIIIII)V");
-    }
-    static MemoryAddress allocate(PFNGLCOLORFRAGMENTOP1ATIPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLCOLORFRAGMENTOP1ATIPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLCOLORFRAGMENTOP1ATIPROC.class, fi, constants$492.PFNGLCOLORFRAGMENTOP1ATIPROC$FUNC, "(IIIIIII)V", scope);
     }
-    static PFNGLCOLORFRAGMENTOP1ATIPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, int x2, int x3, int x4, int x5, int x6) -> {
+    static PFNGLCOLORFRAGMENTOP1ATIPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLCOLORFRAGMENTOP1ATIPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1, int x2, int x3, int x4, int x5, int x6) -> {
             try {
-                constants$492.PFNGLCOLORFRAGMENTOP1ATIPROC$MH.invokeExact((Addressable)addr, x0, x1, x2, x3, x4, x5, x6);
+                constants$492.PFNGLCOLORFRAGMENTOP1ATIPROC$MH.invokeExact(symbol, x0, x1, x2, x3, x4, x5, x6);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

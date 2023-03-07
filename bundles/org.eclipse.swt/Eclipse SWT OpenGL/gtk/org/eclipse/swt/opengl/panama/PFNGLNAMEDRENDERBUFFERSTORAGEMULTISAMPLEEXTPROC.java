@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLNAMEDRENDERBUFFERSTORAGEMULTISAMPLEEXTPROC {
 
     void apply(int x0, int x1, int x2, int x3, int x4);
-    static MemoryAddress allocate(PFNGLNAMEDRENDERBUFFERSTORAGEMULTISAMPLEEXTPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLNAMEDRENDERBUFFERSTORAGEMULTISAMPLEEXTPROC.class, fi, constants$596.PFNGLNAMEDRENDERBUFFERSTORAGEMULTISAMPLEEXTPROC$FUNC, "(IIIII)V");
-    }
-    static MemoryAddress allocate(PFNGLNAMEDRENDERBUFFERSTORAGEMULTISAMPLEEXTPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLNAMEDRENDERBUFFERSTORAGEMULTISAMPLEEXTPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLNAMEDRENDERBUFFERSTORAGEMULTISAMPLEEXTPROC.class, fi, constants$596.PFNGLNAMEDRENDERBUFFERSTORAGEMULTISAMPLEEXTPROC$FUNC, "(IIIII)V", scope);
     }
-    static PFNGLNAMEDRENDERBUFFERSTORAGEMULTISAMPLEEXTPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, int x2, int x3, int x4) -> {
+    static PFNGLNAMEDRENDERBUFFERSTORAGEMULTISAMPLEEXTPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLNAMEDRENDERBUFFERSTORAGEMULTISAMPLEEXTPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1, int x2, int x3, int x4) -> {
             try {
-                constants$596.PFNGLNAMEDRENDERBUFFERSTORAGEMULTISAMPLEEXTPROC$MH.invokeExact((Addressable)addr, x0, x1, x2, x3, x4);
+                constants$596.PFNGLNAMEDRENDERBUFFERSTORAGEMULTISAMPLEEXTPROC$MH.invokeExact(symbol, x0, x1, x2, x3, x4);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

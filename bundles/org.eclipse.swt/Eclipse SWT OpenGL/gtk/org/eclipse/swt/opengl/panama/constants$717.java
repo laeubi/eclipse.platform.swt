@@ -6,33 +6,30 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$717 {
 
     static final FunctionDescriptor PFNGLWINDOWPOS3SMESAPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_SHORT,
-        C_SHORT,
-        C_SHORT
+        Constants$root.C_SHORT$LAYOUT,
+        Constants$root.C_SHORT$LAYOUT,
+        Constants$root.C_SHORT$LAYOUT
     );
     static final MethodHandle PFNGLWINDOWPOS3SMESAPROC$MH = RuntimeHelper.downcallHandle(
-        "(SSS)V",
         constants$717.PFNGLWINDOWPOS3SMESAPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLWINDOWPOS3SVMESAPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLWINDOWPOS3SVMESAPROC$MH = RuntimeHelper.downcallHandle(
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
         constants$717.PFNGLWINDOWPOS3SVMESAPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLWINDOWPOS4DMESAPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_DOUBLE,
-        C_DOUBLE,
-        C_DOUBLE,
-        C_DOUBLE
+        Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT
     );
     static final MethodHandle PFNGLWINDOWPOS4DMESAPROC$MH = RuntimeHelper.downcallHandle(
-        "(DDDD)V",
         constants$717.PFNGLWINDOWPOS4DMESAPROC$FUNC, false
     );
 }

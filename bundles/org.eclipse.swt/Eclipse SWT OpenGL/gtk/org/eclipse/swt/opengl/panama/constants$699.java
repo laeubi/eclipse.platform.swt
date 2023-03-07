@@ -6,29 +6,26 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$699 {
 
-    static final FunctionDescriptor PFNGLIMPORTSYNCEXTPROC$FUNC = FunctionDescriptor.of(C_POINTER,
-        C_INT,
-        C_LONG,
-        C_INT
+    static final FunctionDescriptor PFNGLIMPORTSYNCEXTPROC$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLIMPORTSYNCEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(IJI)Ljdk/incubator/foreign/MemoryAddress;",
         constants$699.PFNGLIMPORTSYNCEXTPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLFRAMETERMINATORGREMEDYPROC$FUNC = FunctionDescriptor.ofVoid();
     static final MethodHandle PFNGLFRAMETERMINATORGREMEDYPROC$MH = RuntimeHelper.downcallHandle(
-        "()V",
         constants$699.PFNGLFRAMETERMINATORGREMEDYPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLSTRINGMARKERGREMEDYPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLSTRINGMARKERGREMEDYPROC$MH = RuntimeHelper.downcallHandle(
-        "(ILjdk/incubator/foreign/MemoryAddress;)V",
         constants$699.PFNGLSTRINGMARKERGREMEDYPROC$FUNC, false
     );
 }

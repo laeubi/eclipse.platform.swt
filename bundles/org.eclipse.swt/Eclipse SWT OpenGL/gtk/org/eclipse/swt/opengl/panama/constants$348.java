@@ -6,31 +6,28 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$348 {
 
     static final FunctionDescriptor PFNGLBEGINQUERYARBPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLBEGINQUERYARBPROC$MH = RuntimeHelper.downcallHandle(
-        "(II)V",
         constants$348.PFNGLBEGINQUERYARBPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLENDQUERYARBPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLENDQUERYARBPROC$MH = RuntimeHelper.downcallHandle(
-        "(I)V",
         constants$348.PFNGLENDQUERYARBPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLGETQUERYIVARBPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLGETQUERYIVARBPROC$MH = RuntimeHelper.downcallHandle(
-        "(IILjdk/incubator/foreign/MemoryAddress;)V",
         constants$348.PFNGLGETQUERYIVARBPROC$FUNC, false
     );
 }

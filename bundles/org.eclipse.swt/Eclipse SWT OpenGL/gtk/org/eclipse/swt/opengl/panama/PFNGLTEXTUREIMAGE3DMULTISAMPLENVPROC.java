@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLTEXTUREIMAGE3DMULTISAMPLENVPROC {
 
     void apply(int x0, int x1, int x2, int x3, int x4, int x5, int x6, byte x7);
-    static MemoryAddress allocate(PFNGLTEXTUREIMAGE3DMULTISAMPLENVPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLTEXTUREIMAGE3DMULTISAMPLENVPROC.class, fi, constants$818.PFNGLTEXTUREIMAGE3DMULTISAMPLENVPROC$FUNC, "(IIIIIIIB)V");
-    }
-    static MemoryAddress allocate(PFNGLTEXTUREIMAGE3DMULTISAMPLENVPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLTEXTUREIMAGE3DMULTISAMPLENVPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLTEXTUREIMAGE3DMULTISAMPLENVPROC.class, fi, constants$818.PFNGLTEXTUREIMAGE3DMULTISAMPLENVPROC$FUNC, "(IIIIIIIB)V", scope);
     }
-    static PFNGLTEXTUREIMAGE3DMULTISAMPLENVPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, int x2, int x3, int x4, int x5, int x6, byte x7) -> {
+    static PFNGLTEXTUREIMAGE3DMULTISAMPLENVPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLTEXTUREIMAGE3DMULTISAMPLENVPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1, int x2, int x3, int x4, int x5, int x6, byte x7) -> {
             try {
-                constants$818.PFNGLTEXTUREIMAGE3DMULTISAMPLENVPROC$MH.invokeExact((Addressable)addr, x0, x1, x2, x3, x4, x5, x6, x7);
+                constants$818.PFNGLTEXTUREIMAGE3DMULTISAMPLENVPROC$MH.invokeExact(symbol, x0, x1, x2, x3, x4, x5, x6, x7);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

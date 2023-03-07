@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLCLEARBUFFERFIPROC {
 
     void apply(int x0, int x1, float x2, int x3);
-    static MemoryAddress allocate(PFNGLCLEARBUFFERFIPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLCLEARBUFFERFIPROC.class, fi, constants$165.PFNGLCLEARBUFFERFIPROC$FUNC, "(IIFI)V");
-    }
-    static MemoryAddress allocate(PFNGLCLEARBUFFERFIPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLCLEARBUFFERFIPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLCLEARBUFFERFIPROC.class, fi, constants$165.PFNGLCLEARBUFFERFIPROC$FUNC, "(IIFI)V", scope);
     }
-    static PFNGLCLEARBUFFERFIPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, float x2, int x3) -> {
+    static PFNGLCLEARBUFFERFIPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLCLEARBUFFERFIPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1, float x2, int x3) -> {
             try {
-                constants$165.PFNGLCLEARBUFFERFIPROC$MH.invokeExact((Addressable)addr, x0, x1, x2, x3);
+                constants$165.PFNGLCLEARBUFFERFIPROC$MH.invokeExact(symbol, x0, x1, x2, x3);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

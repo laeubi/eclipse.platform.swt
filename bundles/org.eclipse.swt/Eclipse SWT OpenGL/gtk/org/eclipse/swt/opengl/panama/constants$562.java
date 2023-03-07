@@ -6,33 +6,30 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$562 {
 
     static final FunctionDescriptor PFNGLDISABLECLIENTSTATEINDEXEDEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLDISABLECLIENTSTATEINDEXEDEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(II)V",
         constants$562.PFNGLDISABLECLIENTSTATEINDEXEDEXTPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLGETFLOATINDEXEDVEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLGETFLOATINDEXEDVEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(IILjdk/incubator/foreign/MemoryAddress;)V",
         constants$562.PFNGLGETFLOATINDEXEDVEXTPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLGETDOUBLEINDEXEDVEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLGETDOUBLEINDEXEDVEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(IILjdk/incubator/foreign/MemoryAddress;)V",
         constants$562.PFNGLGETDOUBLEINDEXEDVEXTPROC$FUNC, false
     );
 }

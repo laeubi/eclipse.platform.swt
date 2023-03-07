@@ -6,52 +6,46 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$957 {
 
     static final FunctionDescriptor glutLeaveGameMode$FUNC = FunctionDescriptor.ofVoid();
     static final MethodHandle glutLeaveGameMode$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glutLeaveGameMode",
-        "()V",
+        "glutLeaveGameMode",
         constants$957.glutLeaveGameMode$FUNC, false
     );
-    static final FunctionDescriptor glutGameModeGet$FUNC = FunctionDescriptor.of(C_INT,
-        C_INT
+    static final FunctionDescriptor glutGameModeGet$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle glutGameModeGet$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glutGameModeGet",
-        "(I)I",
+        "glutGameModeGet",
         constants$957.glutGameModeGet$FUNC, false
     );
-    static final FunctionDescriptor glutVideoResizeGet$FUNC = FunctionDescriptor.of(C_INT,
-        C_INT
+    static final FunctionDescriptor glutVideoResizeGet$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle glutVideoResizeGet$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glutVideoResizeGet",
-        "(I)I",
+        "glutVideoResizeGet",
         constants$957.glutVideoResizeGet$FUNC, false
     );
     static final FunctionDescriptor glutSetupVideoResizing$FUNC = FunctionDescriptor.ofVoid();
     static final MethodHandle glutSetupVideoResizing$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glutSetupVideoResizing",
-        "()V",
+        "glutSetupVideoResizing",
         constants$957.glutSetupVideoResizing$FUNC, false
     );
     static final FunctionDescriptor glutStopVideoResizing$FUNC = FunctionDescriptor.ofVoid();
     static final MethodHandle glutStopVideoResizing$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glutStopVideoResizing",
-        "()V",
+        "glutStopVideoResizing",
         constants$957.glutStopVideoResizing$FUNC, false
     );
     static final FunctionDescriptor glutVideoResize$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle glutVideoResize$MH = RuntimeHelper.downcallHandle(
-        glut_h.LIBRARIES, "glutVideoResize",
-        "(IIII)V",
+        "glutVideoResize",
         constants$957.glutVideoResize$FUNC, false
     );
 }

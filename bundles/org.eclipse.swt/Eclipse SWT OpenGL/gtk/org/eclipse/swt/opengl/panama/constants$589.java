@@ -6,41 +6,38 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$589 {
 
     static final FunctionDescriptor PFNGLNAMEDPROGRAMLOCALPARAMETERI4UIEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLNAMEDPROGRAMLOCALPARAMETERI4UIEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIIIIII)V",
         constants$589.PFNGLNAMEDPROGRAMLOCALPARAMETERI4UIEXTPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLNAMEDPROGRAMLOCALPARAMETERI4UIVEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLNAMEDPROGRAMLOCALPARAMETERI4UIVEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIILjdk/incubator/foreign/MemoryAddress;)V",
         constants$589.PFNGLNAMEDPROGRAMLOCALPARAMETERI4UIVEXTPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLNAMEDPROGRAMLOCALPARAMETERSI4UIVEXTPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLNAMEDPROGRAMLOCALPARAMETERSI4UIVEXTPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIIILjdk/incubator/foreign/MemoryAddress;)V",
         constants$589.PFNGLNAMEDPROGRAMLOCALPARAMETERSI4UIVEXTPROC$FUNC, false
     );
 }

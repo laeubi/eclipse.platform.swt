@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLOBJECTUNPURGEABLEAPPLEPROC {
 
     int apply(int x0, int x1, int x2);
-    static MemoryAddress allocate(PFNGLOBJECTUNPURGEABLEAPPLEPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLOBJECTUNPURGEABLEAPPLEPROC.class, fi, constants$481.PFNGLOBJECTUNPURGEABLEAPPLEPROC$FUNC, "(III)I");
-    }
-    static MemoryAddress allocate(PFNGLOBJECTUNPURGEABLEAPPLEPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLOBJECTUNPURGEABLEAPPLEPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLOBJECTUNPURGEABLEAPPLEPROC.class, fi, constants$481.PFNGLOBJECTUNPURGEABLEAPPLEPROC$FUNC, "(III)I", scope);
     }
-    static PFNGLOBJECTUNPURGEABLEAPPLEPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, int x2) -> {
+    static PFNGLOBJECTUNPURGEABLEAPPLEPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLOBJECTUNPURGEABLEAPPLEPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1, int x2) -> {
             try {
-                return (int)constants$481.PFNGLOBJECTUNPURGEABLEAPPLEPROC$MH.invokeExact((Addressable)addr, x0, x1, x2);
+                return (int)constants$481.PFNGLOBJECTUNPURGEABLEAPPLEPROC$MH.invokeExact(symbol, x0, x1, x2);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

@@ -6,20 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public interface PFNGLSCISSORINDEXEDPROC {
 
     void apply(int x0, int x1, int x2, int x3, int x4);
-    static MemoryAddress allocate(PFNGLSCISSORINDEXEDPROC fi) {
-        return RuntimeHelper.upcallStub(PFNGLSCISSORINDEXEDPROC.class, fi, constants$247.PFNGLSCISSORINDEXEDPROC$FUNC, "(IIIII)V");
-    }
-    static MemoryAddress allocate(PFNGLSCISSORINDEXEDPROC fi, ResourceScope scope) {
+    static NativeSymbol allocate(PFNGLSCISSORINDEXEDPROC fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(PFNGLSCISSORINDEXEDPROC.class, fi, constants$247.PFNGLSCISSORINDEXEDPROC$FUNC, "(IIIII)V", scope);
     }
-    static PFNGLSCISSORINDEXEDPROC ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, int x2, int x3, int x4) -> {
+    static PFNGLSCISSORINDEXEDPROC ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("PFNGLSCISSORINDEXEDPROC::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int x0, int x1, int x2, int x3, int x4) -> {
             try {
-                constants$247.PFNGLSCISSORINDEXEDPROC$MH.invokeExact((Addressable)addr, x0, x1, x2, x3, x4);
+                constants$247.PFNGLSCISSORINDEXEDPROC$MH.invokeExact(symbol, x0, x1, x2, x3, x4);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

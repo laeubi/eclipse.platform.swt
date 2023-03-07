@@ -6,46 +6,43 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$721 {
 
     static final FunctionDescriptor PFNGLLGPUNAMEDBUFFERSUBDATANVXPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_LONG,
-        C_LONG,
-        C_POINTER
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle PFNGLLGPUNAMEDBUFFERSUBDATANVXPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIJJLjdk/incubator/foreign/MemoryAddress;)V",
         constants$721.PFNGLLGPUNAMEDBUFFERSUBDATANVXPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLLGPUCOPYIMAGESUBDATANVXPROC$FUNC = FunctionDescriptor.ofVoid(
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT,
-        C_INT
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle PFNGLLGPUCOPYIMAGESUBDATANVXPROC$MH = RuntimeHelper.downcallHandle(
-        "(IIIIIIIIIIIIIIIII)V",
         constants$721.PFNGLLGPUCOPYIMAGESUBDATANVXPROC$FUNC, false
     );
     static final FunctionDescriptor PFNGLLGPUINTERLOCKNVXPROC$FUNC = FunctionDescriptor.ofVoid();
     static final MethodHandle PFNGLLGPUINTERLOCKNVXPROC$MH = RuntimeHelper.downcallHandle(
-        "()V",
         constants$721.PFNGLLGPUINTERLOCKNVXPROC$FUNC, false
     );
 }
