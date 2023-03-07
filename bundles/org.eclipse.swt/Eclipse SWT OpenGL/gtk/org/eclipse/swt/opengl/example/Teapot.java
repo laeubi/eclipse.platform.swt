@@ -65,9 +65,13 @@ public class Teapot {
     }
 
     public void onIdle() {
-        rot += 0.1;
+        doRotation();
         org.eclipse.swt.opengl.GL.glutPostRedisplay();
     }
+
+	public void doRotation() {
+		rot += 0.4;
+	}
 
     public static void main(String[] args) {
     	//TODO should be args for jextract: -l glut -l GLU -l GL
