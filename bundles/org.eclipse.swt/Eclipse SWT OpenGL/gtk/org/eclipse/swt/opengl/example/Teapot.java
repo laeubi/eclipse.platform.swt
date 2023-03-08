@@ -78,7 +78,7 @@ public class Teapot {
 	}
 
     public static void main(String[] args) {
-    	//TODO should be args for jextract: -l glut -l GLU -l GL
+    	//TODO should be args for jextract: -l glut -l GLU -l GL -l GLX
     	 System.loadLibrary("GL");
     	 System.loadLibrary("GLX");
     	 System.loadLibrary("GLU");
