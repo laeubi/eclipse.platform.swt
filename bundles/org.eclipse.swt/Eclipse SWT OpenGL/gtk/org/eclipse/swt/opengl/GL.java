@@ -5,5 +5,4 @@ package org.eclipse.swt.opengl;
  */
 public class GL extends org.eclipse.swt.opengl.panama.glut_h {
 
-
 }

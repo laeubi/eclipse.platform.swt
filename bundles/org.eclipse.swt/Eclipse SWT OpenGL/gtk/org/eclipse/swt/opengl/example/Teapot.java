@@ -55,14 +55,18 @@ public class Teapot {
     }
 
     public void display() {
-    	org.eclipse.swt.opengl.GL.glClear(org.eclipse.swt.opengl.GL.GL_COLOR_BUFFER_BIT() | org.eclipse.swt.opengl.GL.GL_DEPTH_BUFFER_BIT());
+    	draw();
+        org.eclipse.swt.opengl.GL.glutSwapBuffers();
+    }
+
+    public void draw() {
+		org.eclipse.swt.opengl.GL.glClear(org.eclipse.swt.opengl.GL.GL_COLOR_BUFFER_BIT() | org.eclipse.swt.opengl.GL.GL_DEPTH_BUFFER_BIT());
         org.eclipse.swt.opengl.GL.glPushMatrix();
         org.eclipse.swt.opengl.GL.glRotatef(-20f, 1f, 1f, 0f);
         org.eclipse.swt.opengl.GL.glRotatef(rot, 0f, 1f, 0f);
         org.eclipse.swt.opengl.GL.glutSolidTeapot(0.5d);
         org.eclipse.swt.opengl.GL.glPopMatrix();
-        org.eclipse.swt.opengl.GL.glutSwapBuffers();
-    }
+	}
 
     public void onIdle() {
         doRotation();
