@@ -277,9 +277,9 @@ if [ "$1" = "-gtk-all" ]; then
 	shift
 	func_echo_plus "Note: When building multiple GTK versions, a cleanup is required (and automatically performed) between them."
 	func_clean_up
-	func_build_gtk4 "$@"
-	func_clean_up
 	func_build_gtk3 "$@"
+	func_clean_up
+	func_build_gtk4 "$@"
 elif [ "$1" = "-gtk4" ]; then
 	shift
 	func_build_gtk4 "$@"
