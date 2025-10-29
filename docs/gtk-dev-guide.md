@@ -895,7 +895,6 @@ Create a new Eclipse C project (not C++) -> select Executable project, with "Hel
 
 ![Create New Project](images/Create_new_project.png)
 
-*Note: If the image is not available, see [images/README.md](images/README.md) for download instructions.*
 
 If this template is missing, you need to install 'pkg-config' plugin into Eclipse first. Also it's missing if you selected 'C++' as it's only available for 'C' projects. Go to project properties -> C/C++ Build -> Settings -> 'Pkg-config' tab, and select the gtk+-3.0 option.
 
@@ -903,7 +902,6 @@ Go to project properties -> C/C++ Build -> Settings -> 'Pkg-config' tab, and sel
 
 ![Project Properties](images/Project_properties.png)
 
-*Note: If the image is not available, see [images/README.md](images/README.md) for download instructions.*
 
 Inside src, you should see a .c file that has a hello-world template. This is in the package explorer. Now you should be able to build & run (or debug) the GTK application. (Note, before running the first time, you need to build the project). It should build very quickly. However, when you look up functions, you won't be able to look into the .c files. In order to do this, you need to set the indexer to search inside your GTK git repository.
 
@@ -913,19 +911,16 @@ Under the project's properties, there should be a C/C++ Build section. Under Man
 
 ![Add Indexer](images/Add_indexer.png)
 
-*Note: If the image is not available, see [images/README.md](images/README.md) for download instructions.*
 
 Under "C/C++ General" -> Indexer, click "Enable project specific settings". Under "Indexing Strategy", select "Use a fixed build configuration" and select your newly created 'indexer' configuration.
 
 ![Indexer Configuration](images/Indexer_configuration.png)
 
-*Note: If the image is not available, see [images/README.md](images/README.md) for download instructions.*
 
 Under "C/C++ General" -> "Path and Symbols", switch to the 'indexer' configuration, and in the "Include" -> "GNU C", add your workspace GTK/glib/cairo/gtk-pixbuf/pixman projects.
 
 ![Paths and Symbols](images/Paths_and_symbols.png)
 
-*Note: If the image is not available, see [images/README.md](images/README.md) for download instructions.*
 
 Now click on OK. Right click on your project -> Indexer -> Rebuild index. Now you should be able to build the project as usual, but also when you open function definitions, you should be able to see the GTK source code from your GitHub repo.
 
@@ -953,7 +948,6 @@ To debug the 'C' part of a running Java application, you need to 'attach' yourse
 
 ![Debug Native GTK](images/Debug_native_gtk.png)
 
-*Note: If the image is not available, see [images/README.md](images/README.md) for download instructions.*
 
 Further, since eclipse.platform.swt is a Java project that contains C code, you will have to create a C project and link to that folder to debug the C code. As a note, the source and binaries will be in different folders, so you will need to create a source and a debug C project.
 
@@ -980,7 +974,6 @@ Similar to the GTK compilation instructions, you need edit the SWT snippet run c
 
 ![LD_LIBRARY_PATH](images/Ld_library_path.png)
 
-*Note: If the image is not available, see [images/README.md](images/README.md) for download instructions.*
 
 NOTE: You will have to do this for every single widget/SWT snippet that you wish to debug at the GTK level.
 
@@ -1005,13 +998,11 @@ In Eclipse, press Ctrl+3, then search for 'Debug Attached Executable'. (I usuall
 
 ![JPS to attach to a running JVM process](images/Jps.png)
 
-*Note: If the image is not available, see [images/README.md](images/README.md) for download instructions.*
 
 If things went well, Eclipse should break inside the file pthread_join.c somewhere at the 'wait for child' section. Press F8 (continue). Then try to move the SWT widget or do something with it. Eclipse should stop at the gtk_main_do_event(..) function and you should be able to step through the code.
 
 ![Breakpoint set in gtk_main_do_event()](images/Main_do.png)
 
-*Note: If the image is not available, see [images/README.md](images/README.md) for download instructions.*
 
 **Debugging swtFixed custom code**
 
