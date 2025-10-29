@@ -201,6 +201,29 @@ Current GTK4 Status:
 * Some features may not work the same as in GTK3
 * Testing and bug reports for GTK4 are welcome on GitHub issues
 
+**Verifying the Build**
+
+After building the native libraries, you can verify they work correctly by:
+
+1. Running the ControlExample from org.eclipse.swt.examples:
+   - Open org.eclipse.swt.examples project in Eclipse
+   - Find and run ControlExample.java
+   - This should open a window showcasing various SWT widgets
+
+2. Running snippets from org.eclipse.swt.snippets:
+   - Browse the snippets in the org.eclipse.swt.snippets project
+   - Run any snippet (e.g., Snippet1.java) to test basic functionality
+
+3. For GTK4 testing:
+   - Set environment variable: `SWT_GTK4=1`
+   - Run the same examples to verify GTK4 functionality
+   - Note that some features may behave differently or may not be fully implemented yet
+
+If you encounter "UnsatisfiedLinkError" exceptions, it means the native libraries weren't built correctly or aren't being found. Double-check that:
+- The build completed successfully without errors
+- The .so files were copied to the binary repository
+- Your Eclipse workspace is using the correct .so files
+
 **References**
 
 JNI Generator Documentation: https://github.com/eclipse-platform/eclipse.platform.swt/tree/master/bundles/org.eclipse.swt.tools
