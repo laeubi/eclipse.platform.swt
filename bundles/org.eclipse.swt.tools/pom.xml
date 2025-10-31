@@ -75,6 +75,8 @@
     </dependencies>
     
     <build>
+        <!-- Note: sourceDirectory is set to current directory because this is a legacy Eclipse plugin
+             with non-standard directory layout (sources are in "JNI Generation", "Mac Generation", etc.) -->
         <sourceDirectory>.</sourceDirectory>
         <resources>
             <resource>
@@ -95,6 +97,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.13.0</version>
                 <configuration>
+                    <!-- Note: Directory names with spaces are the actual structure of this Eclipse plugin.
+                         These correspond to the source folders defined in build.properties -->
                     <includes>
                         <include>src/**/*.java</include>
                         <include>JNI Generation/**/*.java</include>

@@ -64,11 +64,7 @@ public class JNIGeneratorCLI {
 		}
 		
 		// Now set the main class name - this will work because outputDir is already set
-		if (classesDir != null) {
-			gen.setMainClassName(mainClassName, outputDir, classesDir);
-		} else {
-			gen.setMainClassName(mainClassName, outputDir);
-		}
+		gen.setMainClassName(mainClassName, outputDir, classesDir);
 
 		// Generate the JNI code
 		gen.generate();
