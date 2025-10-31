@@ -51,7 +51,9 @@
             <version>3.20.100</version>
         </dependency>
         
-        <!-- Eclipse SWT - using a platform-specific published version -->
+        <!-- Eclipse SWT - using a platform-specific published version for SWT.getPlatform() support.
+             This is marked as optional because it's only needed for the default platform detection.
+             The jar will work on any platform when explicit arguments are provided. -->
         <dependency>
             <groupId>org.eclipse.platform</groupId>
             <artifactId>org.eclipse.swt.gtk.linux.x86_64</artifactId>

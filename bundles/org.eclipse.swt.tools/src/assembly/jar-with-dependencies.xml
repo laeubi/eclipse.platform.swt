@@ -14,14 +14,4 @@
             <scope>runtime</scope>
         </dependencySet>
     </dependencySets>
-    <fileSets>
-        <!-- Include compiled classes from the plugin -->
-        <fileSet>
-            <directory>${project.build.outputDirectory}</directory>
-            <outputDirectory>/</outputDirectory>
-            <includes>
-                <include>**/*</include>
-            </includes>
-        </fileSet>
-    </fileSets>
 </assembly>
