@@ -1,5 +1,5 @@
 ---
-applyTo: "bundles/org.eclipse.swt/Eclipse SWT PI/gtk/library/*.c", "bundles/org.eclipse.swt/Eclipse SWT PI/gtk/library/*.h"
+applyTo: "bundles/org.eclipse.swt/Eclipse SWT PI/gtk/library/*.c,bundles/org.eclipse.swt/Eclipse SWT PI/gtk/library/*.h"
 ---
 
 Always carefully investigate exsiting GTK functions the gtk-dev files are installed in the system
