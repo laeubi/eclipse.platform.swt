@@ -41,5 +41,4 @@ jobs:
           echo "cd /home/runner/build/gtk && SWT_JAVA_HOME=${JAVA_HOME} MODEL=x86_64 OUTPUT_DIR=/home/runner/build/tmp ./build.sh install clean" >> $GITHUB_WORKSPACE/build_gtk.sh
           echo "cd $GITHUB_WORKSPACE" >> $GITHUB_WORKSPACE/build_gtk.sh
           chmod +x $GITHUB_WORKSPACE/build_gtk.sh
-          ./build_gtk.sh
          
