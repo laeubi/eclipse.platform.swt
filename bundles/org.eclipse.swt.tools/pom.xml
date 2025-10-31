@@ -15,23 +15,96 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     
-    <parent>
-        <groupId>org.eclipse.platform</groupId>
-        <artifactId>eclipse.platform.swt</artifactId>
-        <version>4.38.0-SNAPSHOT</version>
-        <relativePath>../../</relativePath>
-    </parent>
-    
+    <groupId>org.eclipse.platform</groupId>
     <artifactId>org.eclipse.swt.tools</artifactId>
     <version>3.110.900-SNAPSHOT</version>
-    <packaging>eclipse-plugin</packaging>
+    <packaging>jar</packaging>
+    
+    <name>SWT Tools</name>
+    <description>Eclipse SWT development tools including JNI Generator for command-line use</description>
     
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
     </properties>
     
+    <dependencies>
+        <!-- Eclipse JDT Core for AST parsing -->
+        <dependency>
+            <groupId>org.eclipse.jdt</groupId>
+            <artifactId>org.eclipse.jdt.core</artifactId>
+            <version>3.38.0</version>
+        </dependency>
+        
+        <!-- Eclipse Core Runtime -->
+        <dependency>
+            <groupId>org.eclipse.platform</groupId>
+            <artifactId>org.eclipse.core.runtime</artifactId>
+            <version>3.31.100</version>
+        </dependency>
+        
+        <!-- Eclipse Core Resources -->
+        <dependency>
+            <groupId>org.eclipse.platform</groupId>
+            <artifactId>org.eclipse.core.resources</artifactId>
+            <version>3.20.100</version>
+        </dependency>
+        
+        <!-- Eclipse SWT - using a platform-specific published version -->
+        <dependency>
+            <groupId>org.eclipse.platform</groupId>
+            <artifactId>org.eclipse.swt.gtk.linux.x86_64</artifactId>
+            <version>3.126.0</version>
+            <optional>true</optional>
+        </dependency>
+        
+        <!-- Eclipse UI (for views and builders) -->
+        <dependency>
+            <groupId>org.eclipse.platform</groupId>
+            <artifactId>org.eclipse.ui</artifactId>
+            <version>3.205.100</version>
+        </dependency>
+        
+        <!-- Eclipse JFace Text -->
+        <dependency>
+            <groupId>org.eclipse.platform</groupId>
+            <artifactId>org.eclipse.jface.text</artifactId>
+            <version>3.25.0</version>
+        </dependency>
+    </dependencies>
+    
     <build>
+        <sourceDirectory>.</sourceDirectory>
+        <resources>
+            <resource>
+                <directory>.</directory>
+                <includes>
+                    <include>**/*.properties</include>
+                    <include>META-INF/**</include>
+                    <include>plugin.xml</include>
+                    <include>about.html</include>
+                </includes>
+            </resource>
+        </resources>
+        
         <plugins>
+            <!-- Maven Compiler Plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.13.0</version>
+                <configuration>
+                    <includes>
+                        <include>src/**/*.java</include>
+                        <include>JNI Generation/**/*.java</include>
+                        <include>Mac Generation/**/*.java</include>
+                        <include>Icon Exe/**/*.java</include>
+                        <include>JavadocBasher/**/*.java</include>
+                    </includes>
+                </configuration>
+            </plugin>
+            
             <!-- Maven Assembly Plugin for creating fat jar -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -59,5 +132,19 @@
             </plugin>
         </plugins>
     </build>
+    
+    <repositories>
+        <repository>
+            <id>eclipse-releases</id>
+            <url>https://repo.eclipse.org/content/repositories/releases/</url>
+        </repository>
+        <repository>
+            <id>eclipse-snapshots</id>
+            <url>https://repo.eclipse.org/content/repositories/snapshots/</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
     
 </project>
