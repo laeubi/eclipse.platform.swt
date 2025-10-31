@@ -61,6 +61,7 @@ To rebuild native libraries:
 - **Platform-specific**: Code goes in platform folders (gtk/, win32/, cocoa/)
 - **JNI**: Communication between Java and native code uses JNI
 - **OS.java**: Central file for native method declarations
+- Do not commit binaries! They will be build and comitted by the CI.
 
 ### Code Organization
 - Platform-independent code: `bundles/org.eclipse.swt/Eclipse SWT/common/`
