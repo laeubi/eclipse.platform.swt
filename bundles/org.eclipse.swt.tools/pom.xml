@@ -125,7 +125,7 @@
                     </descriptors>
                     <archive>
                         <manifest>
-                            <mainClass>org.eclipse.swt.tools.internal.JNIGeneratorApp</mainClass>
+                            <mainClass>org.eclipse.swt.tools.internal.JNIGeneratorCLI</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

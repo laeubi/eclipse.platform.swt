@@ -12,11 +12,6 @@
             <useProjectArtifact>true</useProjectArtifact>
             <unpack>true</unpack>
             <scope>runtime</scope>
-            <excludes>
-                <!-- Exclude unnecessary dependencies that might conflict -->
-                <exclude>org.eclipse.platform:org.eclipse.osgi</exclude>
-                <exclude>org.eclipse.platform:org.eclipse.equinox.common</exclude>
-            </excludes>
         </dependencySet>
     </dependencySets>
     <fileSets>

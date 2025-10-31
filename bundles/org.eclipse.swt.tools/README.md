@@ -45,35 +45,37 @@ The JNI Generator is integrated into Eclipse as a builder:
 You can run the JNI Generator from the command line using the provided fat jar:
 
 ```bash
-# Generate for default platform (current OS)
-java -jar org.eclipse.swt.tools-<version>-jar-with-dependencies.jar
+# Display help
+java -jar org.eclipse.swt.tools-<version>-jar-with-dependencies.jar --help
 
 # Generate for specific main class
-java -jar org.eclipse.swt.tools-<version>-jar-with-dependencies.jar <mainClassName>
+java -jar org.eclipse.swt.tools-<version>-jar-with-dependencies.jar <mainClassName> <outputDir> <classesDir>
 
-# Generate with custom output directory
-java -jar org.eclipse.swt.tools-<version>-jar-with-dependencies.jar <mainClassName> <outputDir>
-
-# Generate with custom classpath
-java -jar org.eclipse.swt.tools-<version>-jar-with-dependencies.jar <mainClassName> <outputDir> <classpath>
-
-# Generate all configured platforms
+# Generate all configured platforms  
 java -jar org.eclipse.swt.tools-<version>-jar-with-dependencies.jar all
 ```
 
 **Parameters:**
 - `mainClassName` - Fully qualified name of the main OS class (e.g., `org.eclipse.swt.internal.gtk.OS`)
-- `outputDir` - Directory where generated files will be written
-- `classpath` - Custom classpath for finding source files (optional, uses system classpath by default)
+- `outputDir` - Directory where generated C files will be written (must end with `/` or `\`)
+- `classesDir` - Directory containing Java source files (required for finding the source to parse)
 - `all` or `*` - Generate for all platforms defined in metadata
 
 **Example:**
 ```bash
 # Generate GTK bindings
-java -jar org.eclipse.swt.tools-<version>-jar-with-dependencies.jar \
+java -jar org.eclipse.swt.tools-3.110.900-SNAPSHOT-jar-with-dependencies.jar \
   org.eclipse.swt.internal.gtk.OS \
-  /path/to/swt/gtk/library/
+  /path/to/output/ \
+  /path/to/swt/sources/Eclipse\ SWT\ PI/gtk/
+
+# This will generate:
+# - os.c (JNI native method implementations)
+# - os_structs.h and os_structs.c (structure accessors)  
+# - os_stats.h and os_stats.c (statistics tracking)
 ```
+
+**Note:** The generator requires access to the Java source files (not just compiled classes) because it uses the Eclipse JDT AST parser to analyze annotations and generate appropriate C code.
 
 #### Building the Fat Jar
 
