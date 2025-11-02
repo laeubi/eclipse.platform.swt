@@ -16,23 +16,22 @@ import org.eclipse.swt.widgets.*;
 /**
  * Simplified snippet to reproduce the SWT virtual tree crash (issue #667).
  * 
- * This snippet demonstrates the crash by directly posting Expand events to trigger
- * the problematic code path without needing JFace or complex user interaction.
+ * This snippet demonstrates the crash that occurs when:
+ * 1. A virtual tree item is expanded, triggering SetData callbacks
+ * 2. During SetData processing, the tree structure is modified (items removed)
+ * 3. This causes gtk_tree_store_remove to be called while GTK is iterating
+ * 4. GTK callbacks during removal access the partially destroyed node
  * 
- * Steps to reproduce:
- * 1. Create a virtual tree with a few items
- * 2. Post an Expand event to trigger lazy loading
- * 3. During lazy loading, remove items
- * 4. This triggers the re-entrant callback issue in gtk_tree_store_remove()
+ * The crash manifests as:
+ * - GTK assertion: (G_NODE (iter->user_data)->parent != NULL) 
+ * - Or SWTException: Widget is disposed
  * 
- * Expected result: GTK assertion failure or JVM crash
- * Actual result: Demonstrates the re-entrancy issue where cellDataProc() 
- *                is called during gtk_tree_store_remove()
+ * To reproduce: Run this snippet and watch for the crash when expanding the item.
  */
 public class SimpleTreeCrashSnippet {
 
-static int itemCount = 5;
-static boolean crashTriggered = false;
+static TreeItem itemToExpand = null;
+static boolean expandStarted = false;
 
 public static void main(String[] args) {
 Display display = new Display();
@@ -42,49 +41,51 @@ shell.setText("SWT Virtual Tree Crash Test - Issue #667");
 
 // Create a virtual tree
 final Tree tree = new Tree(shell, SWT.VIRTUAL | SWT.BORDER);
-tree.setItemCount(itemCount);
+tree.setItemCount(10);
 
 // Add SetData listener for virtual items
 tree.addListener(SWT.SetData, event -> {
 TreeItem item = (TreeItem) event.item;
+TreeItem parentItem = item.getParentItem();
+
+if (parentItem == null) {
+// Root level item
 int index = tree.indexOf(item);
+System.out.println("[SetData] Root item at index: " + index);
+item.setText("Parent " + index);
+item.setItemCount(5); // Each parent has 5 children
 
-System.out.println("[SetData] Setting data for item at index: " + index);
-item.setText("Item " + index);
-
-// Give each item some children to enable expansion
-if (index < 3) {
-item.setItemCount(3);
+// Save first item for expansion test
+if (index == 0) {
+itemToExpand = item;
 }
+} else {
+// Child item - this is where the crash happens
+int index = parentItem.indexOf(item);
+System.out.println("[SetData] Child item at index: " + index + " of parent: " + parentItem.getText());
+item.setText(parentItem.getText() + " - Child " + index);
 
-// Simulate the crash scenario: remove items during expansion
-if (!crashTriggered && index == 1) {
-crashTriggered = true;
-System.out.println("[SetData] Triggering crash scenario - removing items during expansion...");
+// Trigger the crash: modify tree structure during SetData callback
+// This simulates what happens in real apps when data changes
+if (expandStarted && index == 2) {
+System.out.println("[SetData] ** Triggering crash scenario **");
+System.out.println("[SetData] Removing items while GTK is iterating tree structure...");
 
-// This removal during SetData callback creates the re-entrancy issue
+// Remove items from the tree - this will call gtk_tree_store_remove
+// while GTK is still processing the expansion
 display.asyncExec(() -> {
-if (!tree.isDisposed() && tree.getItemCount() > 0) {
-System.out.println("[AsyncExec] Removing first tree item...");
-TreeItem firstItem = tree.getItem(0);
-if (!firstItem.isDisposed()) {
-firstItem.dispose(); // This triggers gtk_tree_store_remove
+if (!tree.isDisposed() && tree.getItemCount() > 2) {
+System.out.println("[AsyncExec] Removing tree items...");
+TreeItem victim = tree.getItem(1);
+if (!victim.isDisposed()) {
+System.out.println("[AsyncExec] Disposing: " + victim.getText());
+victim.dispose();
 }
+
+// Trigger more iteration to hit the crash
+tree.setItemCount(tree.getItemCount() - 1);
 }
 });
-}
-});
-
-// Add Expand listener for child items
-tree.addListener(SWT.Expand, event -> {
-TreeItem item = (TreeItem) event.item;
-System.out.println("[Expand] Expanding: " + item.getText());
-
-// Populate children when expanded
-for (TreeItem child : item.getItems()) {
-if (child.getText().isEmpty()) {
-int childIndex = item.indexOf(child);
-child.setText(item.getText() + " - Child " + childIndex);
 }
 }
 });
@@ -94,33 +95,23 @@ shell.open();
 
 // Automatically trigger the crash scenario after UI is ready
 display.timerExec(500, () -> {
-if (!tree.isDisposed() && tree.getItemCount() > 0) {
-System.out.println("\n[Test] Programmatically expanding first item to trigger crash...");
+if (itemToExpand != null && !itemToExpand.isDisposed()) {
+System.out.println("\n[Test] Expanding first item to trigger crash...");
+System.out.println("[Test] This will cause SetData callbacks for children");
+System.out.println("[Test] During child processing, items will be removed");
+System.out.println("[Test] This creates re-entrant gtk_tree_store_remove call\n");
 
-TreeItem firstItem = tree.getItem(0);
+expandStarted = true;
 
-// Post an Expand event directly to trigger the problematic code path
-Event expandEvent = new Event();
-expandEvent.type = SWT.Expand;
-expandEvent.item = firstItem;
-expandEvent.widget = tree;
-
-// This will trigger SetData events, which may cause re-entrant callbacks
-display.post(expandEvent);
-
-// Also try to set expanded state directly
-display.timerExec(100, () -> {
-if (!firstItem.isDisposed()) {
-System.out.println("[Test] Setting expanded state...");
-firstItem.setExpanded(true);
-}
-});
+// Expand the item - this triggers SetData for children
+// During child SetData processing, we'll modify the tree
+itemToExpand.setExpanded(true);
 }
 });
 
 // Auto-close after a few seconds if no crash
 display.timerExec(3000, () -> {
-System.out.println("\n[Test] No crash after 3 seconds - closing...");
+System.out.println("\n[Test] No crash after 3 seconds - test may need adjustment for this GTK version");
 shell.close();
 });
 

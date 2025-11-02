@@ -7,32 +7,34 @@
 ## Key Differences from Original Test
 
 1. **Pure SWT**: Uses only SWT APIs, no JFace dependency
-2. **Direct Event Posting**: Uses `Display.post(Event)` to programmatically trigger the Expand event
+2. **Automatic Trigger**: Programmatically expands items and triggers the crash scenario
 3. **Self-contained**: Single Java file that can be compiled and run independently
-4. **Automated**: Automatically triggers the crash scenario without manual interaction
+4. **Realistic Scenario**: Mimics real-world case where tree structure changes during expansion
 
 ## How It Works
 
 The snippet reproduces the crash by:
 
-1. Creating a virtual tree (`SWT.VIRTUAL` flag)
+1. Creating a virtual tree (`SWT.VIRTUAL` flag) with parent-child hierarchy
 2. Adding a `SWT.SetData` listener for lazy item population
-3. Programmatically posting an `SWT.Expand` event using `Display.post()`
-4. During the SetData callback, scheduling an async item removal
+3. When expanding a parent item, SetData is called for each child
+4. During child SetData processing (at child index 2), items are removed from the tree
 5. This creates the problematic re-entrant callback scenario
 
 ## The Re-entrancy Issue
 
 ```
-[SetData listener triggered]
-  └─> display.asyncExec() schedules item removal
-      └─> Item.dispose() called
-          └─> Tree.destroyItem() 
-              └─> gtk_tree_store_remove() [ENTER]
-                  └─> GTK triggers callbacks
-                      └─> Tree.cellDataProc() called DURING removal
-                          └─> May call TreeItem.getExpanded()
-                              └─> gtk_tree_model_get_path() on removing node
+[Expand parent item]
+  └─> GTK begins iteration over children
+      └─> SetData callback for child 0
+      └─> SetData callback for child 1  
+      └─> SetData callback for child 2
+          └─> display.asyncExec() schedules item removal
+              └─> Tree.destroyItem()
+                  └─> gtk_tree_store_remove() [ENTER]
+                      └─> GTK triggers callbacks DURING removal
+                          └─> Tree.cellDataProc() called
+                              └─> May access node being removed
                                   └─> GTK ASSERTION FAILURE
 ```
 
@@ -54,11 +56,33 @@ With tracing enabled (from this PR):
 java -cp .:/path/to/modified-swt.jar SimpleTreeCrashSnippet 2>&1 | tee output.log
 ```
 
-## Expected Behavior
+## Expected Output
 
-- **With GTK < 3.24**: May crash with GTK assertion failure
-- **With GTK >= 3.24**: May throw `SWTException: Widget is disposed`
+### Normal execution (no crash):
+```
+[SetData] Root item at index: 0
+[Test] Expanding first item to trigger crash...
+[SetData] Child item at index: 0 of parent: Parent 0
+[SetData] Child item at index: 1 of parent: Parent 0
+[SetData] Child item at index: 2 of parent: Parent 0
+[SetData] ** Triggering crash scenario **
+[AsyncExec] Removing tree items...
+```
+
+### With crash:
+The program may crash with GTK assertion or SWTException before completing.
+
+## Crash Behavior
+
+The crash behavior depends on GTK version and timing:
+- **GTK < 3.24**: More likely to crash with GTK assertion failure
+- **GTK >= 3.24**: May throw `SWTException: Widget is disposed`
 - **With tracing enabled**: Will show `[JAVA]` and `[NATIVE C]` printouts demonstrating the re-entrant callback
+
+**Note**: The crash may not occur 100% of the time as it depends on GTK's internal timing and callback ordering. If the snippet doesn't crash, try:
+- Changing the child index where removal is triggered (line 72)
+- Adding more children per parent
+- Removing different items or multiple items
 
 ## Advantages Over Complex Test
 
@@ -67,6 +91,7 @@ java -cp .:/path/to/modified-swt.jar SimpleTreeCrashSnippet 2>&1 | tee output.lo
 3. **Easier to understand**: Clear, linear code flow
 4. **Easier to modify**: Single file, easy to experiment with
 5. **Better for debugging**: Can add breakpoints in a single file
+6. **More realistic**: Mimics actual application behavior where data changes during UI operations
 
 ## Related Files
 
