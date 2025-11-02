@@ -349,9 +349,11 @@ public void clearAll (boolean all) {
 
 @Override
 void destroyWidget () {
+	System.out.println("[JAVA] TreeItem.destroyWidget() - ENTER - item=" + this);
 	parent.releaseItem (this, false);
 	parent.destroyItem (this);
 	releaseHandle ();
+	System.out.println("[JAVA] TreeItem.destroyWidget() - EXIT");
 }
 
 /**
@@ -534,10 +536,14 @@ public boolean getChecked () {
  * </ul>
  */
 public boolean getExpanded () {
+	System.out.println("[JAVA] TreeItem.getExpanded() - ENTER - item=" + this + ", handle=" + handle);
 	checkWidget();
+	System.out.println("[JAVA] TreeItem.getExpanded() - About to call gtk_tree_model_get_path");
 	long path = GTK.gtk_tree_model_get_path (parent.modelHandle, handle);
+	System.out.println("[JAVA] TreeItem.getExpanded() - After gtk_tree_model_get_path, path=" + path);
 	boolean answer = GTK.gtk_tree_view_row_expanded (parent.handle, path);
 	GTK.gtk_tree_path_free (path);
+	System.out.println("[JAVA] TreeItem.getExpanded() - EXIT - returning " + answer);
 	return answer;
 }
 
