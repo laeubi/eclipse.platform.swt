@@ -306,7 +306,7 @@ long cellDataProc (long tree_column, long cell, long tree_model, long iter, long
 	if ((style & SWT.VIRTUAL) != 0) {
 		if (!item.cached) {
 			//lastIndexOf = index [0];
-			System.out.println("[JAVA] Tree.cellDataProc() - About to call checkData for item=" + item);
+			System.out.println("[JAVA] Tree.cellDataProc() - About to call checkData");
 			setData = checkData (item);
 			System.out.println("[JAVA] Tree.cellDataProc() - After checkData, setData=" + setData);
 		}
@@ -364,7 +364,7 @@ long cellDataProc (long tree_column, long cell, long tree_model, long iter, long
 }
 
 boolean checkData (TreeItem item) {
-	System.out.println("[JAVA] Tree.checkData() - ENTER - item=" + item + ", cached=" + item.cached);
+	System.out.println("[JAVA] Tree.checkData() - ENTER - cached=" + item.cached);
 	if (item.cached) return true;
 	if ((style & SWT.VIRTUAL) != 0) {
 		item.cached = true;
@@ -1288,7 +1288,7 @@ void destroyItem (TreeColumn column) {
 
 
 void destroyItem (TreeItem item) {
-	System.out.println("[JAVA] Tree.destroyItem() - ENTER - item=" + item + ", handle=" + item.handle);
+	System.out.println("[JAVA] Tree.destroyItem() - ENTER - handle=" + item.handle);
 	long selection = GTK.gtk_tree_view_get_selection (handle);
 	OS.g_signal_handlers_block_matched (selection, OS.G_SIGNAL_MATCH_DATA, 0, 0, 0, 0, CHANGED);
 	System.out.println("[JAVA] Tree.destroyItem() - About to call gtk_tree_store_remove");
