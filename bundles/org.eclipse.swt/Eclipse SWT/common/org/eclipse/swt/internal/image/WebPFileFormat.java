@@ -63,12 +63,14 @@ public final class WebPFileFormat extends FileFormat.StaticImageFileFormat {
 	
 	@Override
 	ImageData[] loadFromByteStream() {
-		// WebP decoding is not yet implemented
-		// A full implementation would require decoding VP8 or VP8L compressed data,
-		// which is complex and similar in scope to the JPEG decoder
-		SWT.error(SWT.ERROR_NOT_IMPLEMENTED, null, 
-			" [WebP decoding is not yet implemented. WebP format is recognized but requires a decoder implementation.]");
-		return null;
+		try {
+			WebPDecoder decoder = new WebPDecoder(inputStream);
+			ImageData imageData = decoder.decode();
+			return new ImageData[] { imageData };
+		} catch (IOException e) {
+			SWT.error(SWT.ERROR_IO, e);
+			return null;
+		}
 	}
 	
 	@Override
