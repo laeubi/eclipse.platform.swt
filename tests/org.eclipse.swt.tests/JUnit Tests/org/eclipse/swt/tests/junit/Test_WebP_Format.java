@@ -27,6 +27,9 @@ import org.junit.jupiter.api.Test;
  */
 public class Test_WebP_Format {
 
+	private static final int RIFF_SIZE_FIELD_LENGTH = 4;
+	private static final int FOURCC_LENGTH = 4;
+	
 	/**
 	 * Test that WebP format is properly detected
 	 */
@@ -76,9 +79,9 @@ public class Test_WebP_Format {
 		
 		// Create an invalid WebP file (wrong WEBP signature)
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
-		baos.write("RIFF".getBytes(), 0, 4);
-		baos.write(new byte[] {0x1e, 0x00, 0x00, 0x00}, 0, 4);
-		baos.write("WEBX".getBytes(), 0, 4); // Wrong signature (should be WEBP)
+		baos.write("RIFF".getBytes(), 0, FOURCC_LENGTH);
+		baos.write(new byte[] {0x1e, 0x00, 0x00, 0x00}, 0, RIFF_SIZE_FIELD_LENGTH);
+		baos.write("WEBX".getBytes(), 0, FOURCC_LENGTH); // Wrong signature (should be WEBP)
 		
 		byte[] invalidData = baos.toByteArray();
 		

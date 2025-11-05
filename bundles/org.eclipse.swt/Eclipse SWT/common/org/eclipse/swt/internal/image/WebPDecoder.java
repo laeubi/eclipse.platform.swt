@@ -48,6 +48,10 @@ class WebPDecoder {
 	private static final byte[] VP8X = "VP8X".getBytes();
 	private static final byte[] ALPH = "ALPH".getBytes();
 	
+	// WebP format constants
+	private static final int VP8_KEY_FRAME_START_CODE = 0x9d012a;
+	private static final int VP8L_SIGNATURE_BYTE = 0x2f;
+	
 	int width;
 	int height;
 	boolean hasAlpha;
@@ -170,7 +174,7 @@ class WebPDecoder {
 		// Read start code (should be 0x9d012a)
 		int startCode = ((frameTag[2] & 0xFF) << 16) | ((frameTag[1] & 0xFF) << 8) | (frameTag[0] & 0xFF);
 		startCode = startCode >> 1;
-		if (startCode != 0x9d012a) {
+		if (startCode != VP8_KEY_FRAME_START_CODE) {
 			SWT.error(SWT.ERROR_INVALID_IMAGE);
 		}
 		
@@ -198,9 +202,9 @@ class WebPDecoder {
 	 * </p>
 	 */
 	private ImageData decodeVP8Lossless(int chunkSize) throws IOException {
-		// Read VP8L signature (0x2f)
+		// Read VP8L signature
 		int signature = stream.read();
-		if (signature != 0x2f) {
+		if (signature != VP8L_SIGNATURE_BYTE) {
 			SWT.error(SWT.ERROR_INVALID_IMAGE);
 		}
 		
@@ -255,8 +259,19 @@ class WebPDecoder {
 	}
 	
 	private void skipBytes(int count) throws IOException {
-		for (int i = 0; i < count; i++) {
-			stream.read();
+		// Use skip() for efficiency when available
+		long remaining = count;
+		while (remaining > 0) {
+			long skipped = stream.skip(remaining);
+			if (skipped <= 0) {
+				// skip() not supported or reached EOF, fall back to read()
+				if (stream.read() == -1) {
+					break;
+				}
+				remaining--;
+			} else {
+				remaining -= skipped;
+			}
 		}
 	}
 }
