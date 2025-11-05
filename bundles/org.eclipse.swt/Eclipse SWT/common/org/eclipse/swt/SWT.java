@@ -4476,6 +4476,13 @@ public class SWT {
 	public static final int IMAGE_SVG = 8;
 
 	/**
+	 * Image format constant indicating a WebP format image (value is 9).
+	 *
+	 * @since 3.132
+	 */
+	public static final int IMAGE_WEBP = 9;
+
+	/**
 	 * GIF image disposal method constants indicating that the
 	 * disposal method is unspecified (value is 0).
 	 */
