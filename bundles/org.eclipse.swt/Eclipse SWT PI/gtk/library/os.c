@@ -9438,18 +9438,6 @@ JNIEXPORT void JNICALL GTK_NATIVE(gtk_1widget_1realize)
 }
 #endif
 
-#ifndef NO_gtk_1widget_1get_1can_1focus
-JNIEXPORT jboolean JNICALL GTK_NATIVE(gtk_1widget_1get_1can_1focus)
-	(JNIEnv *env, jclass that, jlong arg0)
-{
-	jboolean rc = 0;
-	GTK_NATIVE_ENTER(env, that, gtk_1widget_1get_1can_1focus_FUNC);
-	rc = (jboolean)gtk_widget_get_can_focus((GtkWidget *)arg0);
-	GTK_NATIVE_EXIT(env, that, gtk_1widget_1get_1can_1focus_FUNC);
-	return rc;
-}
-#endif
-
 #ifndef NO_gtk_1widget_1set_1can_1focus
 JNIEXPORT void JNICALL GTK_NATIVE(gtk_1widget_1set_1can_1focus)
 	(JNIEnv *env, jclass that, jlong arg0, jboolean arg1)

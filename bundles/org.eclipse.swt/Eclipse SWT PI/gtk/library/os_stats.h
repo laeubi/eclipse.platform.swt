@@ -752,7 +752,6 @@ typedef enum {
 	gtk_1widget_1queue_1draw_FUNC,
 	gtk_1widget_1queue_1resize_FUNC,
 	gtk_1widget_1realize_FUNC,
-	gtk_1widget_1get_1can_1focus_FUNC,
 	gtk_1widget_1set_1can_1focus_FUNC,
 	gtk_1widget_1set_1default_1direction_FUNC,
 	gtk_1widget_1set_1direction_FUNC,

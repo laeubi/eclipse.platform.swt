@@ -5229,21 +5229,7 @@ void setBackgroundGdkRGBA (long context, long handle, GdkRGBA rgba) {
 
 		// Apply background color and any cached foreground color
 	String finalCss = display.gtk_css_create_css_color_string (cssBackground, cssForeground, SWT.BACKGROUND);
-	
-	/*
-	 * Bug 2702: Applying CSS via gtk_style_context_add_provider can cause GTK
-	 * to grab focus to the widget, especially when triggered by CSS selectors like
-	 * .MPartStack.active. To prevent unwanted focus changes, we temporarily disable
-	 * the widget's ability to receive focus while applying the styles.
-	 */
-	boolean isFocusable = GTK.gtk_widget_get_can_focus(handle);
-	if (isFocusable) {
-		GTK.gtk_widget_set_can_focus(handle, false);
-	}
 	gtk_css_provider_load_from_css (context, finalCss);
-	if (isFocusable) {
-		GTK.gtk_widget_set_can_focus(handle, true);
-	}
 }
 
 void gtk_css_provider_load_from_css (long context, String css) {

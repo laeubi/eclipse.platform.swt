@@ -2369,8 +2369,6 @@ public class GTK extends OS {
 	public static final native void gtk_widget_set_default_direction(int dir);
 	/** @param widget cast=(GtkWidget *) */
 	public static final native void gtk_widget_queue_draw(long widget);
-	/** @param widget cast=(GtkWidget *) */
-	public static final native boolean gtk_widget_get_can_focus(long widget);
 	/**
 	 * @param widget cast=(GtkWidget *)
 	 * @param can_focus cast=(gboolean)
