@@ -1557,9 +1557,12 @@ public TreeColumn [] getColumns () {
 
 @Override
 GdkRGBA getContextBackgroundGdkRGBA () {
-	// Bug 2702: Always return the default background for Trees to prevent
-	// focus-related issues when CSS styling is applied via setBackground().
-	// The custom background color is still applied via CSS in setBackgroundGdkRGBA().
+	// Bug 2702: When a custom background is set, delegate to Control's implementation
+	// which parses from the CSS provider. This prevents focus issues that occur when
+	// returning the stored background field value directly.
+	if (background != null && background != defaultBackground()) {
+		return super.getContextBackgroundGdkRGBA();
+	}
 	// For Tables and Trees, the default background is
 	// COLOR_LIST_BACKGROUND instead of COLOR_WIDGET_BACKGROUND.
 	return defaultBackground();
