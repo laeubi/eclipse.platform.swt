@@ -7811,9 +7811,13 @@ JNIEXPORT jlong JNICALL GTK_NATIVE(gtk_1tree_1model_1get_1path)
 	(JNIEnv *env, jclass that, jlong arg0, jlong arg1)
 {
 	jlong rc = 0;
+	fprintf(stderr, "[NATIVE C] gtk_tree_model_get_path() - ENTER - model=%p, iter=%p\n", (void*)arg0, (void*)arg1);
+	fflush(stderr);
 	GTK_NATIVE_ENTER(env, that, gtk_1tree_1model_1get_1path_FUNC);
 	rc = (jlong)gtk_tree_model_get_path((GtkTreeModel *)arg0, (GtkTreeIter *)arg1);
 	GTK_NATIVE_EXIT(env, that, gtk_1tree_1model_1get_1path_FUNC);
+	fprintf(stderr, "[NATIVE C] gtk_tree_model_get_path() - EXIT - returning path=%p\n", (void*)rc);
+	fflush(stderr);
 	return rc;
 }
 #endif
@@ -8198,9 +8202,13 @@ JNIEXPORT void JNICALL GTK_NATIVE(gtk_1tree_1store_1prepend)
 JNIEXPORT void JNICALL GTK_NATIVE(gtk_1tree_1store_1remove)
 	(JNIEnv *env, jclass that, jlong arg0, jlong arg1)
 {
+	fprintf(stderr, "[NATIVE C] gtk_tree_store_remove() - ENTER - store=%p, iter=%p\n", (void*)arg0, (void*)arg1);
+	fflush(stderr);
 	GTK_NATIVE_ENTER(env, that, gtk_1tree_1store_1remove_FUNC);
 	gtk_tree_store_remove((GtkTreeStore *)arg0, (GtkTreeIter *)arg1);
 	GTK_NATIVE_EXIT(env, that, gtk_1tree_1store_1remove_FUNC);
+	fprintf(stderr, "[NATIVE C] gtk_tree_store_remove() - EXIT\n");
+	fflush(stderr);
 }
 #endif
 
