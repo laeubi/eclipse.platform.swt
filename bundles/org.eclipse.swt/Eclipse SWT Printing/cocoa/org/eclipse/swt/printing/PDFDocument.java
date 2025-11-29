@@ -134,11 +134,7 @@ public class PDFDocument implements Drawable {
 			NSURL fileURL = NSURL.fileURLWithPath(path);
 
 			// Create the PDF context with the media box
-			CGRect mediaBox = new CGRect();
-			mediaBox.origin.x = 0;
-			mediaBox.origin.y = 0;
-			mediaBox.size.width = widthInPoints;
-			mediaBox.size.height = heightInPoints;
+			CGRect mediaBox = createMediaBox();
 
 			// Use CGPDFContextCreateWithURL
 			pdfContext = OS.CGPDFContextCreateWithURL(fileURL.id, mediaBox, 0);
@@ -158,15 +154,22 @@ public class PDFDocument implements Drawable {
 	}
 
 	/**
+	 * Creates a CGRect for the current page dimensions
+	 */
+	private CGRect createMediaBox() {
+		CGRect mediaBox = new CGRect();
+		mediaBox.origin.x = 0;
+		mediaBox.origin.y = 0;
+		mediaBox.size.width = widthInPoints;
+		mediaBox.size.height = heightInPoints;
+		return mediaBox;
+	}
+
+	/**
 	 * Ensures the first page has been started
 	 */
 	private void ensurePageStarted() {
 		if (!pageStarted) {
-			CGRect mediaBox = new CGRect();
-			mediaBox.origin.x = 0;
-			mediaBox.origin.y = 0;
-			mediaBox.size.width = widthInPoints;
-			mediaBox.size.height = heightInPoints;
 			OS.CGPDFContextBeginPage(pdfContext, 0);
 			pageStarted = true;
 		}

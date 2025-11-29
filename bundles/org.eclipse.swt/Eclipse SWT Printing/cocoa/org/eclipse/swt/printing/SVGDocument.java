@@ -201,11 +201,15 @@ public class SVGDocument implements Drawable {
 	/**
 	 * Returns <code>true</code> if the SVGDocument has been disposed,
 	 * and <code>false</code> otherwise.
+	 * <p>
+	 * Note: Since SVG output is not supported on macOS, this always returns false
+	 * as the object cannot be instantiated.
+	 * </p>
 	 *
 	 * @return <code>true</code> when the SVGDocument is disposed and <code>false</code> otherwise
 	 */
 	public boolean isDisposed() {
-		return true;
+		return false;
 	}
 
 	/**
