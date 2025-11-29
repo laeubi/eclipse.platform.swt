@@ -58,6 +58,16 @@ public class PDFDocument implements Drawable {
 	String filename;
 
 	/**
+	 * Width of the page in device-independent units
+	 */
+	double width;
+
+	/**
+	 * Height of the page in device-independent units
+	 */
+	double height;
+
+	/**
 	 * Width of the page in points (1/72 inch)
 	 */
 	double widthInPoints;
@@ -69,6 +79,72 @@ public class PDFDocument implements Drawable {
 
 	/** The name of the Microsoft Print to PDF printer */
 	private static final String PDF_PRINTER_NAME = "Microsoft Print to PDF";
+	
+	/** Helper class to represent a paper size with orientation */
+	private static class PaperSize {
+		int paperSizeConstant;
+		int orientation;
+		double widthInInches;
+		double heightInInches;
+		
+		PaperSize(int paperSize, int orientation, double width, double height) {
+			this.paperSizeConstant = paperSize;
+			this.orientation = orientation;
+			this.widthInInches = width;
+			this.heightInInches = height;
+		}
+	}
+
+	/**
+	 * Finds the best matching standard paper size for the given dimensions.
+	 * Tries both portrait and landscape orientations and selects the one that
+	 * minimizes wasted space while ensuring the content fits.
+	 */
+	private static PaperSize findBestPaperSize(double widthInInches, double heightInInches) {
+		// Common paper sizes (width x height in inches, portrait orientation)
+		int[][] standardSizes = {
+			{OS.DMPAPER_LETTER, 850, 1100},      // 8.5 x 11
+			{OS.DMPAPER_LEGAL, 850, 1400},       // 8.5 x 14
+			{OS.DMPAPER_A4, 827, 1169},          // 8.27 x 11.69
+			{OS.DMPAPER_TABLOID, 1100, 1700},    // 11 x 17
+			{OS.DMPAPER_A3, 1169, 1654},         // 11.69 x 16.54
+			{OS.DMPAPER_EXECUTIVE, 725, 1050},   // 7.25 x 10.5
+			{OS.DMPAPER_A5, 583, 827},           // 5.83 x 8.27
+		};
+		
+		PaperSize bestMatch = null;
+		double minWaste = Double.MAX_VALUE;
+		
+		for (int[] size : standardSizes) {
+			double paperWidth = size[1] / 100.0;
+			double paperHeight = size[2] / 100.0;
+			
+			// Try portrait orientation
+			if (widthInInches <= paperWidth && heightInInches <= paperHeight) {
+				double waste = (paperWidth * paperHeight) - (widthInInches * heightInInches);
+				if (waste < minWaste) {
+					minWaste = waste;
+					bestMatch = new PaperSize(size[0], OS.DMORIENT_PORTRAIT, paperWidth, paperHeight);
+				}
+			}
+			
+			// Try landscape orientation (swap width and height)
+			if (widthInInches <= paperHeight && heightInInches <= paperWidth) {
+				double waste = (paperHeight * paperWidth) - (widthInInches * heightInInches);
+				if (waste < minWaste) {
+					minWaste = waste;
+					bestMatch = new PaperSize(size[0], OS.DMORIENT_LANDSCAPE, paperHeight, paperWidth);
+				}
+			}
+		}
+		
+		// Default to Letter if no match found
+		if (bestMatch == null) {
+			bestMatch = new PaperSize(OS.DMPAPER_LETTER, OS.DMORIENT_PORTRAIT, 8.5, 11.0);
+		}
+		
+		return bestMatch;
+	}
 
 	/**
 	 * Constructs a new PDFDocument with the specified filename and page dimensions.
@@ -77,8 +153,8 @@ public class PDFDocument implements Drawable {
 	 * </p>
 	 *
 	 * @param filename the path to the PDF file to create
-	 * @param widthInPoints the width of each page in points (1/72 inch)
-	 * @param heightInPoints the height of each page in points (1/72 inch)
+	 * @param width the width of each page in device-independent units
+	 * @param height the height of each page in device-independent units
 	 *
 	 * @exception IllegalArgumentException <ul>
 	 *    <li>ERROR_NULL_ARGUMENT - if filename is null</li>
@@ -90,8 +166,8 @@ public class PDFDocument implements Drawable {
 	 *
 	 * @see #dispose()
 	 */
-	public PDFDocument(String filename, double widthInPoints, double heightInPoints) {
-		this(null, filename, widthInPoints, heightInPoints);
+	public PDFDocument(String filename, double width, double height) {
+		this(null, filename, width, height);
 	}
 
 	/**
@@ -103,8 +179,8 @@ public class PDFDocument implements Drawable {
 	 *
 	 * @param device the device to associate with this PDFDocument
 	 * @param filename the path to the PDF file to create
-	 * @param widthInPoints the width of each page in points (1/72 inch)
-	 * @param heightInPoints the height of each page in points (1/72 inch)
+	 * @param width the width of each page in device-independent units
+	 * @param height the height of each page in device-independent units
 	 *
 	 * @exception IllegalArgumentException <ul>
 	 *    <li>ERROR_NULL_ARGUMENT - if filename is null</li>
@@ -116,13 +192,13 @@ public class PDFDocument implements Drawable {
 	 *
 	 * @see #dispose()
 	 */
-	public PDFDocument(Device device, String filename, double widthInPoints, double heightInPoints) {
+	public PDFDocument(Device device, String filename, double width, double height) {
 		if (filename == null) SWT.error(SWT.ERROR_NULL_ARGUMENT);
-		if (widthInPoints <= 0 || heightInPoints <= 0) SWT.error(SWT.ERROR_INVALID_ARGUMENT);
+		if (width <= 0 || height <= 0) SWT.error(SWT.ERROR_INVALID_ARGUMENT);
 
 		this.filename = filename;
-		this.widthInPoints = widthInPoints;
-		this.heightInPoints = heightInPoints;
+		this.width = width;
+		this.height = height;
 
 		// Get device from the current display if not provided
 		if (device == null) {
@@ -134,6 +210,23 @@ public class PDFDocument implements Drawable {
 		} else {
 			this.device = device;
 		}
+
+		// Calculate physical size in inches from screen pixels
+		int screenDpiX = 96;
+		int screenDpiY = 96;
+		if (this.device != null) {
+			Point dpi = this.device.getDPI();
+			screenDpiX = dpi.x;
+			screenDpiY = dpi.y;
+		}
+		double widthInInches = width / screenDpiX;
+		double heightInInches = height / screenDpiY;
+		
+		// Microsoft Print to PDF doesn't support custom page sizes
+		// Find the best matching standard paper size
+		PaperSize bestMatch = findBestPaperSize(widthInInches, heightInInches);
+		this.widthInPoints = bestMatch.widthInInches * 72.0;
+		this.heightInPoints = bestMatch.heightInInches * 72.0;
 
 		// Create printer DC for "Microsoft Print to PDF"
 		TCHAR driver = new TCHAR(0, "WINSPOOL", true);
@@ -149,6 +242,12 @@ public class PDFDocument implements Drawable {
 				if (lpInitData != 0) {
 					int rc = OS.DocumentProperties(0, hPrinter[0], deviceName, lpInitData, 0, OS.DM_OUT_BUFFER);
 					if (rc == OS.IDOK) {
+						DEVMODE devmode = new DEVMODE();
+						OS.MoveMemory(devmode, lpInitData, DEVMODE.sizeof);
+						devmode.dmPaperSize = (short) bestMatch.paperSizeConstant;
+						devmode.dmOrientation = (short) bestMatch.orientation;
+						devmode.dmFields = OS.DM_PAPERSIZE | OS.DM_ORIENTATION;
+						OS.MoveMemory(lpInitData, devmode, DEVMODE.sizeof);
 						handle = OS.CreateDC(driver, deviceName, 0, lpInitData);
 					}
 					OS.HeapFree(hHeap, 0, lpInitData);
@@ -322,6 +421,43 @@ public class PDFDocument implements Drawable {
 				data.font = device.getSystemFont();
 			}
 		}
+		
+		// Set up coordinate system scaling
+		// Get screen DPI
+		int screenDpiX = 96;
+		int screenDpiY = 96;
+		if (device != null) {
+			Point dpi = device.getDPI();
+			screenDpiX = dpi.x;
+			screenDpiY = dpi.y;
+		}
+		
+		// Get PDF printer DPI
+		int pdfDpiX = OS.GetDeviceCaps(handle, OS.LOGPIXELSX);
+		int pdfDpiY = OS.GetDeviceCaps(handle, OS.LOGPIXELSY);
+		
+		// Calculate content size in inches (what user wanted)
+		double contentWidthInInches = width / screenDpiX;
+		double contentHeightInInches = height / screenDpiY;
+		
+		// Calculate scale factor to fit content to page
+		// The page size is the physical paper size we selected
+		double pageWidthInInches = widthInPoints / 72.0;
+		double pageHeightInInches = heightInPoints / 72.0;
+		double scaleToFitWidth = pageWidthInInches / contentWidthInInches;
+		double scaleToFitHeight = pageHeightInInches / contentHeightInInches;
+		
+		// Use the smaller scale to ensure both width and height fit
+		double scaleToFit = Math.min(scaleToFitWidth, scaleToFitHeight);
+		
+		// Combined scale: fit-to-page * DPI conversion
+		float scaleX = (float)(scaleToFit * pdfDpiX / screenDpiX);
+		float scaleY = (float)(scaleToFit * pdfDpiY / screenDpiY);
+		
+		OS.SetGraphicsMode(handle, OS.GM_ADVANCED);
+		float[] transform = new float[] {scaleX, 0, 0, scaleY, 0, 0};
+		OS.SetWorldTransform(handle, transform);
+		
 		isGCCreated = true;
 		return handle;
 	}
