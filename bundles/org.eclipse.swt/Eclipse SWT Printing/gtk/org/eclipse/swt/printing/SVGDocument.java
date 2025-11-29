@@ -198,9 +198,7 @@ public class SVGDocument implements Drawable {
 		// Get device from the current display if not provided
 		if (this.device == null) {
 			try {
-				Class<?> displayClass = Class.forName("org.eclipse.swt.widgets.Display");
-				java.lang.reflect.Method getDefault = displayClass.getMethod("getDefault");
-				this.device = (Device) getDefault.invoke(null);
+				this.device = org.eclipse.swt.widgets.Display.getDefault();
 			} catch (Exception e) {
 				this.device = null;
 			}

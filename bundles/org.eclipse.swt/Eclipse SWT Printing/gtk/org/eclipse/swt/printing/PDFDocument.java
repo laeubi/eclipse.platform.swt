@@ -102,9 +102,7 @@ public class PDFDocument implements Drawable {
 
 		// Get device from the current display or create a temporary one
 		try {
-			Class<?> displayClass = Class.forName("org.eclipse.swt.widgets.Display");
-			java.lang.reflect.Method getDefault = displayClass.getMethod("getDefault");
-			device = (Device) getDefault.invoke(null);
+			device = org.eclipse.swt.widgets.Display.getDefault();
 		} catch (Exception e) {
 			device = null;
 		}
