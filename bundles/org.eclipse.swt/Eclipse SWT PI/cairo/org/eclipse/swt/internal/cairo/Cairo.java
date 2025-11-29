@@ -418,4 +418,29 @@ public static final native void memmove(cairo_rectangle_int_t dest, long src, lo
  */
 public static final native void memmove(double[] dest, long src, long size);
 
+/** Surface type constant for SVG */
+public static final int CAIRO_SURFACE_TYPE_SVG = 4;
+
+/**
+ * @method flags=dynamic
+ * @param filename cast=(const char *)
+ */
+public static final native long cairo_pdf_surface_create(byte[] filename, double width_in_points, double height_in_points);
+
+/**
+ * @method flags=dynamic
+ * @param filename cast=(const char *)
+ */
+public static final native long cairo_svg_surface_create(byte[] filename, double width_in_points, double height_in_points);
+
+/**
+ * @method flags=dynamic
+ * @param surface cast=(cairo_surface_t *)
+ */
+public static final native void cairo_svg_surface_restrict_to_version(long surface, int version);
+
+/** SVG version constants */
+public static final int CAIRO_SVG_VERSION_1_1 = 0;
+public static final int CAIRO_SVG_VERSION_1_2 = 1;
+
 }
