@@ -1596,6 +1596,52 @@ JNIEXPORT void JNICALL OS_NATIVE(CGImageRelease)
 }
 #endif
 
+#ifndef NO_CGPDFContextCreateWithURL
+JNIEXPORT jlong JNICALL OS_NATIVE(CGPDFContextCreateWithURL)
+	(JNIEnv *env, jclass that, jlong arg0, jobject arg1, jlong arg2)
+{
+	CGRect _arg1, *lparg1=NULL;
+	jlong rc = 0;
+	OS_NATIVE_ENTER(env, that, CGPDFContextCreateWithURL_FUNC);
+	if (arg1) if ((lparg1 = getCGRectFields(env, arg1, &_arg1)) == NULL) goto fail;
+	rc = (jlong)CGPDFContextCreateWithURL((CFURLRef)arg0, lparg1, (CFDictionaryRef)arg2);
+fail:
+	if (arg1 && lparg1) setCGRectFields(env, arg1, lparg1);
+	OS_NATIVE_EXIT(env, that, CGPDFContextCreateWithURL_FUNC);
+	return rc;
+}
+#endif
+
+#ifndef NO_CGPDFContextBeginPage
+JNIEXPORT void JNICALL OS_NATIVE(CGPDFContextBeginPage)
+	(JNIEnv *env, jclass that, jlong arg0, jlong arg1)
+{
+	OS_NATIVE_ENTER(env, that, CGPDFContextBeginPage_FUNC);
+	CGPDFContextBeginPage((CGContextRef)arg0, (CFDictionaryRef)arg1);
+	OS_NATIVE_EXIT(env, that, CGPDFContextBeginPage_FUNC);
+}
+#endif
+
+#ifndef NO_CGPDFContextEndPage
+JNIEXPORT void JNICALL OS_NATIVE(CGPDFContextEndPage)
+	(JNIEnv *env, jclass that, jlong arg0)
+{
+	OS_NATIVE_ENTER(env, that, CGPDFContextEndPage_FUNC);
+	CGPDFContextEndPage((CGContextRef)arg0);
+	OS_NATIVE_EXIT(env, that, CGPDFContextEndPage_FUNC);
+}
+#endif
+
+#ifndef NO_CGPDFContextClose
+JNIEXPORT void JNICALL OS_NATIVE(CGPDFContextClose)
+	(JNIEnv *env, jclass that, jlong arg0)
+{
+	OS_NATIVE_ENTER(env, that, CGPDFContextClose_FUNC);
+	CGPDFContextClose((CGContextRef)arg0);
+	OS_NATIVE_EXIT(env, that, CGPDFContextClose_FUNC);
+}
+#endif
+
 #ifndef NO_CGPathAddCurveToPoint
 JNIEXPORT void JNICALL OS_NATIVE(CGPathAddCurveToPoint)
 	(JNIEnv *env, jclass that, jlong arg0, jlong arg1, jdouble arg2, jdouble arg3, jdouble arg4, jdouble arg5, jdouble arg6, jdouble arg7)
