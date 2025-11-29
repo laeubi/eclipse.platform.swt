@@ -210,8 +210,8 @@ public class Snippet388 {
 				String tempDir = System.getProperty("java.io.tmpdir");
 				String pdfPath = tempDir + "/swt_graphics_demo.pdf";
 
-				Rectangle shellBounds = shell.getBounds();
-				PDFDocument pdf = new PDFDocument(pdfPath, shellBounds.width, shellBounds.height);
+				Rectangle clientArea = shell.getClientArea();
+				PDFDocument pdf = new PDFDocument(pdfPath, clientArea.width, clientArea.height);
 				GC gc = new GC(pdf);
 				shell.print(gc);
 				gc.drawString("Exported to PDF...", 0, 0, true);
