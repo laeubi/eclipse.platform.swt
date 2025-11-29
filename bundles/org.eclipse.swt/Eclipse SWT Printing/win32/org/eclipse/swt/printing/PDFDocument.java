@@ -128,7 +128,7 @@ public class PDFDocument implements Drawable {
 		if (device == null) {
 			try {
 				this.device = org.eclipse.swt.widgets.Display.getDefault();
-			} catch (Exception e) {
+			} catch (SWTException e) {
 				this.device = null;
 			}
 		} else {
@@ -146,11 +146,13 @@ public class PDFDocument implements Drawable {
 			if (dwNeeded >= 0) {
 				long hHeap = OS.GetProcessHeap();
 				long lpInitData = OS.HeapAlloc(hHeap, OS.HEAP_ZERO_MEMORY, dwNeeded);
-				int rc = OS.DocumentProperties(0, hPrinter[0], deviceName, lpInitData, 0, OS.DM_OUT_BUFFER);
-				if (rc == OS.IDOK) {
-					handle = OS.CreateDC(driver, deviceName, 0, lpInitData);
+				if (lpInitData != 0) {
+					int rc = OS.DocumentProperties(0, hPrinter[0], deviceName, lpInitData, 0, OS.DM_OUT_BUFFER);
+					if (rc == OS.IDOK) {
+						handle = OS.CreateDC(driver, deviceName, 0, lpInitData);
+					}
+					OS.HeapFree(hHeap, 0, lpInitData);
 				}
-				OS.HeapFree(hHeap, 0, lpInitData);
 			}
 			OS.ClosePrinter(hPrinter[0]);
 		}
