@@ -274,9 +274,11 @@ static int checkStyle (int style) {
 
 @Override
 long cellDataProc (long tree_column, long cell, long tree_model, long iter, long data) {
+	System.out.println("[JAVA] Tree.cellDataProc() - ENTER - cell=" + cell + ", iter=" + iter);
 	if (cell == ignoreCell) return 0;
 	TreeItem item = _getItem (iter);
 	if (item == null || item.isDisposed()) {
+		System.out.println("[JAVA] Tree.cellDataProc() - item is null or disposed, returning");
 		return 0;
 	}
 	if (item != null) OS.g_object_set_qdata (cell, Display.SWT_OBJECT_INDEX2, item.handle);
@@ -304,7 +306,9 @@ long cellDataProc (long tree_column, long cell, long tree_model, long iter, long
 	if ((style & SWT.VIRTUAL) != 0) {
 		if (!item.cached) {
 			//lastIndexOf = index [0];
+			System.out.println("[JAVA] Tree.cellDataProc() - About to call checkData");
 			setData = checkData (item);
+			System.out.println("[JAVA] Tree.cellDataProc() - After checkData, setData=" + setData);
 		}
 		if (item.updated) {
 			updated = true;
@@ -360,6 +364,7 @@ long cellDataProc (long tree_column, long cell, long tree_model, long iter, long
 }
 
 boolean checkData (TreeItem item) {
+	System.out.println("[JAVA] Tree.checkData() - ENTER - cached=" + item.cached);
 	if (item.cached) return true;
 	if ((style & SWT.VIRTUAL) != 0) {
 		item.cached = true;
@@ -372,7 +377,9 @@ boolean checkData (TreeItem item) {
 		OS.g_signal_handlers_block_matched (modelHandle, mask, signal_id, 0, 0, 0, handle);
 		currentItem = item;
 		item.settingData = true;
+		System.out.println("[JAVA] Tree.checkData() - About to send SWT.SetData event");
 		sendEvent (SWT.SetData, event);
+		System.out.println("[JAVA] Tree.checkData() - After sending SWT.SetData event");
 		item.settingData = false;
 		currentItem = null;
 		//widget could be disposed at this point
@@ -1281,9 +1288,12 @@ void destroyItem (TreeColumn column) {
 
 
 void destroyItem (TreeItem item) {
+	System.out.println("[JAVA] Tree.destroyItem() - ENTER - handle=" + item.handle);
 	long selection = GTK.gtk_tree_view_get_selection (handle);
 	OS.g_signal_handlers_block_matched (selection, OS.G_SIGNAL_MATCH_DATA, 0, 0, 0, 0, CHANGED);
+	System.out.println("[JAVA] Tree.destroyItem() - About to call gtk_tree_store_remove");
 	GTK.gtk_tree_store_remove (modelHandle, item.handle);
+	System.out.println("[JAVA] Tree.destroyItem() - After gtk_tree_store_remove");
 	OS.g_signal_handlers_unblock_matched (selection, OS.G_SIGNAL_MATCH_DATA, 0, 0, 0, 0, CHANGED);
 	modelChanged = true;
 

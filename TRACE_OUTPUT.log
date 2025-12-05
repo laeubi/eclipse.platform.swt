@@ -1,0 +1,191 @@
+Compiling DirectCrashTest...
+Running DirectCrashTest...
+========================================
+========================================
+Direct SWT Tree Crash Test
+========================================
+
+SWT SessionManagerDBus: Failed to connect to org.gnome.SessionManager: Could not connect: Permission denied
+SWT SessionManagerDBus: Failed to connect to org.xfce.SessionManager: Could not connect: Permission denied
+[JAVA] Tree.cellDataProc() - ENTER - cell=139735893748432, iter=139735894628512
+[NATIVE C] gtk_tree_model_get_path() - ENTER - model=0x7f16cc5c7bb0, iter=0x7f16cc5c98a0
+[NATIVE C] gtk_tree_model_get_path() - EXIT - returning path=0x7f16cc656c70
+[JAVA] Tree.cellDataProc() - About to call checkData
+[JAVA] Tree.checkData() - ENTER - cached=false
+[NATIVE C] gtk_tree_model_get_path() - ENTER - model=0x7f16cc5c7bb0, iter=0x7f16cc657500
+[NATIVE C] gtk_tree_model_get_path() - EXIT - returning path=0x7f16cc657610
+[NATIVE C] gtk_tree_model_get_path() - ENTER - model=0x7f16cc5c7bb0, iter=0x7f16cc657500
+[NATIVE C] gtk_tree_model_get_path() - EXIT - returning path=0x7f16cc657610
+[JAVA] Tree.checkData() - About to send SWT.SetData event
+[NATIVE C] gtk_tree_model_get_path() - ENTER - model=0x7f16cc5c7bb0, iter=0x7f16cc657500
+[NATIVE C] gtk_tree_model_get_path() - EXIT - returning path=0x7f16cc657650
+[USER CODE] DirectCrashTest.MyContentProvider.updateElement() - parent=root, index=1
+[USER CODE] Node 'Child 1' will be made permanent
+[JAVA] Tree.checkData() - ENTER - cached=true
+[JAVA] Tree.checkData() - After sending SWT.SetData event
+[JAVA] Tree.cellDataProc() - After checkData, setData=true
+[JAVA] Tree.cellDataProc() - ENTER - cell=139735893748432, iter=139735895233696
+[JAVA] Tree.cellDataProc() - ENTER - cell=139735893743296, iter=139735895233696
+[NATIVE C] gtk_tree_model_get_path() - ENTER - model=0x7f16cc5c7bb0, iter=0x7f16cc657500
+[NATIVE C] gtk_tree_model_get_path() - EXIT - returning path=0x7f16cc661be0
+[JAVA] Tree.cellDataProc() - ENTER - cell=139735893743296, iter=139735894628512
+[JAVA] Tree.cellDataProc() - ENTER - cell=139735893748432, iter=139735893758272
+[JAVA] Tree.cellDataProc() - ENTER - cell=139735893748432, iter=139735893270240
+[NATIVE C] gtk_tree_model_get_path() - ENTER - model=0x7f16cc5c7bb0, iter=0x7f16cc47dee0
+[NATIVE C] gtk_tree_model_get_path() - EXIT - returning path=0x7f16cc667200
+[JAVA] Tree.cellDataProc() - About to call checkData
+[JAVA] Tree.checkData() - ENTER - cached=false
+[NATIVE C] gtk_tree_model_get_path() - ENTER - model=0x7f16cc5c7bb0, iter=0x7f16cc463480
+[NATIVE C] gtk_tree_model_get_path() - EXIT - returning path=0x7f16cc667200
+[NATIVE C] gtk_tree_model_get_path() - ENTER - model=0x7f16cc5c7bb0, iter=0x7f16cc463480
+[NATIVE C] gtk_tree_model_get_path() - EXIT - returning path=0x7f16cc667200
+[JAVA] Tree.checkData() - About to send SWT.SetData event
+[NATIVE C] gtk_tree_model_get_path() - ENTER - model=0x7f16cc5c7bb0, iter=0x7f16cc463480
+[NATIVE C] gtk_tree_model_get_path() - EXIT - returning path=0x7f16cc667200
+[USER CODE] DirectCrashTest.MyContentProvider.updateElement() - parent=root, index=0
+[USER CODE] Node 'Child 0' will be made permanent
+[NATIVE C] gtk_tree_model_get_path() - ENTER - model=0x7f16cc5c7bb0, iter=0x7f16cc463480
+[NATIVE C] gtk_tree_model_get_path() - EXIT - returning path=0x7f16cc651ab0
+[JAVA] Tree.checkData() - ENTER - cached=true
+[NATIVE C] gtk_tree_model_get_path() - ENTER - model=0x7f16cc5c7bb0, iter=0x7f16cc463480
+[NATIVE C] gtk_tree_model_get_path() - EXIT - returning path=0x7f16cc651ab0
+[NATIVE C] gtk_tree_model_get_path() - ENTER - model=0x7f16cc5c7bb0, iter=0x7f16cc463480
+[NATIVE C] gtk_tree_model_get_path() - EXIT - returning path=0x7f16cc651ad0
+[NATIVE C] gtk_tree_model_get_path() - ENTER - model=0x7f16cc5c7bb0, iter=0x7f16cc463480
+[NATIVE C] gtk_tree_model_get_path() - EXIT - returning path=0x7f16cc651ab0
+[NATIVE C] gtk_tree_model_get_path() - ENTER - model=0x7f16cc5c7bb0, iter=0x7f16cc463480
+[NATIVE C] gtk_tree_model_get_path() - EXIT - returning path=0x7f16cc651c50
+[NATIVE C] gtk_tree_model_get_path() - ENTER - model=0x7f16cc5c7bb0, iter=0x7f16cc463480
+[NATIVE C] gtk_tree_model_get_path() - EXIT - returning path=0x7f16cc651cf0
+[JAVA] Tree.checkData() - After sending SWT.SetData event
+[JAVA] Tree.cellDataProc() - After checkData, setData=true
+[JAVA] Tree.cellDataProc() - ENTER - cell=139735893748432, iter=139735895186592
+[JAVA] Tree.cellDataProc() - ENTER - cell=139735893743296, iter=139735895186592
+[NATIVE C] gtk_tree_model_get_path() - ENTER - model=0x7f16cc5c7bb0, iter=0x7f16cc463480
+[NATIVE C] gtk_tree_model_get_path() - EXIT - returning path=0x7f16cc65d560
+[JAVA] Tree.cellDataProc() - ENTER - cell=139735893743296, iter=139735893270240
+[JAVA] Tree.cellDataProc() - ENTER - cell=139735893743296, iter=139735893758272
+[JAVA] Tree.cellDataProc() - ENTER - cell=139735893748432, iter=139735895282784
+[JAVA] Tree.cellDataProc() - ENTER - cell=139735893743296, iter=139735895282784
+[JAVA] Tree.cellDataProc() - ENTER - cell=139735893748432, iter=139735895284544
+[JAVA] Tree.cellDataProc() - ENTER - cell=139735893743296, iter=139735895284544
+[JAVA] Tree.cellDataProc() - ENTER - cell=139735893748432, iter=139735895285120
+[NATIVE C] gtk_tree_model_get_path() - ENTER - model=0x7f16cc5c7bb0, iter=0x7f16cc669d80
+[NATIVE C] gtk_tree_model_get_path() - EXIT - returning path=0x7f16cc669950
+[JAVA] Tree.cellDataProc() - About to call checkData
+[JAVA] Tree.checkData() - ENTER - cached=false
+[NATIVE C] gtk_tree_model_get_path() - ENTER - model=0x7f16cc5c7bb0, iter=0x7f16cc669e10
+[NATIVE C] gtk_tree_model_get_path() - EXIT - returning path=0x7f16cc669950
+[NATIVE C] gtk_tree_model_get_path() - ENTER - model=0x7f16cc5c7bb0, iter=0x7f16cc669e10
+[NATIVE C] gtk_tree_model_get_path() - EXIT - returning path=0x7f16cc669950
+[JAVA] Tree.checkData() - About to send SWT.SetData event
+[NATIVE C] gtk_tree_model_get_path() - ENTER - model=0x7f16cc5c7bb0, iter=0x7f16cc669e10
+[NATIVE C] gtk_tree_model_get_path() - EXIT - returning path=0x7f16cc669950
+[USER CODE] DirectCrashTest.MyContentProvider.updateElement() - parent=root, index=2
+[USER CODE] Node 'Child 2' will be made permanent
+[NATIVE C] gtk_tree_model_get_path() - ENTER - model=0x7f16cc5c7bb0, iter=0x7f16cc463480
+[NATIVE C] gtk_tree_model_get_path() - EXIT - returning path=0x7f16cc669850
+[JAVA] Tree.checkData() - ENTER - cached=true
+[NATIVE C] gtk_tree_model_get_path() - ENTER - model=0x7f16cc5c7bb0, iter=0x7f16cc463480
+[NATIVE C] gtk_tree_model_get_path() - EXIT - returning path=0x7f16cc669850
+[NATIVE C] gtk_tree_model_get_path() - ENTER - model=0x7f16cc5c7bb0, iter=0x7f16cc463480
+[NATIVE C] gtk_tree_model_get_path() - EXIT - returning path=0x7f16cc669e60
+[NATIVE C] gtk_tree_model_get_path() - ENTER - model=0x7f16cc5c7bb0, iter=0x7f16cc463480
+[NATIVE C] gtk_tree_model_get_path() - EXIT - returning path=0x7f16cc669850
+[NATIVE C] gtk_tree_model_get_path() - ENTER - model=0x7f16cc5c7bb0, iter=0x7f16cc463480
+[NATIVE C] gtk_tree_model_get_path() - EXIT - returning path=0x7f16cc669e40
+[NATIVE C] gtk_tree_model_get_path() - ENTER - model=0x7f16cc5c7bb0, iter=0x7f16cc463480
+[NATIVE C] gtk_tree_model_get_path() - EXIT - returning path=0x7f16cc669df0
+[JAVA] Tree.checkData() - After sending SWT.SetData event
+[JAVA] Tree.cellDataProc() - After checkData, setData=true
+[JAVA] Tree.cellDataProc() - ENTER - cell=139735893748432, iter=139735895282784
+[JAVA] Tree.cellDataProc() - ENTER - cell=139735893743296, iter=139735895282784
+[NATIVE C] gtk_tree_model_get_path() - ENTER - model=0x7f16cc5c7bb0, iter=0x7f16cc669e10
+[NATIVE C] gtk_tree_model_get_path() - EXIT - returning path=0x7f16cc669ac0
+[JAVA] Tree.cellDataProc() - ENTER - cell=139735893743296, iter=139735895285120
+[JAVA] Tree.cellDataProc() - ENTER - cell=139735893748432, iter=139735895292480
+[JAVA] Tree.cellDataProc() - ENTER - cell=139735893743296, iter=139735895292480
+[JAVA] Tree.cellDataProc() - ENTER - cell=139735893748432, iter=139735895292480
+[JAVA] Tree.cellDataProc() - ENTER - cell=139735893743296, iter=139735895292480
+[JAVA] Tree.cellDataProc() - ENTER - cell=139735893748432, iter=139735895332768
+[JAVA] Tree.cellDataProc() - ENTER - cell=139735893743296, iter=139735895332768
+[JAVA] Tree.cellDataProc() - ENTER - cell=139735893748432, iter=139735895332768
+[JAVA] Tree.cellDataProc() - ENTER - cell=139735893743296, iter=139735895332768
+[JAVA] Tree.cellDataProc() - ENTER - cell=139735893748432, iter=139735896115968
+[JAVA] Tree.cellDataProc() - ENTER - cell=139735893743296, iter=139735896115968
+[JAVA] Tree.cellDataProc() - ENTER - cell=139735893748432, iter=139735896115968
+[JAVA] Tree.cellDataProc() - ENTER - cell=139735893743296, iter=139735896115968
+[JAVA] Tree.cellDataProc() - ENTER - cell=139735893748432, iter=139735893763008
+[JAVA] Tree.cellDataProc() - ENTER - cell=139735893743296, iter=139735893763008
+[JAVA] Tree.cellDataProc() - ENTER - cell=139735893748432, iter=139735893763008
+[JAVA] Tree.cellDataProc() - ENTER - cell=139735893743296, iter=139735893763008
+[JAVA] Tree.cellDataProc() - ENTER - cell=139735893748432, iter=139735895247024
+[JAVA] Tree.cellDataProc() - ENTER - cell=139735893743296, iter=139735895247024
+[JAVA] Tree.cellDataProc() - ENTER - cell=139735893748432, iter=139735895247024
+[JAVA] Tree.cellDataProc() - ENTER - cell=139735893743296, iter=139735895247024
+[JAVA] Tree.cellDataProc() - ENTER - cell=139735893748432, iter=139735895284592
+[JAVA] Tree.cellDataProc() - ENTER - cell=139735893743296, iter=139735895284592
+[JAVA] Tree.cellDataProc() - ENTER - cell=139735893748432, iter=139735895284592
+[JAVA] Tree.cellDataProc() - ENTER - cell=139735893743296, iter=139735895284592
+
+[TEST] Getting first child...
+[TEST] Expanding first child to populate subitems...
+[JAVA] Tree.checkData() - ENTER - cached=true
+[USER CODE] DirectCrashTest.MyContentProvider.updateElement() - parent=Child 0, index=0
+[USER CODE] Node 'SubChild 0.0' is empty and will be removed
+[NATIVE C] gtk_tree_model_get_path() - ENTER - model=0x7f16cc5c7bb0, iter=0x7f16cc463480
+[NATIVE C] gtk_tree_model_get_path() - EXIT - returning path=0x7f16cc67c270
+[JAVA] Tree.checkData() - ENTER - cached=true
+[JAVA] Tree.cellDataProc() - ENTER - cell=139735893748432, iter=139735894851616
+[JAVA] Tree.cellDataProc() - ENTER - cell=139735893743296, iter=139735894851616
+[JAVA] Tree.checkData() - ENTER - cached=true
+[JAVA] TreeItem.destroyWidget() - ENTER
+[JAVA] Tree.destroyItem() - ENTER - handle=139735893161088
+[JAVA] Tree.destroyItem() - About to call gtk_tree_store_remove
+[NATIVE C] gtk_tree_store_remove() - ENTER - store=0x7f16cc5c7bb0, iter=0x7f16cc463480
+[JAVA] Tree.cellDataProc() - ENTER - cell=139735893748432, iter=139735895274640
+[JAVA] Tree.cellDataProc() - ENTER - cell=139735893743296, iter=139735895274640
+[NATIVE C] gtk_tree_store_remove() - EXIT
+[JAVA] Tree.destroyItem() - After gtk_tree_store_remove
+[JAVA] TreeItem.destroyWidget() - EXIT
+Exception in thread "main" org.eclipse.swt.SWTException: Widget is disposed
+	at org.eclipse.swt.SWT.error(SWT.java:4950)
+	at org.eclipse.swt.SWT.error(SWT.java:4865)
+	at org.eclipse.swt.SWT.error(SWT.java:4836)
+	at org.eclipse.swt.widgets.Widget.error(Widget.java:598)
+	at org.eclipse.swt.widgets.Widget.checkWidget(Widget.java:513)
+	at org.eclipse.swt.widgets.Widget.getData(Widget.java:624)
+	at org.eclipse.jface.viewers.TreeViewer.createChildren(TreeViewer.java:602)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.createChildren(AbstractTreeViewer.java:817)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.setExpandedState(AbstractTreeViewer.java:2697)
+	at test.DirectCrashTest.lambda$main$4(DirectCrashTest.java:110)
+	at org.eclipse.swt.widgets.Display.timerProc(Display.java:5769)
+	at org.eclipse.swt.internal.gtk3.GTK3.gtk_main_iteration_do(Native Method)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:4542)
+	at test.DirectCrashTest.main(DirectCrashTest.java:138)
+
+================================================================================
+IMPORTANT NOTE:
+================================================================================
+
+This trace output demonstrates the call path that leads to the crash described  
+in issue #667. The key finding is the re-entrant callback pattern where:
+
+1. Tree.destroyItem() calls gtk_tree_store_remove()
+2. GTK internally triggers callbacks DURING the removal
+3. These callbacks invoke Tree.cellDataProc()
+4. cellDataProc() may then call Tree.checkData()
+5. User code in SWT.SetData event handler may call TreeItem.getExpanded()
+6. getExpanded() calls gtk_tree_model_get_path() on a node being removed
+7. GTK asserts: (G_NODE (iter->user_data)->parent != NULL) - CRASH!
+
+The trace shows cellDataProc() being called BETWEEN the ENTER and EXIT of
+gtk_tree_store_remove(), proving the re-entrancy issue.
+
+All printouts are clearly labeled:
+- [JAVA] = Java code in SWT
+- [NATIVE C] = Native C code in GTK bindings
+- [USER CODE] = User application code (test snippet)
+
+================================================================================
+
