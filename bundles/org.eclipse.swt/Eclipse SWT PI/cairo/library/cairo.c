@@ -1471,3 +1471,27 @@ fail:
 }
 #endif
 
+#ifndef NO_cairo_1pdf_1surface_1create
+JNIEXPORT jlong JNICALL Cairo_NATIVE(cairo_1pdf_1surface_1create)
+	(JNIEnv *env, jclass that, jbyteArray arg0, jdouble arg1, jdouble arg2)
+{
+	jbyte *lparg0=NULL;
+	jlong rc = 0;
+	Cairo_NATIVE_ENTER(env, that, cairo_1pdf_1surface_1create_FUNC);
+	if (arg0) if ((lparg0 = (*env)->GetByteArrayElements(env, arg0, NULL)) == NULL) goto fail;
+/*
+	rc = (jlong)cairo_pdf_surface_create((const char *)lparg0, arg1, arg2);
+*/
+	{
+		Cairo_LOAD_FUNCTION(fp, cairo_pdf_surface_create)
+		if (fp) {
+			rc = (jlong)((cairo_surface_t * (CALLING_CONVENTION*)(const char *, jdouble, jdouble))fp)((const char *)lparg0, arg1, arg2);
+		}
+	}
+fail:
+	if (arg0 && lparg0) (*env)->ReleaseByteArrayElements(env, arg0, lparg0, 0);
+	Cairo_NATIVE_EXIT(env, that, cairo_1pdf_1surface_1create_FUNC);
+	return rc;
+}
+#endif
+

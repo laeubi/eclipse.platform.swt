@@ -87,6 +87,7 @@ typedef enum {
 	cairo_1pattern_1set_1filter_FUNC,
 	cairo_1pattern_1set_1matrix_FUNC,
 	cairo_1pdf_1surface_1set_1size_FUNC,
+	cairo_1pdf_1surface_1create_FUNC,
 	cairo_1pop_1group_1to_1source_FUNC,
 	cairo_1ps_1surface_1set_1size_FUNC,
 	cairo_1push_1group_FUNC,

@@ -19,7 +19,8 @@ import org.junit.platform.suite.api.Suite;
 
 @Suite
 @SelectClasses({
-	Test_GtkConverter.class
+	Test_GtkConverter.class,
+	Test_PDFDocument.class
 })
 
 public class AllGTKTests {
