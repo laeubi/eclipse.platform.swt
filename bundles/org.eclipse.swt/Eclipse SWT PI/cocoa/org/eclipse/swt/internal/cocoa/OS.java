@@ -3200,7 +3200,7 @@ public static final native long CGImageGetWidth(long image);
 public static final native void CGImageRelease(long image);
 /**
  * @param url cast=(CFURLRef)
- * @param mediaBox flags=struct
+ * @param mediaBox cast=(const CGRect *)
  * @param auxiliaryInfo cast=(CFDictionaryRef)
  */
 public static final native long CGPDFContextCreateWithURL(long url, CGRect mediaBox, long auxiliaryInfo);

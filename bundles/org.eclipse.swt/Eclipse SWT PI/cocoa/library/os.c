@@ -1621,7 +1621,7 @@ JNIEXPORT jlong JNICALL OS_NATIVE(CGPDFContextCreateWithURL)
 	jlong rc = 0;
 	OS_NATIVE_ENTER(env, that, CGPDFContextCreateWithURL_FUNC);
 	if (arg1) if ((lparg1 = getCGRectFields(env, arg1, &_arg1)) == NULL) goto fail;
-	rc = (jlong)CGPDFContextCreateWithURL((CFURLRef)arg0, *lparg1, (CFDictionaryRef)arg2);
+	rc = (jlong)CGPDFContextCreateWithURL((CFURLRef)arg0, (const CGRect *)lparg1, (CFDictionaryRef)arg2);
 fail:
 	if (arg1 && lparg1) setCGRectFields(env, arg1, lparg1);
 	OS_NATIVE_EXIT(env, that, CGPDFContextCreateWithURL_FUNC);
