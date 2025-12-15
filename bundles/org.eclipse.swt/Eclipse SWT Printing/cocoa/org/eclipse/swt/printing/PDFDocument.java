@@ -330,7 +330,11 @@ public class PDFDocument implements Drawable {
 		NSAutoreleasePool pool = null;
 		if (!NSThread.isMainThread()) pool = (NSAutoreleasePool) new NSAutoreleasePool().alloc().init();
 		try {
-			NSGraphicsContext.static_restoreGraphicsState();
+			// Only restore the graphics state if it hasn't been restored yet by uncheckGC()
+			if (data != null && data.restoreContext) {
+				NSGraphicsContext.static_restoreGraphicsState();
+				data.restoreContext = false;
+			}
 			if (data != null) isGCCreated = false;
 		} finally {
 			if (pool != null) pool.release();
