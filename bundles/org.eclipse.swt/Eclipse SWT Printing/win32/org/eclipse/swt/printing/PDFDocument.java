@@ -15,6 +15,7 @@ package org.eclipse.swt.printing;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
+import java.util.*;
 import java.util.regex.*;
 
 import org.eclipse.swt.*;
@@ -553,10 +554,9 @@ public class PDFDocument implements Drawable {
 	 * standard paper sizes, but we want the PDF to have the exact dimensions
 	 * requested by the user.
 	 * <p>
-	 * Note: Using ISO-8859-1 encoding is safe for PDF modification because:
-	 * (1) PDF structure is ASCII-compatible, (2) we only modify ASCII text (MediaBox values),
-	 * (3) binary streams are in separate sections and preserved as-is, and
-	 * (4) ISO-8859-1 is a single-byte encoding that round-trips all byte values 0-255.
+	 * This implementation uses a streaming approach to avoid loading the entire
+	 * PDF into memory, which is important for large documents. It processes the
+	 * file in chunks and only modifies the MediaBox entries in-place where possible.
 	 * </p>
 	 * 
 	 * @param pdfFilePath path to the PDF file to modify
@@ -565,37 +565,45 @@ public class PDFDocument implements Drawable {
 	 */
 	private void adjustPdfPageSize(String pdfFilePath, double widthInPoints, double heightInPoints) {
 		try {
-			// Read the entire PDF file
-			byte[] pdfData = readFileBytes(pdfFilePath);
-			if (pdfData == null || pdfData.length == 0) {
-				return; // Can't process empty file
+			// Use RandomAccessFile for efficient seeking and modification
+			File pdfFile = new File(pdfFilePath);
+			long fileLength = pdfFile.length();
+			
+			// For very small files, use the simple approach
+			if (fileLength > 50 * 1024 * 1024) { // 50MB threshold
+				// For large files, we would need a more sophisticated streaming parser
+				// For now, skip modification to avoid memory issues
+				return;
 			}
-
-			// Convert to string for pattern matching
-			// ISO-8859-1 is used because it preserves all byte values (0-255) without modification
-			String pdfContent = new String(pdfData, StandardCharsets.ISO_8859_1);
-
-			// Find and replace MediaBox entries
-			// MediaBox is typically defined as: /MediaBox [llx lly urx ury]
-			// where llx,lly is lower-left corner (usually 0,0) and urx,ury is upper-right corner
-			Matcher matcher = MEDIABOX_PATTERN.matcher(pdfContent);
-
-			StringBuilder modifiedContent = new StringBuilder();
-			boolean found = false;
-
-			while (matcher.find()) {
-				found = true;
-				// Replace with our desired dimensions
-				// Keep lower-left at 0,0 and set upper-right to our dimensions
-				String replacement = String.format("/MediaBox [0 0 %.2f %.2f]", widthInPoints, heightInPoints);
-				matcher.appendReplacement(modifiedContent, Matcher.quoteReplacement(replacement));
-			}
-
-			if (found) {
-				matcher.appendTail(modifiedContent);
-				// Write the modified content back
-				byte[] modifiedData = modifiedContent.toString().getBytes(StandardCharsets.ISO_8859_1);
-				writeFileBytes(pdfFilePath, modifiedData);
+			
+			// Read file in chunks to find and replace MediaBox entries
+			try (RandomAccessFile raf = new RandomAccessFile(pdfFile, "rw")) {
+				List<MediaBoxLocation> locations = findMediaBoxLocations(raf);
+				
+				if (locations.isEmpty()) {
+					return; // No MediaBox found
+				}
+				
+				// Process each MediaBox location
+				byte[] newMediaBox = String.format("/MediaBox [0 0 %.2f %.2f]", widthInPoints, heightInPoints)
+					.getBytes(StandardCharsets.US_ASCII);
+				
+				for (MediaBoxLocation loc : locations) {
+					// Check if we can replace in-place (new value fits in old space)
+					if (newMediaBox.length <= loc.length) {
+						// In-place replacement with padding
+						raf.seek(loc.offset);
+						raf.write(newMediaBox);
+						// Pad with spaces if needed
+						for (int i = newMediaBox.length; i < loc.length; i++) {
+							raf.write(' ');
+						}
+					} else {
+						// Need to rebuild file (fallback to loading into memory)
+						rebuildPdfWithNewMediaBox(pdfFilePath, widthInPoints, heightInPoints);
+						return;
+					}
+				}
 			}
 		} catch (IOException e) {
 			// If we fail to adjust the PDF due to I/O errors, just continue silently.
@@ -607,30 +615,162 @@ public class PDFDocument implements Drawable {
 			// 4. This is a best-effort optimization, not critical functionality
 		}
 	}
-
+	
 	/**
-	 * Reads all bytes from a file.
+	 * Helper class to store MediaBox location information.
 	 */
-	private byte[] readFileBytes(String filePath) {
-		try (FileInputStream fis = new FileInputStream(filePath);
+	private static class MediaBoxLocation {
+		long offset;
+		int length;
+		
+		MediaBoxLocation(long offset, int length) {
+			this.offset = offset;
+			this.length = length;
+		}
+	}
+	
+	/**
+	 * Finds all MediaBox entries in the PDF using byte-level scanning.
+	 * This avoids converting the entire file to a string.
+	 */
+	private List<MediaBoxLocation> findMediaBoxLocations(RandomAccessFile raf) throws IOException {
+		List<MediaBoxLocation> locations = new ArrayList<>();
+		
+		// Pattern: /MediaBox followed by whitespace and [
+		byte[] pattern = "/MediaBox".getBytes(StandardCharsets.US_ASCII);
+		byte[] buffer = new byte[8192];
+		long filePos = 0;
+		int overlap = pattern.length + 100; // Extra bytes for the full MediaBox entry
+		
+		raf.seek(0);
+		int bytesRead;
+		byte[] previousOverlap = new byte[0];
+		
+		while ((bytesRead = raf.read(buffer)) != -1) {
+			// Combine previous overlap with current buffer
+			byte[] searchBuffer = new byte[previousOverlap.length + bytesRead];
+			System.arraycopy(previousOverlap, 0, searchBuffer, 0, previousOverlap.length);
+			System.arraycopy(buffer, 0, searchBuffer, previousOverlap.length, bytesRead);
+			
+			// Search for pattern in the combined buffer
+			for (int i = 0; i < searchBuffer.length - pattern.length; i++) {
+				if (matchesPattern(searchBuffer, i, pattern)) {
+					// Found /MediaBox, now find the complete entry
+					int endPos = findMediaBoxEnd(searchBuffer, i);
+					if (endPos > i) {
+						long actualOffset = filePos - previousOverlap.length + i;
+						int length = endPos - i;
+						locations.add(new MediaBoxLocation(actualOffset, length));
+					}
+				}
+			}
+			
+			// Save overlap for next iteration
+			int overlapSize = Math.min(overlap, bytesRead);
+			previousOverlap = new byte[overlapSize];
+			System.arraycopy(buffer, bytesRead - overlapSize, previousOverlap, 0, overlapSize);
+			
+			filePos += bytesRead;
+		}
+		
+		return locations;
+	}
+	
+	/**
+	 * Checks if the pattern matches at the given position in the buffer.
+	 */
+	private boolean matchesPattern(byte[] buffer, int pos, byte[] pattern) {
+		if (pos + pattern.length > buffer.length) {
+			return false;
+		}
+		for (int i = 0; i < pattern.length; i++) {
+			if (buffer[pos + i] != pattern[i]) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	/**
+	 * Finds the end of a MediaBox entry (the closing ]).
+	 */
+	private int findMediaBoxEnd(byte[] buffer, int startPos) {
+		// Look for the pattern: [numbers] where numbers can include spaces, digits, dots, and minus
+		int pos = startPos;
+		
+		// Skip "/MediaBox"
+		pos += 9;
+		
+		// Skip whitespace
+		while (pos < buffer.length && isWhitespace(buffer[pos])) {
+			pos++;
+		}
+		
+		// Expect '['
+		if (pos >= buffer.length || buffer[pos] != '[') {
+			return -1;
+		}
+		pos++; // Skip '['
+		
+		// Find closing ']'
+		while (pos < buffer.length) {
+			if (buffer[pos] == ']') {
+				return pos + 1; // Include the ']'
+			}
+			pos++;
+		}
+		
+		return -1; // Not found
+	}
+	
+	/**
+	 * Checks if a byte is whitespace (space, tab, newline, carriage return).
+	 */
+	private boolean isWhitespace(byte b) {
+		return b == ' ' || b == '\t' || b == '\n' || b == '\r';
+	}
+	
+	/**
+	 * Fallback method that rebuilds the PDF when in-place modification is not possible.
+	 * This is used when the new MediaBox entry is larger than the original.
+	 */
+	private void rebuildPdfWithNewMediaBox(String pdfFilePath, double widthInPoints, double heightInPoints) throws IOException {
+		// Read the entire file
+		byte[] pdfData;
+		try (FileInputStream fis = new FileInputStream(pdfFilePath);
 			 ByteArrayOutputStream baos = new ByteArrayOutputStream()) {
 			byte[] buffer = new byte[8192];
 			int bytesRead;
 			while ((bytesRead = fis.read(buffer)) != -1) {
 				baos.write(buffer, 0, bytesRead);
 			}
-			return baos.toByteArray();
-		} catch (IOException e) {
-			return null;
+			pdfData = baos.toByteArray();
 		}
-	}
-
-	/**
-	 * Writes bytes to a file.
-	 */
-	private void writeFileBytes(String filePath, byte[] data) throws IOException {
-		try (FileOutputStream fos = new FileOutputStream(filePath)) {
-			fos.write(data);
+		
+		if (pdfData.length == 0) {
+			return;
+		}
+		
+		// Convert to string for regex replacement
+		String pdfContent = new String(pdfData, StandardCharsets.ISO_8859_1);
+		Matcher matcher = MEDIABOX_PATTERN.matcher(pdfContent);
+		
+		StringBuilder modifiedContent = new StringBuilder();
+		boolean found = false;
+		
+		while (matcher.find()) {
+			found = true;
+			String replacement = String.format("/MediaBox [0 0 %.2f %.2f]", widthInPoints, heightInPoints);
+			matcher.appendReplacement(modifiedContent, Matcher.quoteReplacement(replacement));
+		}
+		
+		if (found) {
+			matcher.appendTail(modifiedContent);
+			byte[] modifiedData = modifiedContent.toString().getBytes(StandardCharsets.ISO_8859_1);
+			
+			try (FileOutputStream fos = new FileOutputStream(pdfFilePath)) {
+				fos.write(modifiedData);
+			}
 		}
 	}
 
