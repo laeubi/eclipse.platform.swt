@@ -106,6 +106,21 @@ public class PDFDocument implements Drawable {
 	 */
 	private static final Pattern MEDIABOX_PATTERN = Pattern.compile("/MediaBox\\s*\\[\\s*([-0-9.]+)\\s+([-0-9.]+)\\s+([-0-9.]+)\\s+([-0-9.]+)\\s*\\]");
 	
+	/** Maximum file size (in bytes) for in-memory processing. Files larger than this are skipped. */
+	private static final long MAX_PDF_SIZE_FOR_PROCESSING = 50 * 1024 * 1024; // 50MB
+	
+	/** Size of buffer for reading PDF files in chunks */
+	private static final int PDF_BUFFER_SIZE = 8192;
+	
+	/** 
+	 * Extra overlap bytes to ensure MediaBox entries spanning chunk boundaries are found.
+	 * This includes space for "/MediaBox" (9 bytes) plus room for the full entry (typically ~30 bytes).
+	 */
+	private static final int CHUNK_OVERLAP_SIZE = 100;
+	
+	/** Length of the "/MediaBox" pattern in bytes */
+	private static final int MEDIABOX_PATTERN_LENGTH = 9;
+	
 	/** Helper class to represent a paper size with orientation */
 	private static class PaperSize {
 		int paperSizeConstant;
@@ -569,8 +584,8 @@ public class PDFDocument implements Drawable {
 			File pdfFile = new File(pdfFilePath);
 			long fileLength = pdfFile.length();
 			
-			// For very small files, use the simple approach
-			if (fileLength > 50 * 1024 * 1024) { // 50MB threshold
+			// Skip very large files to avoid memory issues
+			if (fileLength > MAX_PDF_SIZE_FOR_PROCESSING) {
 				// For large files, we would need a more sophisticated streaming parser
 				// For now, skip modification to avoid memory issues
 				return;
@@ -617,10 +632,12 @@ public class PDFDocument implements Drawable {
 	}
 	
 	/**
-	 * Helper class to store MediaBox location information.
+	 * Helper class to store MediaBox location information in the PDF file.
 	 */
 	private static class MediaBoxLocation {
+		/** Byte offset in the file where the MediaBox entry starts */
 		long offset;
+		/** Length of the MediaBox entry in bytes (including "/MediaBox [...] ") */
 		int length;
 		
 		MediaBoxLocation(long offset, int length) {
@@ -638,9 +655,8 @@ public class PDFDocument implements Drawable {
 		
 		// Pattern: /MediaBox followed by whitespace and [
 		byte[] pattern = "/MediaBox".getBytes(StandardCharsets.US_ASCII);
-		byte[] buffer = new byte[8192];
+		byte[] buffer = new byte[PDF_BUFFER_SIZE];
 		long filePos = 0;
-		int overlap = pattern.length + 100; // Extra bytes for the full MediaBox entry
 		
 		raf.seek(0);
 		int bytesRead;
@@ -653,7 +669,9 @@ public class PDFDocument implements Drawable {
 			System.arraycopy(buffer, 0, searchBuffer, previousOverlap.length, bytesRead);
 			
 			// Search for pattern in the combined buffer
-			for (int i = 0; i < searchBuffer.length - pattern.length; i++) {
+			// Guard against buffer being too small
+			int searchLimit = searchBuffer.length >= pattern.length ? searchBuffer.length - pattern.length : 0;
+			for (int i = 0; i < searchLimit; i++) {
 				if (matchesPattern(searchBuffer, i, pattern)) {
 					// Found /MediaBox, now find the complete entry
 					int endPos = findMediaBoxEnd(searchBuffer, i);
@@ -666,7 +684,7 @@ public class PDFDocument implements Drawable {
 			}
 			
 			// Save overlap for next iteration
-			int overlapSize = Math.min(overlap, bytesRead);
+			int overlapSize = Math.min(CHUNK_OVERLAP_SIZE, bytesRead);
 			previousOverlap = new byte[overlapSize];
 			System.arraycopy(buffer, bytesRead - overlapSize, previousOverlap, 0, overlapSize);
 			
@@ -698,8 +716,8 @@ public class PDFDocument implements Drawable {
 		// Look for the pattern: [numbers] where numbers can include spaces, digits, dots, and minus
 		int pos = startPos;
 		
-		// Skip "/MediaBox"
-		pos += 9;
+		// Skip "/MediaBox" pattern
+		pos += MEDIABOX_PATTERN_LENGTH;
 		
 		// Skip whitespace
 		while (pos < buffer.length && isWhitespace(buffer[pos])) {
