@@ -13,6 +13,10 @@
  *******************************************************************************/
 package org.eclipse.swt.printing;
 
+import java.io.*;
+import java.nio.charset.StandardCharsets;
+import java.util.regex.*;
+
 import org.eclipse.swt.*;
 import org.eclipse.swt.graphics.*;
 import org.eclipse.swt.internal.win32.*;
@@ -68,14 +72,24 @@ public class PDFDocument implements Drawable {
 	double height;
 
 	/**
-	 * Width of the page in points (1/72 inch)
+	 * Width of the page in points (1/72 inch) - standard paper size used for printing
 	 */
 	double widthInPoints;
 
 	/**
-	 * Height of the page in points (1/72 inch)
+	 * Height of the page in points (1/72 inch) - standard paper size used for printing
 	 */
 	double heightInPoints;
+
+	/**
+	 * Actual requested width in points (1/72 inch) - what the user wants
+	 */
+	double requestedWidthInPoints;
+
+	/**
+	 * Actual requested height in points (1/72 inch) - what the user wants
+	 */
+	double requestedHeightInPoints;
 
 	/** The name of the Microsoft Print to PDF printer */
 	private static final String PDF_PRINTER_NAME = "Microsoft Print to PDF";
@@ -221,6 +235,10 @@ public class PDFDocument implements Drawable {
 		}
 		double widthInInches = width / screenDpiX;
 		double heightInInches = height / screenDpiY;
+		
+		// Store the actual requested dimensions in points
+		this.requestedWidthInPoints = widthInInches * 72.0;
+		this.requestedHeightInPoints = heightInInches * 72.0;
 		
 		// Microsoft Print to PDF doesn't support custom page sizes
 		// Find the best matching standard paper size
@@ -501,6 +519,82 @@ public class PDFDocument implements Drawable {
 	}
 
 	/**
+	 * Modifies the PDF file to set the correct MediaBox dimensions.
+	 * This is needed because the Windows Print to PDF printer only supports
+	 * standard paper sizes, but we want the PDF to have the exact dimensions
+	 * requested by the user.
+	 * 
+	 * @param pdfFilePath path to the PDF file to modify
+	 * @param widthInPoints desired width in points (1/72 inch)
+	 * @param heightInPoints desired height in points (1/72 inch)
+	 */
+	private void adjustPdfPageSize(String pdfFilePath, double widthInPoints, double heightInPoints) {
+		try {
+			// Read the entire PDF file
+			byte[] pdfData = readFileBytes(pdfFilePath);
+			if (pdfData == null || pdfData.length == 0) {
+				return; // Can't process empty file
+			}
+
+			// Convert to string for pattern matching
+			String pdfContent = new String(pdfData, StandardCharsets.ISO_8859_1);
+
+			// Pattern to find MediaBox entries
+			// MediaBox is typically defined as: /MediaBox [llx lly urx ury]
+			// where llx,lly is lower-left corner (usually 0,0) and urx,ury is upper-right corner
+			Pattern mediaBoxPattern = Pattern.compile("/MediaBox\\s*\\[\\s*([0-9.]+)\\s+([0-9.]+)\\s+([0-9.]+)\\s+([0-9.]+)\\s*\\]");
+			Matcher matcher = mediaBoxPattern.matcher(pdfContent);
+
+			StringBuffer modifiedContent = new StringBuffer();
+			boolean found = false;
+
+			while (matcher.find()) {
+				found = true;
+				// Replace with our desired dimensions
+				// Keep lower-left at 0,0 and set upper-right to our dimensions
+				String replacement = String.format("/MediaBox [0 0 %.2f %.2f]", widthInPoints, heightInPoints);
+				matcher.appendReplacement(modifiedContent, Matcher.quoteReplacement(replacement));
+			}
+
+			if (found) {
+				matcher.appendTail(modifiedContent);
+				// Write the modified content back
+				byte[] modifiedData = modifiedContent.toString().getBytes(StandardCharsets.ISO_8859_1);
+				writeFileBytes(pdfFilePath, modifiedData);
+			}
+		} catch (Exception e) {
+			// If we fail to adjust the PDF, just continue - the PDF will have the standard paper size
+			// This is not a critical error
+		}
+	}
+
+	/**
+	 * Reads all bytes from a file.
+	 */
+	private byte[] readFileBytes(String filePath) {
+		try (FileInputStream fis = new FileInputStream(filePath);
+			 ByteArrayOutputStream baos = new ByteArrayOutputStream()) {
+			byte[] buffer = new byte[8192];
+			int bytesRead;
+			while ((bytesRead = fis.read(buffer)) != -1) {
+				baos.write(buffer, 0, bytesRead);
+			}
+			return baos.toByteArray();
+		} catch (IOException e) {
+			return null;
+		}
+	}
+
+	/**
+	 * Writes bytes to a file.
+	 */
+	private void writeFileBytes(String filePath, byte[] data) throws IOException {
+		try (FileOutputStream fos = new FileOutputStream(filePath)) {
+			fos.write(data);
+		}
+	}
+
+	/**
 	 * Disposes of the operating system resources associated with
 	 * the PDFDocument. Applications must dispose of all PDFDocuments
 	 * that they allocate.
@@ -521,6 +615,12 @@ public class PDFDocument implements Drawable {
 			}
 			OS.DeleteDC(handle);
 			handle = 0;
+		}
+
+		// After the PDF is created, adjust the page size to match the requested dimensions
+		// This is necessary because Windows Print to PDF only supports standard paper sizes
+		if (filename != null) {
+			adjustPdfPageSize(filename, requestedWidthInPoints, requestedHeightInPoints);
 		}
 	}
 }
