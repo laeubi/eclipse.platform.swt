@@ -48,6 +48,16 @@ public class PDFDocumentSizeTest {
 				double height = 800;
 				
 				PDFDocument pdf = new PDFDocument(pdfPath, width, height);
+				
+				// Verify getWidth() and getHeight() return correct values
+				double pdfWidth = pdf.getWidth();
+				double pdfHeight = pdf.getHeight();
+				double expectedWidthInPoints = width / 96.0 * 72.0;
+				double expectedHeightInPoints = height / 96.0 * 72.0;
+				
+				System.out.println("PDFDocument.getWidth() = " + pdfWidth + " points (expected " + expectedWidthInPoints + ")");
+				System.out.println("PDFDocument.getHeight() = " + pdfHeight + " points (expected " + expectedHeightInPoints + ")");
+				
 				GC gc = new GC(pdf);
 				
 				// Draw some content

@@ -36,7 +36,12 @@ import org.eclipse.swt.internal.win32.*;
  * </p>
  * <p>
  * <b>Note:</b> On Windows, this class uses the built-in "Microsoft Print to PDF"
- * printer which is available on Windows 10 and later.
+ * printer which is available on Windows 10 and later. Since this printer only
+ * supports standard paper sizes (Letter, A4, etc.), the implementation internally
+ * selects the best matching standard paper size during printing. After the PDF is
+ * created, the page dimensions in the PDF metadata (MediaBox) are automatically
+ * adjusted to match the exact dimensions requested by the user. This ensures the
+ * final PDF has the correct page size without requiring external PDF libraries.
  * </p>
  * <p>
  * The following example demonstrates how to use PDFDocument:
@@ -355,6 +360,7 @@ public class PDFDocument implements Drawable {
 	 * <p>
 	 * <b>Note:</b> On Windows, changing page dimensions after the document
 	 * has been started may not be fully supported by all printer drivers.
+	 * The page size will be adjusted in the final PDF to match the requested dimensions.
 	 * </p>
 	 *
 	 * @param widthInPoints the width of the new page in points (1/72 inch)
@@ -371,13 +377,26 @@ public class PDFDocument implements Drawable {
 		if (disposed) SWT.error(SWT.ERROR_WIDGET_DISPOSED);
 		if (widthInPoints <= 0 || heightInPoints <= 0) SWT.error(SWT.ERROR_INVALID_ARGUMENT);
 
-		this.widthInPoints = widthInPoints;
-		this.heightInPoints = heightInPoints;
+		// Store requested dimensions for final PDF adjustment
+		this.requestedWidthInPoints = widthInPoints;
+		this.requestedHeightInPoints = heightInPoints;
+		
+		// Find appropriate standard paper size for printing
+		double widthInInches = widthInPoints / 72.0;
+		double heightInInches = heightInPoints / 72.0;
+		PaperSize bestMatch = findBestPaperSize(widthInInches, heightInInches);
+		this.widthInPoints = bestMatch.widthInInches * 72.0;
+		this.heightInPoints = bestMatch.heightInInches * 72.0;
+		
 		newPage();
 	}
 
 	/**
 	 * Returns the width of the current page in points.
+	 * <p>
+	 * Note: This returns the actual requested width, not the standard paper size
+	 * used internally for printing. The final PDF will have these exact dimensions.
+	 * </p>
 	 *
 	 * @return the width in points (1/72 inch)
 	 *
@@ -387,11 +406,15 @@ public class PDFDocument implements Drawable {
 	 */
 	public double getWidth() {
 		if (disposed) SWT.error(SWT.ERROR_WIDGET_DISPOSED);
-		return widthInPoints;
+		return requestedWidthInPoints;
 	}
 
 	/**
 	 * Returns the height of the current page in points.
+	 * <p>
+	 * Note: This returns the actual requested height, not the standard paper size
+	 * used internally for printing. The final PDF will have these exact dimensions.
+	 * </p>
 	 *
 	 * @return the height in points (1/72 inch)
 	 *
@@ -401,7 +424,7 @@ public class PDFDocument implements Drawable {
 	 */
 	public double getHeight() {
 		if (disposed) SWT.error(SWT.ERROR_WIDGET_DISPOSED);
-		return heightInPoints;
+		return requestedHeightInPoints;
 	}
 
 	/**
