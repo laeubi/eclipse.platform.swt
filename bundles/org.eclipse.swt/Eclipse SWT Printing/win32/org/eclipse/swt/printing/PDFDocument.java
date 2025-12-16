@@ -99,6 +99,9 @@ public class PDFDocument implements Drawable {
 	/** The name of the Microsoft Print to PDF printer */
 	private static final String PDF_PRINTER_NAME = "Microsoft Print to PDF";
 	
+	/** Pattern to find MediaBox entries in PDF files */
+	private static final Pattern MEDIABOX_PATTERN = Pattern.compile("/MediaBox\\s*\\[\\s*([0-9.]+)\\s+([0-9.]+)\\s+([0-9.]+)\\s+([0-9.]+)\\s*\\]");
+	
 	/** Helper class to represent a paper size with orientation */
 	private static class PaperSize {
 		int paperSizeConstant;
@@ -540,9 +543,6 @@ public class PDFDocument implements Drawable {
 	public boolean isDisposed() {
 		return disposed;
 	}
-
-	/** Pattern to find MediaBox entries in PDF files */
-	private static final Pattern MEDIABOX_PATTERN = Pattern.compile("/MediaBox\\s*\\[\\s*([0-9.]+)\\s+([0-9.]+)\\s+([0-9.]+)\\s+([0-9.]+)\\s*\\]");
 
 	/**
 	 * Modifies the PDF file to set the correct MediaBox dimensions.
