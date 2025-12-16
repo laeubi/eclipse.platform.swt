@@ -541,6 +541,9 @@ public class PDFDocument implements Drawable {
 		return disposed;
 	}
 
+	/** Pattern to find MediaBox entries in PDF files */
+	private static final Pattern MEDIABOX_PATTERN = Pattern.compile("/MediaBox\\s*\\[\\s*([0-9.]+)\\s+([0-9.]+)\\s+([0-9.]+)\\s+([0-9.]+)\\s*\\]");
+
 	/**
 	 * Modifies the PDF file to set the correct MediaBox dimensions.
 	 * This is needed because the Windows Print to PDF printer only supports
@@ -562,13 +565,12 @@ public class PDFDocument implements Drawable {
 			// Convert to string for pattern matching
 			String pdfContent = new String(pdfData, StandardCharsets.ISO_8859_1);
 
-			// Pattern to find MediaBox entries
+			// Find and replace MediaBox entries
 			// MediaBox is typically defined as: /MediaBox [llx lly urx ury]
 			// where llx,lly is lower-left corner (usually 0,0) and urx,ury is upper-right corner
-			Pattern mediaBoxPattern = Pattern.compile("/MediaBox\\s*\\[\\s*([0-9.]+)\\s+([0-9.]+)\\s+([0-9.]+)\\s+([0-9.]+)\\s*\\]");
-			Matcher matcher = mediaBoxPattern.matcher(pdfContent);
+			Matcher matcher = MEDIABOX_PATTERN.matcher(pdfContent);
 
-			StringBuffer modifiedContent = new StringBuffer();
+			StringBuilder modifiedContent = new StringBuilder();
 			boolean found = false;
 
 			while (matcher.find()) {
@@ -585,9 +587,9 @@ public class PDFDocument implements Drawable {
 				byte[] modifiedData = modifiedContent.toString().getBytes(StandardCharsets.ISO_8859_1);
 				writeFileBytes(pdfFilePath, modifiedData);
 			}
-		} catch (Exception e) {
-			// If we fail to adjust the PDF, just continue - the PDF will have the standard paper size
-			// This is not a critical error
+		} catch (IOException e) {
+			// If we fail to adjust the PDF due to I/O errors, just continue
+			// The PDF will have the standard paper size, which is not ideal but functional
 		}
 	}
 

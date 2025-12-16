@@ -28,6 +28,9 @@ import org.eclipse.swt.widgets.*;
  */
 public class PDFDocumentSizeTest {
 
+	/** Pattern to find MediaBox entries in PDF files */
+	private static final Pattern MEDIABOX_PATTERN = Pattern.compile("/MediaBox\\s*\\[\\s*([0-9.]+)\\s+([0-9.]+)\\s+([0-9.]+)\\s+([0-9.]+)\\s*\\]");
+
 	public static void main(String[] args) {
 		Display display = new Display();
 		Shell shell = new Shell(display);
@@ -106,8 +109,7 @@ public class PDFDocumentSizeTest {
 			String pdfContent = new String(pdfData, StandardCharsets.ISO_8859_1);
 			
 			// Find MediaBox entries
-			Pattern mediaBoxPattern = Pattern.compile("/MediaBox\\s*\\[\\s*([0-9.]+)\\s+([0-9.]+)\\s+([0-9.]+)\\s+([0-9.]+)\\s*\\]");
-			Matcher matcher = mediaBoxPattern.matcher(pdfContent);
+			Matcher matcher = MEDIABOX_PATTERN.matcher(pdfContent);
 			
 			// Calculate expected dimensions in points (1/72 inch)
 			// At 96 DPI: width/96 * 72 points
