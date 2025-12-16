@@ -141,7 +141,7 @@ public class PDFDocument implements Drawable {
 			if (pdfContext == 0) SWT.error(SWT.ERROR_NO_HANDLES);
 
 			// Create an NSGraphicsContext from the CGContext
-			graphicsContext = NSGraphicsContext.graphicsContextWithGraphicsPort(pdfContext, true);
+			graphicsContext = NSGraphicsContext.graphicsContextWithGraphicsPort(pdfContext, false);
 			if (graphicsContext == null) {
 				OS.CGContextRelease(pdfContext);
 				pdfContext = 0;
