@@ -28,8 +28,11 @@ import org.eclipse.swt.widgets.*;
  */
 public class PDFDocumentSizeTest {
 
-	/** Pattern to find MediaBox entries in PDF files */
-	private static final Pattern MEDIABOX_PATTERN = Pattern.compile("/MediaBox\\s*\\[\\s*([0-9.]+)\\s+([0-9.]+)\\s+([0-9.]+)\\s+([0-9.]+)\\s*\\]");
+	/** 
+	 * Pattern to find MediaBox entries in PDF files.
+	 * MediaBox format: /MediaBox [llx lly urx ury] where coordinates can be positive or negative numbers.
+	 */
+	private static final Pattern MEDIABOX_PATTERN = Pattern.compile("/MediaBox\\s*\\[\\s*([-0-9.]+)\\s+([-0-9.]+)\\s+([-0-9.]+)\\s+([-0-9.]+)\\s*\\]");
 
 	public static void main(String[] args) {
 		Display display = new Display();

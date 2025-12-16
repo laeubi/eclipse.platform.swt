@@ -99,8 +99,11 @@ public class PDFDocument implements Drawable {
 	/** The name of the Microsoft Print to PDF printer */
 	private static final String PDF_PRINTER_NAME = "Microsoft Print to PDF";
 	
-	/** Pattern to find MediaBox entries in PDF files */
-	private static final Pattern MEDIABOX_PATTERN = Pattern.compile("/MediaBox\\s*\\[\\s*([0-9.]+)\\s+([0-9.]+)\\s+([0-9.]+)\\s+([0-9.]+)\\s*\\]");
+	/** 
+	 * Pattern to find MediaBox entries in PDF files.
+	 * MediaBox format: /MediaBox [llx lly urx ury] where coordinates can be positive or negative numbers.
+	 */
+	private static final Pattern MEDIABOX_PATTERN = Pattern.compile("/MediaBox\\s*\\[\\s*([-0-9.]+)\\s+([-0-9.]+)\\s+([-0-9.]+)\\s+([-0-9.]+)\\s*\\]");
 	
 	/** Helper class to represent a paper size with orientation */
 	private static class PaperSize {
@@ -549,6 +552,12 @@ public class PDFDocument implements Drawable {
 	 * This is needed because the Windows Print to PDF printer only supports
 	 * standard paper sizes, but we want the PDF to have the exact dimensions
 	 * requested by the user.
+	 * <p>
+	 * Note: Using ISO-8859-1 encoding is safe for PDF modification because:
+	 * (1) PDF structure is ASCII-compatible, (2) we only modify ASCII text (MediaBox values),
+	 * (3) binary streams are in separate sections and preserved as-is, and
+	 * (4) ISO-8859-1 is a single-byte encoding that round-trips all byte values 0-255.
+	 * </p>
 	 * 
 	 * @param pdfFilePath path to the PDF file to modify
 	 * @param widthInPoints desired width in points (1/72 inch)
@@ -563,6 +572,7 @@ public class PDFDocument implements Drawable {
 			}
 
 			// Convert to string for pattern matching
+			// ISO-8859-1 is used because it preserves all byte values (0-255) without modification
 			String pdfContent = new String(pdfData, StandardCharsets.ISO_8859_1);
 
 			// Find and replace MediaBox entries
@@ -588,8 +598,13 @@ public class PDFDocument implements Drawable {
 				writeFileBytes(pdfFilePath, modifiedData);
 			}
 		} catch (IOException e) {
-			// If we fail to adjust the PDF due to I/O errors, just continue
-			// The PDF will have the standard paper size, which is not ideal but functional
+			// If we fail to adjust the PDF due to I/O errors, just continue silently.
+			// The PDF will have the standard paper size, which is not ideal but functional.
+			// This is an acceptable fallback since:
+			// 1. The PDF is still valid and usable
+			// 2. The content is correctly rendered
+			// 3. It only affects the page dimensions in the metadata
+			// 4. This is a best-effort optimization, not critical functionality
 		}
 	}
 
