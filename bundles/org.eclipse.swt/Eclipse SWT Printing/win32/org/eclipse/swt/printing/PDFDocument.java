@@ -660,33 +660,38 @@ public class PDFDocument implements Drawable {
 		
 		raf.seek(0);
 		int bytesRead;
-		byte[] previousOverlap = new byte[0];
+		// Pre-allocate overlap buffer to reduce GC pressure
+		byte[] overlapBuffer = new byte[CHUNK_OVERLAP_SIZE];
+		int previousOverlapSize = 0;
 		
 		while ((bytesRead = raf.read(buffer)) != -1) {
 			// Combine previous overlap with current buffer
-			byte[] searchBuffer = new byte[previousOverlap.length + bytesRead];
-			System.arraycopy(previousOverlap, 0, searchBuffer, 0, previousOverlap.length);
-			System.arraycopy(buffer, 0, searchBuffer, previousOverlap.length, bytesRead);
+			byte[] searchBuffer = new byte[previousOverlapSize + bytesRead];
+			if (previousOverlapSize > 0) {
+				System.arraycopy(overlapBuffer, 0, searchBuffer, 0, previousOverlapSize);
+			}
+			System.arraycopy(buffer, 0, searchBuffer, previousOverlapSize, bytesRead);
 			
 			// Search for pattern in the combined buffer
 			// Guard against buffer being too small
-			int searchLimit = searchBuffer.length >= pattern.length ? searchBuffer.length - pattern.length : 0;
+			int searchLimit = Math.max(0, searchBuffer.length - pattern.length);
 			for (int i = 0; i < searchLimit; i++) {
 				if (matchesPattern(searchBuffer, i, pattern)) {
 					// Found /MediaBox, now find the complete entry
 					int endPos = findMediaBoxEnd(searchBuffer, i);
 					if (endPos > i) {
-						long actualOffset = filePos - previousOverlap.length + i;
+						long actualOffset = filePos - previousOverlapSize + i;
 						int length = endPos - i;
 						locations.add(new MediaBoxLocation(actualOffset, length));
+						// Skip past this MediaBox to avoid redundant processing
+						i = endPos - 1; // -1 because loop will increment
 					}
 				}
 			}
 			
-			// Save overlap for next iteration
-			int overlapSize = Math.min(CHUNK_OVERLAP_SIZE, bytesRead);
-			previousOverlap = new byte[overlapSize];
-			System.arraycopy(buffer, bytesRead - overlapSize, previousOverlap, 0, overlapSize);
+			// Save overlap for next iteration (reuse pre-allocated buffer)
+			previousOverlapSize = Math.min(CHUNK_OVERLAP_SIZE, bytesRead);
+			System.arraycopy(buffer, bytesRead - previousOverlapSize, overlapBuffer, 0, previousOverlapSize);
 			
 			filePos += bytesRead;
 		}
@@ -696,11 +701,13 @@ public class PDFDocument implements Drawable {
 	
 	/**
 	 * Checks if the pattern matches at the given position in the buffer.
+	 * Uses early termination for better performance.
 	 */
 	private boolean matchesPattern(byte[] buffer, int pos, byte[] pattern) {
 		if (pos + pattern.length > buffer.length) {
 			return false;
 		}
+		// Early termination on first mismatch
 		for (int i = 0; i < pattern.length; i++) {
 			if (buffer[pos + i] != pattern[i]) {
 				return false;
