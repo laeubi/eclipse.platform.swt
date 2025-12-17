@@ -95,18 +95,19 @@ public class Test_org_eclipse_swt_printing_PDFDocument {
 		assertTrue(tempFile.exists(), "PDF file should exist");
 		assertTrue(tempFile.length() > 0, "PDF file should not be empty");
 
-		// Verify PDF magic bytes
+		// Verify PDF magic bytes and content
 		try {
-			byte[] header = Files.readAllBytes(tempFile.toPath());
-			assertTrue(header.length >= 5, "PDF file should have at least 5 bytes for header");
+			byte[] fileContent = Files.readAllBytes(tempFile.toPath());
+			assertTrue(fileContent.length >= 5, "PDF file should have at least 5 bytes for header");
 
 			// Check for PDF magic bytes: %PDF-
-			String headerString = new String(header, 0, Math.min(5, header.length));
+			String headerString = new String(fileContent, 0, Math.min(5, fileContent.length));
 			assertTrue(headerString.startsWith("%PDF-"), 
 				"PDF file should start with %PDF- magic bytes, but got: " + headerString);
 
 			// Check if "hello world" appears in the PDF content
-			String content = new String(header);
+			// Convert only as much as needed to search for the text
+			String content = new String(fileContent, 0, Math.min(fileContent.length, 10000));
 			assertTrue(content.contains("hello world"), 
 				"PDF content should contain 'hello world' text");
 		} catch (IOException e) {
@@ -150,8 +151,9 @@ public class Test_org_eclipse_swt_printing_PDFDocument {
 
 		// Verify PDF magic bytes
 		try {
-			byte[] header = Files.readAllBytes(tempFile.toPath());
-			String headerString = new String(header, 0, Math.min(5, header.length));
+			byte[] fileContent = Files.readAllBytes(tempFile.toPath());
+			assertTrue(fileContent.length >= 5, "PDF file should have at least 5 bytes for header");
+			String headerString = new String(fileContent, 0, Math.min(5, fileContent.length));
 			assertTrue(headerString.startsWith("%PDF-"), 
 				"PDF file should start with %PDF- magic bytes");
 		} catch (IOException e) {
