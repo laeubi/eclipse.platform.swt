@@ -39,6 +39,9 @@ import org.junit.jupiter.api.io.TempDir;
  */
 public class Test_org_eclipse_swt_printing_PDFDocument {
 
+	/** PDF files use ISO-8859-1 (Latin-1) encoding for text content */
+	private static final String PDF_ENCODING = "ISO-8859-1";
+
 	Display display;
 	PDFDocument pdfDocument;
 	GC gc;
@@ -94,7 +97,7 @@ public class Test_org_eclipse_swt_printing_PDFDocument {
 					} catch (DataFormatException e) {
 						// If decompression fails, the stream might be uncompressed
 						// Add the raw content
-						String rawContent = new String(streamData, "ISO-8859-1");
+						String rawContent = new String(streamData, PDF_ENCODING);
 						allContent.append(rawContent).append(" ");
 					}
 					
@@ -157,7 +160,7 @@ public class Test_org_eclipse_swt_printing_PDFDocument {
 		outputStream.close();
 		inflater.end();
 
-		return outputStream.toString("ISO-8859-1");
+		return outputStream.toString(PDF_ENCODING);
 	}
 
 	@AfterEach
