@@ -21,8 +21,6 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import java.util.zip.DataFormatException;
 import java.util.zip.Inflater;
 
@@ -64,40 +62,78 @@ public class Test_org_eclipse_swt_printing_PDFDocument {
 	 */
 	private String extractPDFContent(byte[] pdfBytes) throws IOException, DataFormatException {
 		StringBuilder allContent = new StringBuilder();
-		String pdfString = new String(pdfBytes, "ISO-8859-1");
 
-		// Pattern to find stream objects with FlateDecode filter
-		// PDF structure: ... /Filter /FlateDecode ... stream\n<data>\nendstream
-		Pattern streamPattern = Pattern.compile(
-			"stream\\r?\\n(.*?)\\r?\\nendstream",
-			Pattern.DOTALL
-		);
+		// Find all stream objects and their starting positions in the byte array
+		// We need to work with bytes directly to avoid encoding issues
+		int pos = 0;
+		while (pos < pdfBytes.length - 6) {
+			// Look for "stream" keyword followed by newline
+			if (pdfBytes[pos] == 's' && pdfBytes[pos+1] == 't' && pdfBytes[pos+2] == 'r' &&
+				pdfBytes[pos+3] == 'e' && pdfBytes[pos+4] == 'a' && pdfBytes[pos+5] == 'm') {
+				
+				// Skip past "stream" and any CR/LF
+				int streamStart = pos + 6;
+				if (streamStart < pdfBytes.length && pdfBytes[streamStart] == '\r') {
+					streamStart++;
+				}
+				if (streamStart < pdfBytes.length && pdfBytes[streamStart] == '\n') {
+					streamStart++;
+				}
 
-		Matcher matcher = streamPattern.matcher(pdfString);
-		while (matcher.find()) {
-			int streamStart = matcher.start(1);
-			int streamEnd = matcher.end(1);
+				// Find the corresponding "endstream"
+				int streamEnd = findEndStream(pdfBytes, streamStart);
+				if (streamEnd > streamStart) {
+					// Extract the stream data
+					byte[] streamData = new byte[streamEnd - streamStart];
+					System.arraycopy(pdfBytes, streamStart, streamData, 0, streamData.length);
 
-			// Extract the compressed data
-			byte[] compressedData = new byte[streamEnd - streamStart];
-			System.arraycopy(pdfBytes, streamStart, compressedData, 0, compressedData.length);
-
-			try {
-				// Try to decompress the stream
-				String decompressed = decompressFlate(compressedData);
-				allContent.append(decompressed).append(" ");
-			} catch (DataFormatException e) {
-				// Some streams might not be compressed or use different compression
-				// Try adding the raw content as well
-				String rawContent = new String(compressedData, "ISO-8859-1");
-				allContent.append(rawContent).append(" ");
+					try {
+						// Try to decompress the stream (most PDF streams are compressed)
+						String decompressed = decompressFlate(streamData);
+						allContent.append(decompressed).append(" ");
+					} catch (DataFormatException e) {
+						// If decompression fails, the stream might be uncompressed
+						// Add the raw content
+						String rawContent = new String(streamData, "ISO-8859-1");
+						allContent.append(rawContent).append(" ");
+					}
+					
+					pos = streamEnd;
+				} else {
+					pos++;
+				}
+			} else {
+				pos++;
 			}
 		}
 
-		// Also check for uncompressed text in the PDF (less common but possible)
-		allContent.append(pdfString);
-
 		return allContent.toString();
+	}
+
+	/**
+	 * Finds the position of "endstream" keyword after a stream start.
+	 *
+	 * @param data the PDF byte array
+	 * @param startPos the position to start searching from
+	 * @return the position of the start of "endstream", or -1 if not found
+	 */
+	private int findEndStream(byte[] data, int startPos) {
+		for (int i = startPos; i < data.length - 9; i++) {
+			if (data[i] == 'e' && data[i+1] == 'n' && data[i+2] == 'd' &&
+				data[i+3] == 's' && data[i+4] == 't' && data[i+5] == 'r' &&
+				data[i+6] == 'e' && data[i+7] == 'a' && data[i+8] == 'm') {
+				// Backtrack to remove any trailing CR/LF before endstream
+				int endPos = i;
+				if (endPos > 0 && data[endPos-1] == '\n') {
+					endPos--;
+				}
+				if (endPos > 0 && data[endPos-1] == '\r') {
+					endPos--;
+				}
+				return endPos;
+			}
+		}
+		return -1;
 	}
 
 	/**
