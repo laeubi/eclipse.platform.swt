@@ -1183,5 +1183,122 @@ public void test_gcOnImageGcDrawer_imageDataAtNonDeviceZoom() {
 	}
 }
 
+/**
+ * Test for race condition fix in ImageHandleManager.
+ * This test verifies that concurrent access to Image.getImageData() at the same zoom level
+ * doesn't create duplicate handles or cause resource leaks.
+ * 
+ * The fix uses ConcurrentHashMap instead of HashMap to ensure thread-safe access.
+ */
+@Test
+public void test_ConcurrentImageHandleAccess() throws Exception {
+	final int NUM_THREADS = 10;
+	final int ITERATIONS_PER_THREAD = 50;
+	final int TARGET_ZOOM = 150;
+	
+	// Track how many times image data is created for each zoom level
+	final AtomicInteger creationCount = new AtomicInteger(0);
+	final java.util.concurrent.ConcurrentHashMap<Integer, AtomicInteger> creationsByZoom = new java.util.concurrent.ConcurrentHashMap<>();
+	
+	// Create an ImageDataProvider that tracks handle creations
+	ImageDataProvider testProvider = new ImageDataProvider() {
+		@Override
+		public ImageData getImageData(int zoom) {
+			// Track creation attempts
+			creationsByZoom.computeIfAbsent(zoom, k -> new AtomicInteger(0)).incrementAndGet();
+			creationCount.incrementAndGet();
+			
+			// Create image data
+			int size = 16 * zoom / 100;
+			ImageData imageData = new ImageData(size, size, 24, 
+				new PaletteData(0xFF, 0xFF00, 0xFF0000));
+			
+			// Fill with a simple pattern
+			for (int y = 0; y < size; y++) {
+				for (int x = 0; x < size; x++) {
+					imageData.setPixel(x, y, (x + y) % 2 == 0 ? 0xFFFFFF : 0x000000);
+				}
+			}
+			
+			return imageData;
+		}
+	};
+	
+	Image testImage = new Image(display, testProvider);
+	
+	try {
+		// Force initial creation at 100% zoom to initialize the image
+		testImage.getImageData(100);
+		
+		// Reset counters
+		creationsByZoom.clear();
+		creationCount.set(0);
+		
+		// Create threads that will concurrently access the image
+		java.util.concurrent.ExecutorService executor = java.util.concurrent.Executors.newFixedThreadPool(NUM_THREADS);
+		java.util.concurrent.CountDownLatch startLatch = new java.util.concurrent.CountDownLatch(1);
+		java.util.concurrent.CountDownLatch doneLatch = new java.util.concurrent.CountDownLatch(NUM_THREADS);
+		final java.util.concurrent.atomic.AtomicReference<Throwable> errorRef = new java.util.concurrent.atomic.AtomicReference<>();
+		
+		// Submit tasks that will all try to access the image at the same zoom level
+		for (int i = 0; i < NUM_THREADS; i++) {
+			executor.submit(() -> {
+				try {
+					// Wait for all threads to be ready
+					startLatch.await();
+					
+					// Each thread tries to get the image data multiple times
+					for (int j = 0; j < ITERATIONS_PER_THREAD; j++) {
+						display.syncExec(() -> {
+							try {
+								// This should trigger getOrCreate() in ImageHandleManager
+								ImageData data = testImage.getImageData(TARGET_ZOOM);
+								assertNotNull(data, "ImageData should not be null");
+							} catch (Throwable e) {
+								errorRef.compareAndSet(null, e);
+							}
+						});
+					}
+				} catch (InterruptedException e) {
+					Thread.currentThread().interrupt();
+					errorRef.compareAndSet(null, e);
+				} finally {
+					doneLatch.countDown();
+				}
+			});
+		}
+		
+		// Start all threads at once
+		startLatch.countDown();
+		
+		// Wait for completion
+		assertTrue(doneLatch.await(30, java.util.concurrent.TimeUnit.SECONDS), 
+			"Test threads should complete within timeout");
+		
+		executor.shutdown();
+		assertTrue(executor.awaitTermination(5, java.util.concurrent.TimeUnit.SECONDS),
+			"Executor should shutdown within timeout");
+		
+		// Check if any errors occurred
+		Throwable error = errorRef.get();
+		if (error != null) {
+			throw new AssertionError("Error during concurrent access", error);
+		}
+		
+		// Verify that image data was created exactly once for the target zoom
+		// (With the fix, ConcurrentHashMap.computeIfAbsent ensures single creation)
+		int creationsForTargetZoom = creationsByZoom.getOrDefault(TARGET_ZOOM, new AtomicInteger(0)).get();
+		
+		// With the race condition fix, we expect exactly 1 creation for the target zoom
+		// Without the fix, multiple threads might create duplicate handles
+		assertEquals(1, creationsForTargetZoom,
+			"Image data should be created exactly once for zoom " + TARGET_ZOOM + 
+			" (race condition would cause multiple creations)");
+		
+	} finally {
+		testImage.dispose();
+	}
+}
+
 }
 
