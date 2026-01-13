@@ -19,6 +19,7 @@ import static org.eclipse.swt.internal.image.ImageColorTransformer.DEFAULT_DISAB
 import java.io.*;
 import java.util.*;
 import java.util.Map.*;
+import java.util.concurrent.*;
 import java.util.function.*;
 import java.util.stream.*;
 
@@ -138,7 +139,7 @@ public final class Image extends Resource implements Drawable {
 	private final ImageHandleManager imageHandleManager = new ImageHandleManager();
 
 	private class ImageHandleManager {
-		private Map<Integer, DestroyableImageHandle> zoomLevelToImageHandle = new HashMap<>();
+		private final ConcurrentMap<Integer, DestroyableImageHandle> zoomLevelToImageHandle = new ConcurrentHashMap<>();
 
 		InternalImageHandle get(int zoom) {
 			final DestroyableImageHandle imageHandle = zoomLevelToImageHandle.get(zoom);
@@ -154,14 +155,7 @@ public final class Image extends Resource implements Drawable {
 				return null;
 			}
 
-			DestroyableImageHandle imageHandle = (DestroyableImageHandle) get(zoom);
-			if (imageHandle != null) {
-				return imageHandle;
-			}
-
-			imageHandle = creator.get();
-			zoomLevelToImageHandle.put(zoom, imageHandle);
-			return imageHandle;
+			return zoomLevelToImageHandle.computeIfAbsent(zoom, k -> creator.get());
 		}
 
 		boolean contains(int zoom) {
@@ -187,7 +181,6 @@ public final class Image extends Resource implements Drawable {
 				if (filter.test(zoomToHandle.getKey())) {
 					DestroyableImageHandle imageHandle = zoomToHandle.getValue();
 					it.remove();
-					zoomLevelToImageHandle.remove(imageHandle.zoom(), imageHandle);
 					imageHandle.destroy();
 				}
 			}
@@ -2139,7 +2132,7 @@ private class ExistingImageHandleProviderWrapper extends AbstractImageProviderWr
 }
 
 private abstract class ImageFromImageDataProviderWrapper extends AbstractImageProviderWrapper {
-	private final Map<Integer, ImageData> cachedImageData = new HashMap<>();
+	private final ConcurrentMap<Integer, ImageData> cachedImageData = new ConcurrentHashMap<>();
 
 
 	void initImage() {
@@ -2423,7 +2416,7 @@ private abstract class DynamicImageProviderWrapper extends AbstractImageProvider
 }
 
 private abstract class BaseImageProviderWrapper<T> extends DynamicImageProviderWrapper {
-	private final Map<Integer, ImageData> cachedImageData = new HashMap<>();
+	private final ConcurrentMap<Integer, ImageData> cachedImageData = new ConcurrentHashMap<>();
 
 	protected final T provider;
 
