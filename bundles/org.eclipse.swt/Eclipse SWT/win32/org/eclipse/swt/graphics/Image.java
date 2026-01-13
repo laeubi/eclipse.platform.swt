@@ -181,7 +181,6 @@ public final class Image extends Resource implements Drawable {
 				if (filter.test(zoomToHandle.getKey())) {
 					DestroyableImageHandle imageHandle = zoomToHandle.getValue();
 					it.remove();
-					zoomLevelToImageHandle.remove(imageHandle.zoom(), imageHandle);
 					imageHandle.destroy();
 				}
 			}

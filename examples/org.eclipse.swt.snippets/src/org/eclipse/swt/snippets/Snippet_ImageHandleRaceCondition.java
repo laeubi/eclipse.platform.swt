@@ -117,7 +117,7 @@ public class Snippet_ImageHandleRaceCondition {
 							try {
 								// This should trigger getOrCreate() in ImageHandleManager
 								@SuppressWarnings("unused")
-								long handle = Image.win32_getHandle(image, TARGET_ZOOM);
+								ImageData data = image.getImageData(TARGET_ZOOM);
 							} catch (Exception e) {
 								System.err.println("Thread " + threadId + " iteration " + j + " failed: " + e.getMessage());
 								e.printStackTrace();
