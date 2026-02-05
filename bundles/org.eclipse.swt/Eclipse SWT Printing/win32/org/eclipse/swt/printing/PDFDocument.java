@@ -48,7 +48,7 @@ import org.eclipse.swt.internal.win32.*;
  * @see GC
  * @since 3.133
  */
-public class PDFDocument extends Device {
+public final class PDFDocument extends Device {
 	long handle;
 	boolean isGCCreated = false;
 	boolean jobStarted = false;
@@ -56,106 +56,116 @@ public class PDFDocument extends Device {
 	String filename;
 
 	/**
-	 * Width of the page in device-independent units
+	 * Preferred width of the page in points (1/72 inch)
 	 */
-	double width;
+	double preferredWidthInPoints;
 
 	/**
-	 * Height of the page in device-independent units
+	 * Preferred height of the page in points (1/72 inch)
 	 */
-	double height;
+	double preferredHeightInPoints;
 
 	/**
-	 * Width of the page in points (1/72 inch)
+	 * Actual width of the page in points (1/72 inch)
 	 */
-	double widthInPoints;
+	double actualWidthInPoints;
 
 	/**
-	 * Height of the page in points (1/72 inch)
+	 * Actual height of the page in points (1/72 inch)
 	 */
-	double heightInPoints;
+	double actualHeightInPoints;
 
 	/** The name of the Microsoft Print to PDF printer */
 	private static final String PDF_PRINTER_NAME = "Microsoft Print to PDF";
 
-	/** Default screen DPI used when calculating physical sizes */
-	private static final int DEFAULT_SCREEN_DPI = 96;
-	
 	/** Helper class to represent a paper size with orientation */
 	private static class PaperSize {
 		int paperSizeConstant;
 		int orientation;
-		double widthInInches;
-		double heightInInches;
-		
+		double widthInPoints;
+		double heightInPoints;
+
 		PaperSize(int paperSize, int orientation, double width, double height) {
 			this.paperSizeConstant = paperSize;
 			this.orientation = orientation;
-			this.widthInInches = width;
-			this.heightInInches = height;
+			this.widthInPoints = width;
+			this.heightInPoints = height;
 		}
 	}
 
 	/**
-	 * Finds the best matching standard paper size for the given dimensions.
+	 * Finds the best matching standard paper size for the given dimensions in points.
 	 * Tries both portrait and landscape orientations and selects the one that
 	 * minimizes wasted space while ensuring the content fits.
+	 * The returned paper size will always be >= the requested size.
 	 */
-	private static PaperSize findBestPaperSize(double widthInInches, double heightInInches) {
-		// Common paper sizes (width x height in inches, portrait orientation)
+	private static PaperSize findBestPaperSize(double widthInPoints, double heightInPoints) {
+		// Common paper sizes (width x height in points, portrait orientation)
+		// 1 inch = 72 points
 		int[][] standardSizes = {
-			{OS.DMPAPER_LETTER, 850, 1100},      // 8.5 x 11
-			{OS.DMPAPER_LEGAL, 850, 1400},       // 8.5 x 14
-			{OS.DMPAPER_A4, 827, 1169},          // 8.27 x 11.69
-			{OS.DMPAPER_TABLOID, 1100, 1700},    // 11 x 17
-			{OS.DMPAPER_A3, 1169, 1654},         // 11.69 x 16.54
-			{OS.DMPAPER_EXECUTIVE, 725, 1050},   // 7.25 x 10.5
-			{OS.DMPAPER_A5, 583, 827},           // 5.83 x 8.27
+			{OS.DMPAPER_LETTER, 612, 792},       // 8.5 x 11 inches
+			{OS.DMPAPER_LEGAL, 612, 1008},       // 8.5 x 14 inches
+			{OS.DMPAPER_A4, 595, 842},           // 8.27 x 11.69 inches (210 x 297 mm)
+			{OS.DMPAPER_TABLOID, 792, 1224},     // 11 x 17 inches
+			{OS.DMPAPER_A3, 842, 1191},          // 11.69 x 16.54 inches (297 x 420 mm)
+			{OS.DMPAPER_EXECUTIVE, 522, 756},    // 7.25 x 10.5 inches
+			{OS.DMPAPER_A5, 420, 595},           // 5.83 x 8.27 inches (148 x 210 mm)
 		};
-		
+
 		PaperSize bestMatch = null;
 		double minWaste = Double.MAX_VALUE;
-		
+
 		for (int[] size : standardSizes) {
-			double paperWidth = size[1] / 100.0;
-			double paperHeight = size[2] / 100.0;
-			
+			double paperWidth = size[1];
+			double paperHeight = size[2];
+
 			// Try portrait orientation
-			if (widthInInches <= paperWidth && heightInInches <= paperHeight) {
-				double waste = (paperWidth * paperHeight) - (widthInInches * heightInInches);
+			if (widthInPoints <= paperWidth && heightInPoints <= paperHeight) {
+				double waste = (paperWidth * paperHeight) - (widthInPoints * heightInPoints);
 				if (waste < minWaste) {
 					minWaste = waste;
 					bestMatch = new PaperSize(size[0], OS.DMORIENT_PORTRAIT, paperWidth, paperHeight);
 				}
 			}
-			
+
 			// Try landscape orientation (swap width and height)
-			if (widthInInches <= paperHeight && heightInInches <= paperWidth) {
-				double waste = (paperHeight * paperWidth) - (widthInInches * heightInInches);
+			if (widthInPoints <= paperHeight && heightInPoints <= paperWidth) {
+				double waste = (paperHeight * paperWidth) - (widthInPoints * heightInPoints);
 				if (waste < minWaste) {
 					minWaste = waste;
 					bestMatch = new PaperSize(size[0], OS.DMORIENT_LANDSCAPE, paperHeight, paperWidth);
 				}
 			}
 		}
-		
-		// Default to Letter if no match found
+
+		// Default to Letter if no match found (requested size is larger than all standard sizes)
 		if (bestMatch == null) {
-			bestMatch = new PaperSize(OS.DMPAPER_LETTER, OS.DMORIENT_PORTRAIT, 8.5, 11.0);
+			// Use the largest standard size that fits the aspect ratio best
+			if (widthInPoints > heightInPoints) {
+				bestMatch = new PaperSize(OS.DMPAPER_TABLOID, OS.DMORIENT_LANDSCAPE, 1224, 792);
+			} else {
+				bestMatch = new PaperSize(OS.DMPAPER_TABLOID, OS.DMORIENT_PORTRAIT, 792, 1224);
+			}
 		}
-		
+
 		return bestMatch;
 	}
 
 	/**
-	 * Constructs a new PDFDocument with the specified filename and page dimensions.
+	 * Constructs a new PDFDocument with the specified filename and preferred page dimensions.
+	 * <p>
+	 * The dimensions specify the preferred page size in points (1/72 inch). On Windows,
+	 * the Microsoft Print to PDF driver only supports standard paper sizes, so the actual
+	 * page size may be larger than requested. Use {@link #getBounds()} to query the actual
+	 * page dimensions after construction.
+	 * </p>
 	 * <p>
 	 * You must dispose the PDFDocument when it is no longer required.
 	 * </p>
 	 *
 	 * @param filename the path to the PDF file to create
-	 * @param width the width of each page in device-independent units
-	 * @param height the height of each page in device-independent units
+	 * @param widthInPoints the preferred width of each page in points (1/72 inch)
+	 * @param heightInPoints the preferred height of each page in points (1/72 inch)
 	 *
 	 * @exception IllegalArgumentException <ul>
 	 *    <li>ERROR_NULL_ARGUMENT - if filename is null</li>
@@ -166,12 +176,13 @@ public class PDFDocument extends Device {
 	 * </ul>
 	 *
 	 * @see #dispose()
+	 * @see #getBounds()
 	 */
-	public PDFDocument(String filename, double width, double height) {
-		this(checkData(filename, width, height));
+	public PDFDocument(String filename, double widthInPoints, double heightInPoints) {
+		this(checkData(filename, widthInPoints, heightInPoints));
 		this.filename = filename;
-		this.width = width;
-		this.height = height;
+		this.preferredWidthInPoints = widthInPoints;
+		this.preferredHeightInPoints = heightInPoints;
 	}
 
 	/**
@@ -184,9 +195,9 @@ public class PDFDocument extends Device {
 	/**
 	 * Validates and prepares the data for construction.
 	 */
-	static DeviceData checkData(String filename, double width, double height) {
+	static DeviceData checkData(String filename, double widthInPoints, double heightInPoints) {
 		if (filename == null) SWT.error(SWT.ERROR_NULL_ARGUMENT);
-		if (width <= 0 || height <= 0) SWT.error(SWT.ERROR_INVALID_ARGUMENT);
+		if (widthInPoints <= 0 || heightInPoints <= 0) SWT.error(SWT.ERROR_INVALID_ARGUMENT);
 		DeviceData data = new DeviceData();
 		return data;
 	}
@@ -199,15 +210,10 @@ public class PDFDocument extends Device {
 	 */
 	@Override
 	protected void create(DeviceData data) {
-		// Calculate physical size in inches from screen pixels
-		double widthInInches = width / DEFAULT_SCREEN_DPI;
-		double heightInInches = height / DEFAULT_SCREEN_DPI;
-		
-		// Microsoft Print to PDF doesn't support custom page sizes
-		// Find the best matching standard paper size
-		PaperSize bestMatch = findBestPaperSize(widthInInches, heightInInches);
-		this.widthInPoints = bestMatch.widthInInches * 72.0;
-		this.heightInPoints = bestMatch.heightInInches * 72.0;
+		// Find the best matching standard paper size for the requested dimensions
+		PaperSize bestMatch = findBestPaperSize(preferredWidthInPoints, preferredHeightInPoints);
+		this.actualWidthInPoints = bestMatch.widthInPoints;
+		this.actualHeightInPoints = bestMatch.heightInPoints;
 
 		// Create printer DC for "Microsoft Print to PDF"
 		TCHAR driver = new TCHAR(0, "WINSPOOL", true);
@@ -240,15 +246,6 @@ public class PDFDocument extends Device {
 		if (handle == 0) {
 			SWT.error(SWT.ERROR_NO_HANDLES);
 		}
-	}
-
-	/**
-	 * Initializes any internal resources needed by the device.
-	 * This method is called after <code>create</code>.
-	 */
-	@Override
-	protected void init() {
-		super.init();
 	}
 
 	/**
@@ -329,8 +326,8 @@ public class PDFDocument extends Device {
 	 * has been started may not be fully supported by all printer drivers.
 	 * </p>
 	 *
-	 * @param widthInPoints the width of the new page in points (1/72 inch)
-	 * @param heightInPoints the height of the new page in points (1/72 inch)
+	 * @param widthInPoints the preferred width of the new page in points (1/72 inch)
+	 * @param heightInPoints the preferred height of the new page in points (1/72 inch)
 	 *
 	 * @exception IllegalArgumentException <ul>
 	 *    <li>ERROR_INVALID_ARGUMENT - if width or height is not positive</li>
@@ -343,15 +340,23 @@ public class PDFDocument extends Device {
 		checkDevice();
 		if (widthInPoints <= 0 || heightInPoints <= 0) SWT.error(SWT.ERROR_INVALID_ARGUMENT);
 
-		this.widthInPoints = widthInPoints;
-		this.heightInPoints = heightInPoints;
+		this.preferredWidthInPoints = widthInPoints;
+		this.preferredHeightInPoints = heightInPoints;
+		// Note: actual page size may be larger due to standard paper size constraints
+		PaperSize bestMatch = findBestPaperSize(widthInPoints, heightInPoints);
+		this.actualWidthInPoints = bestMatch.widthInPoints;
+		this.actualHeightInPoints = bestMatch.heightInPoints;
 		newPage();
 	}
 
 	/**
-	 * Returns the width of the current page in points.
+	 * Returns the actual width of the current page in points.
+	 * <p>
+	 * On Windows, this may be larger than the preferred width specified
+	 * in the constructor due to standard paper size constraints.
+	 * </p>
 	 *
-	 * @return the width in points (1/72 inch)
+	 * @return the actual width in points (1/72 inch)
 	 *
 	 * @exception SWTException <ul>
 	 *    <li>ERROR_DEVICE_DISPOSED - if the receiver has been disposed</li>
@@ -359,13 +364,17 @@ public class PDFDocument extends Device {
 	 */
 	public double getWidth() {
 		checkDevice();
-		return widthInPoints;
+		return actualWidthInPoints;
 	}
 
 	/**
-	 * Returns the height of the current page in points.
+	 * Returns the actual height of the current page in points.
+	 * <p>
+	 * On Windows, this may be larger than the preferred height specified
+	 * in the constructor due to standard paper size constraints.
+	 * </p>
 	 *
-	 * @return the height in points (1/72 inch)
+	 * @return the actual height in points (1/72 inch)
 	 *
 	 * @exception SWTException <ul>
 	 *    <li>ERROR_DEVICE_DISPOSED - if the receiver has been disposed</li>
@@ -373,7 +382,7 @@ public class PDFDocument extends Device {
 	 */
 	public double getHeight() {
 		checkDevice();
-		return heightInPoints;
+		return actualHeightInPoints;
 	}
 
 	/**
@@ -397,6 +406,10 @@ public class PDFDocument extends Device {
 	/**
 	 * Returns a rectangle describing the receiver's size and location.
 	 * The rectangle dimensions are in points (1/72 inch).
+	 * <p>
+	 * On Windows, this returns the actual page size which may be larger
+	 * than the preferred size specified in the constructor.
+	 * </p>
 	 *
 	 * @return the bounding rectangle
 	 *
@@ -407,13 +420,16 @@ public class PDFDocument extends Device {
 	@Override
 	public Rectangle getBounds() {
 		checkDevice();
-		return new Rectangle(0, 0, (int) widthInPoints, (int) heightInPoints);
+		return new Rectangle(0, 0, (int) actualWidthInPoints, (int) actualHeightInPoints);
 	}
 
 	/**
 	 * Returns a rectangle which describes the area of the
 	 * receiver which is capable of displaying data.
-	 * For a PDF document, this is the same as the bounds.
+	 * <p>
+	 * On Windows, the printable area may be smaller than the page bounds
+	 * due to printer margins.
+	 * </p>
 	 *
 	 * @return the client area
 	 *
@@ -424,7 +440,25 @@ public class PDFDocument extends Device {
 	@Override
 	public Rectangle getClientArea() {
 		checkDevice();
-		return getBounds();
+		// Get the printable area from the device capabilities
+		Point dpi = getDPI();
+		int physicalWidth = OS.GetDeviceCaps(handle, OS.PHYSICALWIDTH);
+		int physicalHeight = OS.GetDeviceCaps(handle, OS.PHYSICALHEIGHT);
+		int printableWidth = OS.GetDeviceCaps(handle, OS.HORZRES);
+		int printableHeight = OS.GetDeviceCaps(handle, OS.VERTRES);
+		int offsetX = OS.GetDeviceCaps(handle, OS.PHYSICALOFFSETX);
+		int offsetY = OS.GetDeviceCaps(handle, OS.PHYSICALOFFSETY);
+
+		// Convert from device units to points (72 DPI)
+		double scaleX = 72.0 / dpi.x;
+		double scaleY = 72.0 / dpi.y;
+
+		int x = (int) (offsetX * scaleX);
+		int y = (int) (offsetY * scaleY);
+		int width = (int) (printableWidth * scaleX);
+		int height = (int) (printableHeight * scaleY);
+
+		return new Rectangle(x, y, width, height);
 	}
 
 	/**
@@ -461,28 +495,14 @@ public class PDFDocument extends Device {
 			data.font = getSystemFont();
 		}
 
-		// Set up coordinate system scaling
-		// Get PDF printer DPI
-		int pdfDpiX = OS.GetDeviceCaps(handle, OS.LOGPIXELSX);
-		int pdfDpiY = OS.GetDeviceCaps(handle, OS.LOGPIXELSY);
+		// Set up coordinate system scaling to work in points (72 DPI)
+		// The printer has its own DPI, so we scale to make 1 user unit = 1 point
+		int printerDpiX = OS.GetDeviceCaps(handle, OS.LOGPIXELSX);
+		int printerDpiY = OS.GetDeviceCaps(handle, OS.LOGPIXELSY);
 
-		// Calculate content size in inches (what user wanted)
-		double contentWidthInInches = width / DEFAULT_SCREEN_DPI;
-		double contentHeightInInches = height / DEFAULT_SCREEN_DPI;
-
-		// Calculate scale factor to fit content to page
-		// The page size is the physical paper size we selected
-		double pageWidthInInches = widthInPoints / 72.0;
-		double pageHeightInInches = heightInPoints / 72.0;
-		double scaleToFitWidth = pageWidthInInches / contentWidthInInches;
-		double scaleToFitHeight = pageHeightInInches / contentHeightInInches;
-
-		// Use the smaller scale to ensure both width and height fit
-		double scaleToFit = Math.min(scaleToFitWidth, scaleToFitHeight);
-
-		// Combined scale: fit-to-page * DPI conversion
-		float scaleX = (float)(scaleToFit * pdfDpiX / DEFAULT_SCREEN_DPI);
-		float scaleY = (float)(scaleToFit * pdfDpiY / DEFAULT_SCREEN_DPI);
+		// Scale factor: printer_dpi / 72 (since we want 1 unit = 1 point = 1/72 inch)
+		float scaleX = printerDpiX / 72.0f;
+		float scaleY = printerDpiY / 72.0f;
 
 		OS.SetGraphicsMode(handle, OS.GM_ADVANCED);
 		float[] transform = new float[] {scaleX, 0, 0, scaleY, 0, 0};

@@ -45,7 +45,7 @@ import org.eclipse.swt.internal.cairo.*;
  * @see GC
  * @since 3.133
  */
-public class PDFDocument extends Device {
+public final class PDFDocument extends Device {
 	long surface;
 	long cairo;
 	boolean isGCCreated = false;
@@ -123,15 +123,6 @@ public class PDFDocument extends Device {
 			surface = 0;
 			SWT.error(SWT.ERROR_NO_HANDLES);
 		}
-	}
-
-	/**
-	 * Initializes any internal resources needed by the device.
-	 * This method is called after <code>create</code>.
-	 */
-	@Override
-	protected void init() {
-		super.init();
 	}
 
 	/**

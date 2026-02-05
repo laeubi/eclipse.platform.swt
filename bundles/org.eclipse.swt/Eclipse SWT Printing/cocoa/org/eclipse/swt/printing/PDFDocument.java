@@ -44,7 +44,7 @@ import org.eclipse.swt.internal.cocoa.*;
  * @see GC
  * @since 3.133
  */
-public class PDFDocument extends Device {
+public final class PDFDocument extends Device {
 	long pdfContext;
 	NSGraphicsContext graphicsContext;
 	boolean isGCCreated = false;
@@ -138,15 +138,6 @@ public class PDFDocument extends Device {
 		} finally {
 			if (pool != null) pool.release();
 		}
-	}
-
-	/**
-	 * Initializes any internal resources needed by the device.
-	 * This method is called after <code>create</code>.
-	 */
-	@Override
-	protected void init() {
-		super.init();
 	}
 
 	/**
