@@ -78,6 +78,9 @@ public final class PDFDocument extends Device {
 	/** The name of the Microsoft Print to PDF printer */
 	private static final String PDF_PRINTER_NAME = "Microsoft Print to PDF";
 
+	/** Points per inch - the standard PDF coordinate system uses 72 points per inch */
+	private static final double POINTS_PER_INCH = 72.0;
+
 	/** Helper class to represent a paper size with orientation */
 	private static class PaperSize {
 		int paperSizeConstant;
@@ -138,9 +141,9 @@ public final class PDFDocument extends Device {
 			}
 		}
 
-		// Default to Letter if no match found (requested size is larger than all standard sizes)
+		// Default to largest available size if no standard size fits
 		if (bestMatch == null) {
-			// Use the largest standard size that fits the aspect ratio best
+			// Choose TABLOID (largest standard size) in the orientation that matches the requested aspect ratio
 			if (widthInPoints > heightInPoints) {
 				bestMatch = new PaperSize(OS.DMPAPER_TABLOID, OS.DMORIENT_LANDSCAPE, 1224, 792);
 			} else {
@@ -449,9 +452,9 @@ public final class PDFDocument extends Device {
 		int offsetX = OS.GetDeviceCaps(handle, OS.PHYSICALOFFSETX);
 		int offsetY = OS.GetDeviceCaps(handle, OS.PHYSICALOFFSETY);
 
-		// Convert from device units to points (72 DPI)
-		double scaleX = 72.0 / dpi.x;
-		double scaleY = 72.0 / dpi.y;
+		// Convert from device units to points
+		double scaleX = POINTS_PER_INCH / dpi.x;
+		double scaleY = POINTS_PER_INCH / dpi.y;
 
 		int x = (int) (offsetX * scaleX);
 		int y = (int) (offsetY * scaleY);
@@ -495,14 +498,14 @@ public final class PDFDocument extends Device {
 			data.font = getSystemFont();
 		}
 
-		// Set up coordinate system scaling to work in points (72 DPI)
+		// Set up coordinate system scaling to work in points
 		// The printer has its own DPI, so we scale to make 1 user unit = 1 point
 		int printerDpiX = OS.GetDeviceCaps(handle, OS.LOGPIXELSX);
 		int printerDpiY = OS.GetDeviceCaps(handle, OS.LOGPIXELSY);
 
-		// Scale factor: printer_dpi / 72 (since we want 1 unit = 1 point = 1/72 inch)
-		float scaleX = printerDpiX / 72.0f;
-		float scaleY = printerDpiY / 72.0f;
+		// Scale factor: printer_dpi / POINTS_PER_INCH (since we want 1 unit = 1 point = 1/72 inch)
+		float scaleX = (float)(printerDpiX / POINTS_PER_INCH);
+		float scaleY = (float)(printerDpiY / POINTS_PER_INCH);
 
 		OS.SetGraphicsMode(handle, OS.GM_ADVANCED);
 		float[] transform = new float[] {scaleX, 0, 0, scaleY, 0, 0};
