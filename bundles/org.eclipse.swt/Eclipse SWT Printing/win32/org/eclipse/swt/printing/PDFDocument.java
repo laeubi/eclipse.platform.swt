@@ -81,6 +81,16 @@ public final class PDFDocument extends Device {
 	/** Points per inch - the standard PDF coordinate system uses 72 points per inch */
 	private static final double POINTS_PER_INCH = 72.0;
 
+	/**
+	 * Internal data class to pass PDF document parameters through
+	 * the Device constructor.
+	 */
+	static class PDFDocumentData extends DeviceData {
+		String filename;
+		double widthInPoints;
+		double heightInPoints;
+	}
+
 	/** Helper class to represent a paper size with orientation */
 	private static class PaperSize {
 		int paperSizeConstant;
@@ -177,26 +187,19 @@ public final class PDFDocument extends Device {
 	 * @see #getBounds()
 	 */
 	public PDFDocument(String filename, double widthInPoints, double heightInPoints) {
-		this(checkData(filename, widthInPoints, heightInPoints));
-		this.filename = filename;
-		this.preferredWidthInPoints = widthInPoints;
-		this.preferredHeightInPoints = heightInPoints;
-	}
-
-	/**
-	 * Internal constructor that passes a DeviceData to Device superclass.
-	 */
-	PDFDocument(DeviceData data) {
-		super(data);
+		super(checkData(filename, widthInPoints, heightInPoints));
 	}
 
 	/**
 	 * Validates and prepares the data for construction.
 	 */
-	static DeviceData checkData(String filename, double widthInPoints, double heightInPoints) {
+	static PDFDocumentData checkData(String filename, double widthInPoints, double heightInPoints) {
 		if (filename == null) SWT.error(SWT.ERROR_NULL_ARGUMENT);
 		if (widthInPoints <= 0 || heightInPoints <= 0) SWT.error(SWT.ERROR_INVALID_ARGUMENT);
-		DeviceData data = new DeviceData();
+		PDFDocumentData data = new PDFDocumentData();
+		data.filename = filename;
+		data.widthInPoints = widthInPoints;
+		data.heightInPoints = heightInPoints;
 		return data;
 	}
 
@@ -208,6 +211,11 @@ public final class PDFDocument extends Device {
 	 */
 	@Override
 	protected void create(DeviceData data) {
+		PDFDocumentData pdfData = (PDFDocumentData) data;
+		this.filename = pdfData.filename;
+		this.preferredWidthInPoints = pdfData.widthInPoints;
+		this.preferredHeightInPoints = pdfData.heightInPoints;
+
 		// Find the best matching standard paper size for the requested dimensions
 		PaperSize bestMatch = findBestPaperSize(preferredWidthInPoints, preferredHeightInPoints);
 		this.actualWidthInPoints = bestMatch.widthInPoints;
