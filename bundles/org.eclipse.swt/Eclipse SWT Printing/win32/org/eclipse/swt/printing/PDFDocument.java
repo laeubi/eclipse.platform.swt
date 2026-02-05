@@ -141,14 +141,9 @@ public final class PDFDocument extends Device {
 			}
 		}
 
-		// Default to largest available size if no standard size fits
+		// Error if requested size exceeds the largest available standard paper size
 		if (bestMatch == null) {
-			// Choose TABLOID (largest standard size) in the orientation that matches the requested aspect ratio
-			if (widthInPoints > heightInPoints) {
-				bestMatch = new PaperSize(OS.DMPAPER_TABLOID, OS.DMORIENT_LANDSCAPE, 1224, 792);
-			} else {
-				bestMatch = new PaperSize(OS.DMPAPER_TABLOID, OS.DMORIENT_PORTRAIT, 792, 1224);
-			}
+			SWT.error(SWT.ERROR_INVALID_ARGUMENT, null, " [Requested page size exceeds maximum supported size]");
 		}
 
 		return bestMatch;
@@ -390,7 +385,8 @@ public final class PDFDocument extends Device {
 
 	/**
 	 * Returns the DPI (dots per inch) of the PDF document.
-	 * This returns the actual DPI of the underlying PDF printer device.
+	 * Since the coordinate system is scaled to work in points (1/72 inch),
+	 * this always returns 72 DPI, consistent with GTK and Cocoa implementations.
 	 *
 	 * @return a point whose x coordinate is the horizontal DPI and whose y coordinate is the vertical DPI
 	 *
@@ -401,9 +397,7 @@ public final class PDFDocument extends Device {
 	@Override
 	public Point getDPI() {
 		checkDevice();
-		int dpiX = OS.GetDeviceCaps(handle, OS.LOGPIXELSX);
-		int dpiY = OS.GetDeviceCaps(handle, OS.LOGPIXELSY);
-		return new Point(dpiX, dpiY);
+		return new Point(72, 72);
 	}
 
 	/**
@@ -444,17 +438,17 @@ public final class PDFDocument extends Device {
 	public Rectangle getClientArea() {
 		checkDevice();
 		// Get the printable area from the device capabilities
-		Point dpi = getDPI();
-		int physicalWidth = OS.GetDeviceCaps(handle, OS.PHYSICALWIDTH);
-		int physicalHeight = OS.GetDeviceCaps(handle, OS.PHYSICALHEIGHT);
+		// Need actual printer DPI for conversion (not the user-facing 72 DPI)
+		int printerDpiX = OS.GetDeviceCaps(handle, OS.LOGPIXELSX);
+		int printerDpiY = OS.GetDeviceCaps(handle, OS.LOGPIXELSY);
 		int printableWidth = OS.GetDeviceCaps(handle, OS.HORZRES);
 		int printableHeight = OS.GetDeviceCaps(handle, OS.VERTRES);
 		int offsetX = OS.GetDeviceCaps(handle, OS.PHYSICALOFFSETX);
 		int offsetY = OS.GetDeviceCaps(handle, OS.PHYSICALOFFSETY);
 
 		// Convert from device units to points
-		double scaleX = POINTS_PER_INCH / dpi.x;
-		double scaleY = POINTS_PER_INCH / dpi.y;
+		double scaleX = POINTS_PER_INCH / printerDpiX;
+		double scaleY = POINTS_PER_INCH / printerDpiY;
 
 		int x = (int) (offsetX * scaleX);
 		int y = (int) (offsetY * scaleY);

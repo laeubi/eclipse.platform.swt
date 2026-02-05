@@ -277,23 +277,6 @@ public final class PDFDocument extends Device {
 	}
 
 	/**
-	 * Returns a rectangle which describes the area of the
-	 * receiver which is capable of displaying data.
-	 * For a PDF document, this is the same as the bounds.
-	 *
-	 * @return the client area
-	 *
-	 * @exception SWTException <ul>
-	 *    <li>ERROR_DEVICE_DISPOSED - if the receiver has been disposed</li>
-	 * </ul>
-	 */
-	@Override
-	public Rectangle getClientArea() {
-		checkDevice();
-		return getBounds();
-	}
-
-	/**
 	 * Invokes platform specific functionality to allocate a new GC handle.
 	 * <p>
 	 * <b>IMPORTANT:</b> This method is <em>not</em> part of the public
