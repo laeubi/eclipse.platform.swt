@@ -77,6 +77,9 @@ public class PDFDocument extends Device {
 
 	/** The name of the Microsoft Print to PDF printer */
 	private static final String PDF_PRINTER_NAME = "Microsoft Print to PDF";
+
+	/** Default screen DPI used when calculating physical sizes */
+	private static final int DEFAULT_SCREEN_DPI = 96;
 	
 	/** Helper class to represent a paper size with orientation */
 	private static class PaperSize {
@@ -197,11 +200,8 @@ public class PDFDocument extends Device {
 	@Override
 	protected void create(DeviceData data) {
 		// Calculate physical size in inches from screen pixels
-		int screenDpiX = 96;
-		int screenDpiY = 96;
-		
-		double widthInInches = width / screenDpiX;
-		double heightInInches = height / screenDpiY;
+		double widthInInches = width / DEFAULT_SCREEN_DPI;
+		double heightInInches = height / DEFAULT_SCREEN_DPI;
 		
 		// Microsoft Print to PDF doesn't support custom page sizes
 		// Find the best matching standard paper size
@@ -423,6 +423,7 @@ public class PDFDocument extends Device {
 	 */
 	@Override
 	public Rectangle getClientArea() {
+		checkDevice();
 		return getBounds();
 	}
 
@@ -459,38 +460,34 @@ public class PDFDocument extends Device {
 			data.nativeZoom = 100;
 			data.font = getSystemFont();
 		}
-		
+
 		// Set up coordinate system scaling
-		// Get screen DPI (use 96 as default)
-		int screenDpiX = 96;
-		int screenDpiY = 96;
-		
 		// Get PDF printer DPI
 		int pdfDpiX = OS.GetDeviceCaps(handle, OS.LOGPIXELSX);
 		int pdfDpiY = OS.GetDeviceCaps(handle, OS.LOGPIXELSY);
-		
+
 		// Calculate content size in inches (what user wanted)
-		double contentWidthInInches = width / screenDpiX;
-		double contentHeightInInches = height / screenDpiY;
-		
+		double contentWidthInInches = width / DEFAULT_SCREEN_DPI;
+		double contentHeightInInches = height / DEFAULT_SCREEN_DPI;
+
 		// Calculate scale factor to fit content to page
 		// The page size is the physical paper size we selected
 		double pageWidthInInches = widthInPoints / 72.0;
 		double pageHeightInInches = heightInPoints / 72.0;
 		double scaleToFitWidth = pageWidthInInches / contentWidthInInches;
 		double scaleToFitHeight = pageHeightInInches / contentHeightInInches;
-		
+
 		// Use the smaller scale to ensure both width and height fit
 		double scaleToFit = Math.min(scaleToFitWidth, scaleToFitHeight);
-		
+
 		// Combined scale: fit-to-page * DPI conversion
-		float scaleX = (float)(scaleToFit * pdfDpiX / screenDpiX);
-		float scaleY = (float)(scaleToFit * pdfDpiY / screenDpiY);
-		
+		float scaleX = (float)(scaleToFit * pdfDpiX / DEFAULT_SCREEN_DPI);
+		float scaleY = (float)(scaleToFit * pdfDpiY / DEFAULT_SCREEN_DPI);
+
 		OS.SetGraphicsMode(handle, OS.GM_ADVANCED);
 		float[] transform = new float[] {scaleX, 0, 0, scaleY, 0, 0};
 		OS.SetWorldTransform(handle, transform);
-		
+
 		isGCCreated = true;
 		return handle;
 	}

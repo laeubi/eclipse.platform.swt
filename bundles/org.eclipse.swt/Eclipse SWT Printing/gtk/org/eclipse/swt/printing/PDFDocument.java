@@ -252,6 +252,7 @@ public class PDFDocument extends Device {
 	 */
 	@Override
 	public Rectangle getClientArea() {
+		checkDevice();
 		return getBounds();
 	}
 
