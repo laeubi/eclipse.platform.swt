@@ -48,11 +48,9 @@ import org.eclipse.swt.internal.win32.*;
  * @see GC
  * @since 3.133
  */
-public class PDFDocument implements Drawable {
-	Device device;
+public class PDFDocument extends Device {
 	long handle;
 	boolean isGCCreated = false;
-	boolean disposed = false;
 	boolean jobStarted = false;
 	boolean pageStarted = false;
 	String filename;
@@ -167,58 +165,41 @@ public class PDFDocument implements Drawable {
 	 * @see #dispose()
 	 */
 	public PDFDocument(String filename, double width, double height) {
-		this(null, filename, width, height);
-	}
-
-	/**
-	 * Constructs a new PDFDocument with the specified filename and page dimensions,
-	 * associated with the given device.
-	 * <p>
-	 * You must dispose the PDFDocument when it is no longer required.
-	 * </p>
-	 *
-	 * @param device the device to associate with this PDFDocument
-	 * @param filename the path to the PDF file to create
-	 * @param width the width of each page in device-independent units
-	 * @param height the height of each page in device-independent units
-	 *
-	 * @exception IllegalArgumentException <ul>
-	 *    <li>ERROR_NULL_ARGUMENT - if filename is null</li>
-	 *    <li>ERROR_INVALID_ARGUMENT - if width or height is not positive</li>
-	 * </ul>
-	 * @exception SWTError <ul>
-	 *    <li>ERROR_NO_HANDLES - if the PDF printer is not available</li>
-	 * </ul>
-	 *
-	 * @see #dispose()
-	 */
-	public PDFDocument(Device device, String filename, double width, double height) {
-		if (filename == null) SWT.error(SWT.ERROR_NULL_ARGUMENT);
-		if (width <= 0 || height <= 0) SWT.error(SWT.ERROR_INVALID_ARGUMENT);
-
+		this(checkData(filename, width, height));
 		this.filename = filename;
 		this.width = width;
 		this.height = height;
+	}
 
-		// Get device from the current display if not provided
-		if (device == null) {
-			try {
-				this.device = org.eclipse.swt.widgets.Display.getDefault();
-			} catch (SWTException e) {
-				this.device = null;
-			}
-		} else {
-			this.device = device;
-		}
+	/**
+	 * Internal constructor that passes a DeviceData to Device superclass.
+	 */
+	PDFDocument(DeviceData data) {
+		super(data);
+	}
 
+	/**
+	 * Validates and prepares the data for construction.
+	 */
+	static DeviceData checkData(String filename, double width, double height) {
+		if (filename == null) SWT.error(SWT.ERROR_NULL_ARGUMENT);
+		if (width <= 0 || height <= 0) SWT.error(SWT.ERROR_INVALID_ARGUMENT);
+		DeviceData data = new DeviceData();
+		return data;
+	}
+
+	/**
+	 * Creates the PDF device in the operating system.
+	 * This method is called before <code>init</code>.
+	 *
+	 * @param data the DeviceData which describes the receiver
+	 */
+	@Override
+	protected void create(DeviceData data) {
 		// Calculate physical size in inches from screen pixels
 		int screenDpiX = 96;
 		int screenDpiY = 96;
-		if (this.device != null) {
-			Point dpi = this.device.getDPI();
-			screenDpiX = dpi.x;
-			screenDpiY = dpi.y;
-		}
+		
 		double widthInInches = width / screenDpiX;
 		double heightInInches = height / screenDpiY;
 		
@@ -259,6 +240,15 @@ public class PDFDocument implements Drawable {
 		if (handle == 0) {
 			SWT.error(SWT.ERROR_NO_HANDLES);
 		}
+	}
+
+	/**
+	 * Initializes any internal resources needed by the device.
+	 * This method is called after <code>create</code>.
+	 */
+	@Override
+	protected void init() {
+		super.init();
 	}
 
 	/**
@@ -316,11 +306,11 @@ public class PDFDocument implements Drawable {
 	 * </p>
 	 *
 	 * @exception SWTException <ul>
-	 *    <li>ERROR_WIDGET_DISPOSED - if the receiver has been disposed</li>
+	 *    <li>ERROR_DEVICE_DISPOSED - if the receiver has been disposed</li>
 	 * </ul>
 	 */
 	public void newPage() {
-		if (disposed) SWT.error(SWT.ERROR_WIDGET_DISPOSED);
+		checkDevice();
 		if (pageStarted) {
 			OS.EndPage(handle);
 			pageStarted = false;
@@ -346,11 +336,11 @@ public class PDFDocument implements Drawable {
 	 *    <li>ERROR_INVALID_ARGUMENT - if width or height is not positive</li>
 	 * </ul>
 	 * @exception SWTException <ul>
-	 *    <li>ERROR_WIDGET_DISPOSED - if the receiver has been disposed</li>
+	 *    <li>ERROR_DEVICE_DISPOSED - if the receiver has been disposed</li>
 	 * </ul>
 	 */
 	public void newPage(double widthInPoints, double heightInPoints) {
-		if (disposed) SWT.error(SWT.ERROR_WIDGET_DISPOSED);
+		checkDevice();
 		if (widthInPoints <= 0 || heightInPoints <= 0) SWT.error(SWT.ERROR_INVALID_ARGUMENT);
 
 		this.widthInPoints = widthInPoints;
@@ -364,11 +354,11 @@ public class PDFDocument implements Drawable {
 	 * @return the width in points (1/72 inch)
 	 *
 	 * @exception SWTException <ul>
-	 *    <li>ERROR_WIDGET_DISPOSED - if the receiver has been disposed</li>
+	 *    <li>ERROR_DEVICE_DISPOSED - if the receiver has been disposed</li>
 	 * </ul>
 	 */
 	public double getWidth() {
-		if (disposed) SWT.error(SWT.ERROR_WIDGET_DISPOSED);
+		checkDevice();
 		return widthInPoints;
 	}
 
@@ -378,12 +368,62 @@ public class PDFDocument implements Drawable {
 	 * @return the height in points (1/72 inch)
 	 *
 	 * @exception SWTException <ul>
-	 *    <li>ERROR_WIDGET_DISPOSED - if the receiver has been disposed</li>
+	 *    <li>ERROR_DEVICE_DISPOSED - if the receiver has been disposed</li>
 	 * </ul>
 	 */
 	public double getHeight() {
-		if (disposed) SWT.error(SWT.ERROR_WIDGET_DISPOSED);
+		checkDevice();
 		return heightInPoints;
+	}
+
+	/**
+	 * Returns the DPI (dots per inch) of the PDF document.
+	 * This returns the actual DPI of the underlying PDF printer device.
+	 *
+	 * @return a point whose x coordinate is the horizontal DPI and whose y coordinate is the vertical DPI
+	 *
+	 * @exception SWTException <ul>
+	 *    <li>ERROR_DEVICE_DISPOSED - if the receiver has been disposed</li>
+	 * </ul>
+	 */
+	@Override
+	public Point getDPI() {
+		checkDevice();
+		int dpiX = OS.GetDeviceCaps(handle, OS.LOGPIXELSX);
+		int dpiY = OS.GetDeviceCaps(handle, OS.LOGPIXELSY);
+		return new Point(dpiX, dpiY);
+	}
+
+	/**
+	 * Returns a rectangle describing the receiver's size and location.
+	 * The rectangle dimensions are in points (1/72 inch).
+	 *
+	 * @return the bounding rectangle
+	 *
+	 * @exception SWTException <ul>
+	 *    <li>ERROR_DEVICE_DISPOSED - if the receiver has been disposed</li>
+	 * </ul>
+	 */
+	@Override
+	public Rectangle getBounds() {
+		checkDevice();
+		return new Rectangle(0, 0, (int) widthInPoints, (int) heightInPoints);
+	}
+
+	/**
+	 * Returns a rectangle which describes the area of the
+	 * receiver which is capable of displaying data.
+	 * For a PDF document, this is the same as the bounds.
+	 *
+	 * @return the client area
+	 *
+	 * @exception SWTException <ul>
+	 *    <li>ERROR_DEVICE_DISPOSED - if the receiver has been disposed</li>
+	 * </ul>
+	 */
+	@Override
+	public Rectangle getClientArea() {
+		return getBounds();
 	}
 
 	/**
@@ -403,7 +443,7 @@ public class PDFDocument implements Drawable {
 	 */
 	@Override
 	public long internal_new_GC(GCData data) {
-		if (disposed) SWT.error(SWT.ERROR_WIDGET_DISPOSED);
+		checkDevice();
 		if (isGCCreated) SWT.error(SWT.ERROR_INVALID_ARGUMENT);
 
 		ensurePageStarted();
@@ -415,22 +455,15 @@ public class PDFDocument implements Drawable {
 			} else {
 				data.style |= SWT.LEFT_TO_RIGHT;
 			}
-			data.device = device;
+			data.device = this;
 			data.nativeZoom = 100;
-			if (device != null) {
-				data.font = device.getSystemFont();
-			}
+			data.font = getSystemFont();
 		}
 		
 		// Set up coordinate system scaling
-		// Get screen DPI
+		// Get screen DPI (use 96 as default)
 		int screenDpiX = 96;
 		int screenDpiY = 96;
-		if (device != null) {
-			Point dpi = device.getDPI();
-			screenDpiX = dpi.x;
-			screenDpiY = dpi.y;
-		}
 		
 		// Get PDF printer DPI
 		int pdfDpiX = OS.GetDeviceCaps(handle, OS.LOGPIXELSX);
@@ -491,27 +524,12 @@ public class PDFDocument implements Drawable {
 	}
 
 	/**
-	 * Returns <code>true</code> if the PDFDocument has been disposed,
-	 * and <code>false</code> otherwise.
-	 *
-	 * @return <code>true</code> when the PDFDocument is disposed and <code>false</code> otherwise
+	 * Destroys the PDF document handle.
+	 * This method is called internally by the dispose
+	 * mechanism of the <code>Device</code> class.
 	 */
-	public boolean isDisposed() {
-		return disposed;
-	}
-
-	/**
-	 * Disposes of the operating system resources associated with
-	 * the PDFDocument. Applications must dispose of all PDFDocuments
-	 * that they allocate.
-	 * <p>
-	 * This method finalizes the PDF file and writes it to disk.
-	 * </p>
-	 */
-	public void dispose() {
-		if (disposed) return;
-		disposed = true;
-
+	@Override
+	protected void destroy() {
 		if (handle != 0) {
 			if (pageStarted) {
 				OS.EndPage(handle);
