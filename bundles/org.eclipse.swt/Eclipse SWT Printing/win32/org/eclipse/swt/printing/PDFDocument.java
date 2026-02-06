@@ -47,6 +47,8 @@ import org.eclipse.swt.internal.win32.*;
  *
  * @see GC
  * @since 3.133
+ *
+ * @noreference This class is provisional API and subject to change. It is being made available to gather early feedback. The API or behavior may change in future releases as the implementation evolves based on user feedback.
  */
 public final class PDFDocument extends Device {
 	long handle;
