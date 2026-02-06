@@ -491,7 +491,7 @@ public final class PDFDocument extends Device {
 	@Override
 	public long internal_new_GC(GCData data) {
 		checkDevice();
-		if (handle == 0) SWT.error(SWT.ERROR_NO_HANDLES);
+		if (handle == 0) SWT.error(SWT.ERROR_NO_HANDLES, null, " [PDF document handle is not valid]");
 		if (data != null) {
 			if (isGCCreated) SWT.error(SWT.ERROR_INVALID_ARGUMENT);
 
