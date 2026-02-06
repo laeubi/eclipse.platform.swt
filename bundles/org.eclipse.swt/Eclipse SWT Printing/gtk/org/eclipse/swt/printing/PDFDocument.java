@@ -41,16 +41,11 @@ import org.eclipse.swt.internal.cairo.*;
  *    gc.dispose();
  *    pdf.dispose();
  * </pre>
- * <p>
- * <b>Note:</b> This class is provisional API and subject to change. It is being made
- * available to gather early feedback. The API may change in future releases as the 
- * implementation evolves based on user feedback.
- * </p>
  *
  * @see GC
  * @since 3.133
  *
- * @noreference This class is not intended to be referenced by clients
+ * @noreference This class is provisional API and subject to change. It is being made available to gather early feedback. The API or behavior may change in future releases as the implementation evolves based on user feedback.
  */
 public final class PDFDocument extends Device {
 	long surface;
