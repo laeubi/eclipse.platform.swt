@@ -48,7 +48,7 @@ import org.eclipse.swt.internal.cocoa.*;
  *
  * @see GC
  * @since 3.133
- * 
+ *
  * @noreference This class is not intended to be referenced by clients
  */
 public final class PDFDocument extends Device {
