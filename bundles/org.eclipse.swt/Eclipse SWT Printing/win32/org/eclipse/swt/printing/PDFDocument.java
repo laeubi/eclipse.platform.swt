@@ -252,7 +252,7 @@ public final class PDFDocument extends Device {
 		}
 
 		if (handle == 0) {
-			SWT.error(SWT.ERROR_NO_HANDLES);
+			SWT.error(SWT.ERROR_NO_HANDLES, null, " [Failed to create device context for '" + PDF_PRINTER_NAME + "'. Ensure the printer is installed and enabled.]");
 		}
 	}
 
@@ -285,7 +285,8 @@ public final class PDFDocument extends Device {
 			OS.HeapFree(hHeap, 0, lpszDocName);
 
 			if (rc <= 0) {
-				SWT.error(SWT.ERROR_NO_HANDLES);
+				int lastError = OS.GetLastError();
+				SWT.error(SWT.ERROR_NO_HANDLES, null, " [StartDoc failed for '" + PDF_PRINTER_NAME + "' (rc=" + rc + ", lastError=" + lastError + ")]");
 			}
 			jobStarted = true;
 		}
@@ -297,7 +298,11 @@ public final class PDFDocument extends Device {
 	private void ensurePageStarted() {
 		ensureJobStarted();
 		if (!pageStarted) {
-			OS.StartPage(handle);
+			int rc = OS.StartPage(handle);
+			if (rc <= 0) {
+				int lastError = OS.GetLastError();
+				SWT.error(SWT.ERROR_NO_HANDLES, null, " [StartPage failed (rc=" + rc + ", lastError=" + lastError + ")]");
+			}
 			pageStarted = true;
 		}
 	}
@@ -486,11 +491,12 @@ public final class PDFDocument extends Device {
 	@Override
 	public long internal_new_GC(GCData data) {
 		checkDevice();
-		if (isGCCreated) SWT.error(SWT.ERROR_INVALID_ARGUMENT);
-
-		ensurePageStarted();
-
+		if (handle == 0) SWT.error(SWT.ERROR_NO_HANDLES);
 		if (data != null) {
+			if (isGCCreated) SWT.error(SWT.ERROR_INVALID_ARGUMENT);
+
+			ensurePageStarted();
+
 			int mask = SWT.LEFT_TO_RIGHT | SWT.RIGHT_TO_LEFT;
 			if ((data.style & mask) != 0) {
 				data.layout = (data.style & SWT.RIGHT_TO_LEFT) != 0 ? OS.LAYOUT_RTL : 0;
@@ -500,22 +506,22 @@ public final class PDFDocument extends Device {
 			data.device = this;
 			data.nativeZoom = 100;
 			data.font = getSystemFont();
+
+			// Set up coordinate system scaling to work in points
+			// The printer has its own DPI, so we scale to make 1 user unit = 1 point
+			int printerDpiX = OS.GetDeviceCaps(handle, OS.LOGPIXELSX);
+			int printerDpiY = OS.GetDeviceCaps(handle, OS.LOGPIXELSY);
+
+			// Scale factor: printer_dpi / POINTS_PER_INCH (since we want 1 unit = 1 point = 1/72 inch)
+			float scaleX = (float)(printerDpiX / POINTS_PER_INCH);
+			float scaleY = (float)(printerDpiY / POINTS_PER_INCH);
+
+			OS.SetGraphicsMode(handle, OS.GM_ADVANCED);
+			float[] transform = new float[] {scaleX, 0, 0, scaleY, 0, 0};
+			OS.SetWorldTransform(handle, transform);
+
+			isGCCreated = true;
 		}
-
-		// Set up coordinate system scaling to work in points
-		// The printer has its own DPI, so we scale to make 1 user unit = 1 point
-		int printerDpiX = OS.GetDeviceCaps(handle, OS.LOGPIXELSX);
-		int printerDpiY = OS.GetDeviceCaps(handle, OS.LOGPIXELSY);
-
-		// Scale factor: printer_dpi / POINTS_PER_INCH (since we want 1 unit = 1 point = 1/72 inch)
-		float scaleX = (float)(printerDpiX / POINTS_PER_INCH);
-		float scaleY = (float)(printerDpiY / POINTS_PER_INCH);
-
-		OS.SetGraphicsMode(handle, OS.GM_ADVANCED);
-		float[] transform = new float[] {scaleX, 0, 0, scaleY, 0, 0};
-		OS.SetWorldTransform(handle, transform);
-
-		isGCCreated = true;
 		return handle;
 	}
 
