@@ -19,7 +19,9 @@ import org.eclipse.swt.events.*;
 import org.eclipse.swt.widgets.*;
 
 /**
- * @author christoph
+ * Demonstrates the features of {@link GridBagLayout} and
+ * {@link GridBagConstraints}.
+ *
  * @since 3.123
  */
 public class GridBagSnippet {
@@ -33,9 +35,15 @@ public class GridBagSnippet {
 		tab1.setText("Example");
 		tab1.setControl(createBagExample(tabFolder));
 		TabItem tab2 = new TabItem(tabFolder, SWT.NONE);
-		tab2.setText("Debug Your GridBags");
-		tab2.setControl(createDebugExample(tabFolder));
-		tabFolder.setSelection(1);
+		tab2.setText("Fill Modes");
+		tab2.setControl(createFillModesExample(tabFolder));
+		TabItem tab3 = new TabItem(tabFolder, SWT.NONE);
+		tab3.setText("REMAINDER Span");
+		tab3.setControl(createRemainderExample(tabFolder));
+		TabItem tab4 = new TabItem(tabFolder, SWT.NONE);
+		tab4.setText("Debug Your GridBags");
+		tab4.setControl(createDebugExample(tabFolder));
+		shell.setSize(900, 700);
 		shell.open();
 		while (!shell.isDisposed()) {
 			if (!display.readAndDispatch()) {
@@ -90,9 +98,99 @@ public class GridBagSnippet {
 	}
 
 	/**
+	 * Demonstrates the different fill modes: NONE, HORIZONTAL, VERTICAL, FILL
+	 */
+	private static Composite createFillModesExample(Composite parent) {
+		Composite composite = new Composite(parent, SWT.NONE);
+		composite.setLayout(new GridBagLayout());
+
+		// Row 0: Labels for each fill mode
+		String[] fillNames = { "SWT.NONE", "SWT.HORIZONTAL", "SWT.VERTICAL", "SWT.FILL" };
+		int[] fillValues = { SWT.NONE, SWT.HORIZONTAL, SWT.VERTICAL, SWT.FILL };
+
+		for (int col = 0; col < 4; col++) {
+			Label header = new Label(composite, SWT.CENTER);
+			header.setText(fillNames[col]);
+			GridBagConstraints hc = new GridBagConstraints();
+			hc.grid.x = col;
+			hc.grid.y = 0;
+			hc.weight.x = 25;
+			hc.weight.y = 10;
+			hc.fill = SWT.FILL;
+			header.setLayoutData(hc);
+		}
+
+		// Row 1: Buttons with different fill modes
+		for (int col = 0; col < 4; col++) {
+			Button btn = new Button(composite, SWT.PUSH);
+			btn.setText("Button");
+			GridBagConstraints bc = new GridBagConstraints();
+			bc.grid.x = col;
+			bc.grid.y = 1;
+			bc.weight.y = 90;
+			bc.fill = fillValues[col];
+			btn.setLayoutData(bc);
+		}
+		return composite;
+	}
+
+	/**
+	 * Demonstrates REMAINDER span to fill remaining columns/rows
+	 */
+	private static Composite createRemainderExample(Composite parent) {
+		Composite composite = new Composite(parent, SWT.NONE);
+		composite.setLayout(new GridBagLayout());
+
+		// Row 0: Three buttons
+		for (int col = 0; col < 3; col++) {
+			Button btn = new Button(composite, SWT.PUSH);
+			btn.setText("Col " + col);
+			GridBagConstraints bc = new GridBagConstraints();
+			bc.grid.x = col;
+			bc.grid.y = 0;
+			bc.weight.x = 33;
+			bc.weight.y = 30;
+			bc.fill = SWT.FILL;
+			btn.setLayoutData(bc);
+		}
+
+		// Row 1: A label that spans all remaining columns using REMAINDER
+		Label spanLabel = new Label(composite, SWT.CENTER);
+		spanLabel.setText("This label spans all columns using REMAINDER");
+		spanLabel.setBackground(parent.getDisplay().getSystemColor(SWT.COLOR_CYAN));
+		GridBagConstraints lc = new GridBagConstraints();
+		lc.grid.x = 0;
+		lc.grid.y = 1;
+		lc.span.x = GridBagConstraints.REMAINDER;
+		lc.weight.y = 40;
+		lc.fill = SWT.FILL;
+		spanLabel.setLayoutData(lc);
+
+		// Row 2: Two buttons, second spans remaining columns
+		Button leftBtn = new Button(composite, SWT.PUSH);
+		leftBtn.setText("Fixed width col");
+		GridBagConstraints lbc = new GridBagConstraints();
+		lbc.grid.x = 0;
+		lbc.grid.y = 2;
+		lbc.weight.y = 30;
+		lbc.fill = SWT.FILL;
+		leftBtn.setLayoutData(lbc);
+
+		Label remainderBtn = new Label(composite, SWT.CENTER);
+		remainderBtn.setText("REMAINDER span from col 1");
+		remainderBtn.setBackground(parent.getDisplay().getSystemColor(SWT.COLOR_YELLOW));
+		GridBagConstraints rbc = new GridBagConstraints();
+		rbc.grid.x = 1;
+		rbc.grid.y = 2;
+		rbc.span.x = GridBagConstraints.REMAINDER;
+		rbc.fill = SWT.FILL;
+		remainderBtn.setLayoutData(rbc);
+
+		return composite;
+	}
+
+	/**
 	 * Creates a control that enables the debug painting for a layout
-	 * @param parent
-	 * @return
 	 */
 	private static Composite createDebugExample(Composite parent) {
 		Composite composite = new Composite(parent, SWT.NONE);
@@ -128,6 +226,7 @@ public class GridBagSnippet {
 		gbc4.grid.y = 0;
 		gbc4.weight.x = 30;
 		gbc4.span.y = 2;
+		gbc4.fill = SWT.FILL;
 		c4.setLayoutData(gbc4);
 		c1.setBackground(composite.getDisplay().getSystemColor(SWT.COLOR_BLUE));
 		c2.setBackground(composite.getDisplay().getSystemColor(SWT.COLOR_GREEN));
@@ -136,10 +235,6 @@ public class GridBagSnippet {
 		return composite;
 	}
 
-	/**
-	 * @param shell
-	 * @return
-	 */
 	private static Control createButtons(Composite parent) {
 		Composite composite = new Composite(parent, SWT.NONE);
 		composite.setLayout(new GridLayout(1, true));

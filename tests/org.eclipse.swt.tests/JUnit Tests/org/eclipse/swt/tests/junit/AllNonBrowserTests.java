@@ -79,6 +79,7 @@ public class AllNonBrowserTests {
 			Test_org_eclipse_swt_events_VerifyEvent.class, //
 			Test_org_eclipse_swt_internal_SVGRasterizer.class, //
 			Test_org_eclipse_swt_layout_BorderLayout.class, //
+			Test_org_eclipse_swt_layout_GridBagLayout.class, //
 			Test_org_eclipse_swt_layout_FormAttachment.class, //
 			Test_org_eclipse_swt_layout_GridData.class, //
 			Test_org_eclipse_swt_printing_PDFDocument.class, //
