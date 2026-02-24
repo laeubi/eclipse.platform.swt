@@ -21,18 +21,31 @@ import org.eclipse.swt.widgets.*;
 /**
  * This implements a layout similar to the <a href=
  * "https://docs.oracle.com/javase/tutorial/uiswing/layout/gridbag.html">Swing
- * GridBagLayout</a>
+ * GridBagLayout</a>.
+ * <p>
+ * Controls are placed in a grid of cells, where each cell's size is determined
+ * by the weight assigned to its column and row. The key principle is to compute
+ * the grid ("bags") first, assign sizes based on weights, then use those sizes
+ * as hints when asking controls for their preferred size.
+ * </p>
  *
+ * @see GridBagConstraints
  * @since 3.123
  */
 public class GridBagLayout extends Layout {
 
 	/**
-	 *
+	 * Creates a new GridBagLayout.
 	 */
 	public GridBagLayout() {
 	}
 
+	/**
+	 * Creates a GridBagLayout and installs it on the given composite, adding a
+	 * debug paint listener that visualizes the grid structure.
+	 *
+	 * @param component the composite to install the layout on
+	 */
 	public GridBagLayout(Composite component) {
 		component.setLayout(this);
 		component.addPaintListener(e -> {
@@ -50,14 +63,14 @@ public class GridBagLayout extends Layout {
 						continue;
 					}
 					Point l = control.getLocation();
-					GridBagConstraints constraints = gridBag.constraintMap.get(control);
+					Point resolvedSpan = gridBag.getResolvedSpan(control);
 					int w = columnWidths[x];
-					int colspan = constraints.span.x;
+					int colspan = resolvedSpan.x;
 					for (int i = 1; i < colspan; i++) {
 						w += columnWidths[x + i];
 					}
 					int h = rowHeights[y];
-					int rowspan = constraints.span.y;
+					int rowspan = resolvedSpan.y;
 					for (int i = 1; i < rowspan; i++) {
 						h += rowHeights[y + i];
 					}
@@ -81,23 +94,22 @@ public class GridBagLayout extends Layout {
 
 	@Override
 	protected Point computeSize(Composite composite, int wHint, int hHint, boolean flushCache) {
-		// FIXME need to use max of summ of computed site
-//		GridBag grid = GridBagConstraints.getGridBag(composite, flushCache);
-//		if (wHint < 0) {
-//			int width = 0;
-//			for (int x = 0; x < grid.dimension.x; x++) {
-//				width += grid.getColumnWidth(x);
-//			}
-//			wHint = width;
-//		}
-//		if (hHint < 0) {
-//			int height = 0;
-//			for (int y = 0; y < grid.dimension.y; y++) {
-//				height += grid.getRowHeight(y);
-//			}
-//			hHint = height;
-//		}
-		return new Point(wHint, hHint);
+		GridBag grid = GridBagConstraints.getGridBag(composite, flushCache);
+		int width = wHint;
+		if (width == SWT.DEFAULT) {
+			width = 0;
+			for (int x = 0; x < grid.dimension.x; x++) {
+				width += grid.cols[x];
+			}
+		}
+		int height = hHint;
+		if (height == SWT.DEFAULT) {
+			height = 0;
+			for (int y = 0; y < grid.dimension.y; y++) {
+				height += grid.rows[y];
+			}
+		}
+		return new Point(Math.max(0, width), Math.max(0, height));
 	}
 
 	@Override
@@ -106,45 +118,49 @@ public class GridBagLayout extends Layout {
 		GridBag grid = GridBagConstraints.getGridBag(composite, flushCache);
 		int[] columnWidths = grid.getColumnWidths(clientArea.width);
 		int[] rowHeights = grid.getRowHeights(clientArea.height);
-		double offsetX = clientArea.x;
+		int offsetX = clientArea.x;
 		for (int x = 0; x < grid.dimension.x; x++) {
-			double offsetY = clientArea.y;
+			int offsetY = clientArea.y;
 			int columnWidth = columnWidths[x];
 			for (int y = 0; y < grid.dimension.y; y++) {
 				int rowHeight = rowHeights[y];
 				Control control = grid.controls[x][y];
 				if (control != null) {
 					GridBagConstraints c = grid.constraintMap.get(control);
-					// TODO compute size according to grid size as hints!?
-					Point size = grid.getSize(control);
-					int width;
-					int maxWidth = columnWidth;
-					for (int i = 1; i < c.span.x; i++) {
-						maxWidth += columnWidths[y + i];
+					Point resolvedSpan = grid.getResolvedSpan(control);
+					int spanX = resolvedSpan.x;
+					int spanY = resolvedSpan.y;
+					// Compute total cell size including spanned columns/rows
+					int cellWidth = columnWidth;
+					for (int i = 1; i < spanX; i++) {
+						cellWidth += columnWidths[x + i];
 					}
-					if (c.fill == SWT.ALL || c.fill == SWT.HORIZONTAL) {
-						width = maxWidth;
+					int cellHeight = rowHeight;
+					for (int i = 1; i < spanY; i++) {
+						cellHeight += rowHeights[y + i];
+					}
+					// Use cell dimensions as hints when computing control size
+					int wHint = c.wHint != SWT.DEFAULT ? c.wHint : cellWidth;
+					int hHint = c.hHint != SWT.DEFAULT ? c.hHint : cellHeight;
+					Point size = control.computeSize(wHint, hHint, false);
+					int width;
+					if (c.fill == SWT.FILL || c.fill == SWT.HORIZONTAL) {
+						width = cellWidth;
 					} else {
-						width = size.x;
+						width = Math.min(size.x, cellWidth);
 					}
 					int height;
-					int maxHeight = rowHeight;
-					for (int i = 1; i < c.span.y; i++) {
-						maxHeight += rowHeights[y + i];
-					}
-					if (c.fill == SWT.ALL || c.fill == SWT.VERTICAL) {
-						height = maxHeight;
+					if (c.fill == SWT.FILL || c.fill == SWT.VERTICAL) {
+						height = cellHeight;
 					} else {
-						height = size.y;
+						height = Math.min(size.y, cellHeight);
 					}
-					control.setBounds((int) offsetX, (int) offsetY, Math.min(width, maxWidth),
-							Math.min(height, maxHeight));
+					control.setBounds(offsetX, offsetY, width, height);
 				}
 				offsetY += rowHeight;
 			}
 			offsetX += columnWidth;
 		}
-
 	}
 
 }
