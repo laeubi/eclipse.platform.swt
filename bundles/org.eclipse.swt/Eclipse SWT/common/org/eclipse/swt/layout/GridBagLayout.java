@@ -44,13 +44,13 @@ public class GridBagLayout extends Layout {
 	 * Creates a GridBagLayout and installs it on the given composite, adding a
 	 * debug paint listener that visualizes the grid structure.
 	 *
-	 * @param component the composite to install the layout on
+	 * @param composite the composite to install the layout on
 	 */
-	public GridBagLayout(Composite component) {
-		component.setLayout(this);
-		component.addPaintListener(e -> {
-			Point size = component.getSize();
-			GridBag gridBag = GridBagConstraints.getGridBag(component, false);
+	public GridBagLayout(Composite composite) {
+		composite.setLayout(this);
+		composite.addPaintListener(e -> {
+			Point size = composite.getSize();
+			GridBag gridBag = GridBagConstraints.getGridBag(composite, false);
 			GC gc = e.gc;
 			int[] columnWidths = gridBag.getColumnWidths(size.x);
 			int[] rowHeights = gridBag.getRowHeights(size.y);
