@@ -127,7 +127,7 @@ public class Display extends Device implements Executor {
 	Event [] eventQueue;
 	long fds;
 	int allocated_nfds;
-	boolean wake;
+	volatile boolean wake;
 	boolean windowSizeSet;
 	int [] max_priority = new int [1], timeout = new int [1];
 	Callback eventCallback;
@@ -5610,6 +5610,19 @@ public boolean sleep () {
 	max_priority [0] = timeout [0] = 0;
 	long context = OS.g_main_context_default ();
 	boolean result = false;
+	/*
+	 * Reset the wake flag once before entering the poll loop. This clears
+	 * any stale wake signal from before sleep() was called. The flag must
+	 * NOT be reset inside the loop, because doing so creates a race
+	 * condition: another thread calling wakeThread() may set wake=true and
+	 * signal the wakeup fd, but if the UI thread then resets wake=false at
+	 * the start of the next iteration, the wakeup is lost. The eventfd
+	 * signal gets consumed by g_main_context_check(), and with wake=false
+	 * the loop continues sleeping, potentially indefinitely.
+	 *
+	 * See https://github.com/eclipse-platform/eclipse.platform.swt/issues/3044
+	 */
+	wake = false;
 	do {
 		if (OS.g_main_context_acquire (context)) {
 			result = OS.g_main_context_prepare (context, max_priority);
@@ -5623,13 +5636,14 @@ public boolean sleep () {
 			if (poll != 0) {
 				if (nfds > 0 || timeout [0] != 0) {
 					/*
-					* Bug in GTK. For some reason, g_main_context_wakeup() may
-					* fail to wake up the UI thread from the polling function.
-					* The fix is to sleep for a maximum of 50 milliseconds.
-					*/
+					 * Cap the poll timeout to ensure the event loop remains
+					 * responsive. The g_main_context_wakeup() mechanism is
+					 * reliable on modern GLib (tested on GLib 2.56+), but this
+					 * timeout acts as a safety net. A timeout of -1 would mean
+					 * blocking indefinitely, which could cause hangs if a
+					 * wakeup signal is missed for any reason.
+					 */
 					if (timeout [0] < 0) timeout [0] = 50;
-
-					wake = false;
 					OS.Call (poll, fds, nfds, timeout [0]);
 				}
 			}
@@ -5637,7 +5651,6 @@ public boolean sleep () {
 			OS.g_main_context_release (context);
 		}
 	} while (!result && synchronizer.isMessagesEmpty() && !wake);
-	wake = false;
 	if (!GTK.GTK4) GDK.gdk_threads_enter ();
 	sendPostExternalEventDispatchEvent ();
 	return true;
