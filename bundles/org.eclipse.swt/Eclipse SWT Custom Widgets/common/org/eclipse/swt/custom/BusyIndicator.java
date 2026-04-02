@@ -107,11 +107,16 @@ public class BusyIndicator {
 				Integer busyId = setBusyCursor(display);
 				try {
 					if (future instanceof CompletionStage<?> stage) {
-						// let us wake up from sleep once the future is done
+						// Wake the UI thread from sleep once the future is done.
+						// Using asyncExec instead of wake() because asyncExec adds
+						// a message to the synchronizer queue, which is checked by
+						// Display.sleep()'s loop condition. This is more reliable
+						// than the wake flag alone on GTK/Linux, where the wake
+						// flag can be subject to race conditions.
 						stage.handle((nil1, nil2) -> {
 							if (!display.isDisposed()) {
 								try {
-									display.wake();
+									display.asyncExec(() -> {});
 								} catch (SWTException e) {
 									// ignore then, this can happen due to the async nature between our check for
 									// disposed and the actual call to wake the display can be disposed
