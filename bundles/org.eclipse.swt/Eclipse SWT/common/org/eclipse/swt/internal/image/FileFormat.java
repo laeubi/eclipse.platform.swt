@@ -56,6 +56,9 @@ public abstract class FileFormat {
 		try {
 			FORMAT_FACTORIES.add(SVGFileFormat::new);
 		} catch (NoClassDefFoundError e) { } // ignore format
+		try {
+			FORMAT_FACTORIES.add(WebPFileFormat::new);
+		} catch (NoClassDefFoundError e) { } // ignore format
 	}
 
 	public static final int DEFAULT_ZOOM = 100;
